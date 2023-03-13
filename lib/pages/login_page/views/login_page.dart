@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
           height: 680,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [Text('مرحبا')],
+            children: [Text('hello')],
           ),
         ),
       ),
