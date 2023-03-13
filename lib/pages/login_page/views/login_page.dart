@@ -11,7 +11,10 @@ class LoginPage extends StatelessWidget {
           decoration: BoxDecoration(color: Colors.blueAccent[100]),
           width: 380,
           height: 680,
-          child: Column(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [Text('مرحبا')],
+          ),
         ),
       ),
     );
