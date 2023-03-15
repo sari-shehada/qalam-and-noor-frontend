@@ -12,8 +12,8 @@ class AddVerticalSpacing extends StatelessWidget {
   }
 }
 
-class AddHorizontialSpacing extends StatelessWidget {
-  const AddHorizontialSpacing({super.key, required this.value});
+class AddHorizontalSpacing extends StatelessWidget {
+  const AddHorizontalSpacing({super.key, required this.value});
 
   final double value;
   @override
