@@ -23,12 +23,14 @@ class ProjectFonts {
       color: lightColorScheme.primary);
 
   static TextStyle get titleLarge => TextStyle(
+        fontFamily: fontFamily,
         fontWeight: FontWeight.w300,
         fontSize: 22,
         color: lightColorScheme.inverseSurface,
       );
 
   static TextStyle get titleMedium => TextStyle(
+        fontFamily: fontFamily,
         fontWeight: FontWeight.w300,
         fontSize: 16,
         color: lightColorScheme.inverseSurface,
