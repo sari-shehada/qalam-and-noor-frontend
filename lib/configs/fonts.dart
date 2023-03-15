@@ -22,5 +22,17 @@ class ProjectFonts {
       fontWeight: FontWeight.w300,
       color: lightColorScheme.primary);
 
+  static TextStyle get titleLarge => TextStyle(
+        fontWeight: FontWeight.w300,
+        fontSize: 22,
+        color: lightColorScheme.inverseSurface,
+      );
+
+  static TextStyle get titleMedium => TextStyle(
+        fontWeight: FontWeight.w300,
+        fontSize: 16,
+        color: lightColorScheme.inverseSurface,
+      );
+
   static TextTheme get lightTextTheme => const TextTheme();
 }
