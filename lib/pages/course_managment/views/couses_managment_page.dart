@@ -4,8 +4,8 @@ import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/project_themes.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
-class CoursesManagmentPage extends StatelessWidget {
-  const CoursesManagmentPage({super.key});
+class CoursesManagementPage extends StatelessWidget {
+  const CoursesManagementPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,12 @@ class CoursesManagmentPage extends StatelessWidget {
               ),
               CoursesContainer(
                 subjectsType: "المواد الاجبارية",
-                courses: [CourseCard(courseName: "رياضيات")],
+                courses: [
+                  CourseCard(courseName: "رياضيات"),
+                  CourseCard(courseName: "رياضيات"),
+                  CourseCard(courseName: "رياضيات"),
+                  CourseCard(courseName: "رياضيات"),
+                ],
               ),
               CoursesContainer(
                 subjectsType: "المواد الاثرائية",
@@ -56,7 +61,6 @@ class CoursesContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
-      height: 280,
       decoration: BoxDecoration(
           color: lightColorScheme.secondaryContainer,
           borderRadius: BorderRadius.circular(30)),
@@ -72,7 +76,11 @@ class CoursesContainer extends StatelessWidget {
                 onPressed: () {}, icon: Icon(FontAwesomeIcons.circlePlus)),
           ],
         ),
-        ListView.builder(itemBuilder: itemBuilder)
+        ListView.builder(
+          shrinkWrap: true,
+          itemCount: courses.length,
+          itemBuilder: (context, index) => courses[index],
+        )
       ]),
     );
   }
