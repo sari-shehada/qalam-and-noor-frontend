@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/controllers/account_controller.dart';
 import 'package:kalam_noor/pages/dashboard/controllers/dashboard_controller.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/dashboard_card.dart';
 
@@ -13,6 +14,7 @@ class DashboardContentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DashboardController dashboardController = Get.find();
+    AccountController accountController = Get.find();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
@@ -20,7 +22,7 @@ class DashboardContentPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'مرحباً, محمد',
+              'مرحباً, ${accountController.employee.firstName}',
               style: TextStyle(
                   fontFamily: ProjectFonts.fontFamily,
                   fontSize: 40,

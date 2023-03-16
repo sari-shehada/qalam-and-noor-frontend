@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/project_themes.dart';
+import 'package:kalam_noor/models/shared_prefs_helper.dart';
 import 'package:kalam_noor/pages/loader/controllers/loader_bindings.dart';
 import 'package:kalam_noor/pages/loader/views/loader.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefsHelper.init();
   runApp(const WebApp());
 }
 

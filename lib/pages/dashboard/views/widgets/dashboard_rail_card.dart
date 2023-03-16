@@ -28,11 +28,20 @@ class DashboardExpandedRailCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 25),
           child: Row(
             children: [
-              Icon(dashboardDestinationCard.iconData),
+              Icon(
+                dashboardDestinationCard.iconData,
+                color: isSelected
+                    ? lightColorScheme.secondary
+                    : lightColorScheme.inverseSurface,
+              ),
               const AddHorizontalSpacing(value: 14),
               Text(
                 dashboardDestinationCard.title,
-                style: const TextStyle(fontSize: 16),
+                style: TextStyle(
+                    fontSize: 16,
+                    color: isSelected
+                        ? lightColorScheme.secondary
+                        : lightColorScheme.inverseSurface),
               )
             ],
           ),
