@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kalam_noor/configs/fonts.dart';
 
 import '../../configs/project_themes.dart';
 import '../../configs/styles.dart';
@@ -38,6 +39,7 @@ class CallToActionButton extends StatelessWidget {
               child: Text(
             label,
             style: TextStyle(
+              fontFamily: ProjectFonts.fontFamily,
               fontSize: 17,
               color: lightColorScheme.primaryContainer,
             ),

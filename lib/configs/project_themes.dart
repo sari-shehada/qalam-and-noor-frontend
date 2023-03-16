@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kalam_noor/configs/fonts.dart';
 
 class ProjectThemes {
   static ThemeData lightTheme = ThemeData(
+      fontFamily: ProjectFonts.fontFamily,
       useMaterial3: true,
       colorScheme: lightColorScheme,
       splashColor: Colors.transparent);
@@ -24,7 +26,8 @@ const lightColorScheme = ColorScheme(
   onTertiary: Color(0xFFFFFFFF),
   tertiaryContainer: Color(0xFFAFECFF),
   onTertiaryContainer: Color(0xFF001F27),
-  error: Color(0xFFBA1A1A),
+  error: Colors.red,
+  // error: Color(0xFFBA1A1A),
   errorContainer: Color(0xFFFFDAD6),
   onError: Color(0xFFFFFFFF),
   onErrorContainer: Color(0xFF410002),

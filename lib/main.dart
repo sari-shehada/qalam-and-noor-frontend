@@ -18,6 +18,7 @@ class WebApp extends StatelessWidget {
       // routes: {
       //   'HomePage': (context) => const HomePage(),
       // },
+      debugShowCheckedModeBanner: false,
       initialBinding: LoaderBindings(),
       locale: const Locale('ar'),
       themeMode: ThemeMode.light,
