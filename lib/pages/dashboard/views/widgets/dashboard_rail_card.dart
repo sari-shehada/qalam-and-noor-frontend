@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:kalam_noor/configs/project_themes.dart';
-import 'package:kalam_noor/pages/dashboard/models/dashboard_destination_card.dart';
+import '../../../../configs/project_themes.dart';
+import '../../models/dashboard_destination_card.dart';
 
 import '../../../../tools/ui_tools/ui_tools.dart';
 

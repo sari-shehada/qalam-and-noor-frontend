@@ -14,26 +14,37 @@ class CourseCard extends StatelessWidget {
   final String courseName;
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.all(10),
-        height: 70,
-        width: 400,
-        decoration: BoxDecoration(
-            color: lightColorScheme.primaryContainer,
-            borderRadius: BorderRadius.circular(15)),
-        child: Row(
-          children: [
-            Text(
-              courseName,
-              style: ProjectFonts.titleMedium,
-            ),
-            const Spacer(),
-            IconButton(
-                onPressed: () {}, icon: const Icon(FontAwesomeIcons.pen)),
-            const AddHorizontalSpacing(value: 5),
-            IconButton(
-                onPressed: () {}, icon: const Icon(FontAwesomeIcons.trashCan)),
-          ],
-        ));
+    //TODO : replace padding with margin
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Container(
+          padding: const EdgeInsets.all(10),
+          height: 70,
+          width: 400,
+          decoration: BoxDecoration(
+              color: Colors.indigo, borderRadius: BorderRadius.circular(15)),
+          child: Row(
+            children: [
+              Text(
+                courseName,
+                style: ProjectFonts.titleMedium.copyWith(color: Colors.white),
+              ),
+              const Spacer(),
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    FontAwesomeIcons.pen,
+                    color: Colors.white,
+                  )),
+              const AddHorizontalSpacing(value: 5),
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    FontAwesomeIcons.trashCan,
+                    color: Colors.white,
+                  )),
+            ],
+          )),
+    );
   }
 }

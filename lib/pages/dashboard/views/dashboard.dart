@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/dashboard/controllers/dashboard_controller.dart';
-import 'package:kalam_noor/pages/dashboard/models/dashboard_destination_card.dart';
-import 'package:kalam_noor/pages/dashboard/views/dashboard_content_page.dart';
-import 'package:kalam_noor/pages/dashboard/views/widgets/dashboard_rail_card.dart';
-import 'package:kalam_noor/pages/settings/views/settings_page.dart';
+import '../controllers/dashboard_controller.dart';
+import '../models/dashboard_destination_card.dart';
+import 'dashboard_content_page.dart';
+import 'widgets/dashboard_rail_card.dart';
+import '../../settings/views/settings_page.dart';
 
 import '../../../tools/ui_tools/ui_tools.dart';
 

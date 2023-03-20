@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kalam_noor/configs/project_themes.dart';
+import 'project_themes.dart';
 
 class ProjectFonts {
   static String get fontFamily => 'Frutiger';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/dashboard/models/dashboard_destination_card.dart';
+import '../models/dashboard_destination_card.dart';
 
 class DashboardController extends GetxController {
   PageController pageController = PageController(initialPage: 0);

@@ -19,7 +19,7 @@ class CoursesDivision extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-          color: lightColorScheme.secondaryContainer,
+          color: Colors.white.withOpacity(.8),
           borderRadius: BorderRadius.circular(30)),
       child: Column(children: [
         Row(
@@ -34,11 +34,21 @@ class CoursesDivision extends StatelessWidget {
                 icon: const Icon(FontAwesomeIcons.circlePlus)),
           ],
         ),
-        ListView.builder(
+        /* ListView.builder(
           shrinkWrap: true,
           itemCount: courses.length,
           itemBuilder: (context, index) => courses[index],
-        )
+        )*/
+        GridView.builder(
+            shrinkWrap: true,
+            itemCount: courses.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              childAspectRatio: 7,
+            ),
+            itemBuilder: (context, index) => courses[index])
       ]),
     );
   }

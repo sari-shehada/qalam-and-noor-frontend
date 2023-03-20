@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/controllers/account_controller.dart';
-import 'package:kalam_noor/pages/dashboard/controllers/dashboard_controller.dart';
-import 'package:kalam_noor/pages/dashboard/views/widgets/dashboard_card.dart';
+import '../../../controllers/account_controller.dart';
+import '../controllers/dashboard_controller.dart';
+import 'widgets/dashboard_card.dart';
 
 import '../../../configs/fonts.dart';
 import '../../../configs/project_themes.dart';

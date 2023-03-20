@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kalam_noor/configs/fonts.dart';
+
+import 'fonts.dart';
 
 class ProjectThemes {
   static ThemeData lightTheme = ThemeData(

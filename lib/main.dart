@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/project_themes.dart';
-import 'package:kalam_noor/models/shared_prefs_helper.dart';
-import 'package:kalam_noor/pages/loader/controllers/loader_bindings.dart';
-import 'package:kalam_noor/pages/loader/views/loader.dart';
+import 'configs/project_themes.dart';
+import 'models/shared_prefs_helper.dart';
+import 'pages/loader/controllers/loader_bindings.dart';
+import 'pages/loader/views/loader.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

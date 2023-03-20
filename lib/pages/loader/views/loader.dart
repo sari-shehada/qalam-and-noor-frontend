@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/assets.dart';
-import 'package:kalam_noor/configs/project_themes.dart';
-import 'package:kalam_noor/pages/loader/controllers/loader_controller.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../configs/assets.dart';
+import '../../../configs/project_themes.dart';
+import '../controllers/loader_controller.dart';
+import '../../../tools/ui_tools/ui_tools.dart';
 
 import '../../../configs/fonts.dart';
 

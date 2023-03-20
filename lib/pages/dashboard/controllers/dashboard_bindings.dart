@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/controllers/account_controller.dart';
-import 'package:kalam_noor/models/employee.dart';
-import 'package:kalam_noor/pages/dashboard/controllers/dashboard_controller.dart';
-import 'package:kalam_noor/pages/dashboard/models/dashboard_destination_card.dart';
+import '../../../controllers/account_controller.dart';
+import '../../../models/employee.dart';
+import 'dashboard_controller.dart';
+import '../models/dashboard_destination_card.dart';
 
 class DashboardBindings extends Bindings {
   final List<DashboardDestinationCard> dashboardDestinations;

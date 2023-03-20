@@ -1,6 +1,6 @@
-import 'package:kalam_noor/controllers/navigation_controller.dart';
-import 'package:kalam_noor/models/employee.dart';
-import 'package:kalam_noor/models/shared_prefs_helper.dart';
+import 'controllers/navigation_controller.dart';
+import 'models/employee.dart';
+import 'models/shared_prefs_helper.dart';
 
 Future<Employee> getEmployeeCredentials(String employeeId) async {
   await Future.delayed(Duration(seconds: 2));

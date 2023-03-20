@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/controllers/account_controller.dart';
-import 'package:kalam_noor/controllers/navigation_controller.dart';
-import 'package:kalam_noor/models/employee.dart';
-import 'package:kalam_noor/models/shared_prefs_helper.dart';
+import '../../../controllers/account_controller.dart';
+import '../../../controllers/navigation_controller.dart';
+import '../../../models/employee.dart';
+import '../../../models/shared_prefs_helper.dart';
 
 import '../../../dummy_methods.dart';
 

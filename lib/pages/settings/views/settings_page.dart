@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/assets.dart';
-import 'package:kalam_noor/configs/project_themes.dart';
-import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/controllers/account_controller.dart';
-import 'package:kalam_noor/dummy_methods.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../configs/assets.dart';
+import '../../../configs/project_themes.dart';
+import '../../../configs/styles.dart';
+import '../../../controllers/account_controller.dart';
+import '../../../dummy_methods.dart';
+import '../../../tools/ui_tools/ui_tools.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});

@@ -2,10 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/controllers/navigation_controller.dart';
-import 'package:kalam_noor/dummy_methods.dart';
-import 'package:kalam_noor/models/shared_prefs_helper.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
+import '../../../controllers/navigation_controller.dart';
+import '../../../dummy_methods.dart';
+import '../../../models/shared_prefs_helper.dart';
+import '../../../tools/dialogs_services/snack_bar_service.dart';
 
 import '../../../controllers/account_controller.dart';
 import '../../../models/employee.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/project_themes.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../configs/project_themes.dart';
+import '../ui_tools/ui_tools.dart';
 
 class SnackbarService {
   static void showErrorSnackBar(
