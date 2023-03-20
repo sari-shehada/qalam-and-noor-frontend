@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 
 import '../../configs/project_themes.dart';
@@ -8,11 +9,15 @@ class CallToActionButton extends StatelessWidget {
   const CallToActionButton({
     super.key,
     required this.label,
+    this.labelColor,
     required this.onTap,
+    this.backgroundColor,
   });
 
   final String label;
+  final Color? labelColor;
   final VoidCallback onTap;
+  final Color? backgroundColor;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +34,7 @@ class CallToActionButton extends StatelessWidget {
         ],
       ),
       child: Material(
-        color: lightColorScheme.primary,
+        color: backgroundColor ?? Get.theme.colorScheme.primary,
         elevation: 0,
         borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
         child: InkWell(
@@ -41,7 +46,7 @@ class CallToActionButton extends StatelessWidget {
             style: TextStyle(
               fontFamily: ProjectFonts.fontFamily,
               fontSize: 17,
-              color: lightColorScheme.primaryContainer,
+              color: labelColor ?? lightColorScheme.primaryContainer,
             ),
           )),
         ),

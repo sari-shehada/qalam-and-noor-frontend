@@ -14,69 +14,84 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ColorScheme colorScheme = Get.theme.colorScheme;
     LoginPageController loginPageController = Get.find();
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-          lightColorScheme.primary,
-          lightColorScheme.primaryContainer
-        ], begin: Alignment.bottomLeft, end: Alignment.topRight)),
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-            decoration: BoxDecoration(
-              //TODO: Refactor this color
-              color: const Color(0xFFEFF5FF).withOpacity(.7),
-              borderRadius: BorderRadius.circular(20),
-              // boxShadow: [
-              //   BoxShadow(
-              //     offset: const Offset(0, 3),
-              //     color: lightColorScheme.shadow.withOpacity(.08),
-              //     blurRadius: 12,
-              //   ),
-              // ],
-            ),
-            width: 380,
-            height: 680,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  GlobalAssets.appLogoPath,
-                  height: 150,
+      //TODO: Refactor
+      backgroundColor: Color(0xFFE1EAF4),
+      body: Center(
+        child: Container(
+          height: 590,
+          width: 866,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(27),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF393939).withOpacity(.05),
+                  offset: const Offset(0, 30),
+                  blurRadius: 60,
                 ),
-                const AddVerticalSpacing(value: 40),
-                //TODO: Add text styles and change the style of this widget
-                Text('مرحبا بك', style: ProjectFonts.headlineSmall),
-                const AddVerticalSpacing(value: 100),
-                Directionality(
-                  textDirection: TextDirection.ltr,
-                  child: HintedTextField(
-                    hintText: 'اسم المستخدم',
-                    textAlign: TextAlign.center,
-                    controller: loginPageController.userNameField,
-                    fillColor: lightColorScheme.surface.withOpacity(.4),
-                  ),
+              ]),
+          alignment: Alignment.center,
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      GlobalAssets.appLogoPath,
+                      height: 198,
+                      width: 198,
+                    ),
+                    const AddVerticalSpacing(value: 60),
+                    Text(
+                      'قلم و نور',
+                      style: TextStyle(
+                        fontSize: 40,
+                        color: colorScheme.primary,
+                      ),
+                    )
+                  ],
                 ),
-                const AddVerticalSpacing(value: 20),
-                Directionality(
-                  textDirection: TextDirection.ltr,
-                  child: HintedTextField(
-                    hintText: 'كلمة السر',
-                    textAlign: TextAlign.center,
-                    controller: loginPageController.passwordField,
-                    fillColor: lightColorScheme.surface.withOpacity(.4),
-                  ),
+              ),
+              Container(
+                width: 486,
+                padding: EdgeInsets.symmetric(horizontal: 72),
+                decoration: BoxDecoration(
+                    color: colorScheme.primary,
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(27),
+                      bottomLeft: Radius.circular(27),
+                    )),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    LabeledTextField(
+                      textEditingController: loginPageController.userNameField,
+                      titleColor: Colors.white,
+                      label: 'اسم المستخدم',
+                      fillColor: Color(0xFFBACCE2),
+                    ),
+                    const AddVerticalSpacing(value: 25),
+                    LabeledTextField(
+                      textEditingController: loginPageController.passwordField,
+                      titleColor: Colors.white,
+                      label: 'كلمة السر',
+                      fillColor: Color(0xFFBACCE2),
+                    ),
+                    const AddVerticalSpacing(value: 50),
+                    CallToActionButton(
+                      label: 'تسجيل الدخول',
+                      labelColor: colorScheme.primary,
+                      onTap: () => loginPageController.login(),
+                      backgroundColor: Colors.white,
+                    ),
+                  ],
                 ),
-                const AddVerticalSpacing(value: 35),
-                CallToActionButton(
-                  label: 'تسجيل الدخول',
-                  onTap: () => loginPageController.login(),
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
       ),

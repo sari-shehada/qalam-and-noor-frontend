@@ -9,7 +9,8 @@ class SnackbarService {
       {required String title, required String message}) {
     Get.showSnackbar(GetSnackBar(
       borderRadius: 15,
-      margin: const EdgeInsets.symmetric(horizontal: 100, vertical: 30),
+      margin: EdgeInsets.symmetric(
+          horizontal: Get.mediaQuery.size.width / 4, vertical: 30),
       // padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
       icon: Row(
         children: const [
