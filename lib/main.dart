@@ -31,7 +31,3 @@ class WebApp extends StatelessWidget {
     );
   }
 }
-
-
-//TODO: Add custom text fields and use them in:
-//1. LoginPage
