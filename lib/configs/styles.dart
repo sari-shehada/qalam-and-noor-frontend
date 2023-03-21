@@ -1,3 +1,5 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class GlobalStyles {
-  static const double globalBorderRadius = 15;
+  static double globalBorderRadius = 15.r;
 }
