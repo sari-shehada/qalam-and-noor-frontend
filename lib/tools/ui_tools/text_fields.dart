@@ -19,6 +19,7 @@ class HintedTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: ProjectFonts.titleMedium,
       controller: controller,
       textAlign: TextAlign.center,
       decoration: InputDecoration(
@@ -27,12 +28,12 @@ class HintedTextField extends StatelessWidget {
         hintStyle: ProjectFonts.titleMedium,
         contentPadding: EdgeInsets.symmetric(vertical: 18.h),
         focusedBorder: UnderlineInputBorder(
-          borderSide: const BorderSide(color: Colors.transparent, width: 2),
-          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide(color: Colors.transparent, width: 2.w),
+          borderRadius: BorderRadius.circular(14.r),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(14.r),
         ),
         filled: true,
         //TODO: Change based on seed color
@@ -61,18 +62,18 @@ class LabeledTextField extends StatelessWidget {
       children: [
         Row(
           children: [
-            const AddHorizontalSpacing(value: 12),
+            AddHorizontalSpacing(value: 12.w),
             Text(
               label,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
                 color: titleColor,
               ),
             ),
           ],
         ),
-        const AddVerticalSpacing(value: 12),
+        AddVerticalSpacing(value: 12.h),
         HintedTextField(
           controller: textEditingController,
           hintText: '',

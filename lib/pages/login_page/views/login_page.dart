@@ -86,6 +86,8 @@ class LoginPage extends StatelessWidget {
                       labelColor: colorScheme.primary,
                       onTap: () => loginPageController.login(),
                       backgroundColor: Colors.white,
+                      buttonStatus: loginPageController.loginButtonStatus,
+                      loadingColor: colorScheme.primary,
                     ),
                   ],
                 ),

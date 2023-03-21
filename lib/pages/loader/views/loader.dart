@@ -18,7 +18,6 @@ class LoaderPage extends StatefulWidget {
 class _LoaderPageState extends State<LoaderPage> {
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.height);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       LoaderController loaderController = Get.find();
       loaderController.loadApplication();
