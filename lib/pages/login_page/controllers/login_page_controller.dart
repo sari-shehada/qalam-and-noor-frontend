@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../controllers/navigation_controller.dart';
@@ -7,7 +5,6 @@ import '../../../dummy_methods.dart';
 import '../../../models/shared_prefs_helper.dart';
 import '../../../tools/dialogs_services/snack_bar_service.dart';
 
-import '../../../controllers/account_controller.dart';
 import '../../../models/employee.dart';
 
 class LoginPageController extends GetxController {

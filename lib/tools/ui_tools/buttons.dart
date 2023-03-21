@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
+import '../../configs/fonts.dart';
 
 import '../../configs/project_themes.dart';
 import '../../configs/styles.dart';

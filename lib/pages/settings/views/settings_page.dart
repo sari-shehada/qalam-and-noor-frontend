@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import '../../../configs/assets.dart';
 import '../../../configs/project_themes.dart';
 import '../../../configs/styles.dart';
 import '../../../controllers/account_controller.dart';
@@ -39,7 +38,7 @@ class SettingsPage extends StatelessWidget {
                   ),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -70,7 +69,7 @@ class SettingsPage extends StatelessWidget {
                                     fontSize: 16,
                                     color: lightColorScheme.tertiary),
                               ),
-                              AddHorizontalSpacing(value: 20),
+                              const AddHorizontalSpacing(value: 20),
                               FaIcon(FontAwesomeIcons.doorOpen,
                                   color: lightColorScheme.tertiary)
                             ],

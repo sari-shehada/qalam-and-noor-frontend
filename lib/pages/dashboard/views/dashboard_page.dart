@@ -1,77 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../../../controllers/account_controller.dart';
-import '../controllers/dashboard_controller.dart';
-import 'widgets/dashboard_card.dart';
-
-import '../../../configs/fonts.dart';
-import '../../../configs/project_themes.dart';
-import '../../../tools/ui_tools/ui_tools.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    DashboardController dashboardController = Get.find();
-    AccountController accountController = Get.find();
+    // DashboardController dashboardController = Get.find();
+    // AccountController accountController = Get.find();
     return Scaffold(
-      backgroundColor: Color(0xFFF5F6F8),
+      backgroundColor: const Color(0xFFF5F6F8),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+        padding: EdgeInsets.symmetric(vertical: 50.h, horizontal: 50.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'مرحباً, ${accountController.employee.firstName}',
-              style: TextStyle(
-                  fontFamily: ProjectFonts.fontFamily,
-                  fontSize: 40,
-                  color: lightColorScheme.primary),
-            ),
-            const AddVerticalSpacing(value: 30),
-            Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'البحث',
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 18, horizontal: 30),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: Colors.transparent, width: 2),
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      filled: true,
-                      fillColor: lightColorScheme.primaryContainer,
+            SizedBox(
+              width: 1100.w,
+              child: TextField(
+                style: TextStyle(
+                  fontSize: 26.sp,
+                  color: const Color(0xFF000000),
+                ),
+                decoration: InputDecoration(
+                  fillColor: const Color(0xFFE1E5EA),
+                  filled: true,
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 20.h,
+                    horizontal: 80.w,
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(100.r),
+                  ),
+                  hintText: 'البحث',
+                  hintStyle: TextStyle(
+                    fontSize: 26.sp,
+                    color: const Color(0xFF616265),
+                  ),
+                  // suffixIconConstraints: BoxConstraints(),
+                  suffix: IconButton(
+                    icon: FaIcon(
+                      FontAwesomeIcons.magnifyingGlass,
+                      color: Colors.black,
+                      size: 25.sp,
                     ),
+                    //TODO:
+                    onPressed: () {},
                   ),
                 ),
-                const Expanded(flex: 1, child: SizedBox())
-              ],
+                // textInputAction: TextInputAction.search,
+              ),
             ),
-            const AddVerticalSpacing(value: 30),
-            GridView.builder(
-              itemCount: 6,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
-                childAspectRatio: 2,
-              ),
-              itemBuilder: (context, index) => DashboardCard(
-                dashboardDestinationCard:
-                    dashboardController.dashboardDestinations[index],
-                onTap: () => dashboardController.switchToPage(index),
-              ),
+            Row(
+              children: const [],
             )
           ],
         ),

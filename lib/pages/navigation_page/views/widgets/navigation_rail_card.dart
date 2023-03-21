@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/dashboard/controllers/dashboard_controller.dart';
+import '../../../dashboard/controllers/dashboard_controller.dart';
 import '../../../../configs/project_themes.dart';
 import '../../../dashboard/models/dashboard_destination_card.dart';
 
@@ -56,18 +56,16 @@ class NavigationRailExpandedCard extends StatelessWidget {
 
 //TODO: Solve the renderflex overflow exception and rename this to 'NavigationRailCard' and also remove the above widget
 class NavigationRailCollapsedCard extends StatelessWidget {
-  const NavigationRailCollapsedCard(
-      {super.key, required this.dashboardDestinationCard, required this.onTap});
+  const NavigationRailCollapsedCard({super.key, required this.index});
 
-  final DashboardDestinationCard dashboardDestinationCard;
-  final VoidCallback onTap;
+  final int index;
   @override
   Widget build(BuildContext context) {
     DashboardController dashboardController = Get.find();
     return Obx(
       () => AnimatedContainer(
         clipBehavior: Clip.hardEdge,
-        decoration: BoxDecoration(),
+        decoration: const BoxDecoration(),
         curve: Curves.linearToEaseOut,
         duration: DashboardControllerConstants.railAnimationDuration,
         height: 80.w,
@@ -78,35 +76,35 @@ class NavigationRailCollapsedCard extends StatelessWidget {
         child: Obx(
           () => Material(
             borderRadius: BorderRadius.circular(14.r),
-            color: dashboardController.dashboardDestinations[
-                        dashboardController.selectedIndex.value] ==
-                    dashboardDestinationCard
-                ? Color(0xFFF5F6F8)
+            color: dashboardController.selectedIndex.value == index
+                ? const Color(0xFFF5F6F8)
                 : Colors.transparent,
             child: InkWell(
-              onTap: onTap,
+              onTap: () => dashboardController.switchToPage(index),
               borderRadius: BorderRadius.circular(14.r),
               child: Row(
                 children: [
-                  AddHorizontalSpacing(value: 20.w),
-                  FaIcon(
-                    dashboardDestinationCard.iconData,
-                    color: dashboardController.dashboardDestinations[
-                                dashboardController.selectedIndex.value] ==
-                            dashboardDestinationCard
-                        ? lightColorScheme.primary
-                        : lightColorScheme.inverseSurface,
-                    size: 33.sp,
+                  SizedBox(
+                    height: 80.w,
+                    width: 80.w,
+                    child: Center(
+                      child: FaIcon(
+                        dashboardController
+                            .dashboardDestinations[index].iconData,
+                        color: dashboardController.selectedIndex.value == index
+                            ? lightColorScheme.primary
+                            : lightColorScheme.inverseSurface,
+                        size: 33.sp,
+                      ),
+                    ),
                   ),
-                  AddHorizontalSpacing(value: 40.w),
+                  AddHorizontalSpacing(value: 5.w),
                   Text(
-                    dashboardDestinationCard.title,
+                    dashboardController.dashboardDestinations[index].title,
                     style: TextStyle(
-                        color: dashboardController.dashboardDestinations[
-                                    dashboardController.selectedIndex.value] ==
-                                dashboardDestinationCard
+                        color: dashboardController.selectedIndex.value == index
                             ? Get.theme.colorScheme.primary
-                            : Color(0xffC7C7C7),
+                            : const Color(0xffC7C7C7),
                         fontSize: 22.sp),
                   )
                 ],

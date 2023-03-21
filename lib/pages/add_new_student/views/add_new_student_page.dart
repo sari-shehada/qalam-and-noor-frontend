@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:kalam_noor/configs/assets.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
-import 'package:kalam_noor/tools/ui_tools/text_fields.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../configs/assets.dart';
+import '../../../configs/fonts.dart';
+import '../../../tools/ui_tools/buttons.dart';
+import '../../../tools/ui_tools/text_fields.dart';
+import '../../../tools/ui_tools/ui_tools.dart';
 
 class AddNewStudentPage extends StatelessWidget {
   const AddNewStudentPage({super.key});

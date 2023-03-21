@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/dashboard/views/dashboard_page.dart';
+import 'widgets/cross_switcher.dart';
 import '../../dashboard/controllers/dashboard_controller.dart';
-import '../../settings/views/settings_page.dart';
 
 import 'widgets/navigation_rail.dart';
 
@@ -20,21 +19,24 @@ class NavigationPage extends StatelessWidget {
               padding: EdgeInsets.only(
                   right: DashboardControllerConstants
                       .navigationRailCollapsedWidth),
-              child: Obx(
-                () => IndexedStack(
+              child: AnimatedSwitcher(
+                duration: const Duration(
+                  seconds: 2,
+                ),
+                child: Obx(
+                  () => FadeIndexedStack(
+                    duration:
+                        DashboardControllerConstants.railAnimationDuration,
                     index: dashboardController.selectedIndex.value,
-                    children: <Widget>[
-                      const DashboardPage(),
-                      ...List.generate(
+                    children: List.generate(
                         dashboardController.dashboardDestinations.length,
                         (index) => dashboardController
-                            .dashboardDestinations[index].destination,
-                      ),
-                      const SettingsPage()
-                    ]),
+                            .dashboardDestinations[index].destination),
+                  ),
+                ),
               ),
             ),
-            CustomNavigationRail(dashboardController: dashboardController),
+            const CustomNavigationRail(),
             const VerticalDivider(
               thickness: 1,
               width: 2,

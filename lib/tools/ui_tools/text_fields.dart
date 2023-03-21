@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../configs/fonts.dart';
+import 'ui_tools.dart';
 
 class HintedTextField extends StatelessWidget {
   const HintedTextField(
@@ -24,7 +25,7 @@ class HintedTextField extends StatelessWidget {
         // counterText: containsLetterCount ? null : '',
         hintText: hintText,
         hintStyle: ProjectFonts.titleMedium,
-        contentPadding: const EdgeInsets.symmetric(vertical: 18),
+        contentPadding: EdgeInsets.symmetric(vertical: 18.h),
         focusedBorder: UnderlineInputBorder(
           borderSide: const BorderSide(color: Colors.transparent, width: 2),
           borderRadius: BorderRadius.circular(14),

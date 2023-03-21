@@ -6,7 +6,7 @@ class NoSearchResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //TODO: Code this view from the figma file
-    return Scaffold(
+    return const Scaffold(
       body: Center(),
     );
   }
