@@ -37,7 +37,7 @@ class CustomNavigationRail extends StatelessWidget {
                 children: [
                   RailHeader(dashboardController: dashboardController),
                   AddVerticalSpacing(value: 45.h),
-                  const NavigationRailCollapsedCard(index: 0),
+                  const NavigationRailCard(index: 0),
                   AddVerticalSpacing(value: 40.h),
                   SizedBox(
                     height: 560.h,
@@ -45,14 +45,13 @@ class CustomNavigationRail extends StatelessWidget {
                       shrinkWrap: true,
                       itemCount:
                           dashboardController.dashboardDestinations.length - 2,
-                      itemBuilder: (context, index) =>
-                          NavigationRailCollapsedCard(
+                      itemBuilder: (context, index) => NavigationRailCard(
                         index: index + 1,
                       ),
                     ),
                   ),
                   const Spacer(),
-                  NavigationRailCollapsedCard(
+                  NavigationRailCard(
                       index:
                           dashboardController.dashboardDestinations.length - 1),
                 ],

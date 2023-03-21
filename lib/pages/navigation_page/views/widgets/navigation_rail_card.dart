@@ -4,59 +4,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../../../dashboard/controllers/dashboard_controller.dart';
 import '../../../../configs/project_themes.dart';
-import '../../../dashboard/models/dashboard_destination_card.dart';
 
 import '../../../../tools/ui_tools/ui_tools.dart';
 
-class NavigationRailExpandedCard extends StatelessWidget {
-  const NavigationRailExpandedCard(
-      {super.key,
-      required this.dashboardDestinationCard,
-      required this.isSelected,
-      required this.onTap});
-
-  final DashboardDestinationCard dashboardDestinationCard;
-  final bool isSelected;
-  final VoidCallback onTap;
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color:
-          isSelected ? lightColorScheme.secondaryContainer : Colors.transparent,
-      borderRadius: BorderRadius.circular(15.sp),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(15.sp),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 25.w),
-          child: Row(
-            children: [
-              Icon(
-                dashboardDestinationCard.iconData,
-                color: isSelected
-                    ? lightColorScheme.secondary
-                    : lightColorScheme.inverseSurface,
-              ),
-              AddHorizontalSpacing(value: 14.sp),
-              Text(
-                dashboardDestinationCard.title,
-                style: TextStyle(
-                    fontSize: 16.sp,
-                    color: isSelected
-                        ? lightColorScheme.secondary
-                        : lightColorScheme.inverseSurface),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-//TODO: Solve the renderflex overflow exception and rename this to 'NavigationRailCard' and also remove the above widget
-class NavigationRailCollapsedCard extends StatelessWidget {
-  const NavigationRailCollapsedCard({super.key, required this.index});
+class NavigationRailCard extends StatelessWidget {
+  const NavigationRailCard({super.key, required this.index});
 
   final int index;
   @override
@@ -82,7 +34,11 @@ class NavigationRailCollapsedCard extends StatelessWidget {
             child: InkWell(
               onTap: () => dashboardController.switchToPage(index),
               borderRadius: BorderRadius.circular(14.r),
-              child: Row(
+              child: ListView(
+                physics: const NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
                 children: [
                   SizedBox(
                     height: 80.w,
@@ -99,13 +55,17 @@ class NavigationRailCollapsedCard extends StatelessWidget {
                     ),
                   ),
                   AddHorizontalSpacing(value: 5.w),
-                  Text(
-                    dashboardController.dashboardDestinations[index].title,
-                    style: TextStyle(
-                        color: dashboardController.selectedIndex.value == index
-                            ? Get.theme.colorScheme.primary
-                            : const Color(0xffC7C7C7),
-                        fontSize: 22.sp),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      dashboardController.dashboardDestinations[index].title,
+                      style: TextStyle(
+                          color:
+                              dashboardController.selectedIndex.value == index
+                                  ? Get.theme.colorScheme.primary
+                                  : const Color(0xffC7C7C7),
+                          fontSize: 22.sp),
+                    ),
                   )
                 ],
               ),
@@ -116,15 +76,3 @@ class NavigationRailCollapsedCard extends StatelessWidget {
     );
   }
 }
-
-
-
-// Center(
-//               child: FaIcon(
-//                 dashboardDestinationCard.iconData,
-//                 color: isSelected
-//                     ? lightColorScheme.primary
-//                     : lightColorScheme.inverseSurface,
-//                 size: 33.sp,
-//               ),
-//             ),
