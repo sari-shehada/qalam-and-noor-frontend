@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'configs/project_themes.dart';
 import 'models/shared_prefs_helper.dart';
@@ -16,18 +17,23 @@ class WebApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      //TODO: Remove Later
-      // routes: {
-      //   'HomePage': (context) => const HomePage(),
-      // },
-      debugShowCheckedModeBanner: false,
-      initialBinding: LoaderBindings(),
-      locale: const Locale('ar'),
-      themeMode: ThemeMode.light,
-      theme: ProjectThemes.lightTheme,
-      darkTheme: ProjectThemes.darkTheme,
-      home: const LoaderPage(),
+    return ScreenUtilInit(
+      designSize: const Size(
+        1920,
+        1080,
+      ),
+      child: const LoaderPage(),
+      builder: (BuildContext context, Widget? child) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialBinding: LoaderBindings(),
+          locale: const Locale('ar'),
+          themeMode: ThemeMode.light,
+          theme: ProjectThemes.lightTheme,
+          darkTheme: ProjectThemes.darkTheme,
+          home: child,
+        );
+      },
     );
   }
 }

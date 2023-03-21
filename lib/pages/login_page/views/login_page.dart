@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/project_themes.dart';
@@ -21,8 +22,8 @@ class LoginPage extends StatelessWidget {
       backgroundColor: Color(0xFFE1EAF4),
       body: Center(
         child: Container(
-          height: 590,
-          width: 866,
+          height: 590.h,
+          width: 866.w,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(27),
@@ -42,14 +43,14 @@ class LoginPage extends StatelessWidget {
                   children: [
                     Image.asset(
                       GlobalAssets.appLogoPath,
-                      height: 198,
-                      width: 198,
+                      height: 198.h,
+                      width: 198.h,
                     ),
                     const AddVerticalSpacing(value: 60),
                     Text(
                       'قلم و نور',
                       style: TextStyle(
-                        fontSize: 40,
+                        fontSize: 40.sp,
                         color: colorScheme.primary,
                       ),
                     )
@@ -57,13 +58,13 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 486,
-                padding: EdgeInsets.symmetric(horizontal: 72),
+                width: 486.w,
+                padding: EdgeInsets.symmetric(horizontal: 72.w),
                 decoration: BoxDecoration(
                     color: colorScheme.primary,
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(27),
-                      bottomLeft: Radius.circular(27),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(27.sp),
+                      bottomLeft: Radius.circular(27.sp),
                     )),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -74,14 +75,14 @@ class LoginPage extends StatelessWidget {
                       label: 'اسم المستخدم',
                       fillColor: Color(0xFFBACCE2),
                     ),
-                    const AddVerticalSpacing(value: 25),
+                    AddVerticalSpacing(value: 25.h),
                     LabeledTextField(
                       textEditingController: loginPageController.passwordField,
                       titleColor: Colors.white,
                       label: 'كلمة السر',
                       fillColor: Color(0xFFBACCE2),
                     ),
-                    const AddVerticalSpacing(value: 50),
+                    AddVerticalSpacing(value: 50.h),
                     CallToActionButton(
                       label: 'تسجيل الدخول',
                       labelColor: colorScheme.primary,

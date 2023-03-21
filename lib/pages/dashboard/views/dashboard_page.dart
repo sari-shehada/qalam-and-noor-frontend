@@ -8,14 +8,15 @@ import '../../../configs/fonts.dart';
 import '../../../configs/project_themes.dart';
 import '../../../tools/ui_tools/ui_tools.dart';
 
-class DashboardContentPage extends StatelessWidget {
-  const DashboardContentPage({super.key});
+class DashboardPage extends StatelessWidget {
+  const DashboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     DashboardController dashboardController = Get.find();
     AccountController accountController = Get.find();
     return Scaffold(
+      backgroundColor: Color(0xFFF5F6F8),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
         child: Column(
@@ -69,7 +70,7 @@ class DashboardContentPage extends StatelessWidget {
               itemBuilder: (context, index) => DashboardCard(
                 dashboardDestinationCard:
                     dashboardController.dashboardDestinations[index],
-                onTap: () => dashboardController.animateToDestination(index),
+                onTap: () => dashboardController.switchToPage(index),
               ),
             )
           ],

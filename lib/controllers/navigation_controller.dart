@@ -6,7 +6,7 @@ import '../pages/add_new_student/views/add_new_student_page.dart';
 import '../pages/courses_management/views/courses_management_page.dart';
 import '../pages/dashboard/controllers/dashboard_bindings.dart';
 import '../pages/dashboard/models/dashboard_destination_card.dart';
-import '../pages/dashboard/views/dashboard.dart';
+import '../pages/navigation_page/views/navigation_page.dart';
 import '../pages/login_page/views/login_page.dart';
 import '../pages/general_record_management/views/general_record_management_page.dart';
 import '../pages/medicals_management/views/medicals_management_page.dart';
@@ -22,7 +22,7 @@ class NavigationController {
   }
 
   static void toDashboard(Employee employee) {
-    Get.offAll(() => const Dashboard(),
+    Get.offAll(() => const NavigationPage(),
         binding: DashboardBindings(
           employee: employee,
           dashboardDestinations: [

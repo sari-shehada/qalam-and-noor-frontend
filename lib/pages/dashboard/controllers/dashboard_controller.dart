@@ -1,35 +1,34 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../models/dashboard_destination_card.dart';
 
 class DashboardController extends GetxController {
-  PageController pageController = PageController(initialPage: 0);
   RxDouble railWidth =
       DashboardControllerConstants.navigationRailCollapsedWidth.obs;
-  RxInt selectedIndex = (-1).obs;
+  RxInt selectedIndex = (0).obs;
+  RxDouble elementsOpacity = 0.0.obs;
   final List<DashboardDestinationCard> dashboardDestinations;
 
   DashboardController({required this.dashboardDestinations});
 
-  void animateToDestination(int pageIndex) {
-    pageController.animateToPage((pageIndex + 1),
-        duration:
-            DashboardControllerConstants.pageViewControllerAnimationDuration,
-        curve: Curves.linearToEaseOut);
-    selectedIndex.value = pageIndex;
-    if (pageIndex == -1) {
-      railWidth.value =
-          DashboardControllerConstants.navigationRailCollapsedWidth;
-      return;
-    }
+  void expandContainer() {
     railWidth.value = DashboardControllerConstants.navigationRailExpandedWidth;
-    return;
+    elementsOpacity.value = 1;
+  }
+
+  void collapseContainer() {
+    railWidth.value = DashboardControllerConstants.navigationRailCollapsedWidth;
+    elementsOpacity.value = 0;
+  }
+
+  void switchToPage(int pageIndex) {
+    selectedIndex.value = pageIndex;
   }
 }
 
 class DashboardControllerConstants {
-  static double get navigationRailCollapsedWidth => 80.0;
-  static double get navigationRailExpandedWidth => 260.0;
-  static Duration get pageViewControllerAnimationDuration =>
+  static double get navigationRailCollapsedWidth => 130.0.w;
+  static double get navigationRailExpandedWidth => 346.0.w;
+  static Duration get railAnimationDuration =>
       const Duration(milliseconds: 600);
 }
