@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../configs/assets.dart';
 import '../../../configs/fonts.dart';
 import '../../../tools/ui_tools/buttons.dart';
