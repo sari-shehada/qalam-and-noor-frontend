@@ -24,7 +24,6 @@ class AddNewStudentPage extends StatelessWidget {
                 //main info
                 Container(
                   padding: EdgeInsets.all(15.w),
-                  height: 300.h,
                   width: 660.w,
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -64,18 +63,21 @@ class AddNewStudentPage extends StatelessWidget {
                                 hintText: "اسم الطالب",
                                 controller: TextEditingController()),
                           ),
+                          AddVerticalSpacing(value: 20.h),
                           SizedBox(
                             width: 360.w,
                             child: HintedTextField(
                                 hintText: "اسم الأب",
                                 controller: TextEditingController()),
                           ),
+                          AddVerticalSpacing(value: 20.h),
                           SizedBox(
                             width: 360.w,
                             child: HintedTextField(
                                 hintText: "الكنية",
                                 controller: TextEditingController()),
                           ),
+                          AddVerticalSpacing(value: 20.h),
                           SizedBox(
                             width: 360.w,
                             child: HintedTextField(
@@ -83,7 +85,7 @@ class AddNewStudentPage extends StatelessWidget {
                                 controller: TextEditingController()),
                           ),
                         ],
-                      ),
+                      )
                     ],
                   ),
                 ),

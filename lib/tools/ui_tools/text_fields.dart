@@ -27,6 +27,7 @@ class HintedTextField extends StatelessWidget {
         hintText: hintText,
         hintStyle: ProjectFonts.titleMedium,
         contentPadding: EdgeInsets.symmetric(vertical: 18.h),
+        isDense: true,
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent, width: 2.w),
           borderRadius: BorderRadius.circular(14.r),
