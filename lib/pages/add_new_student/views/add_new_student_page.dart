@@ -12,7 +12,7 @@ class AddNewStudentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber.withOpacity(.6),
+      backgroundColor: const Color(0xffC7C7C7),
       body: Padding(
         padding: EdgeInsets.all(30.w),
         child: Row(
@@ -34,18 +34,20 @@ class AddNewStudentPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             CircleAvatar(
-                              radius: 50.r,
+                              radius: 65.r,
                               child: Image.asset(
                                 GlobalAssets.maleAvatarCircular,
                               ),
                             ),
-                            AddVerticalSpacing(value: 10.h),
+                            AddVerticalSpacing(value: 20.h),
                             SizedBox(
                               width: 230.w,
                               child: CallToActionButton(
+                                  backgroundColor: Color(0xff255CB1),
                                   label: "اختر الصورة الشخصية للطالب",
                                   onTap: () {}),
                             ),
+                            AddVerticalSpacing(value: 20.h),
                             SizedBox(
                               width: 230.w,
                               child: HintedTextField(
@@ -93,7 +95,7 @@ class AddNewStudentPage extends StatelessWidget {
                 //additional info
                 Container(
                   padding: EdgeInsets.all(20.w),
-                  height: 360.h,
+                  height: 660.h,
                   width: 660.w,
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -110,7 +112,7 @@ class AddNewStudentPage extends StatelessWidget {
                         children: [
                           //class dropDown
                           Container(
-                            width: 180.w,
+                            width: 230.w,
                             padding: EdgeInsets.all(5.w),
                             decoration: BoxDecoration(
                                 color: Colors.indigo,
@@ -158,113 +160,160 @@ class AddNewStudentPage extends StatelessWidget {
               ],
             ),
             AddHorizontalSpacing(value: 20.w),
-            //parents info card
+            //parents and medical info card
             Column(
               children: [
-                //father card
-                Container(
-                  padding: EdgeInsets.all(20.w),
-                  height: 360.h,
-                  width: 500.w,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15.r)),
-                  child: Column(
-                    children: [
-                      Text(
-                        "معلومات أبو الطالب",
-                        style: ProjectFonts.titleMedium,
-                      ),
-                      AddVerticalSpacing(value: 15.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                Row(
+                  children: [
+                    //father card
+                    Container(
+                      padding: EdgeInsets.all(20.w),
+                      height: 540.h,
+                      width: 500.w,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15.r)),
+                      child: Column(
                         children: [
-                          //column 1
-                          SizedBox(
-                            height: 270.h,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                SizedBox(
-                                  width: 200.w,
-                                  child: HintedTextField(
-                                    controller: TextEditingController(),
-                                    hintText: "اسم الأب",
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 200.w,
-                                  child: HintedTextField(
-                                    controller: TextEditingController(),
-                                    hintText: "اسم الأم",
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 200.w,
-                                  child: HintedTextField(
-                                    controller: TextEditingController(),
-                                    hintText: "الكنية",
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 200.w,
-                                  child: HintedTextField(
-                                    controller: TextEditingController(),
-                                    hintText: "مكان الولادة",
-                                  ),
-                                ),
-                              ],
-                            ),
+                          Text(
+                            "معلومات أبو الطالب",
+                            style: ProjectFonts.titleMedium,
                           ),
-                          AddHorizontalSpacing(value: 30.w),
-                          //column 2
-                          SizedBox(
-                            height: 270.h,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                SizedBox(
-                                  width: 200.w,
-                                  child: HintedTextField(
-                                    controller: TextEditingController(),
-                                    hintText: "المهنة",
+                          AddVerticalSpacing(value: 20.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              //column 1
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  SizedBox(
+                                    width: 200.w,
+                                    child: HintedTextField(
+                                      controller: TextEditingController(),
+                                      hintText: "اسم الأب",
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 200.w,
-                                  child: HintedTextField(
-                                    controller: TextEditingController(),
-                                    hintText: "مكان القيد",
+                                  AddVerticalSpacing(value: 20.h),
+                                  SizedBox(
+                                    width: 200.w,
+                                    child: HintedTextField(
+                                      controller: TextEditingController(),
+                                      hintText: "اسم الأم",
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 200.w,
-                                  child: HintedTextField(
-                                    controller: TextEditingController(),
-                                    hintText: "رقم القيد",
+                                  AddVerticalSpacing(value: 20.h),
+                                  SizedBox(
+                                    width: 200.w,
+                                    child: HintedTextField(
+                                      controller: TextEditingController(),
+                                      hintText: "الكنية",
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 200.w,
-                                  child: HintedTextField(
-                                    controller: TextEditingController(),
-                                    hintText: "الرقم الوطني",
+                                  AddVerticalSpacing(value: 20.h),
+                                  SizedBox(
+                                    width: 200.w,
+                                    child: HintedTextField(
+                                      controller: TextEditingController(),
+                                      hintText: "مكان الولادة",
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
+                                  AddVerticalSpacing(value: 20.h),
+                                  SizedBox(
+                                    width: 200.w,
+                                    child: HintedTextField(
+                                        hintText: "todo",
+                                        controller: TextEditingController()),
+                                  ),
+                                  AddVerticalSpacing(value: 20.h),
+                                  SizedBox(
+                                    width: 200.w,
+                                    child: HintedTextField(
+                                        hintText: "todo",
+                                        controller: TextEditingController()),
+                                  ),
+                                ],
+                              ),
+                              AddHorizontalSpacing(value: 30.w),
+                              //column 2
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  SizedBox(
+                                    width: 200.w,
+                                    child: HintedTextField(
+                                      controller: TextEditingController(),
+                                      hintText: "المهنة",
+                                    ),
+                                  ),
+                                  AddVerticalSpacing(value: 20.h),
+                                  SizedBox(
+                                    width: 200.w,
+                                    child: HintedTextField(
+                                      controller: TextEditingController(),
+                                      hintText: "مكان القيد",
+                                    ),
+                                  ),
+                                  AddVerticalSpacing(value: 20.h),
+                                  SizedBox(
+                                    width: 200.w,
+                                    child: HintedTextField(
+                                      controller: TextEditingController(),
+                                      hintText: "رقم القيد",
+                                    ),
+                                  ),
+                                  AddVerticalSpacing(value: 20.h),
+                                  SizedBox(
+                                    width: 200.w,
+                                    child: HintedTextField(
+                                      controller: TextEditingController(),
+                                      hintText: "الرقم الوطني",
+                                    ),
+                                  ),
+                                  AddVerticalSpacing(value: 20.h),
+                                  //TODO:get a simple imoje about fathers
+                                  Container(
+                                    width: 90,
+                                    height: 90,
+                                    color: Colors.grey,
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                    AddHorizontalSpacing(value: 20.w),
+                    //medical info card
+                    Container(
+                      padding: EdgeInsets.all(20.w),
+                      width: 200.w,
+                      height: 540.h,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15.r)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "المعلومات الصحية",
+                            style: ProjectFonts.titleMedium,
+                          ),
+                        ],
+                      ),
+                    ),
+                    AddVerticalSpacing(value: 20.h),
+                  ],
                 ),
                 AddVerticalSpacing(value: 20.h),
                 //mother card
                 Container(
                   padding: EdgeInsets.all(20.w),
-                  height: 300.h,
-                  width: 500.w,
+                  height: 440.h,
+                  width: 715.w,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(15.r)),
@@ -281,33 +330,12 @@ class AddNewStudentPage extends StatelessWidget {
               ],
             ),
             AddHorizontalSpacing(value: 20.w),
-            //medical info card
-            Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(20.w),
-                  width: 200.w,
-                  height: 600.h,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15.r)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "المعلومات الصحية",
-                        style: ProjectFonts.titleMedium,
-                      ),
-                    ],
-                  ),
-                ),
-                AddVerticalSpacing(value: 20.h),
-                SizedBox(
-                    width: 200.w,
-                    child:
-                        CallToActionButton(label: "اضافة الطالب", onTap: () {}))
-              ],
-            ),
+            Container(
+              height: 800,
+              width: 200,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(15)),
+            )
           ],
         ),
       ),
