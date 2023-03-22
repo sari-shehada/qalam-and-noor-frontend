@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'widgets/course_card.dart';
 import 'widgets/course_division.dart';
 import '../../../tools/ui_tools/ui_tools.dart';
@@ -12,7 +13,7 @@ class CoursesManagementPage extends StatelessWidget {
       backgroundColor: Colors.amber.withOpacity(.6),
       body: SizedBox.expand(
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(20.w),
           child: ListView(children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -20,22 +21,24 @@ class CoursesManagementPage extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const AddHorizontalSpacing(value: 15),
+                    AddHorizontalSpacing(value: 15.w),
                     Container(
-                      width: 180,
-                      padding: const EdgeInsets.all(5),
+                      width: 200.w,
+                      height: 90.h,
+                      padding: EdgeInsets.all(5.w),
                       decoration: BoxDecoration(
                           color: Colors.indigo,
-                          borderRadius: BorderRadius.circular(30)),
+                          borderRadius: BorderRadius.circular(30.r)),
                       child: DropdownButton(
                           underline: Container(
                             color: Colors.transparent,
                           ),
                           iconEnabledColor: Colors.white,
                           focusColor: Colors.transparent,
-                          hint: const Text(
+                          hint: Text(
                             "  اختر الصف من هنا",
-                            style: TextStyle(color: Colors.white),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 18.sp),
                           ),
                           items: [
                             "الأول",
@@ -57,7 +60,7 @@ class CoursesManagementPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const AddVerticalSpacing(value: 20),
+                AddVerticalSpacing(value: 20.h),
                 const CoursesDivision(
                   subjectsType: "المواد الإجبارية",
                   courses: [
@@ -67,7 +70,7 @@ class CoursesManagementPage extends StatelessWidget {
                     CourseCard(courseName: "رياضيات"),
                   ],
                 ),
-                const AddVerticalSpacing(value: 20),
+                AddVerticalSpacing(value: 20.h),
                 const CoursesDivision(
                   subjectsType: "المواد الإثرائية",
                   courses: [

@@ -1,9 +1,8 @@
 //this is a container for courses
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../../../../configs/fonts.dart';
-import '../../../../configs/project_themes.dart';
 import 'course_card.dart';
 
 class CoursesDivision extends StatelessWidget {
@@ -17,10 +16,10 @@ class CoursesDivision extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
           color: Colors.white.withOpacity(.8),
-          borderRadius: BorderRadius.circular(30)),
+          borderRadius: BorderRadius.circular(30.r)),
       child: Column(children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

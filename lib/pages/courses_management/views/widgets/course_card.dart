@@ -1,5 +1,6 @@
 //this widget is a container for a course with edit and delete buttons
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../configs/fonts.dart';
@@ -16,11 +17,11 @@ class CourseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     //TODO : replace padding with margin
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.all(10.w),
       child: Container(
-          padding: const EdgeInsets.all(10),
-          height: 70,
-          width: 400,
+          padding: EdgeInsets.all(10.w),
+          height: 70.h,
+          width: 400.w,
           decoration: BoxDecoration(
               color: Colors.indigo, borderRadius: BorderRadius.circular(15)),
           child: Row(
@@ -36,7 +37,7 @@ class CourseCard extends StatelessWidget {
                     FontAwesomeIcons.pen,
                     color: Colors.white,
                   )),
-              const AddHorizontalSpacing(value: 5),
+              AddHorizontalSpacing(value: 5.w),
               IconButton(
                   onPressed: () {},
                   icon: const Icon(

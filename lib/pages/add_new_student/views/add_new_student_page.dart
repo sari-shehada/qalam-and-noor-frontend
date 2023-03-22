@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kalam_noor/configs/assets.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
@@ -14,7 +14,7 @@ class AddNewStudentPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.amber.withOpacity(.6),
       body: Padding(
-        padding: const EdgeInsets.all(30),
+        padding: EdgeInsets.all(30.w),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,61 +23,61 @@ class AddNewStudentPage extends StatelessWidget {
               children: [
                 //main info
                 Container(
-                  padding: const EdgeInsets.all(15),
-                  height: 300,
-                  width: 660,
+                  padding: EdgeInsets.all(15.w),
+                  height: 300.h,
+                  width: 660.w,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(15.r)),
                   child: Row(
                     children: [
                       Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             CircleAvatar(
-                              radius: 50,
+                              radius: 50.r,
                               child: Image.asset(
                                 GlobalAssets.maleAvatarCircular,
                               ),
                             ),
-                            const AddVerticalSpacing(value: 10),
+                            AddVerticalSpacing(value: 10.h),
                             SizedBox(
-                              width: 230,
+                              width: 230.w,
                               child: CallToActionButton(
                                   label: "اختر الصورة الشخصية للطالب",
                                   onTap: () {}),
                             ),
                             SizedBox(
-                              width: 230,
+                              width: 230.w,
                               child: HintedTextField(
                                   hintText: "رقم السجل",
                                   controller: TextEditingController()),
                             ),
                           ]),
-                      const AddHorizontalSpacing(value: 30),
+                      AddHorizontalSpacing(value: 30.w),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SizedBox(
-                            width: 360,
+                            width: 360.w,
                             child: HintedTextField(
                                 hintText: "اسم الطالب",
                                 controller: TextEditingController()),
                           ),
                           SizedBox(
-                            width: 360,
+                            width: 360.w,
                             child: HintedTextField(
                                 hintText: "اسم الأب",
                                 controller: TextEditingController()),
                           ),
                           SizedBox(
-                            width: 360,
+                            width: 360.w,
                             child: HintedTextField(
                                 hintText: "الكنية",
                                 controller: TextEditingController()),
                           ),
                           SizedBox(
-                            width: 360,
+                            width: 360.w,
                             child: HintedTextField(
                                 hintText: "اسم الأم",
                                 controller: TextEditingController()),
@@ -87,32 +87,32 @@ class AddNewStudentPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const AddVerticalSpacing(value: 20),
+                AddVerticalSpacing(value: 20.h),
                 //additional info
                 Container(
-                  padding: const EdgeInsets.all(20),
-                  height: 360,
-                  width: 660,
+                  padding: EdgeInsets.all(20.w),
+                  height: 360.h,
+                  width: 660.w,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(15.r)),
                   child: Column(
                     children: [
                       Text(
                         "معلومات إضافية عن الطالب",
                         style: ProjectFonts.titleMedium,
                       ),
-                      const AddVerticalSpacing(value: 15),
+                      AddVerticalSpacing(value: 15.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           //class dropDown
                           Container(
-                            width: 180,
-                            padding: const EdgeInsets.all(5),
+                            width: 180.w,
+                            padding: EdgeInsets.all(5.w),
                             decoration: BoxDecoration(
                                 color: Colors.indigo,
-                                borderRadius: BorderRadius.circular(30)),
+                                borderRadius: BorderRadius.circular(30.r)),
                             child: DropdownButton(
                                 underline: Container(
                                   color: Colors.transparent,
@@ -143,7 +143,7 @@ class AddNewStudentPage extends StatelessWidget {
                           ),
                           //classRoom
                           SizedBox(
-                            width: 150,
+                            width: 150.w,
                             child: HintedTextField(
                                 hintText: "الشعبة",
                                 controller: TextEditingController()),
@@ -155,57 +155,57 @@ class AddNewStudentPage extends StatelessWidget {
                 ),
               ],
             ),
-            const AddHorizontalSpacing(value: 20),
+            AddHorizontalSpacing(value: 20.w),
             //parents info card
             Column(
               children: [
                 //father card
                 Container(
-                  padding: const EdgeInsets.all(20),
-                  height: 360,
-                  width: 500,
+                  padding: EdgeInsets.all(20.w),
+                  height: 360.h,
+                  width: 500.w,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(15.r)),
                   child: Column(
                     children: [
                       Text(
                         "معلومات أبو الطالب",
                         style: ProjectFonts.titleMedium,
                       ),
-                      const AddVerticalSpacing(value: 15),
+                      AddVerticalSpacing(value: 15.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           //column 1
                           SizedBox(
-                            height: 270,
+                            height: 270.h,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(
-                                  width: 200,
+                                  width: 200.w,
                                   child: HintedTextField(
                                     controller: TextEditingController(),
                                     hintText: "اسم الأب",
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 200,
+                                  width: 200.w,
                                   child: HintedTextField(
                                     controller: TextEditingController(),
                                     hintText: "اسم الأم",
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 200,
+                                  width: 200.w,
                                   child: HintedTextField(
                                     controller: TextEditingController(),
                                     hintText: "الكنية",
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 200,
+                                  width: 200.w,
                                   child: HintedTextField(
                                     controller: TextEditingController(),
                                     hintText: "مكان الولادة",
@@ -214,36 +214,36 @@ class AddNewStudentPage extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const AddHorizontalSpacing(value: 30),
+                          AddHorizontalSpacing(value: 30.w),
                           //column 2
                           SizedBox(
-                            height: 270,
+                            height: 270.h,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(
-                                  width: 200,
+                                  width: 200.w,
                                   child: HintedTextField(
                                     controller: TextEditingController(),
                                     hintText: "المهنة",
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 200,
+                                  width: 200.w,
                                   child: HintedTextField(
                                     controller: TextEditingController(),
                                     hintText: "مكان القيد",
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 200,
+                                  width: 200.w,
                                   child: HintedTextField(
                                     controller: TextEditingController(),
                                     hintText: "رقم القيد",
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 200,
+                                  width: 200.w,
                                   child: HintedTextField(
                                     controller: TextEditingController(),
                                     hintText: "الرقم الوطني",
@@ -257,38 +257,38 @@ class AddNewStudentPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const AddVerticalSpacing(value: 20),
+                AddVerticalSpacing(value: 20.h),
                 //mother card
                 Container(
-                  padding: const EdgeInsets.all(20),
-                  height: 300,
-                  width: 500,
+                  padding: EdgeInsets.all(20.w),
+                  height: 300.h,
+                  width: 500.w,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(15.r)),
                   child: Column(
                     children: [
                       Text(
                         "معلومات أم الطالب",
                         style: ProjectFonts.titleMedium,
                       ),
-                      const AddVerticalSpacing(value: 15)
+                      AddVerticalSpacing(value: 15.h)
                     ],
                   ),
                 ),
               ],
             ),
-            const AddHorizontalSpacing(value: 20),
+            AddHorizontalSpacing(value: 20.w),
             //medical info card
             Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.all(20),
-                  width: 200,
-                  height: 600,
+                  padding: EdgeInsets.all(20.w),
+                  width: 200.w,
+                  height: 600.h,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(15.r)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -299,9 +299,9 @@ class AddNewStudentPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const AddVerticalSpacing(value: 20),
+                AddVerticalSpacing(value: 20.h),
                 SizedBox(
-                    width: 200,
+                    width: 200.w,
                     child:
                         CallToActionButton(label: "اضافة الطالب", onTap: () {}))
               ],
