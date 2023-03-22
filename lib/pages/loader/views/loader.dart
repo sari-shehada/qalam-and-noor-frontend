@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../configs/assets.dart';
-import '../../../configs/project_themes.dart';
 import '../controllers/loader_controller.dart';
 import '../../../tools/ui_tools/ui_tools.dart';
 
@@ -18,26 +18,28 @@ class LoaderPage extends StatefulWidget {
 class _LoaderPageState extends State<LoaderPage> {
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.height);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       LoaderController loaderController = Get.find();
       loaderController.loadApplication();
       loaderController.dispose();
     });
     return Scaffold(
-      backgroundColor: lightColorScheme.surface,
-      body: Center(
+      backgroundColor: const Color(0xffE1EAF4),
+      body: SizedBox.expand(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
               GlobalAssets.appLogoPath,
-              scale: .85,
+              height: 310.h,
+              width: 310.h,
+              fit: BoxFit.cover,
             ),
-            const AddVerticalSpacing(value: 250),
+            AddVerticalSpacing(value: 170.h),
             Text(
-              'جار التحميل...',
-              style: ProjectFonts.headlineMedium.copyWith(fontSize: 35),
+              'قلم و نور',
+              style: ProjectFonts.headlineMedium.copyWith(fontSize: 50.sp),
             ),
           ],
         ),

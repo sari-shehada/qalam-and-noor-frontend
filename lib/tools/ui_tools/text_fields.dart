@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../configs/fonts.dart';
+import 'ui_tools.dart';
 
 class HintedTextField extends StatelessWidget {
   const HintedTextField(
@@ -18,20 +19,21 @@ class HintedTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: ProjectFonts.titleMedium,
       controller: controller,
       textAlign: TextAlign.center,
       decoration: InputDecoration(
         // counterText: containsLetterCount ? null : '',
         hintText: hintText,
         hintStyle: ProjectFonts.titleMedium,
-        contentPadding: const EdgeInsets.symmetric(vertical: 18),
+        contentPadding: EdgeInsets.symmetric(vertical: 18.h),
         focusedBorder: UnderlineInputBorder(
-          borderSide: const BorderSide(color: Colors.transparent, width: 2),
-          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide(color: Colors.transparent, width: 2.w),
+          borderRadius: BorderRadius.circular(14.r),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(14.r),
         ),
         filled: true,
         //TODO: Change based on seed color
@@ -60,18 +62,18 @@ class LabeledTextField extends StatelessWidget {
       children: [
         Row(
           children: [
-            const AddHorizontalSpacing(value: 12),
+            AddHorizontalSpacing(value: 12.w),
             Text(
               label,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
                 color: titleColor,
               ),
             ),
           ],
         ),
-        const AddVerticalSpacing(value: 12),
+        AddVerticalSpacing(value: 12.h),
         HintedTextField(
           controller: textEditingController,
           hintText: '',

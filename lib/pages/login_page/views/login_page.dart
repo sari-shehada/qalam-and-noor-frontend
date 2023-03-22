@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/configs/project_themes.dart';
-import 'package:kalam_noor/pages/login_page/controllers/login_page_controller.dart';
-import 'package:kalam_noor/tools/ui_tools/text_fields.dart';
+import '../controllers/login_page_controller.dart';
+import '../../../tools/ui_tools/text_fields.dart';
 
 import '../../../configs/assets.dart';
 import '../../../tools/ui_tools/buttons.dart';
@@ -19,7 +17,7 @@ class LoginPage extends StatelessWidget {
     LoginPageController loginPageController = Get.find();
     return Scaffold(
       //TODO: Refactor
-      backgroundColor: Color(0xFFE1EAF4),
+      backgroundColor: const Color(0xFFE1EAF4),
       body: Center(
         child: Container(
           height: 590.h,
@@ -73,14 +71,14 @@ class LoginPage extends StatelessWidget {
                       textEditingController: loginPageController.userNameField,
                       titleColor: Colors.white,
                       label: 'اسم المستخدم',
-                      fillColor: Color(0xFFBACCE2),
+                      fillColor: const Color(0xFFBACCE2),
                     ),
                     AddVerticalSpacing(value: 25.h),
                     LabeledTextField(
                       textEditingController: loginPageController.passwordField,
                       titleColor: Colors.white,
                       label: 'كلمة السر',
-                      fillColor: Color(0xFFBACCE2),
+                      fillColor: const Color(0xFFBACCE2),
                     ),
                     AddVerticalSpacing(value: 50.h),
                     CallToActionButton(
@@ -88,6 +86,8 @@ class LoginPage extends StatelessWidget {
                       labelColor: colorScheme.primary,
                       onTap: () => loginPageController.login(),
                       backgroundColor: Colors.white,
+                      buttonStatus: loginPageController.loginButtonStatus,
+                      loadingColor: colorScheme.primary,
                     ),
                   ],
                 ),

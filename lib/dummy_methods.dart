@@ -3,7 +3,7 @@ import 'models/employee.dart';
 import 'models/shared_prefs_helper.dart';
 
 Future<Employee> getEmployeeCredentials(String employeeId) async {
-  await Future.delayed(Duration(seconds: 2));
+  await Future.delayed(const Duration(seconds: 2));
   return Employee(
       employeeId: employeeId,
       firstName: 'محمد',

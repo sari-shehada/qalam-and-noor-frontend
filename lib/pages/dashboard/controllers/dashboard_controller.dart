@@ -1,5 +1,6 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
 import '../models/dashboard_destination_card.dart';
 
 class DashboardController extends GetxController {

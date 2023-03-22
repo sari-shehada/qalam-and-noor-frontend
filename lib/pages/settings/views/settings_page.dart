@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import '../../../configs/assets.dart';
 import '../../../configs/project_themes.dart';
 import '../../../configs/styles.dart';
 import '../../../controllers/account_controller.dart';
@@ -17,38 +17,38 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       body: SizedBox.expand(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+          padding: EdgeInsets.symmetric(vertical: 50.h, horizontal: 50.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const AddVerticalSpacing(value: 30),
+              AddVerticalSpacing(value: 30.h),
               Row(
                 children: [
                   CircleAvatar(
-                    radius: 120,
+                    radius: 120.r,
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.0.h),
                       child: Image.asset(
                         accountController.employee
                             .getAvatarImage(circular: true),
-                        height: 300,
-                        width: 300,
+                        height: 300.h,
+                        width: 300.h,
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    height: 58,
-                    width: 200,
+                    height: 58.h,
+                    width: 200.w,
                     decoration: BoxDecoration(
                       border: Border.all(
-                          color: lightColorScheme.tertiary, width: 2),
+                          color: lightColorScheme.tertiary, width: 2.w),
                       borderRadius: BorderRadius.circular(
                           GlobalStyles.globalBorderRadius),
                     ),
@@ -67,12 +67,15 @@ class SettingsPage extends StatelessWidget {
                               Text(
                                 'تسجيل الخروج',
                                 style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 16.sp,
                                     color: lightColorScheme.tertiary),
                               ),
-                              AddHorizontalSpacing(value: 20),
-                              FaIcon(FontAwesomeIcons.doorOpen,
-                                  color: lightColorScheme.tertiary)
+                              AddHorizontalSpacing(value: 20.w),
+                              FaIcon(
+                                FontAwesomeIcons.doorOpen,
+                                color: lightColorScheme.tertiary,
+                                size: 25.sp,
+                              )
                             ],
                           ),
                         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import '../pages/dashboard/views/dashboard_page.dart';
 import '../models/employee.dart';
 import '../pages/add_new_student/views/add_new_student_page.dart';
 import '../pages/courses_management/views/courses_management_page.dart';
@@ -12,6 +13,7 @@ import '../pages/general_record_management/views/general_record_management_page.
 import '../pages/medicals_management/views/medicals_management_page.dart';
 
 import '../pages/login_page/controllers/login_page_bindings.dart';
+import '../pages/settings/views/settings_page.dart';
 
 class NavigationController {
   static void toLoginPage() {
@@ -27,40 +29,44 @@ class NavigationController {
           employee: employee,
           dashboardDestinations: [
             DashboardDestinationCard(
+              title: 'لوحة التحكم',
+              iconData: FontAwesomeIcons.house,
+              destination: const DashboardPage(),
+            ),
+            DashboardDestinationCard(
               title: 'إضافة طالب جديد',
               iconData: FontAwesomeIcons.userPlus,
-              description: '',
               destination: const AddNewStudentPage(),
             ),
             DashboardDestinationCard(
               title: 'إدارة السجل العام',
               iconData: FontAwesomeIcons.peopleGroup,
-              description: '',
               destination: const GeneralRecordManagementPage(),
             ),
             DashboardDestinationCard(
               title: 'إدارة المواد',
               iconData: FontAwesomeIcons.book,
-              description: '',
               destination: const CoursesManagementPage(),
             ),
             DashboardDestinationCard(
               title: 'إدارة الشعب',
               iconData: FontAwesomeIcons.school,
-              description: '',
               destination: const Scaffold(),
             ),
             DashboardDestinationCard(
               title: 'إدارة الشؤون الصحية',
               iconData: FontAwesomeIcons.syringe,
-              description: '',
               destination: const MedicalsManagementPage(),
             ),
             DashboardDestinationCard(
               title: 'إدارة العناوين',
               iconData: FontAwesomeIcons.mapLocationDot,
-              description: '',
               destination: const Scaffold(),
+            ),
+            DashboardDestinationCard(
+              title: 'الملف الشخصي',
+              iconData: FontAwesomeIcons.gear,
+              destination: const SettingsPage(),
             ),
           ],
         ));
