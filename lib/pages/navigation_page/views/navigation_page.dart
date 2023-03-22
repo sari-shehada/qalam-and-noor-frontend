@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'widgets/cross_switcher.dart';
-import '../../dashboard/controllers/dashboard_controller.dart';
+import '../controllers/navigation_controller.dart';
 
 import 'widgets/navigation_rail.dart';
 
@@ -10,7 +10,7 @@ class NavigationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DashboardController dashboardController = Get.find();
+    NavigationController dashboardController = Get.find();
     return Scaffold(
       body: SizedBox.expand(
         child: Stack(

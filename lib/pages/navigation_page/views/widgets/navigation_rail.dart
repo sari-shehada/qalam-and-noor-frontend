@@ -5,7 +5,7 @@ import 'navigation_rail_card.dart';
 import 'navigation_rail_widgets.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
 
-import '../../../dashboard/controllers/dashboard_controller.dart';
+import '../../controllers/navigation_controller.dart';
 
 class CustomNavigationRail extends StatelessWidget {
   const CustomNavigationRail({
@@ -14,7 +14,7 @@ class CustomNavigationRail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DashboardController dashboardController = Get.find();
+    final NavigationController dashboardController = Get.find();
     return MouseRegion(
       onHover: (event) => dashboardController.expandContainer(),
       onExit: (event) => dashboardController.collapseContainer(),

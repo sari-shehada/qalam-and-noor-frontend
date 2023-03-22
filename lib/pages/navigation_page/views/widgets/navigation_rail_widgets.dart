@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../../configs/assets.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
-import '../../../dashboard/controllers/dashboard_controller.dart';
+import '../../controllers/navigation_controller.dart';
 
 class RailHeader extends StatelessWidget {
   const RailHeader({
@@ -12,7 +12,7 @@ class RailHeader extends StatelessWidget {
     required this.dashboardController,
   });
 
-  final DashboardController dashboardController;
+  final NavigationController dashboardController;
 
   @override
   Widget build(BuildContext context) {

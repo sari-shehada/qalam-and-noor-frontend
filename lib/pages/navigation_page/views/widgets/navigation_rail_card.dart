@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import '../../../dashboard/controllers/dashboard_controller.dart';
+import '../../controllers/navigation_controller.dart';
 import '../../../../configs/project_themes.dart';
 
 import '../../../../tools/ui_tools/ui_tools.dart';
@@ -13,7 +13,7 @@ class NavigationRailCard extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    DashboardController dashboardController = Get.find();
+    NavigationController dashboardController = Get.find();
     return Obx(
       () => AnimatedContainer(
         clipBehavior: Clip.hardEdge,
