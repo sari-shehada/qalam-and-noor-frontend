@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../models/employee.dart';
+import '../models/agendas/employee.dart';
 
 class AccountController extends GetxController {
   Employee employee;

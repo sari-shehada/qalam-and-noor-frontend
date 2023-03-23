@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import '../../../controllers/account_controller.dart';
-import '../../../models/employee.dart';
+
+import '../../../models/agendas/employee.dart';
 import 'navigation_controller.dart';
 import '../../dashboard/models/dashboard_destination_card.dart';
 

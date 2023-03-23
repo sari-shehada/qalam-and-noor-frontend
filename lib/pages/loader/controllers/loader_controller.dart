@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 import '../../../controllers/navigation_controller.dart';
 import '../../../dummy_methods.dart';
-import '../../../models/employee.dart';
+import '../../../models/agendas/employee.dart';
 import '../../../models/shared_prefs_helper.dart';
 
 class LoaderController extends GetxController {

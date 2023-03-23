@@ -2,8 +2,9 @@
 import 'dart:convert';
 
 import 'package:kalam_noor/models/enums.dart';
-import 'package:kalam_noor/models/father.dart';
-import 'package:kalam_noor/models/mother.dart';
+
+import 'father.dart';
+import 'mother.dart';
 
 class Student {
   final int id;
@@ -47,49 +48,43 @@ class Student {
   });
 
   Future<Father> getFatherInfo() async {
-    if (father != null) {
-      //TODO: QUERY
-      father = Father(
-          id: 200,
-          firstName: 'أحمد',
-          lastName: 'ا',
-          fatherName: 'محمد',
-          motherName: 'فاطمة',
-          career: 'طبيب اسنان',
-          placeOfResidence: "النبك",
-          tieNumber: 400,
-          tiePlace: "النبك",
-          placeOfBirth: "النبك",
-          dateOfBirth: DateTime(
-            1994,
-          ),
-          religion: Religion.islam,
-          educationalStatus: EducationalStatus.doctorate,
-          phoneNumber: '0999999999',
-          permanentAddress: 'النبك / الحي الغربي / شارع ابو سيفو النفوري');
-    }
+    father ??= Father(
+        id: 200,
+        firstName: 'أحمد',
+        lastName: 'ا',
+        fatherName: 'محمد',
+        motherName: 'فاطمة',
+        career: 'طبيب اسنان',
+        placeOfResidence: "النبك",
+        tieNumber: 400,
+        tiePlace: "النبك",
+        placeOfBirth: "النبك",
+        dateOfBirth: DateTime(
+          1994,
+        ),
+        religion: Religion.islam,
+        educationalStatus: EducationalStatus.doctorate,
+        phoneNumber: '0999999999',
+        permanentAddress: 'النبك / الحي الغربي / شارع ابو سيفو النفوري');
     return father!;
   }
 
   Future<Mother> getMotherInfo() async {
-    if (mother != null) {
-      //TODO: Replace with actual query
-      mother = Mother(
-          id: 300,
-          firstName: 'سارة',
-          lastName: 'س',
-          fatherName: 'احمد',
-          motherName: 'لما',
-          livesWithHusband: true,
-          career: 'هندسة تقانة معلومات',
-          tieNumber: 213,
-          tiePlace: 'النبك',
-          placeOfBirth: 'النبك',
-          dateOfBirth: DateTime(1995),
-          religion: Religion.islam,
-          educationalStatus: EducationalStatus.master,
-          phoneNumber: '0966666666');
-    }
+    mother ??= Mother(
+        id: 300,
+        firstName: 'سارة',
+        lastName: 'س',
+        fatherName: 'احمد',
+        motherName: 'لما',
+        livesWithHusband: true,
+        career: 'هندسة تقانة معلومات',
+        tieNumber: 213,
+        tiePlace: 'النبك',
+        placeOfBirth: 'النبك',
+        dateOfBirth: DateTime(1995),
+        religion: Religion.islam,
+        educationalStatus: EducationalStatus.master,
+        phoneNumber: '0966666666');
     return mother!;
   }
 

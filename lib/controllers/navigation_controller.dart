@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/addresses_managment/views/addresses_managment_page.dart';
+import '../models/agendas/employee.dart';
 import '../pages/dashboard/views/dashboard_page.dart';
-import '../models/employee.dart';
 import '../pages/add_new_student/views/add_new_student_page.dart';
 import '../pages/courses_management/views/courses_management_page.dart';
 import '../pages/navigation_page/controllers/navigation_bindings.dart';
@@ -61,7 +62,7 @@ class NavigationController {
             DashboardDestinationCard(
               title: 'إدارة العناوين',
               iconData: FontAwesomeIcons.mapLocationDot,
-              destination: const Scaffold(),
+              destination: const AddressesManagementPage(),
             ),
             DashboardDestinationCard(
               title: 'الملف الشخصي',

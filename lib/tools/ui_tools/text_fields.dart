@@ -1,31 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../configs/fonts.dart';
 import 'ui_tools.dart';
 
 class HintedTextField extends StatelessWidget {
-  const HintedTextField(
-      {super.key,
-      required this.hintText,
-      required this.controller,
-      this.textAlign = TextAlign.start,
-      this.fillColor});
+  const HintedTextField({
+    super.key,
+    required this.hintText,
+    required this.controller,
+    this.textAlign = TextAlign.start,
+    this.fillColor,
+    this.textColor = Colors.black, //TODO: Change later
+    this.hintColor = Colors.grey, //TODO: Change later
+  });
 
   final String hintText;
   final TextEditingController controller;
   final TextAlign textAlign;
   final Color? fillColor;
+  final Color hintColor;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      style: ProjectFonts.titleMedium,
+      style: TextStyle(
+        fontSize: 22.sp,
+        color: textColor,
+      ),
       controller: controller,
       textAlign: TextAlign.center,
       decoration: InputDecoration(
         // counterText: containsLetterCount ? null : '',
         hintText: hintText,
-        hintStyle: ProjectFonts.titleMedium,
+        hintStyle: TextStyle(
+          fontSize: 22.sp,
+          color: hintColor,
+        ),
         contentPadding: EdgeInsets.symmetric(vertical: 18.h),
         isDense: true,
         focusedBorder: UnderlineInputBorder(

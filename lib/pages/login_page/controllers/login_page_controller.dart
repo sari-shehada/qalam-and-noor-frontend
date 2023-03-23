@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import '../../../controllers/navigation_controller.dart';
 import '../../../dummy_methods.dart';
+import '../../../models/agendas/employee.dart';
 import '../../../models/shared_prefs_helper.dart';
 import '../../../tools/dialogs_services/snack_bar_service.dart';
-
-import '../../../models/employee.dart';
 
 class LoginPageController extends GetxController {
   TextEditingController userNameField = TextEditingController();
@@ -35,7 +34,9 @@ class LoginPageController extends GetxController {
   Future<void> login() async {
     loginButtonStatus.value = CallToActionButtonStatus.processing;
     if (validateFields()) {
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(
+        milliseconds: 500,
+      ));
       Employee employee = await getEmployeeCredentials('11');
       NavigationController.toDashboard(employee);
       SharedPrefsHelper.instance.setLoginStatus(true);

@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'enums.dart';
+import '../enums.dart';
 
 class Mother {
   final int id;

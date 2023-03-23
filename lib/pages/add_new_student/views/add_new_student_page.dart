@@ -12,7 +12,7 @@ class AddNewStudentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffC7C7C7),
+      backgroundColor: const Color(0xffF5F6F8),
       body: Padding(
         padding: EdgeInsets.all(30.w),
         child: Row(

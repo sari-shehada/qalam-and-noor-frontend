@@ -1,5 +1,5 @@
 import 'controllers/navigation_controller.dart';
-import 'models/employee.dart';
+import 'models/agendas/employee.dart';
 import 'models/shared_prefs_helper.dart';
 
 Future<Employee> getEmployeeCredentials(String employeeId) async {
