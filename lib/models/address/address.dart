@@ -8,34 +8,24 @@ class Address {
   final String name;
   final String details;
   final int areaId;
-  Area? area;
   Address({
     required this.id,
     required this.name,
     required this.details,
     required this.areaId,
-    this.area,
   });
-
-  Future<Area> getArea() async {
-    //TODO: swap with query later
-    area ??= Area(id: 111, name: 'الحي الغربي', cityId: 1);
-    return area!;
-  }
 
   Address copyWith({
     int? id,
     String? name,
     String? details,
     int? areaId,
-    Area? area,
   }) {
     return Address(
       id: id ?? this.id,
       name: name ?? this.name,
       details: details ?? this.details,
       areaId: areaId ?? this.areaId,
-      area: area ?? this.area,
     );
   }
 
@@ -45,7 +35,6 @@ class Address {
       'name': name,
       'details': details,
       'areaId': areaId,
-      'area': area?.toMap(),
     };
   }
 
@@ -55,9 +44,6 @@ class Address {
       name: map['name'] as String,
       details: map['details'] as String,
       areaId: map['areaId'] as int,
-      area: map['area'] != null
-          ? Area.fromMap(map['area'] as Map<String, dynamic>)
-          : null,
     );
   }
 
@@ -68,7 +54,7 @@ class Address {
 
   @override
   String toString() {
-    return 'Address(id: $id, name: $name, details: $details, areaId: $areaId, area: $area)';
+    return 'Address(id: $id, name: $name, details: $details, areaId: $areaId)';
   }
 
   @override
@@ -78,16 +64,11 @@ class Address {
     return other.id == id &&
         other.name == name &&
         other.details == details &&
-        other.areaId == areaId &&
-        other.area == area;
+        other.areaId == areaId;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-        name.hashCode ^
-        details.hashCode ^
-        areaId.hashCode ^
-        area.hashCode;
+    return id.hashCode ^ name.hashCode ^ details.hashCode ^ areaId.hashCode;
   }
 }

@@ -9,28 +9,30 @@ import '../../configs/styles.dart';
 class CallToActionButton extends StatelessWidget {
   const CallToActionButton({
     super.key,
-    required this.label,
+    required this.child,
     this.labelColor,
     required this.onTap,
     this.backgroundColor,
+    this.height,
     this.width = double.infinity,
     this.buttonStatus,
     //TODO:
     this.loadingColor = Colors.white,
   });
 
-  final String label;
   final Color? labelColor;
   final VoidCallback onTap;
   final Color? backgroundColor;
+  final double? height;
   final double width;
   final Rx<CallToActionButtonStatus>? buttonStatus;
   final Color loadingColor;
+  final dynamic child;
   @override
   Widget build(BuildContext context) {
     if (buttonStatus == null) {
       return Container(
-        height: 58.h,
+        height: height ?? 58.h,
         width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
@@ -51,14 +53,8 @@ class CallToActionButton extends StatelessWidget {
             borderRadius:
                 BorderRadius.circular(GlobalStyles.globalBorderRadius),
             child: Center(
-                child: Text(
-              label,
-              style: TextStyle(
-                fontFamily: ProjectFonts.fontFamily,
-                fontSize: 17.sp,
-                color: labelColor ?? lightColorScheme.primaryContainer,
-              ),
-            )),
+              child: buildChild(),
+            ),
           ),
         ),
       );
@@ -90,15 +86,7 @@ class CallToActionButton extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(GlobalStyles.globalBorderRadius),
                     child: Center(
-                      child: Text(
-                        label,
-                        style: TextStyle(
-                          fontFamily: ProjectFonts.fontFamily,
-                          fontSize: 17.sp,
-                          color:
-                              labelColor ?? lightColorScheme.primaryContainer,
-                        ),
-                      ),
+                      child: buildChild(),
                     ),
                   );
                 }
@@ -108,15 +96,7 @@ class CallToActionButton extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(GlobalStyles.globalBorderRadius),
                     child: Center(
-                      child: Text(
-                        label,
-                        style: TextStyle(
-                          fontFamily: ProjectFonts.fontFamily,
-                          fontSize: 17.sp,
-                          color:
-                              labelColor ?? lightColorScheme.primaryContainer,
-                        ),
-                      ),
+                      child: buildChild(),
                     ),
                   );
                 }
@@ -137,6 +117,22 @@ class CallToActionButton extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  buildChild() {
+    assert(child is String || child is Widget,
+        'Expected a widget or string for the child of the callToActionButton');
+    if (child is String) {
+      return Text(
+        child,
+        style: TextStyle(
+          fontFamily: ProjectFonts.fontFamily,
+          fontSize: 17.sp,
+          color: labelColor ?? lightColorScheme.primaryContainer,
+        ),
+      );
+    }
+    return child;
   }
 }
 

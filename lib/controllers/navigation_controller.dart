@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/addresses_managment/views/addresses_managment_page.dart';
+import 'package:kalam_noor/pages/addresses_management/views/addresses_management_page.dart';
 import '../models/agendas/employee.dart';
 import '../pages/dashboard/views/dashboard_page.dart';
 import '../pages/add_new_student/views/add_new_student_page.dart';

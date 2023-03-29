@@ -44,7 +44,7 @@ class AddNewStudentPage extends StatelessWidget {
                               width: 230.w,
                               child: CallToActionButton(
                                   backgroundColor: Color(0xff255CB1),
-                                  label: "اختر الصورة الشخصية للطالب",
+                                  child: "اختر الصورة الشخصية للطالب",
                                   onTap: () {}),
                             ),
                             AddVerticalSpacing(value: 20.h),

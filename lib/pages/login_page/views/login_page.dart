@@ -82,7 +82,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     AddVerticalSpacing(value: 50.h),
                     CallToActionButton(
-                      label: 'تسجيل الدخول',
+                      child: 'تسجيل الدخول',
                       labelColor: colorScheme.primary,
                       onTap: () => loginPageController.login(),
                       backgroundColor: Colors.white,

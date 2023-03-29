@@ -1,24 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:kalam_noor/models/address/city.dart';
-
 class Area {
   final int id;
   final String name;
   final int cityId;
-  City? city;
   Area({
     required this.id,
     required this.name,
     required this.cityId,
   });
-
-  Future<City> getCity() async {
-    //TODO: Swap with query later
-    city ??= City(id: 1, name: 'النبك');
-    return city!;
-  }
 
   Area copyWith({
     int? id,

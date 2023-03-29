@@ -1,6 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
+import 'package:kalam_noor/dummy_methods.dart';
+import 'package:kalam_noor/models/address/area.dart';
+
 class City {
   final int id;
   final String name;
