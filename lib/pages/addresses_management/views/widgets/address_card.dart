@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/address/city.dart';
-import 'package:kalam_noor/pages/addresses_management/controllers/address_management_controller.dart';
 
 import '../../../../tools/ui_tools/ui_tools.dart';
 import 'address_subcards.dart';
@@ -10,14 +9,14 @@ import 'address_subcards.dart';
 class AddressCard extends StatelessWidget {
   const AddressCard({
     super.key,
-    required this.index,
+    required this.city,
   });
 
-  final int index;
+  final City city;
   @override
   Widget build(BuildContext context) {
-    AddressManagementController addressManagementController = Get.find();
-    City city = addressManagementController.cities[index];
+    // AddressManagementController addressManagementController = Get.find();
+
     return Container(
       width: 815.w,
       height: 405.h,
@@ -51,7 +50,7 @@ class AddressCard extends StatelessWidget {
                 Text(
                   city.name,
                   style: TextStyle(
-                    fontSize: 40,
+                    fontSize: 40.sp,
                     color: Get.theme.colorScheme.primary,
                   ),
                 ),

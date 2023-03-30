@@ -40,12 +40,21 @@ Future<List<City>> getAllCities() async {
   return dummyCities;
 }
 
-Future<List<Area>> dummyGetAreasInCity(City city) async {
+Future<List<Area>> dummyGetAreasInCity(int cityId) async {
   //TODO:
-  return dummyAreas;
+  return dummyAreas.where((element) => element.cityId == cityId).toList();
 }
 
 Future<List<Address>> dummyGetAddressesInArea(Area area) async {
   //TODO:
   return dummyAddresses;
+}
+
+Future<List<City>> dummyGetCities() async {
+  await dummyDelayedFuture();
+  return dummyCities;
+}
+
+Future<void> dummyDelayedFuture() async {
+  await Future.delayed(Duration(milliseconds: 1500));
 }

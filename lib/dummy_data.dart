@@ -28,12 +28,12 @@ List<Area> dummyAreas = [
   Area(
     id: 3,
     name: 'السوق',
-    cityId: 1,
+    cityId: 2,
   ),
   Area(
     id: 4,
     name: 'الجمعيات القديمة',
-    cityId: 1,
+    cityId: 2,
   )
 ];
 

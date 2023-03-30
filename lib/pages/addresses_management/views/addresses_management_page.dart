@@ -53,10 +53,10 @@ class AddressesManagementPage extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 40.w),
                         child: Row(
                           children: [
-                            const Text(
+                            Text(
                               'إضافة عنوان جديد',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 20.sp,
                                 color: Colors.white,
                               ),
                             ),
@@ -75,8 +75,8 @@ class AddressesManagementPage extends StatelessWidget {
               ),
               AddVerticalSpacing(value: 60.h),
               Expanded(
-                  child: FutureBuilder<List<City>>(
-                future: addressManagementController.getCitiesToDisplay(),
+                  child: FutureBuilder<RxList<City>>(
+                future: addressManagementController.cities,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(
@@ -94,9 +94,10 @@ class AddressesManagementPage extends StatelessWidget {
                         child: Text('no addresses yet'),
                       );
                     } else {
+                      RxList<City> cities = snapshot.data as RxList<City>;
                       return GridView.builder(
                         padding: EdgeInsets.zero,
-                        itemCount: addressManagementController.cities.length,
+                        itemCount: cities.length,
                         shrinkWrap: true,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
@@ -105,7 +106,7 @@ class AddressesManagementPage extends StatelessWidget {
                           mainAxisSpacing: 20.h,
                         ),
                         itemBuilder: (context, index) => AddressCard(
-                          index: index,
+                          city: cities[index],
                         ),
                       );
                     }
