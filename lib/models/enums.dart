@@ -31,3 +31,53 @@ Map<EducationalStatus, String> educationalStatusAsString = {
   EducationalStatus.master: 'ماجستير',
   EducationalStatus.doctorate: 'دكتوراه',
 };
+
+enum ConversationStatus {
+  open,
+  closed,
+}
+
+Map<ConversationStatus, String> conversationStatusAsString = {
+  ConversationStatus.open: 'مفتوحة',
+  ConversationStatus.closed: 'مغلقة',
+};
+
+enum ConversationParty {
+  other,
+  secretKeeper,
+  teacher,
+  parents,
+}
+
+Map<ConversationParty, String> conversationPartyAsString = {
+  ConversationParty.other: 'مذاكرة',
+  ConversationParty.secretKeeper: 'شفهي',
+  ConversationParty.teacher: 'وظائف',
+  ConversationParty.parents: 'نشاط',
+};
+
+enum ExamType {
+  verbal,
+  homework,
+  activity,
+  exam,
+  finalExam,
+}
+
+Map<ExamType, String> examTypeAsString = {
+  ExamType.verbal: 'شفهي',
+  ExamType.homework: 'وظائف',
+  ExamType.activity: 'نشاط',
+  ExamType.exam: 'مذاكرة',
+  ExamType.finalExam: 'اختبار الفصل',
+};
+
+enum SemesterType {
+  first,
+  second,
+}
+
+Map<SemesterType, String> semesterTypeAsString = {
+  SemesterType.first: 'الأول',
+  SemesterType.second: 'الثاني',
+};
