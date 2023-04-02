@@ -252,21 +252,23 @@ class _AddNewFatherState extends State<AddNewFather> {
         });
         if (validateFields()) {
           Father father = Father(
-              id: -1,
-              firstName: firstNameController.text,
-              lastName: lastNameController.text,
-              fatherName: fatherController.text,
-              motherName: motherController.text,
-              career: careerController.text,
-              placeOfResidence: residenceController.text,
-              tieNumber: int.parse(tieNumberController.text),
-              tiePlace: tiePlaceController.text,
-              placeOfBirth: placeOfBirthController.text,
-              dateOfBirth: dateOfBirth!,
-              religion: religion!,
-              educationalStatus: educationalStatus!,
-              phoneNumber: phoneNumberController.text,
-              permanentAddress: '');
+            id: -1,
+            firstName: firstNameController.text,
+            lastName: lastNameController.text,
+            fatherName: fatherController.text,
+            motherName: motherController.text,
+            career: careerController.text,
+            placeOfResidence: residenceController.text,
+            tieNumber: int.parse(tieNumberController.text),
+            tiePlace: tiePlaceController.text,
+            placeOfBirth: placeOfBirthController.text,
+            dateOfBirth: dateOfBirth!,
+            religion: religion!,
+            educationalStatus: educationalStatus!,
+            phoneNumber: phoneNumberController.text,
+            permanentAddress: '',
+            civilRegisterSecretary: '', //TODO:
+          );
           if (await dummyAddFatherToDB(father)) {
             Get.back(result: father);
           }

@@ -389,7 +389,7 @@ class _AddNewMotherState extends State<AddNewMother> {
             religion: religion!,
             educationalStatus: educationalStatus!,
             phoneNumber: phoneNumberController.text,
-            livesWithHusband: true,
+            doesLiveWithHusband: true, //TODO:
           );
           if (await dummyAddMotherToDB(mother)) {
             Get.back(result: mother);
