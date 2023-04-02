@@ -81,3 +81,11 @@ Map<SemesterType, String> semesterTypeAsString = {
   SemesterType.first: 'الأول',
   SemesterType.second: 'الثاني',
 };
+
+enum PsychologicalStatusLevel {
+  veryLow,
+  low,
+  medium,
+  high,
+  veryHigh,
+}
