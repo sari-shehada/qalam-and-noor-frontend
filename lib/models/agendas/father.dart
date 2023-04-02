@@ -15,6 +15,7 @@ class Father {
   final String tiePlace;
   final String placeOfBirth;
   final DateTime dateOfBirth;
+  String civilRegisterSecretary;
   //enum
   final Religion religion;
   //enum
@@ -33,6 +34,7 @@ class Father {
     required this.tiePlace,
     required this.placeOfBirth,
     required this.dateOfBirth,
+    required this.civilRegisterSecretary,
     required this.religion,
     required this.educationalStatus,
     required this.phoneNumber,
@@ -51,6 +53,7 @@ class Father {
     String? tiePlace,
     String? placeOfBirth,
     DateTime? dateOfBirth,
+    String? civilRegisterSecretary,
     Religion? religion,
     EducationalStatus? educationalStatus,
     String? phoneNumber,
@@ -68,6 +71,8 @@ class Father {
       tiePlace: tiePlace ?? this.tiePlace,
       placeOfBirth: placeOfBirth ?? this.placeOfBirth,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      civilRegisterSecretary:
+          civilRegisterSecretary ?? this.civilRegisterSecretary,
       religion: religion ?? this.religion,
       educationalStatus: educationalStatus ?? this.educationalStatus,
       phoneNumber: phoneNumber ?? this.phoneNumber,
@@ -88,6 +93,7 @@ class Father {
       'tiePlace': tiePlace,
       'placeOfBirth': placeOfBirth,
       'dateOfBirth': dateOfBirth.millisecondsSinceEpoch,
+      'civilRegisterSecretary': civilRegisterSecretary,
       'religion': religion.index,
       'educationalStatus': educationalStatus.index,
       'phoneNumber': phoneNumber,
@@ -109,6 +115,7 @@ class Father {
       placeOfBirth: map['placeOfBirth'] as String,
       dateOfBirth:
           DateTime.fromMillisecondsSinceEpoch(map['dateOfBirth'] as int),
+      civilRegisterSecretary: map['civilRegisterSecretary'] as String,
       religion: Religion.values[map['religion'] as int],
       educationalStatus:
           EducationalStatus.values[map['educationalStatus'] as int],
@@ -124,7 +131,7 @@ class Father {
 
   @override
   String toString() {
-    return 'Father(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, career: $career, placeOfResidence: $placeOfResidence, tieNumber: $tieNumber, tiePlace: $tiePlace, placeOfBirth: $placeOfBirth, dateOfBirth: $dateOfBirth, religion: $religion, educationalStatus: $educationalStatus, phoneNumber: $phoneNumber, permanentAddress: $permanentAddress)';
+    return 'Father(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, career: $career, placeOfResidence: $placeOfResidence, tieNumber: $tieNumber, tiePlace: $tiePlace, placeOfBirth: $placeOfBirth, dateOfBirth: $dateOfBirth, civilRegisterSecretary: $civilRegisterSecretary, religion: $religion, educationalStatus: $educationalStatus, phoneNumber: $phoneNumber, permanentAddress: $permanentAddress)';
   }
 
   @override
@@ -142,6 +149,7 @@ class Father {
         other.tiePlace == tiePlace &&
         other.placeOfBirth == placeOfBirth &&
         other.dateOfBirth == dateOfBirth &&
+        other.civilRegisterSecretary == civilRegisterSecretary &&
         other.religion == religion &&
         other.educationalStatus == educationalStatus &&
         other.phoneNumber == phoneNumber &&
@@ -161,6 +169,7 @@ class Father {
         tiePlace.hashCode ^
         placeOfBirth.hashCode ^
         dateOfBirth.hashCode ^
+        civilRegisterSecretary.hashCode ^
         religion.hashCode ^
         educationalStatus.hashCode ^
         phoneNumber.hashCode ^

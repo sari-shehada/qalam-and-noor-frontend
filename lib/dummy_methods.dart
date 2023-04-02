@@ -9,11 +9,20 @@ import 'models/shared_prefs_helper.dart';
 
 Future<Employee> getEmployeeCredentials(String employeeId) async {
   await Future.delayed(const Duration(seconds: 2));
+
   return Employee(
-      employeeId: employeeId,
+      id: employeeId,
       firstName: 'محمد',
       lastName: 'المحمد',
-      jobTitle: JobTitle.secretKeeper);
+      fatherName: 'أحمد',
+      motherName: 'لمى',
+      dateOfBirth: DateTime.now(),
+      phoneNumber: '09999999',
+      startDate: DateTime.now(),
+      numberOfChildren: 2,
+      salary: 5800,
+      jobTitleId: 1,
+      addressId: 1);
 }
 
 Future<bool> isLoggedIn() async {

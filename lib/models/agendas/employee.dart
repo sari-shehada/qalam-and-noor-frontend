@@ -4,19 +4,34 @@ import 'dart:convert';
 import 'package:kalam_noor/configs/assets.dart';
 
 class Employee {
-  final String employeeId;
+  final String id;
   final String firstName;
   final String lastName;
-  final bool isMale;
-  //enum
-  final JobTitle jobTitle;
+  final String fatherName;
+  final String motherName;
+  final bool isMale; //TODO: Add to ERD
+  DateTime dateOfBirth;
+  String phoneNumber;
+  DateTime startDate;
+  int numberOfChildren;
+  double salary;
+  int jobTitleId;
+  int addressId;
 
   Employee({
-    required this.employeeId,
+    required this.id,
     required this.firstName,
     required this.lastName,
+    required this.fatherName,
+    required this.motherName,
     this.isMale = true,
-    required this.jobTitle,
+    required this.dateOfBirth,
+    required this.phoneNumber,
+    required this.startDate,
+    required this.numberOfChildren,
+    required this.salary,
+    required this.jobTitleId,
+    required this.addressId,
   });
 
   String getAvatarImage({bool circular = false}) {
@@ -34,38 +49,71 @@ class Employee {
   }
 
   Employee copyWith({
-    String? employeeId,
+    String? id,
     String? firstName,
     String? lastName,
+    String? fatherName,
+    String? motherName,
     bool? isMale,
-    JobTitle? jobTitle,
+    DateTime? dateOfBirth,
+    String? phoneNumber,
+    DateTime? startDate,
+    int? numberOfChildren,
+    double? salary,
+    int? jobTitleId,
+    int? addressId,
   }) {
     return Employee(
-      employeeId: employeeId ?? this.employeeId,
+      id: id ?? this.id,
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
+      fatherName: fatherName ?? this.fatherName,
+      motherName: motherName ?? this.motherName,
       isMale: isMale ?? this.isMale,
-      jobTitle: jobTitle ?? this.jobTitle,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      startDate: startDate ?? this.startDate,
+      numberOfChildren: numberOfChildren ?? this.numberOfChildren,
+      salary: salary ?? this.salary,
+      jobTitleId: jobTitleId ?? this.jobTitleId,
+      addressId: addressId ?? this.addressId,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'employeeId': employeeId,
+      'id': id,
       'firstName': firstName,
       'lastName': lastName,
+      'fatherName': fatherName,
+      'motherName': motherName,
       'isMale': isMale,
-      'jobTitle': jobTitle.index,
+      'dateOfBirth': dateOfBirth.millisecondsSinceEpoch,
+      'phoneNumber': phoneNumber,
+      'startDate': startDate.millisecondsSinceEpoch,
+      'numberOfChildren': numberOfChildren,
+      'salary': salary,
+      'jobTitleId': jobTitleId,
+      'addressId': addressId,
     };
   }
 
   factory Employee.fromMap(Map<String, dynamic> map) {
     return Employee(
-      employeeId: map['employeeId'] as String,
+      id: map['id'] as String,
       firstName: map['firstName'] as String,
       lastName: map['lastName'] as String,
+      fatherName: map['fatherName'] as String,
+      motherName: map['motherName'] as String,
       isMale: map['isMale'] as bool,
-      jobTitle: JobTitle.values[map['jobTitle'] as int],
+      dateOfBirth:
+          DateTime.fromMillisecondsSinceEpoch(map['dateOfBirth'] as int),
+      phoneNumber: map['phoneNumber'] as String,
+      startDate: DateTime.fromMillisecondsSinceEpoch(map['startDate'] as int),
+      numberOfChildren: map['numberOfChildren'] as int,
+      salary: map['salary'] as double,
+      jobTitleId: map['jobTitleId'] as int,
+      addressId: map['addressId'] as int,
     );
   }
 
@@ -76,27 +124,43 @@ class Employee {
 
   @override
   String toString() {
-    return 'Employee(employeeId: $employeeId, firstName: $firstName, lastName: $lastName, isMale: $isMale, jobTitle: $jobTitle)';
+    return 'Employee(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, isMale: $isMale, dateOfBirth: $dateOfBirth, phoneNumber: $phoneNumber, startDate: $startDate, numberOfChildren: $numberOfChildren, salary: $salary, jobTitleId: $jobTitleId, addressId: $addressId)';
   }
 
   @override
   bool operator ==(covariant Employee other) {
     if (identical(this, other)) return true;
 
-    return other.employeeId == employeeId &&
+    return other.id == id &&
         other.firstName == firstName &&
         other.lastName == lastName &&
+        other.fatherName == fatherName &&
+        other.motherName == motherName &&
         other.isMale == isMale &&
-        other.jobTitle == jobTitle;
+        other.dateOfBirth == dateOfBirth &&
+        other.phoneNumber == phoneNumber &&
+        other.startDate == startDate &&
+        other.numberOfChildren == numberOfChildren &&
+        other.salary == salary &&
+        other.jobTitleId == jobTitleId &&
+        other.addressId == addressId;
   }
 
   @override
   int get hashCode {
-    return employeeId.hashCode ^
+    return id.hashCode ^
         firstName.hashCode ^
         lastName.hashCode ^
+        fatherName.hashCode ^
+        motherName.hashCode ^
         isMale.hashCode ^
-        jobTitle.hashCode;
+        dateOfBirth.hashCode ^
+        phoneNumber.hashCode ^
+        startDate.hashCode ^
+        numberOfChildren.hashCode ^
+        salary.hashCode ^
+        jobTitleId.hashCode ^
+        addressId.hashCode;
   }
 }
 

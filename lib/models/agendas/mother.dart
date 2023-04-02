@@ -9,7 +9,7 @@ class Mother {
   final String lastName;
   final String fatherName;
   final String motherName;
-  final bool livesWithHusband;
+  final bool doesLiveWithHusband;
   final String career;
 
   final int tieNumber;
@@ -27,7 +27,7 @@ class Mother {
     required this.lastName,
     required this.fatherName,
     required this.motherName,
-    required this.livesWithHusband,
+    required this.doesLiveWithHusband,
     required this.career,
     required this.tieNumber,
     required this.tiePlace,
@@ -44,7 +44,7 @@ class Mother {
     String? lastName,
     String? fatherName,
     String? motherName,
-    bool? livesWithHusband,
+    bool? doesLiveWithHusband,
     String? career,
     int? tieNumber,
     String? tiePlace,
@@ -60,7 +60,7 @@ class Mother {
       lastName: lastName ?? this.lastName,
       fatherName: fatherName ?? this.fatherName,
       motherName: motherName ?? this.motherName,
-      livesWithHusband: livesWithHusband ?? this.livesWithHusband,
+      doesLiveWithHusband: doesLiveWithHusband ?? this.doesLiveWithHusband,
       career: career ?? this.career,
       tieNumber: tieNumber ?? this.tieNumber,
       tiePlace: tiePlace ?? this.tiePlace,
@@ -79,7 +79,7 @@ class Mother {
       'lastName': lastName,
       'fatherName': fatherName,
       'motherName': motherName,
-      'livesWithHusband': livesWithHusband,
+      'doesLiveWithHusband': doesLiveWithHusband,
       'career': career,
       'tieNumber': tieNumber,
       'tiePlace': tiePlace,
@@ -98,7 +98,7 @@ class Mother {
       lastName: map['lastName'] as String,
       fatherName: map['fatherName'] as String,
       motherName: map['motherName'] as String,
-      livesWithHusband: map['livesWithHusband'] as bool,
+      doesLiveWithHusband: map['doesLiveWithHusband'] as bool,
       career: map['career'] as String,
       tieNumber: map['tieNumber'] as int,
       tiePlace: map['tiePlace'] as String,
@@ -119,7 +119,7 @@ class Mother {
 
   @override
   String toString() {
-    return 'Mother(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, livesWithHusband: $livesWithHusband, career: $career, tieNumber: $tieNumber, tiePlace: $tiePlace, placeOfBirth: $placeOfBirth, dateOfBirth: $dateOfBirth, religion: $religion, educationalStatus: $educationalStatus, phoneNumber: $phoneNumber)';
+    return 'Mother(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, doesLiveWithHusband: $doesLiveWithHusband, career: $career, tieNumber: $tieNumber, tiePlace: $tiePlace, placeOfBirth: $placeOfBirth, dateOfBirth: $dateOfBirth, religion: $religion, educationalStatus: $educationalStatus, phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -131,7 +131,7 @@ class Mother {
         other.lastName == lastName &&
         other.fatherName == fatherName &&
         other.motherName == motherName &&
-        other.livesWithHusband == livesWithHusband &&
+        other.doesLiveWithHusband == doesLiveWithHusband &&
         other.career == career &&
         other.tieNumber == tieNumber &&
         other.tiePlace == tiePlace &&
@@ -149,7 +149,7 @@ class Mother {
         lastName.hashCode ^
         fatherName.hashCode ^
         motherName.hashCode ^
-        livesWithHusband.hashCode ^
+        doesLiveWithHusband.hashCode ^
         career.hashCode ^
         tieNumber.hashCode ^
         tiePlace.hashCode ^
