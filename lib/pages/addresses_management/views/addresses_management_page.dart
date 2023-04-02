@@ -29,6 +29,7 @@ class AddressesManagementPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   FaIcon(
                     FontAwesomeIcons.locationDot,

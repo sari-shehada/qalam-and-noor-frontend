@@ -31,15 +31,6 @@ Future<void> logout() async {
   NavigationController.toLoginPage();
 }
 
-Future<List<City>> getAllCities() async {
-  await Future.delayed(
-    Duration(
-      milliseconds: 800,
-    ),
-  );
-  return dummyCities;
-}
-
 Future<List<Area>> dummyGetAreasInCity(int cityId) async {
   //TODO:
   return dummyAreas.where((element) => element.cityId == cityId).toList();

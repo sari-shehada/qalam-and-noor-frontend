@@ -9,7 +9,6 @@ import '../../configs/styles.dart';
 class CallToActionButton extends StatelessWidget {
   const CallToActionButton({
     super.key,
-    required this.child,
     this.labelColor,
     required this.onTap,
     this.backgroundColor,
@@ -18,6 +17,7 @@ class CallToActionButton extends StatelessWidget {
     this.buttonStatus,
     //TODO:
     this.loadingColor = Colors.white,
+    required this.child,
   });
 
   final Color? labelColor;
