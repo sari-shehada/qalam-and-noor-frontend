@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'ui_tools.dart';
 
@@ -11,6 +12,7 @@ class HintedTextField extends StatelessWidget {
     this.fillColor,
     this.textColor = Colors.black, //TODO: Change later
     this.hintColor = Colors.grey, //TODO: Change later
+    this.inputFormatters,
   });
 
   final String hintText;
@@ -19,10 +21,12 @@ class HintedTextField extends StatelessWidget {
   final Color? fillColor;
   final Color hintColor;
   final Color textColor;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      inputFormatters: inputFormatters,
       style: TextStyle(
         fontSize: 22.sp,
         color: textColor,
