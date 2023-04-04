@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../configs/assets.dart';
-import '../../../configs/fonts.dart';
-import '../../../tools/ui_tools/buttons.dart';
-import '../../../tools/ui_tools/text_fields.dart';
-import '../../../tools/ui_tools/ui_tools.dart';
+import '../../../../configs/assets.dart';
+import '../../../../configs/fonts.dart';
+import '../../../../tools/ui_tools/buttons.dart';
+import '../../../../tools/ui_tools/text_fields.dart';
+import '../../../../tools/ui_tools/ui_tools.dart';
 
-class AddNewStudentPage extends StatelessWidget {
-  const AddNewStudentPage({super.key});
+class NewStudentRegistrationPage extends StatelessWidget {
+  const NewStudentRegistrationPage({super.key});
 
   @override
   Widget build(BuildContext context) {

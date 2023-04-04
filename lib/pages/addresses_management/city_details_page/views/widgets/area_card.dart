@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/address/city.dart';
 
-import '../../../../tools/ui_tools/ui_tools.dart';
-import 'address_subcards.dart';
+import '../../../../../models/address/area.dart';
+import '../../../../../models/helpers/database_helper.dart';
+import '../../../main_page/views/widgets/city_stats_card.dart';
 
-class AddressCard extends StatelessWidget {
-  const AddressCard({
+class AreaCard extends StatelessWidget {
+  const AreaCard({
     super.key,
-    required this.city,
+    required this.area,
   });
 
-  final City city;
+  final Area area;
   @override
   Widget build(BuildContext context) {
     // AddressManagementController addressManagementController = Get.find();
 
     return Container(
       width: 815.w,
-      height: 405.h,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(
@@ -36,7 +35,11 @@ class AddressCard extends StatelessWidget {
       child: Material(
         borderRadius: BorderRadius.circular(14.r),
         child: InkWell(
-          onTap: () {},
+          //TODO:
+          // onTap: () =>
+          //     Get.to(const CityDetailsPage(), binding: BindingsBuilder(() {
+          //   Get.put(CityDetailsController(city: city));
+          // })),
           borderRadius: BorderRadius.circular(14.r),
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -48,23 +51,17 @@ class AddressCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  city.name,
+                  area.name,
                   style: TextStyle(
                     fontSize: 40.sp,
                     color: Get.theme.colorScheme.primary,
                   ),
                 ),
                 const Spacer(),
-                AreasCountSubCard(
-                  // count: city.getAreasCount(),
-                  //TODO:
-                  count: 5,
-                ),
-                AddVerticalSpacing(value: 10.h),
-                AddressesCountSubCard(
-                  // count: city.getAddressesCount(),
-                  //TODO:
-                  count: 6,
+                CityStatsCard(
+                  title: 'عدد العناوين',
+                  count: DatabaseHelper.getAreaAddressesCount(area.id),
+                  color: Color(0xFFFA9746),
                 ),
               ],
             ),

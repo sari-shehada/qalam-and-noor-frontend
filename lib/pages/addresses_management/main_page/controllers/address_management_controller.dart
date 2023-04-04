@@ -3,13 +3,14 @@ import 'package:get/get.dart';
 
 import 'package:kalam_noor/models/address/city.dart';
 import 'package:kalam_noor/models/helpers/database_helper.dart';
-import 'package:kalam_noor/pages/addresses_management/views/add_address_page.dart';
+import 'package:kalam_noor/pages/addresses_management/main_page/views/dialogs/add_address_dialog.dart';
+import 'package:kalam_noor/pages/addresses_management/main_page/views/dialogs/add_new_city_dialog.dart';
 
 class AddressManagementController extends GetxController {
   // RxList<City> cities = <City>[].obs;
-  late Future<RxList<City>> cities;
+  late Rx<Future<RxList<City>>> cities;
   AddressManagementController() {
-    cities = getCitiesToDisplay();
+    cities = getCitiesToDisplay().obs;
   }
 
   Future<RxList<City>> getCitiesToDisplay() async {
@@ -23,8 +24,23 @@ class AddressManagementController extends GetxController {
 
   Future<void> addAddress() async {
     var result = await Get.dialog(
-      const AddOrEditAddressPage(),
+      const AddOrEditAddressDialog(),
       barrierDismissible: true,
     );
+    if (result == true) {
+      print('Refreshing Cities');
+      cities.value = getCitiesToDisplay();
+    }
+  }
+
+  Future<void> addNewCity() async {
+    var result = await Get.dialog(
+      const AddNewCityDialog(),
+      barrierDismissible: true,
+    );
+    if (result == true) {
+      print('Refreshing Cities');
+      cities.value = getCitiesToDisplay();
+    }
   }
 }

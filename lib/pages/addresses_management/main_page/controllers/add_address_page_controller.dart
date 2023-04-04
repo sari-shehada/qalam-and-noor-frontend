@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/dummy_data.dart';
 import 'package:kalam_noor/dummy_methods.dart';
 import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 
-import '../../../models/address/area.dart';
-import '../../../models/address/city.dart';
+import '../../../../models/address/area.dart';
+import '../../../../models/address/city.dart';
 
 class AddAddressPageController extends GetxController {
   Rx<CallToActionButtonStatus> buttonStatus =
@@ -91,6 +92,8 @@ class AddAddressPageController extends GetxController {
             message: 'يرجى اختيار عنوان او ادخال عنوان جديدة');
         return;
       }
+      dummyCities.add(City(id: 3, name: 'دمشق'));
+      Get.back(result: true);
     } catch (e) {
     } finally {
       buttonStatus.value = CallToActionButtonStatus.enabled;

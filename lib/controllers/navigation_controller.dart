@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/addresses_management/views/addresses_management_page.dart';
+import 'package:kalam_noor/pages/addresses_management/main_page/views/addresses_management_page.dart';
+import 'package:kalam_noor/pages/school_classes_management/views/school_classes_management_page.dart';
+import 'package:kalam_noor/pages/school_year_management/views/school_year_management_page.dart';
 import '../models/agendas/employee.dart';
 import '../pages/dashboard/views/dashboard_page.dart';
-import '../pages/add_new_student/views/add_new_student_page.dart';
+import '../pages/new_student_registration/student_information/views/new_student_registration_page.dart';
 import '../pages/courses_management/views/courses_management_page.dart';
 import '../pages/navigation_page/controllers/navigation_bindings.dart';
 import '../pages/dashboard/models/dashboard_destination_card.dart';
 import '../pages/navigation_page/views/navigation_page.dart';
 import '../pages/login_page/views/login_page.dart';
-import '../pages/general_record_management/views/general_record_management_page.dart';
 import '../pages/medicals_management/views/medicals_management_page.dart';
 
 import '../pages/login_page/controllers/login_page_bindings.dart';
@@ -35,19 +36,19 @@ class NavigationController {
               destination: const DashboardPage(),
             ),
             DashboardDestinationCard(
-              title: 'إضافة طالب جديد',
+              title: 'تسحيل طالب جديد',
               iconData: FontAwesomeIcons.userPlus,
-              destination: const AddNewStudentPage(),
+              destination: const NewStudentRegistrationPage(),
             ),
             DashboardDestinationCard(
-              title: 'إدارة السجل العام',
-              iconData: FontAwesomeIcons.peopleGroup,
-              destination: const GeneralRecordManagementPage(),
+              title: 'إدارة العام الدراسي',
+              iconData: FontAwesomeIcons.school,
+              destination: const SchoolYearManagementPage(),
             ),
             DashboardDestinationCard(
-              title: 'إدارة المواد',
+              title: 'إدارة المراحل الدراسية',
               iconData: FontAwesomeIcons.book,
-              destination: const CoursesManagementPage(),
+              destination: const SchoolClassesManagementPage(),
             ),
             DashboardDestinationCard(
               title: 'إدارة الشعب',

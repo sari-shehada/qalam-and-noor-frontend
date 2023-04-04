@@ -7,9 +7,9 @@ import 'package:kalam_noor/models/agendas/mother.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/text_fields.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
-import '../../../configs/styles.dart';
-import '../../../models/enums.dart';
-import '../../../tools/dialogs_services/snack_bar_service.dart';
+import '../../../../../configs/styles.dart';
+import '../../../../../models/enums.dart';
+import '../../../../../tools/dialogs_services/snack_bar_service.dart';
 
 class AddNewMother extends StatefulWidget {
   const AddNewMother({super.key, this.mother});

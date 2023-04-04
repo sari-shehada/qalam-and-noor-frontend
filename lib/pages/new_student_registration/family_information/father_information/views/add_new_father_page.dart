@@ -5,22 +5,22 @@ import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/models/agendas/father.dart';
 import 'package:kalam_noor/models/enums.dart';
-import 'package:kalam_noor/pages/add_new_father/views/widgets/father_civil_information.dart';
-import 'package:kalam_noor/pages/add_new_father/views/widgets/father_full_name.dart';
+import 'package:kalam_noor/pages/new_student_registration/family_information/father_information/views/widgets/father_civil_information.dart';
+import 'package:kalam_noor/pages/new_student_registration/family_information/father_information/views/widgets/father_full_name.dart';
 import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
-class AddNewFather extends StatefulWidget {
-  const AddNewFather({super.key, this.father});
+class AddNewFatherPage extends StatefulWidget {
+  const AddNewFatherPage({super.key, this.father});
 
   final Father? father;
   @override
-  State<AddNewFather> createState() => _AddNewFatherState();
+  State<AddNewFatherPage> createState() => _AddNewFatherPageState();
 }
 
-class _AddNewFatherState extends State<AddNewFather> {
-  _AddNewFatherState();
+class _AddNewFatherPageState extends State<AddNewFatherPage> {
+  _AddNewFatherPageState();
   bool isAddMode = true;
   CallToActionButtonStatus addButtonStatus = CallToActionButtonStatus.enabled;
   TextEditingController firstNameController = TextEditingController();
