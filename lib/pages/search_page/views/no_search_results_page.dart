@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+
+import '../../../tools/ui_tools/buttons.dart';
+import '../../../tools/ui_tools/ui_tools.dart';
 
 class NoSearchResultsPage extends StatelessWidget {
   const NoSearchResultsPage({super.key});
@@ -20,7 +21,7 @@ class NoSearchResultsPage extends StatelessWidget {
               FeatherIcons.search,
               size: 287.w,
               // weight: 10.h,
-              color: Color(0xffc7c7c7),
+              color: const Color(0xffc7c7c7),
             ),
             AddVerticalSpacing(
               value: 50.h,
@@ -41,7 +42,7 @@ class NoSearchResultsPage extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 20.sp,
-                color: Color(0xff696a6b),
+                color: const Color(0xff696a6b),
               ),
             ),
             AddVerticalSpacing(

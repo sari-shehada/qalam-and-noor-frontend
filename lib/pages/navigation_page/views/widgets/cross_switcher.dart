@@ -15,7 +15,7 @@ class FadeIndexedStack extends StatefulWidget {
   }) : super();
 
   @override
-  _FadeIndexedStackState createState() => _FadeIndexedStackState();
+  State<FadeIndexedStack> createState() => _FadeIndexedStackState();
 }
 
 class _FadeIndexedStackState extends State<FadeIndexedStack>
@@ -32,7 +32,10 @@ class _FadeIndexedStackState extends State<FadeIndexedStack>
 
   @override
   void initState() {
-    _controller = AnimationController(vsync: this, duration: widget.duration);
+    _controller = AnimationController(
+      vsync: this,
+      duration: widget.duration,
+    );
     _controller.forward();
     super.initState();
   }

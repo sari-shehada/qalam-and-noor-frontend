@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/address/address.dart';
-import 'package:kalam_noor/models/address/city.dart';
-import 'package:kalam_noor/pages/addresses_management/main_page/controllers/add_address_page_controller.dart';
-import 'package:kalam_noor/pages/addresses_management/main_page/controllers/address_management_controller.dart';
+import '../../../../models/address/address.dart';
+import 'add_address_page_controller.dart';
 
 class AddOrEditAddressBindings extends Bindings {
   final Address? address;

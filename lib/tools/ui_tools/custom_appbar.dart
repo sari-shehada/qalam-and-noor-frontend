@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
 import 'buttons.dart';
@@ -39,7 +38,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                     alignment: Alignment.center,
                     padding: EdgeInsets.symmetric(horizontal: 40.w),
                     onPressed: () => Get.back(),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_ios,
                     ),
                   )
@@ -94,7 +93,6 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size(double.infinity, 150.h);
 }
 

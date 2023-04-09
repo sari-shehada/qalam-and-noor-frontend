@@ -1,5 +1,5 @@
-import 'package:kalam_noor/models/address/address.dart';
-import 'package:kalam_noor/models/address/area.dart';
+import 'models/address/address.dart';
+import 'models/address/area.dart';
 
 import 'models/address/city.dart';
 
@@ -53,7 +53,6 @@ List<Address> dummyAddresses = [
   Address(
     id: 3,
     name: 'شارع باسط',
-    details: '',
     areaId: 1,
   ),
   Address(

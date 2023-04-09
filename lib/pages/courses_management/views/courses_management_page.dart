@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../tools/ui_tools/ui_tools.dart';
 import 'widgets/course_card.dart';
 import 'widgets/course_division.dart';
-import '../../../tools/ui_tools/ui_tools.dart';
 
 class CoursesManagementPage extends StatelessWidget {
   const CoursesManagementPage({super.key});

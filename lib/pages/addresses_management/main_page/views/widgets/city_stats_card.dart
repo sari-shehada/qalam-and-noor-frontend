@@ -25,7 +25,7 @@ class CityStatsCard extends StatelessWidget {
               color: Colors.blueGrey,
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Container(
             padding: EdgeInsets.symmetric(
               vertical: 2.h,
@@ -39,7 +39,7 @@ class CityStatsCard extends StatelessWidget {
               future: count,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else {
@@ -52,7 +52,7 @@ class CityStatsCard extends StatelessWidget {
                       ),
                     );
                   } else {
-                    return SizedBox.shrink();
+                    return const SizedBox.shrink();
                   }
                 }
               },

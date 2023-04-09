@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/address/city.dart';
-import 'package:kalam_noor/models/helpers/database_helper.dart';
-import 'package:kalam_noor/pages/addresses_management/city_details_page/controllers/city_details_controller.dart';
-import 'package:kalam_noor/pages/addresses_management/city_details_page/views/city_details_page.dart';
+import '../../../../../models/address/city.dart';
+import '../../../../../models/helpers/database_helper.dart';
+import '../../../city_details_page/controllers/city_details_controller.dart';
+import '../../../city_details_page/views/city_details_page.dart';
 
 import '../../../../../tools/ui_tools/ui_tools.dart';
 import 'city_stats_card.dart';
@@ -18,8 +18,6 @@ class CityCard extends StatelessWidget {
   final City city;
   @override
   Widget build(BuildContext context) {
-    // AddressManagementController addressManagementController = Get.find();
-
     return Container(
       width: 815.w,
       decoration: BoxDecoration(
@@ -29,7 +27,7 @@ class CityCard extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFF393939).withOpacity(.06),
+            color: const Color(0xFF393939).withOpacity(.06),
             blurRadius: 60,
             offset: Offset(0.w, 30.h),
           ),
@@ -63,13 +61,13 @@ class CityCard extends StatelessWidget {
                 CityStatsCard(
                   title: 'عدد المناطق',
                   count: DatabaseHelper.getCityAreasCount(city.id),
-                  color: Color(0xFFE03168),
+                  color: const Color(0xFFE03168),
                 ),
                 AddVerticalSpacing(value: 10.h),
                 CityStatsCard(
                   title: 'عدد العناوين',
                   count: DatabaseHelper.getCityAddressesCount(city.id),
-                  color: Color(0xFFFA9746),
+                  color: const Color(0xFFFA9746),
                 ),
               ],
             ),

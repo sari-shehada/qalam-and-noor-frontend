@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kalam_noor/tools/ui_tools/text_fields.dart';
+import '../../../../../../tools/ui_tools/text_fields.dart';
 import '../../../../../../configs/fonts.dart';
 import '../../../../../../tools/ui_tools/ui_tools.dart';
 

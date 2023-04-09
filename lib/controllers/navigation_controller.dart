@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/addresses_management/main_page/views/addresses_management_page.dart';
-import 'package:kalam_noor/pages/school_classes_management/views/school_classes_management_page.dart';
-import 'package:kalam_noor/pages/school_year_management/views/school_year_management_page.dart';
+import '../pages/addresses_management/main_page/views/addresses_management_page.dart';
+import '../pages/school_classes_management/views/school_classes_management_page.dart';
+import '../pages/school_year_management/views/school_year_management_page.dart';
 import '../models/agendas/employee.dart';
 import '../pages/dashboard/views/dashboard_page.dart';
 import '../pages/new_student_registration/student_information/views/new_student_registration_page.dart';
-import '../pages/courses_management/views/courses_management_page.dart';
+
 import '../pages/navigation_page/controllers/navigation_bindings.dart';
 import '../pages/dashboard/models/dashboard_destination_card.dart';
 import '../pages/navigation_page/views/navigation_page.dart';

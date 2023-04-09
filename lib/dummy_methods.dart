@@ -1,7 +1,7 @@
-import 'package:kalam_noor/dummy_data.dart';
-import 'package:kalam_noor/models/address/address.dart';
-import 'package:kalam_noor/models/address/area.dart';
-import 'package:kalam_noor/models/address/city.dart';
+import 'dummy_data.dart';
+import 'models/address/address.dart';
+import 'models/address/area.dart';
+import 'models/address/city.dart';
 
 import 'controllers/navigation_controller.dart';
 import 'models/agendas/employee.dart';
@@ -56,5 +56,5 @@ Future<List<City>> dummyGetCities() async {
 }
 
 Future<void> dummyDelayedFuture() async {
-  await Future.delayed(Duration(milliseconds: 1500));
+  await Future.delayed(const Duration(milliseconds: 1500));
 }

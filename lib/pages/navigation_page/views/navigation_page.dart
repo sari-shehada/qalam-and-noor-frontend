@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'widgets/cross_switcher.dart';
-import '../controllers/navigation_controller.dart';
 
+import '../controllers/navigation_controller.dart';
+import 'widgets/cross_switcher.dart';
 import 'widgets/navigation_rail.dart';
 
 class NavigationPage extends StatelessWidget {

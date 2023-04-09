@@ -4,12 +4,12 @@ import 'dart:convert';
 class Address {
   final int id;
   final String name;
-  final String details;
+  final String? details;
   final int areaId;
   Address({
     required this.id,
     required this.name,
-    required this.details,
+    this.details,
     required this.areaId,
   });
 
@@ -40,7 +40,7 @@ class Address {
     return Address(
       id: map['id'] as int,
       name: map['name'] as String,
-      details: map['details'] as String,
+      details: map['details'] != null ? map['details'] as String : null,
       areaId: map['areaId'] as int,
     );
   }

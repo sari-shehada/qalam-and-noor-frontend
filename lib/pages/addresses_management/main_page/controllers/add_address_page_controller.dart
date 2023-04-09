@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/dummy_data.dart';
-import 'package:kalam_noor/dummy_methods.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
+import '../../../../dummy_data.dart';
+import '../../../../dummy_methods.dart';
+import '../../../../tools/dialogs_services/snack_bar_service.dart';
+import '../../../../tools/ui_tools/buttons.dart';
 
 import '../../../../models/address/area.dart';
 import '../../../../models/address/city.dart';
@@ -28,9 +28,11 @@ class AddAddressPageController extends GetxController {
   Future<List<City>> loadCities() async {
     isLoading.value = true;
     cities.clear();
-    await dummyGetCities().then((list) => list.forEach((city) {
-          cities.add(city);
-        }));
+    await dummyGetCities().then((list) {
+      for (City city in list) {
+        cities.add(city);
+      }
+    });
     isLoading.value = false;
     return cities;
   }
@@ -50,15 +52,16 @@ class AddAddressPageController extends GetxController {
     areasItems.clear();
     areaDropdownListEnabled.value = false;
     //TODO: Change to a helper call
-    await dummyGetAreasInCity(cityId).then((areas) => areas.forEach((area) {
-          areasInCity.add(area);
-          areasItems.add(
-            DropdownMenuEntry(value: area.id, label: area.name),
-          );
-        }));
+    await dummyGetAreasInCity(cityId).then((areas) {
+      for (Area area in areas) {
+        areasInCity.add(area);
+        areasItems.add(
+          DropdownMenuEntry(value: area.id, label: area.name),
+        );
+      }
+    });
     selectedAreaId = null;
     areaDropdownListEnabled.value = true;
-    print(areaController.text);
     areaController.text = '';
     return areasInCity;
   }
@@ -68,12 +71,10 @@ class AddAddressPageController extends GetxController {
   }
 
   Future<void> addAddress() async {
-    print(selectedAreaId);
     //TODO: Validate fields here
     try {
       buttonStatus.value = CallToActionButtonStatus.processing;
       await dummyDelayedFuture();
-      print(cityController.text);
       if (selectedCityId == null && cityController.text.isEmpty) {
         SnackbarService.showErrorSnackBar(
             title: 'لا توجد مدينة',
@@ -94,7 +95,6 @@ class AddAddressPageController extends GetxController {
       }
       dummyCities.add(City(id: 3, name: 'دمشق'));
       Get.back(result: true);
-    } catch (e) {
     } finally {
       buttonStatus.value = CallToActionButtonStatus.enabled;
     }

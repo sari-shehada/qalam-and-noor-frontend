@@ -1,22 +1,29 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+
+import 'package:kalam_noor/models/address/area.dart';
+
 import '../../../../../models/helpers/database_helper.dart';
 import '../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
 import '../../../../../tools/ui_tools/text_fields.dart';
-
-import '../../../../../dummy_data.dart';
-import '../../../../../models/address/city.dart';
 import '../../../../../tools/ui_tools/ui_tools.dart';
 
-class AddNewCityDialog extends StatelessWidget {
-  const AddNewCityDialog({super.key});
+class AddNewAreaDialog extends StatelessWidget {
+  const AddNewAreaDialog({
+    super.key,
+    required this.cityId,
+  });
 
+  final int cityId;
   @override
   Widget build(BuildContext context) {
-    AddNewCityController addNewCityController = Get.put(AddNewCityController());
+    AddNewAreaController addNewAreaController = Get.put(
+      AddNewAreaController(cityId: cityId),
+    );
     return Center(
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 40.w),
@@ -44,7 +51,7 @@ class AddNewCityDialog extends StatelessWidget {
                 ),
                 AddHorizontalSpacing(value: 20.w),
                 Text(
-                  'إضافة مدينة',
+                  'إضافة منطقة',
                   style: TextStyle(
                     fontSize: 30.sp,
                     color: Colors.black,
@@ -58,13 +65,13 @@ class AddNewCityDialog extends StatelessWidget {
             children: [
               AddVerticalSpacing(value: 30.h),
               HintedTextField(
-                hintText: 'اسم المدينة',
-                controller: addNewCityController.cityController,
+                hintText: 'اسم المنطقة',
+                controller: addNewAreaController.areaController,
               ),
               AddVerticalSpacing(value: 30.h),
               CallToActionButton(
-                onTap: () => addNewCityController.addCity(),
-                child: 'اضافة مدينة',
+                onTap: () => addNewAreaController.addArea(),
+                child: 'اضافة منطقة',
               ),
               AddVerticalSpacing(value: 20.h),
             ],
@@ -75,28 +82,33 @@ class AddNewCityDialog extends StatelessWidget {
   }
 }
 
-class AddNewCityController extends GetxController {
-  final TextEditingController cityController = TextEditingController();
-  Rx<CallToActionButtonStatus> buttonStatus =
+class AddNewAreaController extends GetxController {
+  final TextEditingController areaController = TextEditingController();
+  final Rx<CallToActionButtonStatus> buttonStatus =
       (CallToActionButtonStatus.enabled).obs;
 
+  final int cityId;
+  AddNewAreaController({
+    required this.cityId,
+  });
+
   bool validateFields() {
-    if (cityController.text.isEmpty) {
+    if (areaController.text.isEmpty) {
       SnackbarService.showErrorSnackBar(
-          title: 'اسم مدينة فارغ', message: 'الرجاء ملء حقل اسم المدينة');
+          title: 'اسم منطقة فارغ', message: 'الرجاء ملء حقل اسم المنطقة');
       return false;
     }
     return true;
   }
 
-  Future<void> addCity() async {
+  Future<void> addArea() async {
     try {
       buttonStatus.value = CallToActionButtonStatus.processing;
       if (validateFields() == false) {
         return;
       }
-      City city = City(id: (dummyCities.length + 1), name: cityController.text);
-      await DatabaseHelper.addCity(city);
+      Area area = Area(id: -1, name: areaController.text, cityId: cityId);
+      await DatabaseHelper.addNewArea(area);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CallToActionButtonStatus.enabled;

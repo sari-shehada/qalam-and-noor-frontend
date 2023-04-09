@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../area_details_page/controllers/area_details_controller.dart';
+import '../../../area_details_page/views/area_details_page.dart';
 
 import '../../../../../models/address/area.dart';
 import '../../../../../models/helpers/database_helper.dart';
@@ -26,7 +28,7 @@ class AreaCard extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFF393939).withOpacity(.06),
+            color: const Color(0xFF393939).withOpacity(.06),
             blurRadius: 60,
             offset: Offset(0.w, 30.h),
           ),
@@ -35,11 +37,12 @@ class AreaCard extends StatelessWidget {
       child: Material(
         borderRadius: BorderRadius.circular(14.r),
         child: InkWell(
-          //TODO:
-          // onTap: () =>
-          //     Get.to(const CityDetailsPage(), binding: BindingsBuilder(() {
-          //   Get.put(CityDetailsController(city: city));
-          // })),
+          onTap: () =>
+              Get.to(const AreaDetailsPage(), binding: BindingsBuilder(() {
+            Get.put(
+              AreaDetailsController(area: area),
+            );
+          })),
           borderRadius: BorderRadius.circular(14.r),
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -61,7 +64,7 @@ class AreaCard extends StatelessWidget {
                 CityStatsCard(
                   title: 'عدد العناوين',
                   count: DatabaseHelper.getAreaAddressesCount(area.id),
-                  color: Color(0xFFFA9746),
+                  color: const Color(0xFFFA9746),
                 ),
               ],
             ),

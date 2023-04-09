@@ -15,10 +15,11 @@ class AddressManagementController extends GetxController {
 
   Future<RxList<City>> getCitiesToDisplay() async {
     RxList<City> cities = <City>[].obs;
-    await DatabaseHelper.getAllCities()
-        .then((value) => value.forEach((element) {
-              cities.add(element);
-            }));
+    await DatabaseHelper.getAllCities().then((list) {
+      for (City city in list) {
+        cities.add(city);
+      }
+    });
     return cities;
   }
 
@@ -28,7 +29,6 @@ class AddressManagementController extends GetxController {
       barrierDismissible: true,
     );
     if (result == true) {
-      print('Refreshing Cities');
       cities.value = getCitiesToDisplay();
     }
   }
@@ -39,7 +39,6 @@ class AddressManagementController extends GetxController {
       barrierDismissible: true,
     );
     if (result == true) {
-      print('Refreshing Cities');
       cities.value = getCitiesToDisplay();
     }
   }

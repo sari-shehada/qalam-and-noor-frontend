@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/models/address/city.dart';
-import 'package:kalam_noor/pages/addresses_management/main_page/controllers/address_management_controller.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../models/address/city.dart';
+import '../controllers/address_management_controller.dart';
 
 import '../../../../tools/ui_tools/buttons.dart';
 import '../../../../tools/ui_tools/custom_appbar.dart';
@@ -47,13 +45,13 @@ class AddressesManagementPage extends StatelessWidget {
           ),
         ),
       ),
-      appBar: CustomAppBar(
+      appBar: const CustomAppBar(
         title: 'إدارة العناوين',
         iconData: FontAwesomeIcons.locationDot,
-        actionButton: CustomAppBarActionButton(
-          label: 'إضافة عنوان جديد',
-          onTap: () => addressManagementController.addAddress(),
-        ),
+        // actionButton: CustomAppBarActionButton(
+        //   label: 'إضافة عنوان جديد',
+        //   onTap: () => addressManagementController.addAddress(),
+        // ),
       ),
       body: SizedBox.expand(
         child: Obx(() {
@@ -61,18 +59,20 @@ class AddressesManagementPage extends StatelessWidget {
             future: addressManagementController.cities.value,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
               if (snapshot.hasError) {
-                return Center(
-                  child: Text('error loading addreses'),
+                //TODO: Change later
+                return const Center(
+                  child: Text('error loading addresses'),
                 );
               }
               if (snapshot.hasData) {
                 if (snapshot.data!.isEmpty) {
-                  return Center(
+                  //TODO: Change later
+                  return const Center(
                     child: Text('no addresses yet'),
                   );
                 } else {
@@ -98,7 +98,7 @@ class AddressesManagementPage extends StatelessWidget {
                   );
                 }
               } else {
-                return Center(
+                return const Center(
                   child: Text('no addresses yet'),
                 );
               }

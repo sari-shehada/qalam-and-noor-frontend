@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/models/agendas/mother.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
-import 'package:kalam_noor/tools/ui_tools/text_fields.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../configs/fonts.dart';
+import '../../../../../models/agendas/mother.dart';
+import '../../../../../tools/ui_tools/buttons.dart';
+import '../../../../../tools/ui_tools/text_fields.dart';
+import '../../../../../tools/ui_tools/ui_tools.dart';
 import '../../../../../configs/styles.dart';
 import '../../../../../models/enums.dart';
 import '../../../../../tools/dialogs_services/snack_bar_service.dart';
@@ -197,7 +197,7 @@ class _AddNewMotherState extends State<AddNewMother> {
                       ),
                       color: Colors.white,
                     ),
-                    child: Text("TODO: get some cool image"),
+                    child: const Text("TODO: get some cool image"),
                   ),
                 ],
               ),
@@ -246,9 +246,9 @@ class _AddNewMotherState extends State<AddNewMother> {
                                   ),
                                 )
                                 .toList(),
-                            onChanged: (Value) {
+                            onChanged: (value) {
                               setState(() {
-                                religion = Value!;
+                                religion = value!;
                               });
                             },
                           ),
@@ -395,7 +395,6 @@ class _AddNewMotherState extends State<AddNewMother> {
             Get.back(result: mother);
           }
         }
-      } catch (e) {
       } finally {
         setState(() {
           addButtonStatus = CallToActionButtonStatus.enabled;
@@ -435,6 +434,6 @@ class _AddNewMotherState extends State<AddNewMother> {
 }
 
 Future<bool> dummyAddMotherToDB(Mother mother) async {
-  await Future.delayed(Duration(seconds: 2));
+  await Future.delayed(const Duration(seconds: 2));
   return true;
 }

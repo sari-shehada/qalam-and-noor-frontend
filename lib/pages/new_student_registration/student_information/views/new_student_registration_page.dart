@@ -43,7 +43,7 @@ class NewStudentRegistrationPage extends StatelessWidget {
                             SizedBox(
                               width: 230.w,
                               child: CallToActionButton(
-                                  backgroundColor: Color(0xff255CB1),
+                                  backgroundColor: const Color(0xff255CB1),
                                   child: "اختر الصورة الشخصية للطالب",
                                   onTap: () {}),
                             ),

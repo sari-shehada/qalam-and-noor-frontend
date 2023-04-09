@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/loader/views/loader.dart';
+import 'pages/loader/views/loader.dart';
 
 import 'configs/project_themes.dart';
 import 'models/shared_prefs_helper.dart';

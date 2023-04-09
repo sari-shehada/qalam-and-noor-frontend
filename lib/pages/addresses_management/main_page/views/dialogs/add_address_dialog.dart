@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/dummy_data.dart';
-import 'package:kalam_noor/pages/addresses_management/main_page/controllers/add_address_page_controller.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../dummy_data.dart';
+import '../../controllers/add_address_page_controller.dart';
+import '../../../../../tools/ui_tools/ui_tools.dart';
 
 import '../../../../../tools/ui_tools/buttons.dart';
 import '../../../../../tools/ui_tools/drop_down_menu.dart';
@@ -60,7 +60,7 @@ class AddOrEditAddressDialog extends StatelessWidget {
           body: Obx(
             () {
               if (addAddressPageController.isLoading.value) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }

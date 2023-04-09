@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import '../../../controllers/account_controller.dart';
 
+import '../../../controllers/account_controller.dart';
 import '../../../models/agendas/employee.dart';
-import 'navigation_controller.dart';
 import '../../dashboard/models/dashboard_destination_card.dart';
+import 'navigation_controller.dart';
 
 class NavigationBindings extends Bindings {
   final List<DashboardDestinationCard> dashboardDestinations;

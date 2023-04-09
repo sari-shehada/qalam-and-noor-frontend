@@ -11,9 +11,9 @@ class LoaderController extends GetxController {
       NavigationController.toLoginPage();
       return;
     }
-    //TODO: Add gettings the job title as well as other info about the employee and navigating accordingly
+    //TODO: Add getting the job title as well as other info about the employee and navigating accordingly
 
-    //TODO: Refactor the idenity model
+    //TODO: Refactor the identity model
     Employee employee = await getEmployeeCredentials('11');
     NavigationController.toDashboard(employee);
     return;

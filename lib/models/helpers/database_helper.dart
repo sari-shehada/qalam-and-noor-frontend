@@ -1,6 +1,6 @@
-import 'package:kalam_noor/models/address/address.dart';
-import 'package:kalam_noor/models/address/area.dart';
-import 'package:kalam_noor/models/address/city.dart';
+import '../address/address.dart';
+import '../address/area.dart';
+import '../address/city.dart';
 
 import '../../dummy_data.dart';
 
@@ -10,7 +10,7 @@ abstract class DatabaseHelper {
   static Future<List<City>> getAllCities() async {
     //TODO: Change to an api call
     await Future.delayed(
-      Duration(
+      const Duration(
         milliseconds: 400,
       ),
     );
@@ -19,21 +19,21 @@ abstract class DatabaseHelper {
 
   static Future<City> addCity(City city) async {
     //TODO: Change to an api call
-    city = city.copyWith(id: dummyCities.length);
+    city = city.copyWith(id: dummyCities.length + 1);
     dummyCities.add(city);
     return city;
   }
 
   static Future<Area> addNewArea(Area area) async {
     //TODO: Change to an api call
-    area = area.copyWith(id: dummyAreas.length);
+    area = area.copyWith(id: dummyAreas.length + 1);
     dummyAreas.add(area);
     return area;
   }
 
   static Future<Address> addNewAddress(Address address) async {
     //TODO: Change to an api call
-    address = address.copyWith(id: dummyAddresses.length);
+    address = address.copyWith(id: dummyAddresses.length + 1);
     dummyAddresses.add(address);
     return address;
   }
@@ -41,11 +41,11 @@ abstract class DatabaseHelper {
   static Future<int> getCityAreasCount(int cityId) async {
     //TODO: Change to an api call
     int count = 0;
-    dummyAreas.forEach((element) {
+    for (Area element in dummyAreas) {
       if (element.cityId == cityId) {
         count++;
       }
-    });
+    }
     return count;
   }
 
@@ -53,36 +53,46 @@ abstract class DatabaseHelper {
     //TODO: Change to an api call
     int count = 0;
     List<Area> areasInCity = [];
-    dummyAreas.forEach((element) {
+    for (Area element in dummyAreas) {
       if (element.cityId == cityId) {
         areasInCity.add(element);
       }
-    });
-    areasInCity.forEach((area) {
+    }
+    for (Area area in areasInCity) {
       count +=
           dummyAddresses.where((address) => address.areaId == area.id).length;
-    });
+    }
     return count;
   }
 
   static Future<int> getAreaAddressesCount(int areaId) async {
     //TODO: Change to an api call
     int count = 0;
-    dummyAddresses.forEach((address) {
+    for (Address address in dummyAddresses) {
       if (address.areaId == areaId) {
         count++;
       }
-    });
+    }
     return count;
   }
 
   static Future<List<Area>> getAreasInCity({required int cityId}) async {
     List<Area> tempAreas = [];
-    dummyAreas.forEach((area) {
+    for (Area area in dummyAreas) {
       if (area.cityId == cityId) {
         tempAreas.add(area);
       }
-    });
+    }
     return tempAreas;
+  }
+
+  static Future<List<Address>> getAddressesInCity({required int areaId}) async {
+    List<Address> tempAddresses = [];
+    for (Address address in dummyAddresses) {
+      if (address.areaId == areaId) {
+        tempAddresses.add(address);
+      }
+    }
+    return tempAddresses;
   }
 }

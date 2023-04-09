@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/models/agendas/father.dart';
-import 'package:kalam_noor/models/enums.dart';
-import 'package:kalam_noor/pages/new_student_registration/family_information/father_information/views/widgets/father_civil_information.dart';
-import 'package:kalam_noor/pages/new_student_registration/family_information/father_information/views/widgets/father_full_name.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../configs/fonts.dart';
+import '../../../../../configs/styles.dart';
+import '../../../../../models/agendas/father.dart';
+import '../../../../../models/enums.dart';
+import 'widgets/father_civil_information.dart';
+import 'widgets/father_full_name.dart';
+import '../../../../../tools/dialogs_services/snack_bar_service.dart';
+import '../../../../../tools/ui_tools/buttons.dart';
+import '../../../../../tools/ui_tools/ui_tools.dart';
 
 class AddNewFatherPage extends StatefulWidget {
   const AddNewFatherPage({super.key, this.father});
@@ -138,9 +138,9 @@ class _AddNewFatherPageState extends State<AddNewFatherPage> {
                                         ),
                                       )
                                       .toList(),
-                                  onChanged: (Value) {
+                                  onChanged: (value) {
                                     setState(() {
-                                      religion = Value!;
+                                      religion = value!;
                                     });
                                   },
                                 ),
@@ -273,7 +273,6 @@ class _AddNewFatherPageState extends State<AddNewFatherPage> {
             Get.back(result: father);
           }
         }
-      } catch (e) {
       } finally {
         setState(() {
           addButtonStatus = CallToActionButtonStatus.enabled;
@@ -315,6 +314,6 @@ class _AddNewFatherPageState extends State<AddNewFatherPage> {
 }
 
 Future<bool> dummyAddFatherToDB(Father father) async {
-  await Future.delayed(Duration(seconds: 2));
+  await Future.delayed(const Duration(seconds: 2));
   return true;
 }

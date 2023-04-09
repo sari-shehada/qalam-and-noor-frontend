@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../tools/ui_tools/buttons.dart';
 import '../../../tools/ui_tools/custom_appbar.dart';
-import '../../../tools/ui_tools/ui_tools.dart';
 
 class SchoolYearManagementPage extends StatelessWidget {
   const SchoolYearManagementPage({super.key});
@@ -27,7 +25,7 @@ class SchoolYearManagementPage extends StatelessWidget {
               start: 60.w,
               end: 60.w,
             ),
-            child: Center(
+            child: const Center(
               child: Text('sss'),
             )),
       ),
