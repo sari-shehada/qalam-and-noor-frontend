@@ -2,6 +2,7 @@ import 'models/address/address.dart';
 import 'models/address/area.dart';
 
 import 'models/address/city.dart';
+import 'models/educational/class.dart';
 
 List<City> dummyCities = [
   City(
@@ -91,4 +92,16 @@ List<Address> dummyAddresses = [
     details: 'تفاصيل العنوان',
     areaId: 4,
   ),
+];
+
+List<Class> dummyClasses = [
+  Class(id: 1, name: 'الصف الأول'),
+  Class(id: 2, name: 'الصف الثاني'),
+  Class(id: 3, name: 'الصف الثالث'),
+  Class(id: 4, name: 'الصف الرابع'),
+  Class(id: 5, name: 'الصف الخامس'),
+  Class(id: 6, name: 'الصف السادس'),
+  Class(id: 7, name: 'الصف السابع'),
+  Class(id: 8, name: 'الصف الثامن'),
+  Class(id: 9, name: 'الصف التاسع'),
 ];

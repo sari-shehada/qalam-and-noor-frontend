@@ -1,3 +1,5 @@
+import 'package:kalam_noor/models/educational/class.dart';
+
 import '../address/address.dart';
 import '../address/area.dart';
 import '../address/city.dart';
@@ -6,6 +8,7 @@ import '../../dummy_data.dart';
 
 abstract class DatabaseHelper {
   //Addresses
+
   //Cities
   static Future<List<City>> getAllCities() async {
     //TODO: Change to an api call
@@ -24,18 +27,12 @@ abstract class DatabaseHelper {
     return city;
   }
 
+  //Areas
   static Future<Area> addNewArea(Area area) async {
     //TODO: Change to an api call
     area = area.copyWith(id: dummyAreas.length + 1);
     dummyAreas.add(area);
     return area;
-  }
-
-  static Future<Address> addNewAddress(Address address) async {
-    //TODO: Change to an api call
-    address = address.copyWith(id: dummyAddresses.length + 1);
-    dummyAddresses.add(address);
-    return address;
   }
 
   static Future<int> getCityAreasCount(int cityId) async {
@@ -47,6 +44,24 @@ abstract class DatabaseHelper {
       }
     }
     return count;
+  }
+
+  static Future<List<Area>> getAreasInCity({required int cityId}) async {
+    List<Area> tempAreas = [];
+    for (Area area in dummyAreas) {
+      if (area.cityId == cityId) {
+        tempAreas.add(area);
+      }
+    }
+    return tempAreas;
+  }
+
+  //Addresses
+  static Future<Address> addNewAddress(Address address) async {
+    //TODO: Change to an api call
+    address = address.copyWith(id: dummyAddresses.length + 1);
+    dummyAddresses.add(address);
+    return address;
   }
 
   static Future<int> getCityAddressesCount(int cityId) async {
@@ -76,16 +91,6 @@ abstract class DatabaseHelper {
     return count;
   }
 
-  static Future<List<Area>> getAreasInCity({required int cityId}) async {
-    List<Area> tempAreas = [];
-    for (Area area in dummyAreas) {
-      if (area.cityId == cityId) {
-        tempAreas.add(area);
-      }
-    }
-    return tempAreas;
-  }
-
   static Future<List<Address>> getAddressesInCity({required int areaId}) async {
     List<Address> tempAddresses = [];
     for (Address address in dummyAddresses) {
@@ -94,5 +99,10 @@ abstract class DatabaseHelper {
       }
     }
     return tempAddresses;
+  }
+
+  //School Classes
+  static Future<List<Class>> getCurrentSchoolClasses() async {
+    return dummyClasses;
   }
 }

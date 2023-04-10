@@ -17,6 +17,7 @@ class CallToActionButton extends StatelessWidget {
     this.buttonStatus,
     //TODO:
     this.loadingColor = Colors.white,
+    this.useShadow = true,
     required this.child,
   });
 
@@ -28,6 +29,7 @@ class CallToActionButton extends StatelessWidget {
   final Rx<CallToActionButtonStatus>? buttonStatus;
   final Color loadingColor;
   final dynamic child;
+  final bool useShadow;
   @override
   Widget build(BuildContext context) {
     if (buttonStatus == null) {
@@ -36,13 +38,15 @@ class CallToActionButton extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0.w, 4.h),
-              blurRadius: 12.r,
-              color: Colors.black.withOpacity(.08),
-            ),
-          ],
+          boxShadow: useShadow == true
+              ? [
+                  BoxShadow(
+                    offset: Offset(0.w, 4.h),
+                    blurRadius: 12.r,
+                    color: Colors.black.withOpacity(.08),
+                  ),
+                ]
+              : [],
         ),
         child: Material(
           color: backgroundColor ?? Get.theme.colorScheme.primary,

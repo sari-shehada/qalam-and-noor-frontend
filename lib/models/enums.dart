@@ -61,6 +61,8 @@ enum ExamType {
   homework,
   activity,
   exam,
+  firstExam,
+  secondExam,
   finalExam,
 }
 
