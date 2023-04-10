@@ -26,6 +26,7 @@ class WebApp extends StatelessWidget {
       child: const LoaderPage(),
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
+          title: 'Qalam & Noor',
           debugShowCheckedModeBanner: false,
           initialBinding: LoaderBindings(),
           locale: const Locale('ar'),
