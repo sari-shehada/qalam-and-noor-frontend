@@ -9,7 +9,7 @@ class Employee {
   final String lastName;
   final String fatherName;
   final String motherName;
-  final bool isMale; //TODO: Add to ERD
+  final bool isMale;
   DateTime dateOfBirth;
   String phoneNumber;
   DateTime startDate;
