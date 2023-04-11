@@ -1,16 +1,16 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../dashboard/models/dashboard_destination_card.dart';
+import '../../dashboard/models/navigation_rail_destination_card.dart';
 
-class NavigationController extends GetxController {
+class NavigationPageController extends GetxController {
   RxDouble railWidth =
       DashboardControllerConstants.navigationRailCollapsedWidth.obs;
   RxInt selectedIndex = (0).obs;
   RxDouble elementsOpacity = 0.0.obs;
-  final List<DashboardDestinationCard> dashboardDestinations;
+  final List<NavigationRailDestinationCard> dashboardDestinations;
 
-  NavigationController({required this.dashboardDestinations});
+  NavigationPageController({required this.dashboardDestinations});
 
   void expandContainer() {
     railWidth.value = DashboardControllerConstants.navigationRailExpandedWidth;

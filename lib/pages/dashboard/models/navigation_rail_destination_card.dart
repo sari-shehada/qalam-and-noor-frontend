@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DashboardDestinationCard {
+class NavigationRailDestinationCard {
   final String title;
   final IconData iconData;
   final Widget destination;
 
-  DashboardDestinationCard({
+  NavigationRailDestinationCard({
     required this.title,
     required this.iconData,
     required this.destination,

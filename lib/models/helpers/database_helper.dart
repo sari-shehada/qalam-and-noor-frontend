@@ -5,6 +5,9 @@ import '../address/area.dart';
 import '../address/city.dart';
 
 import '../../dummy_data.dart';
+import '../medical/illness.dart';
+import '../medical/psychological_status.dart';
+import '../medical/vaccine.dart';
 
 abstract class DatabaseHelper {
   //Addresses
@@ -104,5 +107,21 @@ abstract class DatabaseHelper {
   //School Classes
   static Future<List<Class>> getCurrentSchoolClasses() async {
     return dummyClasses;
+  }
+
+  //Psychological Matters
+  static Future<List<PsychologicalStatus>> getPsychologicalStatuses() async {
+    return dummyPsychologicalStatuses;
+  }
+
+  //Vaccines
+  static Future<List<Vaccine>> getVaccines() async {
+    return dummyVaccines;
+    // return [];
+  }
+
+  //Illnesses
+  static Future<List<Illness>> getIllnesses() async {
+    return dummyIllnesses;
   }
 }

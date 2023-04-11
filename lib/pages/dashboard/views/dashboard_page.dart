@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:kalam_noor/pages/settings/views/settings_page.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+
+import '../../../controllers/account_controller.dart';
+import '../controllers/dashboard_controller.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // DashboardController dashboardController = Get.find();
-    // AccountController accountController = Get.find();
+    DashboardController controller = Get.find();
+    AccountController accountController = Get.find();
     return Scaffold(
       backgroundColor: const Color(0xFFF5F6F8),
       body: SizedBox.expand(
@@ -19,10 +24,14 @@ class DashboardPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //KEY: Top Search Fields
-
               Row(
                 children: [
-                  SizedBox(
+                  Container(
+                    height: 90.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100.r),
+                      color: const Color(0xFFE1E5EA),
+                    ),
                     width: 1120.w,
                     child: TextField(
                       style: TextStyle(
@@ -33,7 +42,7 @@ class DashboardPage extends StatelessWidget {
                         fillColor: const Color(0xFFE1E5EA),
                         filled: true,
                         contentPadding: EdgeInsets.symmetric(
-                          vertical: 20.h,
+                          vertical: 30.h,
                           horizontal: 80.w,
                         ),
                         border: OutlineInputBorder(
@@ -59,12 +68,57 @@ class DashboardPage extends StatelessWidget {
                       // textInputAction: TextInputAction.search,
                     ),
                   ),
+                  AddHorizontalSpacing(value: 50.w),
                   Container(
                     width: 520.w,
                     height: 90.h,
+                    padding: EdgeInsetsDirectional.only(
+                      start: 20.w,
+                      end: 30.w,
+                    ),
                     decoration: BoxDecoration(
-                      color: Color(0xFFE4E4E4),
+                      color: const Color(0xFFE1E5EA),
                       borderRadius: BorderRadius.circular(100.r),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 68.w,
+                          width: 68.w,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                          ),
+                          clipBehavior: Clip.hardEdge,
+                          child: Image.asset(
+                            accountController.employee.getAvatarImage(),
+                            height: 55.w,
+                            width: 55.w,
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+                        AddHorizontalSpacing(value: 30.w),
+                        Text(
+                          '${accountController.employee.firstName} ${accountController.employee.lastName}',
+                          style: TextStyle(
+                            fontSize: 27.sp,
+                            color: Color(0xFF5D636D),
+                          ),
+                        ),
+                        const Spacer(),
+                        InkWell(
+                          //TODO:
+                          onTap: () => Get.to(
+                            () => const SettingsPage(),
+                          ),
+                          child: FaIcon(
+                            FontAwesomeIcons.gear,
+                            size: 30.sp,
+                            color: Color(0xFF5D636D),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ],
@@ -90,38 +144,78 @@ class DashboardPage extends StatelessWidget {
                       AddVerticalSpacing(value: 40.h),
                       Row(
                         children: [
-                          SizedBox(
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    const _DashboardContainer(
-                                      width: 373,
-                                      height: 398,
-                                    ),
-                                    AddHorizontalSpacing(value: 35.w),
-                                    Column(
-                                      children: [
-                                        const _DashboardContainer(
-                                          width: 334,
-                                          height: 184,
+                          Column(
+                            children: [
+                              Row(
+                                children: [
+                                  const _DashboardContainer(
+                                    width: 373,
+                                    height: 398,
+                                  ),
+                                  AddHorizontalSpacing(value: 35.w),
+                                  Column(
+                                    children: [
+                                      _DashboardContainer(
+                                        width: 334,
+                                        height: 184,
+                                        child: Material(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(20.r),
+                                          ),
+                                          color: Colors.transparent,
+                                          child: InkWell(
+                                            hoverColor: Get.theme.colorScheme
+                                                .primaryContainer,
+                                            onTap: () =>
+                                                controller.registerNewStudent(),
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(20.r),
+                                            ),
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: 30.h, bottom: 30.h),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  FaIcon(
+                                                    FontAwesomeIcons.userPlus,
+                                                    size: 50.h,
+                                                    color: Get.theme.colorScheme
+                                                        .primary,
+                                                  ),
+                                                  Text(
+                                                    'تسجيل طالب جديد',
+                                                    style: TextStyle(
+                                                      fontSize: 29.sp,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Get.theme
+                                                          .colorScheme.primary,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ),
                                         ),
-                                        AddVerticalSpacing(value: 30.h),
-                                        const _DashboardContainer(
-                                          width: 334,
-                                          height: 184,
-                                        ),
-                                      ],
-                                    ),
-                                    AddHorizontalSpacing(value: 35.w),
-                                    const _DashboardContainer(
-                                      width: 511,
-                                      height: 398,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                      ),
+                                      AddVerticalSpacing(value: 30.h),
+                                      const _DashboardContainer(
+                                        width: 334,
+                                        height: 184,
+                                      ),
+                                    ],
+                                  ),
+                                  AddHorizontalSpacing(value: 35.w),
+                                  const _DashboardContainer(
+                                    width: 511,
+                                    height: 398,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),

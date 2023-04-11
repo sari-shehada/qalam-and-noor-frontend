@@ -1,23 +1,24 @@
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/dashboard/controllers/dashboard_controller.dart';
 
 import '../../../controllers/account_controller.dart';
 import '../../../models/agendas/employee.dart';
-import '../../dashboard/models/dashboard_destination_card.dart';
-import 'navigation_controller.dart';
+import '../../dashboard/models/navigation_rail_destination_card.dart';
+import 'navigation_page_controller.dart';
 
 class NavigationBindings extends Bindings {
-  final List<DashboardDestinationCard> dashboardDestinations;
+  final List<NavigationRailDestinationCard> railDestinations;
   final Employee employee;
   @override
   void dependencies() {
     Get.put(
-      NavigationController(dashboardDestinations: dashboardDestinations),
+      NavigationPageController(dashboardDestinations: railDestinations),
     );
     Get.put(
       AccountController(employee: employee),
     );
+    Get.put(DashboardController());
   }
 
-  NavigationBindings(
-      {required this.employee, required this.dashboardDestinations});
+  NavigationBindings({required this.employee, required this.railDestinations});
 }

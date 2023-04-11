@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../../configs/project_themes.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
-import '../../controllers/navigation_controller.dart';
+import '../../controllers/navigation_page_controller.dart';
 
 class NavigationRailCard extends StatelessWidget {
   const NavigationRailCard({super.key, required this.index});
@@ -13,7 +13,7 @@ class NavigationRailCard extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    NavigationController dashboardController = Get.find();
+    NavigationPageController dashboardController = Get.find();
     return Obx(
       () => AnimatedContainer(
         clipBehavior: Clip.hardEdge,
@@ -49,7 +49,7 @@ class NavigationRailCard extends StatelessWidget {
                             .dashboardDestinations[index].iconData,
                         color: dashboardController.selectedIndex.value == index
                             ? lightColorScheme.primary
-                            : lightColorScheme.inverseSurface,
+                            : Color(0xFF757D8A),
                         size: 33.sp,
                       ),
                     ),

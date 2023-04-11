@@ -3,6 +3,9 @@ import 'models/address/area.dart';
 
 import 'models/address/city.dart';
 import 'models/educational/class.dart';
+import 'models/medical/illness.dart';
+import 'models/medical/psychological_status.dart';
+import 'models/medical/vaccine.dart';
 
 List<City> dummyCities = [
   City(
@@ -104,4 +107,25 @@ List<Class> dummyClasses = [
   Class(id: 7, name: 'الصف السابع'),
   Class(id: 8, name: 'الصف الثامن'),
   Class(id: 9, name: 'الصف التاسع'),
+];
+
+List<PsychologicalStatus> dummyPsychologicalStatuses = [
+  PsychologicalStatus(id: 1, name: 'عصبي'),
+  PsychologicalStatus(id: 2, name: 'مزاجي'),
+  PsychologicalStatus(id: 3, name: 'مشاغب'),
+  PsychologicalStatus(id: 4, name: 'ذكي'),
+  PsychologicalStatus(id: 5, name: 'عدائي'),
+  PsychologicalStatus(id: 6, name: 'مسالم'),
+];
+
+List<Vaccine> dummyVaccines = [
+  Vaccine(id: 1, name: 'شلل الاطفال'),
+  Vaccine(id: 2, name: 'كورنا جرعة اولى'),
+  Vaccine(id: 3, name: 'كورنا جرعة ثانية'),
+  Vaccine(id: 4, name: 'كورنا جرعة داعمة'),
+];
+
+List<Illness> dummyIllnesses = [
+  Illness(id: 1, name: 'ربو'),
+  Illness(id: 2, name: 'فقر دم'),
 ];
