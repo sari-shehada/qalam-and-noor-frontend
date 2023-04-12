@@ -14,21 +14,24 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     required this.iconData,
     this.backButtonEnabled = false,
     this.actionButton,
+    this.appBarBoxDecoration,
   });
 
   final String title;
   final IconData iconData;
   final bool backButtonEnabled;
   final CustomAppBarActionButton? actionButton;
+  final BoxDecoration? appBarBoxDecoration;
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
       preferredSize: preferredSize,
       child: Container(
         padding: EdgeInsetsDirectional.only(
-          start: 60.w,
+          start: 70.w,
           end: 60.w,
         ),
+        decoration: appBarBoxDecoration,
         alignment: Alignment.center,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,14 +48,14 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                 : const SizedBox.shrink(),
             FaIcon(
               iconData,
-              size: 53.sp,
+              size: 42.sp,
               color: Colors.black,
             ),
-            AddHorizontalSpacing(value: 35.w),
+            AddHorizontalSpacing(value: 30.w),
             Text(
               title,
               style: TextStyle(
-                fontSize: 34.sp,
+                fontSize: 25.sp,
                 color: Colors.black,
               ),
             ),
@@ -93,7 +96,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(double.infinity, 150.h);
+  Size get preferredSize => Size(double.infinity, 100.h);
 }
 
 class CustomAppBarActionButton {

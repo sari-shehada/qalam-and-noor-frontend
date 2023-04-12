@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/new_student_registration/student_information/views/new_student_registration_page.dart';
+import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
+import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
 import '../../../../models/address/city.dart';
+import '../../city_details_page/controllers/city_details_controller.dart';
+import '../../city_details_page/views/city_details_page.dart';
 import '../controllers/address_management_controller.dart';
 
 import '../../../../tools/ui_tools/buttons.dart';
@@ -17,7 +23,7 @@ class AddressesManagementPage extends StatelessWidget {
     AddressManagementController addressManagementController = Get.put(
       AddressManagementController(),
     );
-    return Scaffold(
+    return CustomScaffold(
       floatingActionButton: CallToActionButton(
         onTap: () => addressManagementController.addNewCity(),
         height: 74.h,
@@ -48,12 +54,16 @@ class AddressesManagementPage extends StatelessWidget {
       appBar: const CustomAppBar(
         title: 'إدارة العناوين',
         iconData: FontAwesomeIcons.locationDot,
-        // actionButton: CustomAppBarActionButton(
-        //   label: 'إضافة عنوان جديد',
-        //   onTap: () => addressManagementController.addAddress(),
-        // ),
+        appBarBoxDecoration: BoxDecoration(
+          color: Colors.white,
+        ),
       ),
-      body: SizedBox.expand(
+      bodyPadding: EdgeInsets.symmetric(horizontal: 45.w, vertical: 20.h),
+      body: LabeledWidget(
+        label: 'المدن الحالية',
+        labelTextStyle: TextStyle(
+          fontSize: 25.sp,
+        ),
         child: Obx(() {
           return FutureBuilder<RxList<City>>(
             future: addressManagementController.cities.value,
@@ -72,28 +82,25 @@ class AddressesManagementPage extends StatelessWidget {
               if (snapshot.hasData) {
                 if (snapshot.data!.isEmpty) {
                   //TODO: Change later
-                  return const Center(
-                    child: Text('no addresses yet'),
+                  return const EmptyItemWidget(
+                    itemName: 'مدن',
+                    iconData: FontAwesomeIcons.locationArrow,
                   );
                 } else {
                   RxList<City> cities = snapshot.data as RxList<City>;
-                  return GridView.builder(
-                    padding: EdgeInsetsDirectional.only(
-                      top: 20.h,
-                      start: 60.w,
-                      end: 60.w,
-                      bottom: 120.h,
-                    ),
-                    itemCount: cities.length,
-                    shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      mainAxisExtent: 250.h,
-                      crossAxisSpacing: 20.w,
-                      mainAxisSpacing: 20.h,
-                    ),
-                    itemBuilder: (context, index) => CityCard(
-                      city: cities[index],
+                  return Expanded(
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisExtent: 90.h,
+                        crossAxisSpacing: 10.w,
+                      ),
+                      padding: EdgeInsetsDirectional.only(top: 20.h),
+                      itemCount: cities.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return CityCard(city: cities[index]);
+                      },
                     ),
                   );
                 }
