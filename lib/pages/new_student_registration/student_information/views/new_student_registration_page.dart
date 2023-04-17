@@ -577,16 +577,18 @@ class LabeledWidget extends StatelessWidget {
     this.spacing = 20,
     required this.child,
     this.labelTextStyle,
+    this.mainAxisSize = MainAxisSize.max,
   });
 
   final String label;
   final double spacing;
   final Widget child;
   final TextStyle? labelTextStyle;
-
+  final MainAxisSize mainAxisSize;
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: mainAxisSize,
       children: [
         Align(
           alignment: Alignment.centerRight,

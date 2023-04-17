@@ -1,5 +1,6 @@
 import 'package:kalam_noor/models/educational/class.dart';
 
+import '../../pages/addresses_management/main_page/controllers/addresses_management_stats_controller.dart';
 import '../address/address.dart';
 import '../address/area.dart';
 import '../address/city.dart';
@@ -21,6 +22,76 @@ abstract class DatabaseHelper {
       ),
     );
     return dummyCities;
+  }
+
+  static Future<List<CityToDescendentCount>> getCitiesToAreasCount() async {
+    List<City> cities = await getAllCities();
+    List<CityToDescendentCount> citiesToAreasCount = [];
+    for (City city in cities) {
+      int areasCount = await getCityAreasCount(city.id);
+      citiesToAreasCount.add(
+        CityToDescendentCount(city: city, descendentCount: areasCount),
+      );
+    }
+    final List<CityToDescendentCount> statsList = [];
+    citiesToAreasCount.sort(
+      (a, b) => b.descendentCount.compareTo(a.descendentCount),
+    );
+
+    int pieChartItemsToDisplay = 5;
+    int othersCount = 0;
+    for (int i = 0; i < citiesToAreasCount.length; i++) {
+      if (i < pieChartItemsToDisplay) {
+        statsList.add(citiesToAreasCount[i]);
+      } else {
+        othersCount += statsList[i].descendentCount;
+      }
+    }
+    if (statsList.length > pieChartItemsToDisplay) {
+      statsList.add(CityToDescendentCount(
+          city: City(id: -1, name: 'مدن أخرى'), descendentCount: othersCount));
+    }
+    return statsList;
+  }
+
+  static Future<List<CityToDescendentCount>> getCitiesToAddressesCount() async {
+    List<City> cities = await getAllCities();
+    List<CityToDescendentCount> citiesToAddressesCount = [];
+    for (City city in cities) {
+      int addressesCount = await getCityAddressesCount(cityId: city.id);
+      citiesToAddressesCount.add(
+        CityToDescendentCount(city: city, descendentCount: addressesCount),
+      );
+    }
+    final List<CityToDescendentCount> statsList = [];
+    citiesToAddressesCount.sort(
+      (a, b) => b.descendentCount.compareTo(a.descendentCount),
+    );
+
+    int pieChartItemsToDisplay = 5;
+    int othersCount = 0;
+    for (int i = 0; i < citiesToAddressesCount.length; i++) {
+      if (i < pieChartItemsToDisplay) {
+        statsList.add(citiesToAddressesCount[i]);
+      } else {
+        othersCount += statsList[i].descendentCount;
+      }
+    }
+    if (statsList.length > pieChartItemsToDisplay) {
+      statsList.add(CityToDescendentCount(
+          city: City(id: -1, name: 'مدن أخرى'), descendentCount: othersCount));
+    }
+    return statsList;
+  }
+
+  static Future<int> getCitiesCount() async {
+    //TODO: Change to an api call
+    await Future.delayed(
+      const Duration(
+        milliseconds: 400,
+      ),
+    );
+    return dummyCities.length;
   }
 
   static Future<City> addCity(City city) async {
@@ -67,6 +138,16 @@ abstract class DatabaseHelper {
     return count;
   }
 
+  static Future<int> getAreasCount() async {
+    //TODO: Change to an api call
+    await Future.delayed(
+      const Duration(
+        milliseconds: 400,
+      ),
+    );
+    return dummyAreas.length;
+  }
+
   static Future<List<Area>> getAreasInCity({required int cityId}) async {
     List<Area> tempAreas = [];
     for (Area area in dummyAreas) {
@@ -85,7 +166,17 @@ abstract class DatabaseHelper {
     return address;
   }
 
-  static Future<int> getCityAddressesCount(int cityId) async {
+  static Future<Address> updateAddressById({
+    required Address address,
+  }) async {
+    //TODO: Change to an api call
+    dummyAddresses[dummyAddresses.indexOf(
+            dummyAddresses.firstWhere((element) => element.id == address.id))] =
+        address;
+    return address;
+  }
+
+  static Future<int> getCityAddressesCount({required int cityId}) async {
     //TODO: Change to an api call
     int count = 0;
     List<Area> areasInCity = [];
@@ -112,7 +203,17 @@ abstract class DatabaseHelper {
     return count;
   }
 
-  static Future<List<Address>> getAddressesInCity({required int areaId}) async {
+  static Future<int> getAddressesCount() async {
+    //TODO: Change to an api call
+    await Future.delayed(
+      const Duration(
+        milliseconds: 400,
+      ),
+    );
+    return dummyAddresses.length;
+  }
+
+  static Future<List<Address>> getAddressesInArea({required int areaId}) async {
     List<Address> tempAddresses = [];
     for (Address address in dummyAddresses) {
       if (address.areaId == areaId) {

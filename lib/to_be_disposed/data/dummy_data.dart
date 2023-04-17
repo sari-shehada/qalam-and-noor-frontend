@@ -15,7 +15,11 @@ List<City> dummyCities = [
   City(
     id: 2,
     name: 'دير عطية',
-  )
+  ),
+  City(
+    id: 3,
+    name: 'دمشق',
+  ),
 ];
 
 List<Area> dummyAreas = [
@@ -38,7 +42,27 @@ List<Area> dummyAreas = [
     id: 4,
     name: 'الجمعيات القديمة',
     cityId: 2,
-  )
+  ),
+  Area(
+    id: 5,
+    name: 'المزة',
+    cityId: 3,
+  ),
+  Area(
+    id: 6,
+    name: 'المهاجرين',
+    cityId: 3,
+  ),
+  Area(
+    id: 7,
+    name: 'الشعلان',
+    cityId: 3,
+  ),
+  Area(
+    id: 8,
+    name: 'المزرعة',
+    cityId: 3,
+  ),
 ];
 
 List<Address> dummyAddresses = [

@@ -3,6 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../../../../models/address/address.dart';
+import '../../../../tools/ui_tools/custom_drop_down_menu.dart';
+import '../../../../tools/ui_tools/ui_tools.dart';
+import '../../main_page/controllers/address_management_controller.dart';
 import '../controllers/area_details_controller.dart';
 
 import '../../../../tools/ui_tools/buttons.dart';
@@ -14,6 +17,9 @@ class AreaDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AreaDetailsController controller = Get.find();
+    final ThemeData themeData = Get.theme;
+    final ColorScheme colorScheme = themeData.colorScheme;
+    final TextTheme textTheme = themeData.textTheme;
     return Scaffold(
       floatingActionButton: CustomFilledButton(
         onTap: () => controller.addNewAddress(),
@@ -46,6 +52,27 @@ class AreaDetailsPage extends StatelessWidget {
         title: controller.area.name,
         iconData: FontAwesomeIcons.locationDot,
         backButtonEnabled: true,
+        actionButton: Row(
+          children: [
+            Text(
+              'ترتيب حسب:',
+              style: textTheme.titleLarge,
+            ),
+            AddHorizontalSpacing(value: 25.w),
+            CustomDropDownButton<CitiesSortingOption>(
+              dropdownColor: colorScheme.primaryContainer,
+              textStyle: textTheme.titleMedium,
+              backgroundColor: colorScheme.primaryContainer,
+              value: controller.currentSortingOption,
+              items: CitiesSortingOption.values
+                  .map((e) => DropdownMenuItem<CitiesSortingOption>(
+                      value: e, child: Text(citiesSortingOptionsAsString[e]!)))
+                  .toList(),
+              onChanged: (CitiesSortingOption? value) =>
+                  controller.changeSortingOption(value),
+            ),
+          ],
+        ),
       ),
       body: Padding(
         padding: EdgeInsetsDirectional.only(
@@ -113,7 +140,8 @@ class AreaDetailsPage extends StatelessWidget {
                                   )
                                 : null,
                             trailing: IconButton(
-                              onPressed: () {},
+                              onPressed: () =>
+                                  controller.updateAddressInfo(address),
                               icon: const Icon(
                                 Icons.edit,
                               ),

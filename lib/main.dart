@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/to_be_disposed/views/test_page.dart';
 import 'pages/loader/views/loader.dart';
 
 import 'configs/project_themes.dart';
@@ -23,6 +24,7 @@ class WebApp extends StatelessWidget {
         1920,
         1080,
       ),
+      // child: const TestPage(),
       child: const LoaderPage(),
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(

@@ -1,17 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-
 import '../../../../../tools/ui_tools/buttons.dart';
 import '../../../../../tools/ui_tools/text_fields.dart';
 import '../../../../../tools/ui_tools/ui_tools.dart';
 import '../../../../new_student_registration/student_information/views/new_student_registration_page.dart';
-import '../../controllers/dialog_controllers/add_or_edit_area_controller.dart';
+import '../../controllers/dialog_controllers/add_or_edit_address_dialog_controller.dart';
 
-class AddOrEditAreaDialog extends StatelessWidget {
-  const AddOrEditAreaDialog({
+class AddOrEditAddressDialog extends StatelessWidget {
+  const AddOrEditAddressDialog({
     super.key,
     required this.argument,
   });
@@ -22,8 +20,8 @@ class AddOrEditAreaDialog extends StatelessWidget {
     final ThemeData themeData = Get.theme;
     final ColorScheme colorScheme = themeData.colorScheme;
     final TextTheme textTheme = themeData.textTheme;
-    AddOrEditAreaController controller = Get.put(
-      AddOrEditAreaController(argument: argument),
+    AddOrEditAddressDialogController controller = Get.put(
+      AddOrEditAddressDialogController(argument: argument),
     );
     return Center(
       child: Material(
@@ -42,17 +40,25 @@ class AddOrEditAreaDialog extends StatelessWidget {
               Obx(() {
                 return Text(
                   controller.isEditMode.value == false
-                      ? 'إضافة حي'
-                      : 'تعديل معلومات الحي',
+                      ? 'إضافة عنوان'
+                      : 'تعديل معلومات العنوان',
                   style: textTheme.headlineMedium,
                 );
               }),
-              AddVerticalSpacing(value: 40.h),
+              AddVerticalSpacing(value: 35.h),
               LabeledWidget(
-                label: 'اسم الحي',
+                label: 'اسم العنوان',
                 child: HintedTextField(
                   hintText: '',
-                  controller: controller.areaController,
+                  controller: controller.addressController,
+                ),
+              ),
+              AddVerticalSpacing(value: 20.h),
+              LabeledWidget(
+                label: 'تفاصيل إضافية (اختياري)',
+                child: HintedTextField(
+                  hintText: '',
+                  controller: controller.detailsController,
                 ),
               ),
               AddVerticalSpacing(value: 30.h),
@@ -71,12 +77,12 @@ class AddOrEditAreaDialog extends StatelessWidget {
                       () => controller.isEditMode.value == false
                           ? CustomFilledButton(
                               height: 50.h,
-                              onTap: () => controller.addArea(),
+                              onTap: () => controller.addAddress(),
                               child: 'اضافة',
                             )
                           : CustomFilledButton(
                               height: 50.h,
-                              onTap: () => controller.updateAreaInfo(),
+                              onTap: () => controller.updateAddressInfo(),
                               child: 'إجراء التعديل',
                             ),
                     ),

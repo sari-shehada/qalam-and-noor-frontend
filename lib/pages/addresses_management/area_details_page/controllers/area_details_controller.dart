@@ -3,33 +3,71 @@ import 'package:get/get.dart';
 
 import 'package:kalam_noor/models/address/address.dart';
 import 'package:kalam_noor/models/address/area.dart';
-import 'package:kalam_noor/pages/addresses_management/area_details_page/views/widgets/add_new_address_dialog.dart';
+import 'package:kalam_noor/pages/addresses_management/area_details_page/views/widgets/add_or_edit_address_dialog.dart';
 
 import '../../../../models/helpers/database_helper.dart';
+import '../../main_page/controllers/address_management_controller.dart';
 
 class AreaDetailsController extends GetxController {
   final Area area;
   late Rx<Future<List<Address>>> addresses;
+  Rx<CitiesSortingOption> currentSortingOption = CitiesSortingOption.none.obs;
 
   AreaDetailsController({
     required this.area,
   }) {
-    addresses = getAddressesInCity().obs;
+    addresses = getAddressesInArea().obs;
   }
 
-  Future<List<Address>> getAddressesInCity() async {
-    return await DatabaseHelper.getAddressesInCity(areaId: area.id);
+  Future<List<Address>> getAddressesInArea() async {
+    List<Address> newAddresses =
+        await DatabaseHelper.getAddressesInArea(areaId: area.id);
+    switch (currentSortingOption.value) {
+      case CitiesSortingOption.none:
+        return newAddresses;
+      case CitiesSortingOption.byNameAsc:
+        {
+          newAddresses.sort(
+            (a, b) => a.name.compareTo(b.name),
+          );
+          return newAddresses;
+        }
+      case CitiesSortingOption.byNameDesc:
+        {
+          newAddresses.sort(
+            (a, b) => b.name.compareTo(a.name),
+          );
+          return newAddresses;
+        }
+    }
+  }
+
+  void changeSortingOption(CitiesSortingOption? sortingOption) {
+    currentSortingOption.value = sortingOption ?? currentSortingOption.value;
+    addresses.value = getAddressesInArea();
   }
 
   Future<void> addNewAddress() async {
     var result = await Get.dialog(
-      AddNewAddressDialog(
-        areaId: area.id,
+      AddOrEditAddressDialog(
+        argument: area.id,
       ),
       barrierDismissible: true,
     );
     if (result == true) {
-      addresses.value = getAddressesInCity();
+      addresses.value = getAddressesInArea();
+    }
+  }
+
+  Future<void> updateAddressInfo(Address address) async {
+    var result = await Get.dialog(
+      AddOrEditAddressDialog(
+        argument: address,
+      ),
+      barrierDismissible: true,
+    );
+    if (result == true) {
+      addresses.value = getAddressesInArea();
     }
   }
 }

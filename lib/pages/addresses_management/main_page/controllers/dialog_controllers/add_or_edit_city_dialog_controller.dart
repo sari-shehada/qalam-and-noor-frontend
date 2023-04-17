@@ -6,6 +6,7 @@ import '../../../../../models/helpers/database_helper.dart';
 import '../../../../../to_be_disposed/data/dummy_data.dart';
 import '../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
+import '../addresses_management_stats_controller.dart';
 
 class AddOrEditCityDialogController extends GetxController {
   RxBool isEditMode = false.obs;
@@ -39,6 +40,7 @@ class AddOrEditCityDialogController extends GetxController {
       }
       City city = City(id: (dummyCities.length + 1), name: cityController.text);
       await DatabaseHelper.addCity(city);
+      Get.find<AddressesManagementStatsController>().refreshCitiesCount();
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;

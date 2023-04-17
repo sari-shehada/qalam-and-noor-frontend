@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/addresses_management/main_page/controllers/addresses_management_stats_controller.dart';
+import 'package:kalam_noor/pages/addresses_management/main_page/views/widgets/cities_to_descendent_count_pie_chart.dart';
+import 'package:kalam_noor/pages/addresses_management/main_page/views/widgets/numeric_stats_widget.dart';
 import 'package:kalam_noor/pages/new_student_registration/student_information/views/new_student_registration_page.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_drop_down_menu.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../models/address/city.dart';
+import '../../../../to_be_disposed/views/test_page.dart';
 import '../controllers/address_management_controller.dart';
 
 import '../../../../tools/ui_tools/buttons.dart';
@@ -24,9 +29,24 @@ class AddressesManagementPage extends StatelessWidget {
     AddressManagementController addressManagementController = Get.put(
       AddressManagementController(),
     );
+    AddressesManagementStatsController statsController = Get.put(
+      AddressesManagementStatsController(),
+    );
     final ThemeData themeData = Get.theme;
     final ColorScheme colorScheme = themeData.colorScheme;
     final TextTheme textTheme = themeData.textTheme;
+
+    final BoxDecoration statsContainerDecoration = BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(14.r),
+      boxShadow: [
+        BoxShadow(
+          offset: Offset(0, 10.h),
+          blurRadius: 10,
+          color: colorScheme.shadow.withOpacity(.02),
+        )
+      ],
+    );
     return CustomScaffold(
       floatingActionButton: CustomFilledButton(
         onTap: () => addressManagementController.addNewCity(),
@@ -91,39 +111,72 @@ class AddressesManagementPage extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 4,
                     child: Container(
                       width: double.infinity,
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(14.r),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 10.h),
-                            blurRadius: 10,
-                            color: colorScheme.shadow.withOpacity(.03),
-                          )
-                        ],
+                      decoration: statsContainerDecoration,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 25.h, horizontal: 20.w),
+                        child: Row(
+                          children: [
+                            Expanded(
+                                child: AddressesManagementNumericStatsWidget(
+                              future: statsController.citiesCount,
+                              label: 'مدينة',
+                            )),
+                            VerticalDivider(
+                              indent: 20.h,
+                              width: 1.w,
+                              endIndent: 25.h,
+                            ),
+                            Expanded(
+                                child: AddressesManagementNumericStatsWidget(
+                              future: statsController.areasCount,
+                              label: 'حي',
+                            )),
+                            VerticalDivider(
+                              indent: 20.h,
+                              width: 1.w,
+                              endIndent: 25.h,
+                            ),
+                            Expanded(
+                                child: AddressesManagementNumericStatsWidget(
+                              future: statsController.addressesCount,
+                              label: 'عنوان',
+                            )),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                   AddHorizontalSpacing(value: 30.w),
                   Expanded(
-                    flex: 1,
+                    flex: 3,
                     child: Container(
                       width: double.infinity,
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(14.r),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 10.h),
-                            blurRadius: 10,
-                            color: colorScheme.shadow.withOpacity(.03),
-                          )
-                        ],
+                      decoration: statsContainerDecoration,
+                      child: LargestCitiesByDescendentCountPieChart(
+                        legendTitle: LegendTitle(
+                          text: 'أكبر المدن من حيث عدد الأحياء',
+                        ),
+                        future: statsController.citiesToAreasCount,
+                        onFailedToLoadText: 'تعذر بناء إحصيائات عدد الأحياء',
+                      ),
+                    ),
+                  ),
+                  AddHorizontalSpacing(value: 30.w),
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      width: double.infinity,
+                      decoration: statsContainerDecoration,
+                      child: LargestCitiesByDescendentCountPieChart(
+                        legendTitle: LegendTitle(
+                          text: 'أكبر المدن من حيث عدد العناوين',
+                        ),
+                        future: statsController.citiesToAddressesCount,
+                        onFailedToLoadText: 'تعذر بناء إحصيائات عدد العناوين',
                       ),
                     ),
                   ),
@@ -136,7 +189,7 @@ class AddressesManagementPage extends StatelessWidget {
               child: LabeledWidget(
                 label: 'المدن الحالية',
                 labelTextStyle: TextStyle(
-                  fontSize: 25.sp,
+                  fontSize: 30.sp,
                 ),
                 spacing: 35.h,
                 child: Obx(() {

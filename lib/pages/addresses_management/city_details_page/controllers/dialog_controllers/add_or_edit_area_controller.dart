@@ -5,6 +5,7 @@ import '../../../../../models/address/area.dart';
 import '../../../../../models/helpers/database_helper.dart';
 import '../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
+import '../../../main_page/controllers/addresses_management_stats_controller.dart';
 
 class AddOrEditAreaController extends GetxController {
   RxBool isEditMode = false.obs;
@@ -41,6 +42,7 @@ class AddOrEditAreaController extends GetxController {
         return;
       }
       Area area = Area(id: -1, name: areaController.text, cityId: cityId);
+      Get.find<AddressesManagementStatsController>().refreshAreasCount();
       await DatabaseHelper.addNewArea(area);
       Get.back(result: true);
     } finally {
