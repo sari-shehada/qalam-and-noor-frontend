@@ -3,12 +3,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/pages/school_inbox_page/views/school_inbox_page.dart';
 import 'package:kalam_noor/pages/vaccines_management_page/views/vaccines_management_page.dart';
+import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 import '../pages/addresses_management/main_page/views/addresses_management_page.dart';
+import '../pages/new_student_registration/controllers/new_student_registration_controller.dart';
+import '../pages/new_student_registration/views/new_student_registration_page.dart';
 import '../pages/school_classes_management/views/school_classes_management_page.dart';
 import '../pages/school_year_management/views/school_year_management_page.dart';
 import '../models/agendas/employee.dart';
 import '../pages/dashboard/views/dashboard_page.dart';
-import '../pages/new_student_registration/student_information/views/new_student_registration_page.dart';
 
 import '../pages/navigation_page/controllers/navigation_bindings.dart';
 import '../pages/dashboard/models/navigation_rail_destination_card.dart';
@@ -38,11 +40,12 @@ class NavigationController {
             iconData: FontAwesomeIcons.house,
             destination: const DashboardPage(),
           ),
-          NavigationRailDestinationCard(
-            title: 'تسحيل طالب جديد',
-            iconData: FontAwesomeIcons.userPlus,
-            destination: const NewStudentRegistrationPage(),
-          ),
+          //TODO: Replace this with something else
+          // NavigationRailDestinationCard(
+          //   title: 'تسجيل طالب جديد',
+          //   iconData: FontAwesomeIcons.userPlus,
+          //   destination: const NewStudentRegistrationPage(),
+          // ),
           NavigationRailDestinationCard(
             title: 'إدارة العام الدراسي',
             iconData: FontAwesomeIcons.school,
@@ -105,5 +108,20 @@ class NavigationController {
         () => VaccinesManagementController(),
       ),
     );
+  }
+
+  static void toAddNewStudentPage() async {
+    var result = await Get.to(
+      const NewStudentRegistrationPage(),
+      binding: BindingsBuilder(
+        () {
+          Get.put(NewStudentRegistrationController());
+        },
+      ),
+    );
+    if (result == true) {
+      SnackbarService.showSuccessSnackBar(
+          title: 'تمت العملية بنجاح', message: 'تمت إضافة طالب جديد');
+    }
   }
 }

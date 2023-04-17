@@ -7,7 +7,7 @@ import 'package:kalam_noor/configs/fonts.dart';
 import '../../../../models/enums.dart';
 import '../../../../tools/ui_tools/text_fields.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
-import '../../../../pages/new_student_registration/student_information/views/new_student_registration_page.dart';
+import '../../../new_student_registration/student_information/views/new_student_registration_page.dart';
 import '../../controllers/logic_controller.dart';
 
 class StudentCivilianInformationSubWindow extends StatelessWidget {

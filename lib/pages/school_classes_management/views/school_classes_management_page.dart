@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/educational/class.dart';
-import 'package:kalam_noor/pages/new_student_registration/student_information/views/new_student_registration_page.dart';
+import 'package:kalam_noor/to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 import 'package:kalam_noor/pages/school_classes_management/controllers/school_classes_management_controller.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';

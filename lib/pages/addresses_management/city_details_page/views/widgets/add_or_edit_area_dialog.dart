@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
 import '../../../../../tools/ui_tools/text_fields.dart';
 import '../../../../../tools/ui_tools/ui_tools.dart';
-import '../../../../new_student_registration/student_information/views/new_student_registration_page.dart';
+import '../../../../../to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 import '../../controllers/dialog_controllers/add_or_edit_area_controller.dart';
 
 class AddOrEditAreaDialog extends StatelessWidget {
