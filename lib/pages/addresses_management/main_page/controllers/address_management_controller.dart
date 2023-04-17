@@ -3,12 +3,11 @@ import 'package:get/get.dart';
 
 import 'package:kalam_noor/models/address/city.dart';
 import 'package:kalam_noor/models/helpers/database_helper.dart';
-import 'package:kalam_noor/pages/addresses_management/main_page/views/dialogs/add_address_dialog.dart';
-import 'package:kalam_noor/pages/addresses_management/main_page/views/dialogs/add_new_city_dialog.dart';
+import 'package:kalam_noor/pages/addresses_management/main_page/views/dialogs/add_or_edit_city_dialog.dart';
 
 class AddressManagementController extends GetxController {
-  // RxList<City> cities = <City>[].obs;
   late Rx<Future<RxList<City>>> cities;
+  Rx<CitiesSortingOption> currentSortingOption = CitiesSortingOption.none.obs;
   AddressManagementController() {
     cities = getCitiesToDisplay().obs;
   }
@@ -20,12 +19,29 @@ class AddressManagementController extends GetxController {
         cities.add(city);
       }
     });
-    return cities;
+    switch (currentSortingOption.value) {
+      case CitiesSortingOption.none:
+        return cities;
+      case CitiesSortingOption.byNameAsc:
+        {
+          cities.sort(
+            (a, b) => a.name.compareTo(b.name),
+          );
+          return cities;
+        }
+      case CitiesSortingOption.byNameDesc:
+        {
+          cities.sort(
+            (a, b) => b.name.compareTo(a.name),
+          );
+          return cities;
+        }
+    }
   }
 
-  Future<void> addAddress() async {
+  Future<void> addNewCity() async {
     var result = await Get.dialog(
-      const AddOrEditAddressDialog(),
+      const AddOrEditCityDialog(),
       barrierDismissible: true,
     );
     if (result == true) {
@@ -33,9 +49,16 @@ class AddressManagementController extends GetxController {
     }
   }
 
-  Future<void> addNewCity() async {
+  void changeSortingOption(CitiesSortingOption? sortingOption) {
+    currentSortingOption.value = sortingOption ?? currentSortingOption.value;
+    cities.value = getCitiesToDisplay();
+  }
+
+  Future<void> updateCityInfo(City city) async {
     var result = await Get.dialog(
-      const AddNewCityDialog(),
+      AddOrEditCityDialog(
+        city: city,
+      ),
       barrierDismissible: true,
     );
     if (result == true) {
@@ -43,3 +66,15 @@ class AddressManagementController extends GetxController {
     }
   }
 }
+
+enum CitiesSortingOption {
+  none,
+  byNameAsc,
+  byNameDesc,
+}
+
+Map<CitiesSortingOption, String> citiesSortingOptionsAsString = {
+  CitiesSortingOption.none: 'دون ترتيب',
+  CitiesSortingOption.byNameAsc: 'اسم المدينة تصاعديا',
+  CitiesSortingOption.byNameDesc: 'اسم المدينة تنازليا',
+};

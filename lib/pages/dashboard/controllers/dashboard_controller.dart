@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../reg_stu/views/main_view.dart';
+import '../../../to_be_disposed/new_student_registration_page/views/main_view.dart';
 
 class DashboardController extends GetxController {
   Future<void> registerNewStudent() async {

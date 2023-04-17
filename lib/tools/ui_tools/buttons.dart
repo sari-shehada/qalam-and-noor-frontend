@@ -6,8 +6,8 @@ import '../../configs/fonts.dart';
 import '../../configs/project_themes.dart';
 import '../../configs/styles.dart';
 
-class CallToActionButton extends StatelessWidget {
-  const CallToActionButton({
+class CustomFilledButton extends StatelessWidget {
+  const CustomFilledButton({
     super.key,
     this.labelColor,
     required this.onTap,
@@ -26,7 +26,7 @@ class CallToActionButton extends StatelessWidget {
   final Color? backgroundColor;
   final double? height;
   final double width;
-  final Rx<CallToActionButtonStatus>? buttonStatus;
+  final Rx<CustomButtonStatus>? buttonStatus;
   final Color loadingColor;
   final dynamic child;
   final bool useShadow;
@@ -64,7 +64,7 @@ class CallToActionButton extends StatelessWidget {
       );
     }
     return Container(
-      height: 58.h,
+      height: height ?? 58.h,
       width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
@@ -83,7 +83,7 @@ class CallToActionButton extends StatelessWidget {
         child: Obx(
           () {
             switch (buttonStatus!.value) {
-              case CallToActionButtonStatus.enabled:
+              case CustomButtonStatus.enabled:
                 {
                   return InkWell(
                     onTap: onTap,
@@ -94,7 +94,7 @@ class CallToActionButton extends StatelessWidget {
                     ),
                   );
                 }
-              case CallToActionButtonStatus.disabled:
+              case CustomButtonStatus.disabled:
                 {
                   return InkWell(
                     borderRadius:
@@ -104,7 +104,7 @@ class CallToActionButton extends StatelessWidget {
                     ),
                   );
                 }
-              case CallToActionButtonStatus.processing:
+              case CustomButtonStatus.processing:
                 {
                   return Center(
                     child: SizedBox.square(
@@ -140,4 +140,120 @@ class CallToActionButton extends StatelessWidget {
   }
 }
 
-enum CallToActionButtonStatus { enabled, disabled, processing }
+enum CustomButtonStatus { enabled, disabled, processing }
+
+class CustomOutlinedButton extends StatelessWidget {
+  const CustomOutlinedButton({
+    super.key,
+    this.outlineColor,
+    required this.onTap,
+    this.height,
+    this.width = double.infinity,
+    this.buttonStatus,
+    this.useShadow = false,
+    required this.child,
+    this.backgroundColor,
+    this.outlineWidth,
+  });
+
+  final Color? outlineColor;
+  final VoidCallback onTap;
+  final double? outlineWidth;
+  final Color? backgroundColor;
+  final double? height;
+  final double width;
+  final Rx<CustomButtonStatus>? buttonStatus;
+  final dynamic child;
+  final bool useShadow;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height ?? 58.h,
+      width: width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
+        color: backgroundColor ?? Colors.transparent,
+        border: Border.all(
+          color: outlineColor ?? Get.theme.colorScheme.primary,
+          width: outlineWidth ?? 2.w,
+        ),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0.w, 4.h),
+            blurRadius: 12.r,
+            color: Colors.black.withOpacity(.08),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        elevation: 0,
+        borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
+        child: buttonStatus == null
+            ? InkWell(
+                onTap: onTap,
+                borderRadius:
+                    BorderRadius.circular(GlobalStyles.globalBorderRadius),
+                child: Center(
+                  child: buildChild(),
+                ),
+              )
+            : Obx(
+                () {
+                  switch (buttonStatus!.value) {
+                    case CustomButtonStatus.enabled:
+                      {
+                        return InkWell(
+                          onTap: onTap,
+                          borderRadius: BorderRadius.circular(
+                              GlobalStyles.globalBorderRadius),
+                          child: Center(
+                            child: buildChild(),
+                          ),
+                        );
+                      }
+                    case CustomButtonStatus.disabled:
+                      {
+                        return InkWell(
+                          borderRadius: BorderRadius.circular(
+                              GlobalStyles.globalBorderRadius),
+                          child: Center(
+                            child: buildChild(),
+                          ),
+                        );
+                      }
+                    case CustomButtonStatus.processing:
+                      {
+                        return Center(
+                          child: SizedBox.square(
+                            dimension: 30.h,
+                            child: CircularProgressIndicator(
+                              color: outlineColor,
+                              strokeWidth: 4.sp,
+                            ),
+                          ),
+                        );
+                      }
+                  }
+                },
+              ),
+      ),
+    );
+  }
+
+  buildChild() {
+    assert(child is String || child is Widget,
+        'Expected a widget or string for the child of the callToActionButton');
+    if (child is String) {
+      return Text(
+        child,
+        style: TextStyle(
+          fontFamily: ProjectFonts.fontFamily,
+          fontSize: 17.sp,
+          color: outlineColor ?? lightColorScheme.primary,
+        ),
+      );
+    }
+    return child;
+  }
+}

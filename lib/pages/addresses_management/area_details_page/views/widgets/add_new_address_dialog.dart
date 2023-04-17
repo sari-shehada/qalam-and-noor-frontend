@@ -73,7 +73,7 @@ class AddNewAddressDialog extends StatelessWidget {
                 controller: controller.detailsController,
               ),
               AddVerticalSpacing(value: 30.h),
-              CallToActionButton(
+              CustomFilledButton(
                 onTap: () => controller.addAddress(),
                 child: 'اضافة عنوان',
               ),
@@ -89,8 +89,7 @@ class AddNewAddressDialog extends StatelessWidget {
 class AddNewAddressController extends GetxController {
   final TextEditingController addressController = TextEditingController();
   final TextEditingController detailsController = TextEditingController();
-  final Rx<CallToActionButtonStatus> buttonStatus =
-      (CallToActionButtonStatus.enabled).obs;
+  final Rx<CustomButtonStatus> buttonStatus = (CustomButtonStatus.enabled).obs;
 
   final int areaId;
   AddNewAddressController({
@@ -108,7 +107,7 @@ class AddNewAddressController extends GetxController {
 
   Future<void> addAddress() async {
     try {
-      buttonStatus.value = CallToActionButtonStatus.processing;
+      buttonStatus.value = CustomButtonStatus.processing;
       if (validateFields() == false) {
         return;
       }
@@ -120,7 +119,7 @@ class AddNewAddressController extends GetxController {
       await DatabaseHelper.addNewAddress(address);
       Get.back(result: true);
     } finally {
-      buttonStatus.value = CallToActionButtonStatus.enabled;
+      buttonStatus.value = CustomButtonStatus.enabled;
     }
   }
 }

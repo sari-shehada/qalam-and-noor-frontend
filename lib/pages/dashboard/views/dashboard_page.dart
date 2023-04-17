@@ -13,10 +13,12 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Get.theme;
+    final ColorScheme colorScheme = themeData.colorScheme;
+    final TextTheme textTheme = themeData.textTheme;
     DashboardController controller = Get.find();
     AccountController accountController = Get.find();
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F6F8),
       body: SizedBox.expand(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 50.h, horizontal: 50.w),
@@ -263,12 +265,13 @@ class _DashboardContainer extends StatelessWidget {
   final Widget? child;
   final EdgeInsets? margin;
   final EdgeInsets? padding;
-  const _DashboardContainer(
-      {required this.height,
-      required this.width,
-      this.child,
-      this.margin,
-      this.padding});
+  const _DashboardContainer({
+    required this.height,
+    required this.width,
+    this.child,
+    this.margin,
+    this.padding,
+  });
 
   @override
   Widget build(BuildContext context) {

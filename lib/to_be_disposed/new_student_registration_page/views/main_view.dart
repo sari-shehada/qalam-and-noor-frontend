@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../tools/ui_tools/buttons.dart';
 import '../../../tools/ui_tools/ui_tools.dart';
-import '../../navigation_page/views/widgets/cross_switcher.dart';
+import '../../../pages/navigation_page/views/widgets/cross_switcher.dart';
 import '../controllers/logic_controller.dart';
 import '../controllers/ui_controller.dart';
 
@@ -51,7 +51,7 @@ class RegisterNewStudentDialog extends StatelessWidget {
                     Obx(
                       () => IconButton(
                         onPressed: logicController.registerButtonStatus.value ==
-                                CallToActionButtonStatus.enabled
+                                CustomButtonStatus.enabled
                             ? () => Get.back()
                             : () {},
                         icon: const FaIcon(
@@ -102,7 +102,7 @@ class RegisterNewStudentDialog extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 2,
-                        child: CallToActionButton(
+                        child: CustomFilledButton(
                           onTap: () => uiController.previousPage(),
                           child: 'السابق',
                           backgroundColor:
@@ -116,14 +116,14 @@ class RegisterNewStudentDialog extends StatelessWidget {
                         flex: 2,
                         child: Obx(
                           () => uiController.isLastPageReached.value == true
-                              ? CallToActionButton(
+                              ? CustomFilledButton(
                                   onTap: () =>
                                       logicController.registerStudent(),
                                   child: 'تسجيل الطالب',
                                   buttonStatus:
                                       logicController.registerButtonStatus,
                                 )
-                              : CallToActionButton(
+                              : CustomFilledButton(
                                   onTap: () => uiController.nextPage(),
                                   child: 'التالي',
                                 ),

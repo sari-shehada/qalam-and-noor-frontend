@@ -40,6 +40,8 @@ dependencies:
   shared_preferences: ^2.0.18
   font_awesome_flutter: ^10.4.0
   flutter_feather_icons: ^2.0.0+1
+  pluto_grid: ^6.0.4
+  flutter_animate: ^4.1.1+1
   # file_picker: ^5.2.6
 
 dev_dependencies:

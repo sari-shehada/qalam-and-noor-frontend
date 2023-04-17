@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../models/address/city.dart';
-import '../../../../../models/helpers/database_helper.dart';
-import '../../../city_details_page/controllers/city_details_controller.dart';
-import '../../../city_details_page/views/city_details_page.dart';
+import 'package:kalam_noor/pages/addresses_management/main_page/controllers/address_management_controller.dart';
 
-import '../../../../../tools/ui_tools/ui_tools.dart';
-import 'city_stats_card.dart';
+import '../../models/address/city.dart';
+import '../../pages/addresses_management/city_details_page/controllers/city_details_controller.dart';
+import '../../pages/addresses_management/city_details_page/views/city_details_page.dart';
+import '../../tools/ui_tools/ui_tools.dart';
 
 class CityCard extends StatelessWidget {
   const CityCard({
@@ -18,62 +17,67 @@ class CityCard extends StatelessWidget {
   final City city;
   @override
   Widget build(BuildContext context) {
+    AddressManagementController controller = Get.find();
     return TweenAnimationBuilder(
-        tween: Tween(begin: 0.0, end: 1.0),
-        duration: const Duration(milliseconds: 400),
-        builder: (context, opacity, _) {
-          return InkWell(
-            onTap: () =>
-                Get.to(const CityDetailsPage(), binding: BindingsBuilder(() {
-              Get.put(CityDetailsController(city: city));
-            })),
-            child: Opacity(
-              opacity: opacity,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20.w,
-                  vertical: 0.h,
-                ),
-                child: Container(
-                  margin: EdgeInsets.only(bottom: 2.h),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Colors.blueGrey.withOpacity(.7),
-                        strokeAlign: BorderSide.strokeAlignInside,
-                      ),
+      tween: Tween(begin: 0.0, end: 1.0),
+      duration: const Duration(milliseconds: 400),
+      builder: (context, opacity, _) {
+        return InkWell(
+          onTap: () =>
+              Get.to(const CityDetailsPage(), binding: BindingsBuilder(() {
+            Get.put(CityDetailsController(city: city));
+          })),
+          child: Opacity(
+            opacity: opacity,
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20.w,
+                vertical: 0.h,
+              ),
+              child: Container(
+                margin: EdgeInsets.only(bottom: 2.h),
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colors.blueGrey.withOpacity(.7),
+                      strokeAlign: BorderSide.strokeAlignInside,
                     ),
                   ),
-                  child: Row(children: [
-                    AddHorizontalSpacing(value: 15.w),
-                    Text(
-                      city.name,
-                      style: TextStyle(
-                        fontSize: 22.sp,
-                      ),
-                    ),
-                    Spacer(),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.remove_red_eye,
-                        color: Get.theme.colorScheme.primary.withOpacity(.7),
-                      ),
-                    ),
-                    AddHorizontalSpacing(value: 10.w),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.edit,
-                        color: Get.theme.colorScheme.primary.withOpacity(.7),
-                      ),
-                    ),
-                  ]),
                 ),
+                child: Row(children: [
+                  AddHorizontalSpacing(value: 15.w),
+                  Text(
+                    city.name,
+                    style: TextStyle(
+                      fontSize: 22.sp,
+                    ),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () => Get.to(const CityDetailsPage(),
+                        binding: BindingsBuilder(() {
+                      Get.put(CityDetailsController(city: city));
+                    })),
+                    icon: Icon(
+                      Icons.remove_red_eye,
+                      color: Get.theme.colorScheme.primary.withOpacity(.7),
+                    ),
+                  ),
+                  AddHorizontalSpacing(value: 10.w),
+                  IconButton(
+                    onPressed: () => controller.updateCityInfo(city),
+                    icon: Icon(
+                      Icons.edit,
+                      color: Get.theme.colorScheme.primary.withOpacity(.7),
+                    ),
+                  ),
+                ]),
               ),
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }
 

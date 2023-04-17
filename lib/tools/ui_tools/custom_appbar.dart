@@ -20,10 +20,18 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   final String title;
   final IconData iconData;
   final bool backButtonEnabled;
-  final CustomAppBarActionButton? actionButton;
+  final dynamic actionButton;
   final BoxDecoration? appBarBoxDecoration;
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Get.theme;
+    final ColorScheme colorScheme = themeData.colorScheme;
+    final TextTheme textTheme = themeData.textTheme;
+    assert(
+        actionButton == null ||
+            actionButton is CustomAppBarActionButton ||
+            actionButton is Widget,
+        'Assertion Failed for Custom Appbar Action Button');
     return PreferredSize(
       preferredSize: preferredSize,
       child: Container(
@@ -62,33 +70,35 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             const Spacer(),
             actionButton == null
                 ? const SizedBox.shrink()
-                : CallToActionButton(
-                    onTap: actionButton!.onTap,
-                    height: 74.h,
-                    width: 403.w,
-                    child: Center(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 40.w),
-                        child: Row(
-                          children: [
-                            Text(
-                              actionButton!.label,
-                              style: TextStyle(
-                                fontSize: 20.sp,
-                                color: Colors.white,
-                              ),
+                : actionButton is CustomAppBarActionButton
+                    ? CustomFilledButton(
+                        onTap: actionButton!.onTap,
+                        height: 74.h,
+                        width: 403.w,
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 40.w),
+                            child: Row(
+                              children: [
+                                Text(
+                                  actionButton!.label,
+                                  style: TextStyle(
+                                    fontSize: 20.sp,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const Spacer(),
+                                FaIcon(
+                                  FontAwesomeIcons.plus,
+                                  color: Colors.white,
+                                  size: 28.sp,
+                                )
+                              ],
                             ),
-                            const Spacer(),
-                            FaIcon(
-                              FontAwesomeIcons.plus,
-                              color: Colors.white,
-                              size: 28.sp,
-                            )
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                  )
+                      )
+                    : actionButton
           ],
         ),
       ),

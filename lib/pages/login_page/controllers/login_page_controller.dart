@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controllers/navigation_controller.dart';
-import '../../../dummy_methods.dart';
+import '../../../to_be_disposed/methods/dummy_methods.dart';
 import '../../../models/agendas/employee.dart';
 import '../../../models/shared_prefs_helper.dart';
 import '../../../tools/dialogs_services/snack_bar_service.dart';
@@ -11,8 +11,7 @@ import '../../../tools/ui_tools/buttons.dart';
 class LoginPageController extends GetxController {
   TextEditingController userNameField = TextEditingController();
   TextEditingController passwordField = TextEditingController();
-  Rx<CallToActionButtonStatus> loginButtonStatus =
-      CallToActionButtonStatus.enabled.obs;
+  Rx<CustomButtonStatus> loginButtonStatus = CustomButtonStatus.enabled.obs;
   bool validateFields() {
     if (userNameField.text.isEmpty) {
       SnackbarService.showErrorSnackBar(
@@ -33,7 +32,7 @@ class LoginPageController extends GetxController {
   }
 
   Future<void> login() async {
-    loginButtonStatus.value = CallToActionButtonStatus.processing;
+    loginButtonStatus.value = CustomButtonStatus.processing;
     if (validateFields()) {
       await Future.delayed(const Duration(
         milliseconds: 500,
@@ -42,6 +41,6 @@ class LoginPageController extends GetxController {
       NavigationController.toDashboard(employee);
       SharedPrefsHelper.instance.setLoginStatus(true);
     }
-    loginButtonStatus.value = CallToActionButtonStatus.enabled;
+    loginButtonStatus.value = CustomButtonStatus.enabled;
   }
 }

@@ -1,13 +1,148 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'fonts.dart';
 
+//Used Stable Colors (DO NOT EDIT)
+//primary
+//scaffoldBackgroundColor
+//shadow (modifiable but not advised)
+//onSurfaceVariant
+//onPrimary
+//PrimaryContainer
 class ProjectThemes {
   static ThemeData lightTheme = ThemeData(
-      fontFamily: ProjectFonts.fontFamily,
-      useMaterial3: true,
-      colorScheme: lightColorScheme,
-      splashColor: Colors.transparent);
+    fontFamily: ProjectFonts.fontFamily,
+    scaffoldBackgroundColor: const Color(0xFFF5F6F8),
+    useMaterial3: true,
+    colorScheme: lightColorScheme,
+    splashColor: Colors.transparent,
+    textTheme: TextTheme(
+      //#region Display
+      displayLarge: TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 57.sp,
+        color: lightColorScheme.primary,
+        letterSpacing: 0.sp,
+        height: (64 / 57),
+      ),
+      displayMedium: TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 45.sp,
+        color: lightColorScheme.primary,
+        letterSpacing: 0.sp,
+        height: (52 / 45),
+      ),
+      displaySmall: TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 36.sp,
+        color: lightColorScheme.primary,
+        letterSpacing: 0.sp,
+        height: (44 / 36),
+      ),
+      //#endregion
+
+      //#region Headline
+      headlineLarge: TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 32.sp,
+        color: lightColorScheme.primary,
+        letterSpacing: 0.sp,
+        height: (40 / 32),
+      ),
+      headlineMedium: TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 28.sp,
+        color: lightColorScheme.primary,
+        letterSpacing: 0.sp,
+        height: (36 / 28),
+      ),
+      headlineSmall: TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 24.sp,
+        color: lightColorScheme.primary,
+        letterSpacing: 0.sp,
+        height: (32 / 24),
+      ),
+      //#endregion
+
+      //#region Title
+      titleLarge: TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 22.sp,
+        color: lightColorScheme.primary,
+        letterSpacing: 0.sp,
+        height: (28 / 22),
+      ),
+      titleMedium: TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 16.sp,
+        color: lightColorScheme.onSurfaceVariant,
+        letterSpacing: 0.15.sp,
+        height: (24 / 16),
+      ),
+      titleSmall: TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 14.sp,
+        color: lightColorScheme.onSurfaceVariant,
+        letterSpacing: 0.1.sp,
+        height: (20 / 14),
+      ),
+      //#endregion
+
+      //#region Label
+      labelLarge: TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 14.sp,
+        color: lightColorScheme.onSurfaceVariant,
+        letterSpacing: 0.1.sp,
+        height: (20 / 14),
+      ),
+
+      labelMedium: TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 12.sp,
+        color: lightColorScheme.onSurfaceVariant,
+        letterSpacing: 0.5.sp,
+        height: (16 / 12),
+      ),
+
+      labelSmall: TextStyle(
+        fontWeight: FontWeight.w700,
+        fontSize: 11.sp,
+        color: lightColorScheme.onSurfaceVariant,
+        letterSpacing: 0.5.sp,
+        height: (16 / 11),
+      ),
+      //#endregion
+
+      //#region Body
+      bodyLarge: TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 16.sp,
+        color: lightColorScheme.onSurfaceVariant,
+        letterSpacing: 0.15.sp,
+        height: (24 / 16),
+      ),
+
+      bodyMedium: TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 14.sp,
+        color: lightColorScheme.onSurfaceVariant,
+        letterSpacing: 0.25.sp,
+        height: (20 / 14),
+      ),
+
+      bodySmall: TextStyle(
+        fontWeight: FontWeight.w500,
+        fontSize: 12.sp,
+        color: lightColorScheme.onSurfaceVariant,
+        letterSpacing: 0.4.sp,
+        height: (16 / 12),
+      ),
+      //#endregion
+    ),
+  );
 
   static ThemeData darkTheme =
       ThemeData(useMaterial3: true, colorScheme: darkColorScheme);

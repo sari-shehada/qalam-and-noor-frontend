@@ -18,8 +18,7 @@ class NewStudentRegistrationController extends GetxController {
   Rx<DateTime?> dateOfIncident = Rx<DateTime?>(null);
   Rx<DateTime?> joinDate = Rx<DateTime?>(null);
 
-  Rx<CallToActionButtonStatus> buttonStatus =
-      CallToActionButtonStatus.enabled.obs;
+  Rx<CustomButtonStatus> buttonStatus = CustomButtonStatus.enabled.obs;
   Rx<Religion> religion = Religion.undefined.obs;
 
   Rx<int?> addressId = Rx<int?>(null);
@@ -56,12 +55,12 @@ class NewStudentRegistrationController extends GetxController {
       try {
         //TODO: Add registeration here
 
-        buttonStatus.value = CallToActionButtonStatus.processing;
+        buttonStatus.value = CustomButtonStatus.processing;
         await Future.delayed(
           Duration(milliseconds: 800),
         );
       } finally {
-        buttonStatus.value = CallToActionButtonStatus.enabled;
+        buttonStatus.value = CustomButtonStatus.enabled;
       }
       resetForm();
       SnackbarService.showSuccessSnackBar(

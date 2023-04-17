@@ -25,7 +25,7 @@ class NewStudentRegistrationPage extends StatelessWidget {
       color: Colors.black,
     );
     return Scaffold(
-      floatingActionButton: CallToActionButton(
+      floatingActionButton: CustomFilledButton(
         onTap: () => controller.registerStudent(),
         height: 74.h,
         width: 300.w,

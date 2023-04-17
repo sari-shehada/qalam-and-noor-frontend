@@ -1,11 +1,12 @@
-import 'dummy_data.dart';
-import 'models/address/address.dart';
-import 'models/address/area.dart';
-import 'models/address/city.dart';
 
-import 'controllers/navigation_controller.dart';
-import 'models/agendas/employee.dart';
-import 'models/shared_prefs_helper.dart';
+import '../data/dummy_data.dart';
+import '../../models/address/address.dart';
+import '../../models/address/area.dart';
+import '../../models/address/city.dart';
+
+import '../../controllers/navigation_controller.dart';
+import '../../models/agendas/employee.dart';
+import '../../models/shared_prefs_helper.dart';
 
 Future<Employee> getEmployeeCredentials(String employeeId) async {
   await Future.delayed(const Duration(seconds: 2));

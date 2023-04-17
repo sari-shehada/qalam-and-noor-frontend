@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../dummy_data.dart';
-import '../../../../dummy_methods.dart';
-import '../../../../tools/dialogs_services/snack_bar_service.dart';
-import '../../../../tools/ui_tools/buttons.dart';
+import '../data/dummy_data.dart';
+import '../methods/dummy_methods.dart';
+import '../../tools/dialogs_services/snack_bar_service.dart';
+import '../../tools/ui_tools/buttons.dart';
 
-import '../../../../models/address/area.dart';
-import '../../../../models/address/city.dart';
+import '../../models/address/area.dart';
+import '../../models/address/city.dart';
 
 class AddAddressPageController extends GetxController {
-  Rx<CallToActionButtonStatus> buttonStatus =
-      CallToActionButtonStatus.enabled.obs;
+  Rx<CustomButtonStatus> buttonStatus = CustomButtonStatus.enabled.obs;
   RxList<City> cities = <City>[].obs;
   RxList<Area> areasInCity = <Area>[].obs;
   RxList<DropdownMenuEntry> areasItems = <DropdownMenuEntry>[].obs;
@@ -73,7 +72,7 @@ class AddAddressPageController extends GetxController {
   Future<void> addAddress() async {
     //TODO: Validate fields here
     try {
-      buttonStatus.value = CallToActionButtonStatus.processing;
+      buttonStatus.value = CustomButtonStatus.processing;
       await dummyDelayedFuture();
       if (selectedCityId == null && cityController.text.isEmpty) {
         SnackbarService.showErrorSnackBar(
@@ -96,7 +95,7 @@ class AddAddressPageController extends GetxController {
       dummyCities.add(City(id: 3, name: 'دمشق'));
       Get.back(result: true);
     } finally {
-      buttonStatus.value = CallToActionButtonStatus.enabled;
+      buttonStatus.value = CustomButtonStatus.enabled;
     }
   }
 }

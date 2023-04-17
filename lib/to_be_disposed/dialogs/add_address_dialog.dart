@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import '../../../../../dummy_data.dart';
-import '../../controllers/add_address_page_controller.dart';
-import '../../../../../tools/ui_tools/ui_tools.dart';
+import '../data/dummy_data.dart';
+import '../controllers/add_address_page_controller.dart';
+import '../../tools/ui_tools/ui_tools.dart';
 
-import '../../../../../tools/ui_tools/buttons.dart';
-import '../../../../../tools/ui_tools/drop_down_menu.dart';
-import '../../../../../tools/ui_tools/text_fields.dart';
+import '../../tools/ui_tools/buttons.dart';
+import '../../tools/ui_tools/drop_down_menu.dart';
+import '../../tools/ui_tools/text_fields.dart';
 
 class AddOrEditAddressDialog extends StatelessWidget {
   const AddOrEditAddressDialog({
@@ -130,7 +130,7 @@ class AddOrEditAddressDialog extends StatelessWidget {
                     hintText: '',
                   ),
                   AddVerticalSpacing(value: 40.h),
-                  CallToActionButton(
+                  CustomFilledButton(
                     buttonStatus: addAddressPageController.buttonStatus,
                     onTap: () => addAddressPageController.addAddress(),
                     child: Text(

@@ -19,8 +19,7 @@ class RegisterNewStudentLogicController extends GetxController {
   Rx<DateTime?> dateOfIncident = Rx<DateTime?>(null);
   Rx<DateTime?> joinDate = Rx<DateTime?>(null);
 
-  Rx<CallToActionButtonStatus> registerButtonStatus =
-      CallToActionButtonStatus.enabled.obs;
+  Rx<CustomButtonStatus> registerButtonStatus = CustomButtonStatus.enabled.obs;
   Rx<Religion> religion = Religion.undefined.obs;
 
   Rx<int?> addressId = Rx<int?>(null);
@@ -57,12 +56,12 @@ class RegisterNewStudentLogicController extends GetxController {
       try {
         //TODO: Add registeration here
 
-        registerButtonStatus.value = CallToActionButtonStatus.processing;
+        registerButtonStatus.value = CustomButtonStatus.processing;
         await Future.delayed(
           Duration(milliseconds: 800),
         );
       } finally {
-        registerButtonStatus.value = CallToActionButtonStatus.enabled;
+        registerButtonStatus.value = CustomButtonStatus.enabled;
       }
       Get.back();
       // resetForm();

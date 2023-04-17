@@ -51,7 +51,7 @@ class NoSearchResultsPage extends StatelessWidget {
             SizedBox(
                 width: 302.w,
                 child:
-                    CallToActionButton(child: 'العودة الى الخلف', onTap: () {}))
+                    CustomFilledButton(child: 'العودة الى الخلف', onTap: () {}))
           ],
         ),
       ),

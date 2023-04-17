@@ -15,7 +15,7 @@ class AreaDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     AreaDetailsController controller = Get.find();
     return Scaffold(
-      floatingActionButton: CallToActionButton(
+      floatingActionButton: CustomFilledButton(
         onTap: () => controller.addNewAddress(),
         height: 74.h,
         width: 300.w,

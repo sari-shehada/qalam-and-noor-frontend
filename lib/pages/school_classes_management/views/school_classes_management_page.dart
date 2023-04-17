@@ -81,7 +81,7 @@ class SchoolClassesManagementPage extends StatelessWidget {
                               return ListTile(
                                 // style: ListTileStyle(),
                                 title: Text(classes[index].name),
-                                trailing: CallToActionButton(
+                                trailing: CustomFilledButton(
                                   width: 200.w,
                                   useShadow: false,
                                   backgroundColor:

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../../controllers/navigation_controller.dart';
-import '../../../dummy_methods.dart';
+import '../../../to_be_disposed/methods/dummy_methods.dart';
 import '../../../models/agendas/employee.dart';
 import '../../../models/shared_prefs_helper.dart';
 

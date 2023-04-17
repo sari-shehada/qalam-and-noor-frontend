@@ -21,7 +21,7 @@ class AddNewMother extends StatefulWidget {
 class _AddNewMotherState extends State<AddNewMother> {
   _AddNewMotherState();
   bool isAddMode = true;
-  CallToActionButtonStatus addButtonStatus = CallToActionButtonStatus.enabled;
+  CustomButtonStatus addButtonStatus = CustomButtonStatus.enabled;
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
@@ -331,12 +331,11 @@ class _AddNewMotherState extends State<AddNewMother> {
                       AddVerticalSpacing(value: 20.h),
                       SizedBox(
                         width: 400.w,
-                        child: CallToActionButton(
+                        child: CustomFilledButton(
                           backgroundColor: Colors.white,
                           labelColor: Colors.indigo,
                           child: "إضافة الأم",
-                          buttonStatus:
-                              Rx<CallToActionButtonStatus>(addButtonStatus),
+                          buttonStatus: Rx<CustomButtonStatus>(addButtonStatus),
                           loadingColor: Colors.indigo,
                           onTap: () => addMother(),
                         ),
@@ -372,7 +371,7 @@ class _AddNewMotherState extends State<AddNewMother> {
     {
       try {
         setState(() {
-          addButtonStatus = CallToActionButtonStatus.processing;
+          addButtonStatus = CustomButtonStatus.processing;
         });
         if (validateFields()) {
           Mother mother = Mother(
@@ -397,7 +396,7 @@ class _AddNewMotherState extends State<AddNewMother> {
         }
       } finally {
         setState(() {
-          addButtonStatus = CallToActionButtonStatus.enabled;
+          addButtonStatus = CustomButtonStatus.enabled;
         });
       }
     }

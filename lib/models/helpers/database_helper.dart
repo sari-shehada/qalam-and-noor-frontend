@@ -4,7 +4,7 @@ import '../address/address.dart';
 import '../address/area.dart';
 import '../address/city.dart';
 
-import '../../dummy_data.dart';
+import '../../to_be_disposed/data/dummy_data.dart';
 import '../medical/illness.dart';
 import '../medical/psychological_status.dart';
 import '../medical/vaccine.dart';
@@ -30,11 +30,29 @@ abstract class DatabaseHelper {
     return city;
   }
 
+  static Future<City> updateCityById({
+    required City city,
+  }) async {
+    //TODO: Change to an api call
+    dummyCities[dummyCities.indexOf(
+        dummyCities.firstWhere((element) => element.id == city.id))] = city;
+    return city;
+  }
+
   //Areas
   static Future<Area> addNewArea(Area area) async {
     //TODO: Change to an api call
     area = area.copyWith(id: dummyAreas.length + 1);
     dummyAreas.add(area);
+    return area;
+  }
+
+  static Future<Area> updateAreaById({
+    required Area area,
+  }) async {
+    //TODO: Change to an api call
+    dummyAreas[dummyAreas.indexOf(
+        dummyAreas.firstWhere((element) => element.id == area.id))] = area;
     return area;
   }
 

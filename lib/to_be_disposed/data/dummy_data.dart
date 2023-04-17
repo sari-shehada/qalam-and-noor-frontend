@@ -1,11 +1,11 @@
-import 'models/address/address.dart';
-import 'models/address/area.dart';
+import '../../models/address/address.dart';
+import '../../models/address/area.dart';
 
-import 'models/address/city.dart';
-import 'models/educational/class.dart';
-import 'models/medical/illness.dart';
-import 'models/medical/psychological_status.dart';
-import 'models/medical/vaccine.dart';
+import '../../models/address/city.dart';
+import '../../models/educational/class.dart';
+import '../../models/medical/illness.dart';
+import '../../models/medical/psychological_status.dart';
+import '../../models/medical/vaccine.dart';
 
 List<City> dummyCities = [
   City(

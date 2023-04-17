@@ -22,7 +22,7 @@ class AddNewFatherPage extends StatefulWidget {
 class _AddNewFatherPageState extends State<AddNewFatherPage> {
   _AddNewFatherPageState();
   bool isAddMode = true;
-  CallToActionButtonStatus addButtonStatus = CallToActionButtonStatus.enabled;
+  CustomButtonStatus addButtonStatus = CustomButtonStatus.enabled;
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController fatherController = TextEditingController();
@@ -206,13 +206,12 @@ class _AddNewFatherPageState extends State<AddNewFatherPage> {
                     AddVerticalSpacing(value: 30.h),
                     SizedBox(
                       width: 600.w,
-                      child: CallToActionButton(
+                      child: CustomFilledButton(
                         labelColor: Colors.indigo,
                         backgroundColor: Colors.white,
                         child: isAddMode ? "إضافة أب" : "تعديل معلومات الأب",
                         loadingColor: Colors.indigo,
-                        buttonStatus:
-                            Rx<CallToActionButtonStatus>(addButtonStatus),
+                        buttonStatus: Rx<CustomButtonStatus>(addButtonStatus),
                         onTap: () => addFather(),
                       ),
                     ),
@@ -248,7 +247,7 @@ class _AddNewFatherPageState extends State<AddNewFatherPage> {
     {
       try {
         setState(() {
-          addButtonStatus = CallToActionButtonStatus.processing;
+          addButtonStatus = CustomButtonStatus.processing;
         });
         if (validateFields()) {
           Father father = Father(
@@ -275,7 +274,7 @@ class _AddNewFatherPageState extends State<AddNewFatherPage> {
         }
       } finally {
         setState(() {
-          addButtonStatus = CallToActionButtonStatus.enabled;
+          addButtonStatus = CustomButtonStatus.enabled;
         });
       }
     }
