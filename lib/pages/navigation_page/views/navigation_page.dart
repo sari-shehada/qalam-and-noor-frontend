@@ -23,17 +23,25 @@ class NavigationPage extends StatelessWidget {
                 duration: const Duration(
                   seconds: 2,
                 ),
-                child: Obx(
-                  () => FadeIndexedStack(
-                    duration:
-                        DashboardControllerConstants.railAnimationDuration,
-                    index: dashboardController.selectedIndex.value,
-                    children: List.generate(
-                        dashboardController.dashboardDestinations.length,
-                        (index) => dashboardController
-                            .dashboardDestinations[index].destination),
-                  ),
+                child: TabBarView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  controller: dashboardController.tabController,
+                  children: List.generate(
+                      dashboardController.dashboardDestinations.length,
+                      (index) => dashboardController
+                          .dashboardDestinations[index].destination),
                 ),
+                // child: Obx(
+                //   () => FadeIndexedStack(
+                //     duration:
+                //         DashboardControllerConstants.railAnimationDuration,
+                //     index: dashboardController.selectedIndex.value,
+                //     children: List.generate(
+                //         dashboardController.dashboardDestinations.length,
+                //         (index) => dashboardController
+                //             .dashboardDestinations[index].destination),
+                //   ),
+                // ),
               ),
             ),
             const CustomNavigationRail(),

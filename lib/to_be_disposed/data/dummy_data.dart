@@ -1,7 +1,12 @@
+import 'package:kalam_noor/models/agendas/father.dart';
+import 'package:kalam_noor/models/agendas/mother.dart';
+import 'package:kalam_noor/models/agendas/responsible_person.dart';
+
 import '../../models/address/address.dart';
 import '../../models/address/area.dart';
 
 import '../../models/address/city.dart';
+import '../../models/agendas/families.dart';
 import '../../models/educational/class.dart';
 import '../../models/medical/illness.dart';
 import '../../models/medical/psychological_status.dart';
@@ -153,3 +158,11 @@ List<Illness> dummyIllnesses = [
   Illness(id: 1, name: 'ربو'),
   Illness(id: 2, name: 'فقر دم'),
 ];
+
+List<Family> dummyFamilies = [];
+
+List<Father> dummyFathers = [];
+
+List<Mother> dummyMothers = [];
+
+List<ResponsiblePerson> dummyResponsiblePeople = [];

@@ -23,6 +23,7 @@ class WebApp extends StatelessWidget {
         1920,
         1080,
       ),
+      useInheritedMediaQuery: true,
       // child: const TestPage(),
       child: const LoaderPage(),
       builder: (BuildContext context, Widget? child) {
@@ -35,6 +36,7 @@ class WebApp extends StatelessWidget {
           theme: ProjectThemes.lightTheme,
           darkTheme: ProjectThemes.darkTheme,
           home: child,
+          // initialRoute: '/',
         );
       },
     );

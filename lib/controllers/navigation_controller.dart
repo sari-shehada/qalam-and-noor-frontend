@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/new_student_registration/main_page/controllers/new_student_registration_bindings.dart';
 import 'package:kalam_noor/pages/school_inbox_page/views/school_inbox_page.dart';
 import 'package:kalam_noor/pages/vaccines_management_page/views/vaccines_management_page.dart';
 import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 import '../pages/addresses_management/main_page/views/addresses_management_page.dart';
-import '../pages/new_student_registration/controllers/new_student_registration_controller.dart';
-import '../pages/new_student_registration/views/new_student_registration_page.dart';
+import '../pages/new_student_registration/main_page/views/new_student_registration_page.dart';
 import '../pages/school_classes_management/views/school_classes_management_page.dart';
 import '../pages/school_year_management/views/school_year_management_page.dart';
 import '../models/agendas/employee.dart';
@@ -113,11 +113,7 @@ class NavigationController {
   static void toAddNewStudentPage() async {
     var result = await Get.to(
       const NewStudentRegistrationPage(),
-      binding: BindingsBuilder(
-        () {
-          Get.put(NewStudentRegistrationController());
-        },
-      ),
+      binding: NewStudentRegistrationBindings(),
     );
     if (result == true) {
       SnackbarService.showSuccessSnackBar(

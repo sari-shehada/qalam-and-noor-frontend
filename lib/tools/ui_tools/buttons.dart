@@ -177,13 +177,15 @@ class CustomOutlinedButton extends StatelessWidget {
           color: outlineColor ?? Get.theme.colorScheme.primary,
           width: outlineWidth ?? 2.w,
         ),
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0.w, 4.h),
-            blurRadius: 12.r,
-            color: Colors.black.withOpacity(.08),
-          ),
-        ],
+        boxShadow: useShadow == true
+            ? [
+                BoxShadow(
+                  offset: Offset(0.w, 4.h),
+                  blurRadius: 12.r,
+                  color: Colors.black.withOpacity(.08),
+                ),
+              ]
+            : null,
       ),
       child: Material(
         color: Colors.transparent,
@@ -251,6 +253,118 @@ class CustomOutlinedButton extends StatelessWidget {
           fontFamily: ProjectFonts.fontFamily,
           fontSize: 17.sp,
           color: outlineColor ?? lightColorScheme.primary,
+        ),
+      );
+    }
+    return child;
+  }
+}
+
+class CustomTintedButton extends StatelessWidget {
+  const CustomTintedButton({
+    super.key,
+    this.foregroundColor,
+    required this.onTap,
+    this.height,
+    this.width = double.infinity,
+    this.buttonStatus,
+    this.useShadow = false,
+    required this.child,
+    this.backgroundColor,
+  });
+
+  final Color? foregroundColor;
+  final Color? backgroundColor;
+  final VoidCallback onTap;
+  final double? height;
+  final double width;
+  final Rx<CustomButtonStatus>? buttonStatus;
+  final bool useShadow;
+  final dynamic child;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height ?? 58.h,
+      width: width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
+        color: backgroundColor ?? Get.theme.colorScheme.primaryContainer,
+        boxShadow: useShadow == true
+            ? [
+                BoxShadow(
+                  offset: Offset(0.w, 4.h),
+                  blurRadius: 12.r,
+                  color: Colors.black.withOpacity(.08),
+                ),
+              ]
+            : null,
+      ),
+      child: Material(
+        color: Colors.transparent,
+        elevation: 0,
+        borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
+        child: buttonStatus == null
+            ? InkWell(
+                onTap: onTap,
+                borderRadius:
+                    BorderRadius.circular(GlobalStyles.globalBorderRadius),
+                child: Center(
+                  child: buildChild(),
+                ),
+              )
+            : Obx(
+                () {
+                  switch (buttonStatus!.value) {
+                    case CustomButtonStatus.enabled:
+                      {
+                        return InkWell(
+                          onTap: onTap,
+                          borderRadius: BorderRadius.circular(
+                              GlobalStyles.globalBorderRadius),
+                          child: Center(
+                            child: buildChild(),
+                          ),
+                        );
+                      }
+                    case CustomButtonStatus.disabled:
+                      {
+                        return InkWell(
+                          borderRadius: BorderRadius.circular(
+                              GlobalStyles.globalBorderRadius),
+                          child: Center(
+                            child: buildChild(),
+                          ),
+                        );
+                      }
+                    case CustomButtonStatus.processing:
+                      {
+                        return Center(
+                          child: SizedBox.square(
+                            dimension: 30.h,
+                            child: CircularProgressIndicator(
+                              color: foregroundColor,
+                              strokeWidth: 4.sp,
+                            ),
+                          ),
+                        );
+                      }
+                  }
+                },
+              ),
+      ),
+    );
+  }
+
+  buildChild() {
+    assert(child is String || child is Widget,
+        'Expected a widget or string for the child of the callToActionButton');
+    if (child is String) {
+      return Text(
+        child,
+        style: TextStyle(
+          fontFamily: ProjectFonts.fontFamily,
+          fontSize: 17.sp,
+          color: foregroundColor ?? lightColorScheme.primary,
         ),
       );
     }
