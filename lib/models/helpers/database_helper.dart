@@ -1,3 +1,5 @@
+import 'package:kalam_noor/models/agendas/families.dart';
+import 'package:kalam_noor/models/agendas/father.dart';
 import 'package:kalam_noor/models/educational/class.dart';
 
 import '../../pages/addresses_management/main_page/controllers/addresses_management_stats_controller.dart';
@@ -242,5 +244,22 @@ abstract class DatabaseHelper {
   //Illnesses
   static Future<List<Illness>> getIllnesses() async {
     return dummyIllnesses;
+  }
+
+  //Families
+  static Future<List<Family>> getFamiliesByTieNumber(
+      {required int tieNumber}) async {
+    List<int> fathersWithMatchingTieNumber = [];
+    fathersWithMatchingTieNumber = dummyFathers
+        .where((father) => father.tieNumber == tieNumber)
+        .map((e) => e.id)
+        .toList();
+    List<Family> familiesWithMatchingTieNumber = [];
+    for (Family family in dummyFamilies) {
+      if (fathersWithMatchingTieNumber.contains(family.fatherId)) {
+        familiesWithMatchingTieNumber.add(family);
+      }
+    }
+    return familiesWithMatchingTieNumber;
   }
 }
