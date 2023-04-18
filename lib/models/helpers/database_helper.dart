@@ -249,6 +249,7 @@ abstract class DatabaseHelper {
   //Families
   static Future<List<Family>> getFamiliesByTieNumber(
       {required int tieNumber}) async {
+    await Future.delayed(const Duration(seconds: 3));
     List<int> fathersWithMatchingTieNumber = [];
     fathersWithMatchingTieNumber = dummyFathers
         .where((father) => father.tieNumber == tieNumber)
