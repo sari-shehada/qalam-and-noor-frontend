@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/previous_schools/student_previous_school.dart';
 import 'package:kalam_noor/pages/new_student_registration/address_information/views/widgets/student_address_info_widget.dart';
 import 'package:kalam_noor/pages/new_student_registration/main_page/controllers/new_student_registration_controller.dart';
 import 'package:kalam_noor/pages/new_student_registration/medical_information/views/widgets/student_medical_info_widget.dart';
 import 'package:kalam_noor/pages/new_student_registration/personal_information/views/widgets/student_personal_info_widget.dart';
-import 'package:kalam_noor/to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
+import 'package:kalam_noor/pages/new_student_registration/previous_school_information/views/widgets/student_previous_school_info_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
@@ -138,7 +137,7 @@ class NewStudentRegistrationPage extends StatelessWidget {
                                         .previousSchoolInfoSectionStatus.value),
                               ),
                               padding: containerPadding,
-                              child: const StudentPersonalInfoWidget(),
+                              child: const StudentPreviousSchoolInfoWidget(),
                             ),
                           ),
                         ],

@@ -51,20 +51,22 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                     onPressed: () => Get.back(),
                     icon: const Icon(
                       Icons.arrow_back_ios,
+                      color: Colors.black,
                     ),
                   )
                 : const SizedBox.shrink(),
             FaIcon(
               iconData,
               size: 42.sp,
-              color: Colors.black,
+              color: Get.theme.colorScheme.primary,
             ),
             AddHorizontalSpacing(value: 30.w),
             Text(
               title,
               style: TextStyle(
                 fontSize: 25.sp,
-                color: Colors.black,
+                color: Get.theme.colorScheme.primary,
+                fontWeight: FontWeight.bold,
               ),
             ),
             const Spacer(),

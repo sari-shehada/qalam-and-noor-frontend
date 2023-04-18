@@ -45,7 +45,7 @@ class StudentPersonalInfoWidget extends StatelessWidget {
                   ),
                   AddVerticalSpacing(value: 20.h),
                   LabeledWidget(
-                    label: 'الأسم الأول',
+                    label: 'الاسم الأول',
                     child: HintedTextField(
                       controller: controller.firstNameController,
                       hintText: '',
@@ -59,7 +59,7 @@ class StudentPersonalInfoWidget extends StatelessWidget {
                         return AnimatedContainer(
                           decoration: BoxDecoration(
                             color: controller.isMale.value == true
-                                ? Colors.cyan[300]
+                                ? Get.theme.colorScheme.primary
                                 : Colors.pink[300],
                             borderRadius: BorderRadius.circular(14.r),
                           ),
