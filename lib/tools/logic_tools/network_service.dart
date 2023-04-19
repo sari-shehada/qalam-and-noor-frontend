@@ -18,19 +18,19 @@ abstract class HttpService {
   }
 }
 
-class TestClassConsumer {
+class DummyEntity {
   final String name;
   final int age;
-  TestClassConsumer({
+  DummyEntity({
     required this.name,
     required this.age,
   });
 
-  TestClassConsumer copyWith({
+  DummyEntity copyWith({
     String? name,
     int? age,
   }) {
-    return TestClassConsumer(
+    return DummyEntity(
       name: name ?? this.name,
       age: age ?? this.age,
     );
@@ -43,8 +43,8 @@ class TestClassConsumer {
     };
   }
 
-  factory TestClassConsumer.fromMap(Map<String, dynamic> map) {
-    return TestClassConsumer(
+  factory DummyEntity.fromMap(Map<String, dynamic> map) {
+    return DummyEntity(
       name: map['name'] as String,
       age: map['age'] as int,
     );
@@ -52,14 +52,14 @@ class TestClassConsumer {
 
   String toJson() => json.encode(toMap());
 
-  factory TestClassConsumer.fromJson(String source) =>
-      TestClassConsumer.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory DummyEntity.fromJson(String source) =>
+      DummyEntity.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() => 'TestClassConsumer(name: $name, age: $age)';
 
   @override
-  bool operator ==(covariant TestClassConsumer other) {
+  bool operator ==(covariant DummyEntity other) {
     if (identical(this, other)) return true;
 
     return other.name == name && other.age == age;
@@ -70,15 +70,13 @@ class TestClassConsumer {
 }
 
 class TestClassConsumerController {
-  Future<List<TestClassConsumer>> getAllTestClassItems() async {
-    return await HttpService.getParsed<List<TestClassConsumer>, List<dynamic>>(
+  Future<List<DummyEntity>> getAllTestClassItems() async {
+    return await HttpService.getParsed<List<DummyEntity>, List<dynamic>>(
       url: 'http://www.example.com/someTestURL/get',
-      dataMapper: (responseData) {
-        List<TestClassConsumer> resultData = [];
-        for (final element in responseData) {
-          resultData.add(TestClassConsumer.fromMap(element));
-        }
-        return resultData;
+      dataMapper: (data) {
+        return data
+            .map<DummyEntity>((item) => DummyEntity.fromMap(item))
+            .toList();
       },
     );
   }
