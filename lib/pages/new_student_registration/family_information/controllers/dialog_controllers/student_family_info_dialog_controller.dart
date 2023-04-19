@@ -11,7 +11,7 @@ class StudentFamilyInfoDialogController extends GetxController {
   Rx<CustomButtonStatus> searchButtonStatus = CustomButtonStatus.enabled.obs;
   TextEditingController tieNumberEditingController = TextEditingController();
   Rx<List<Family>?> familySearchResult = Rx<List<Family>?>(null);
-  RxDouble initialDialogSize = 220.h.obs;
+  RxDouble initialDialogSize = 225.h.obs;
   Future<void> applySearch() async {
     if (tieNumberEditingController.text.isEmpty) {
       SnackbarService.showErrorSnackBar(
@@ -36,7 +36,7 @@ class StudentFamilyInfoDialogController extends GetxController {
 
   Future<void> _getSearchData(int data) async {
     familySearchResult.value = null;
-    initialDialogSize.value = 220.h;
+    initialDialogSize.value = 225.h;
     searchButtonStatus.value = CustomButtonStatus.processing;
     familySearchResult.value =
         await DatabaseHelper.getFamiliesByTieNumber(tieNumber: data);

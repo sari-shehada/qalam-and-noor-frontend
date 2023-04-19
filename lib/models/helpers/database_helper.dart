@@ -241,9 +241,43 @@ abstract class DatabaseHelper {
     // return [];
   }
 
+  static Future<Vaccine> addVaccine(Vaccine vaccine) async {
+    //TODO: Change to an api call
+    vaccine = vaccine.copyWith(id: dummyVaccines.length + 1);
+    dummyVaccines.add(vaccine);
+    return vaccine;
+  }
+
+  static Future<Vaccine> updateVaccineById({
+    required Vaccine vaccine,
+  }) async {
+    //TODO: Change to an api call
+    dummyVaccines[dummyVaccines.indexOf(
+            dummyVaccines.firstWhere((element) => element.id == vaccine.id))] =
+        vaccine;
+    return vaccine;
+  }
+
   //Illnesses
   static Future<List<Illness>> getIllnesses() async {
     return dummyIllnesses;
+  }
+
+  static Future<Illness> addIllness(Illness illness) async {
+    //TODO: Change to an api call
+    illness = illness.copyWith(id: dummyIllnesses.length + 1);
+    dummyIllnesses.add(illness);
+    return illness;
+  }
+
+  static Future<Illness> updateIllnessById({
+    required Illness illness,
+  }) async {
+    //TODO: Change to an api call
+    dummyIllnesses[dummyIllnesses.indexOf(
+            dummyIllnesses.firstWhere((element) => element.id == illness.id))] =
+        illness;
+    return illness;
   }
 
   //Families

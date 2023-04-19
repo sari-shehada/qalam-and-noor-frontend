@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/illnesses_management_page/controllers/illness_management_controller.dart';
+import 'package:kalam_noor/pages/illnesses_management_page/views/illnesses_management_page.dart';
 import 'package:kalam_noor/pages/new_student_registration/main_page/controllers/new_student_registration_bindings.dart';
 import 'package:kalam_noor/pages/school_inbox_page/views/school_inbox_page.dart';
 import 'package:kalam_noor/pages/vaccines_management_page/views/vaccines_management_page.dart';
@@ -93,9 +95,9 @@ class NavigationController {
   static void toIllnessesManagementPage() {
     //TODO:
     Get.to(
-      () => const VaccinesManagementPage(),
+      () => const IllnessesManagementPage(),
       binding: BindingsBuilder.put(
-        () => VaccinesManagementController(),
+        () => IllnessesManagementController(),
       ),
     );
   }
@@ -112,7 +114,7 @@ class NavigationController {
 
   static void toAddNewStudentPage() async {
     var result = await Get.to(
-      const NewStudentRegistrationPage(),
+      () => NewStudentRegistrationPage(),
       binding: NewStudentRegistrationBindings(),
     );
     if (result == true) {

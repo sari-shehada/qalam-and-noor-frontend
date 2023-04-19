@@ -24,7 +24,7 @@ class StudentFamilyInfoWidget extends StatelessWidget {
             return const SizedBox.shrink();
           }
           return Container(
-            height: 200.h,
+            height: 188.h,
             alignment: Alignment.center,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
