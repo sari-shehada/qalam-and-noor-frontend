@@ -16,6 +16,18 @@ abstract class HttpService {
   static Future<http.Response> getUnparsed(String url) async {
     return await http.get(Uri.parse(url));
   }
+
+  static Future<int?> post({
+    required String url,
+    Map<String, dynamic>? body,
+  }) async {
+    Uri uriParsedFromURL = Uri.parse(url);
+    http.Response response = await http.post(
+      uriParsedFromURL,
+      body: body,
+    );
+    return int.tryParse(response.body.toString());
+  }
 }
 
 class DummyEntity {
@@ -70,14 +82,20 @@ class DummyEntity {
 }
 
 class TestClassConsumerController {
-  Future<List<DummyEntity>> getAllTestClassItems() async {
+  Future<List<DummyEntity>> getAllDummyClassItems() async {
     return await HttpService.getParsed<List<DummyEntity>, List<dynamic>>(
-      url: 'http://www.example.com/someTestURL/get',
+      url: 'http://www.example.com/dummy/getAll',
       dataMapper: (data) {
         return data
             .map<DummyEntity>((item) => DummyEntity.fromMap(item))
             .toList();
       },
     );
+  }
+
+  Future<bool> insertDummyClass(DummyEntity entity) async {
+    int? requestResult = await HttpService.post(
+        url: 'http://www.example.com/someTestURL/insert', body: entity.toMap());
+    return requestResult == null ? false : (requestResult >= 1);
   }
 }
