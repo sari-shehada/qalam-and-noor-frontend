@@ -181,7 +181,6 @@ class StudentPersonalInfoWidget extends StatelessWidget {
                           isExpanded: true,
                           icon: const SizedBox.shrink(),
                           underline: const SizedBox.shrink(),
-                          itemHeight: 60.h,
                           items: Religion.values
                               .map(
                                 (e) => DropdownMenuItem(
