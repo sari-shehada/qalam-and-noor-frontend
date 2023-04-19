@@ -34,7 +34,7 @@ class MedicalsManagementPage extends StatelessWidget {
                 //TODO: Come up with a good desc
                 subtitle: ' اللقاحات اللقاحات اللقاحات',
                 iconData: FontAwesomeIcons.virus,
-                onTap: () {},
+                onTap: () => NavigationController.toIllnessesManagementPage(),
               ),
               MedicalsMenuListTile(
                 title: 'الحالات المزاجية',
