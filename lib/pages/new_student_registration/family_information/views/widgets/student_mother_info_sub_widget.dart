@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/mother.dart';
-import 'package:kalam_noor/pages/new_student_registration/family_information/controllers/dialog_controllers/add_student_family_info_dialog_controller.dart';
 import 'package:kalam_noor/to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/text_fields.dart';
@@ -10,6 +9,7 @@ import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
 import '../../../../../configs/fonts.dart';
 import '../../../../../models/enums.dart';
+import '../../controllers/widget_controllers/student_mother_info_sub_widget_controller.dart';
 
 class StudentMotherInfoSubWidget extends StatelessWidget {
   const StudentMotherInfoSubWidget({super.key});
@@ -22,36 +22,44 @@ class StudentMotherInfoSubWidget extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 70.h, left: 30.w, right: 30.w),
       children: [
         LabeledWidget(
-          label: 'الاسم الأول',
-          child: HintedTextField(
-            hintText: '',
-            controller: controller.firstNameController,
-          ),
-        ),
+            label: 'الاسم الأول',
+            child: Obx(
+              () => HintedTextField(
+                hintText: '',
+                controller: controller.firstNameController.controller,
+                fillColor: controller.firstNameController.fillColor.value,
+              ),
+            )),
         AddVerticalSpacing(value: 15.h),
         LabeledWidget(
-          label: 'اللقب',
-          child: HintedTextField(
-            hintText: '',
-            controller: controller.lastNameController,
-          ),
-        ),
+            label: 'اللقب',
+            child: Obx(
+              () => HintedTextField(
+                hintText: '',
+                controller: controller.lastNameController.controller,
+                fillColor: controller.lastNameController.fillColor.value,
+              ),
+            )),
         AddVerticalSpacing(value: 15.h),
         LabeledWidget(
-          label: 'اسم الأب',
-          child: HintedTextField(
-            hintText: '',
-            controller: controller.fatherNameController,
-          ),
-        ),
+            label: 'اسم الأب',
+            child: Obx(
+              () => HintedTextField(
+                hintText: '',
+                controller: controller.fatherNameController.controller,
+                fillColor: controller.fatherNameController.fillColor.value,
+              ),
+            )),
         AddVerticalSpacing(value: 15.h),
         LabeledWidget(
-          label: 'اسم الأم',
-          child: HintedTextField(
-            hintText: '',
-            controller: controller.motherNameController,
-          ),
-        ),
+            label: 'اسم الأم',
+            child: Obx(
+              () => HintedTextField(
+                hintText: '',
+                controller: controller.motherNameController.controller,
+                fillColor: controller.motherNameController.fillColor.value,
+              ),
+            )),
         AddVerticalSpacing(value: 15.h),
         LabeledWidget(
           label: 'هل تعيش مع الأب؟',
@@ -99,36 +107,45 @@ class StudentMotherInfoSubWidget extends StatelessWidget {
         ),
         AddVerticalSpacing(value: 15.h),
         LabeledWidget(
-          label: 'المهنة',
-          child: HintedTextField(
-            hintText: '',
-            controller: controller.careerController,
-          ),
-        ),
+            label: 'المهنة',
+            child: Obx(
+              () => HintedTextField(
+                hintText: '',
+                controller: controller.careerController.controller,
+                fillColor: controller.careerController.fillColor.value,
+              ),
+            )),
         AddVerticalSpacing(value: 15.h),
         LabeledWidget(
-          label: 'رقم القيد',
-          child: HintedTextField(
-            hintText: '',
-            controller: controller.tieNumberController,
-          ),
-        ),
+            label: 'رقم القيد',
+            child: Obx(
+              () => HintedTextField(
+                hintText: '',
+                controller: controller.tieNumberController.controller,
+                fillColor: controller.tieNumberController.fillColor.value,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              ),
+            )),
         AddVerticalSpacing(value: 15.h),
         LabeledWidget(
-          label: 'مكان القيد',
-          child: HintedTextField(
-            hintText: '',
-            controller: controller.tiePlaceController,
-          ),
-        ),
+            label: 'مكان القيد',
+            child: Obx(
+              () => HintedTextField(
+                hintText: '',
+                controller: controller.tiePlaceController.controller,
+                fillColor: controller.tiePlaceController.fillColor.value,
+              ),
+            )),
         AddVerticalSpacing(value: 15.h),
         LabeledWidget(
-          label: 'مكان الولادة',
-          child: HintedTextField(
-            hintText: '',
-            controller: controller.placeOfBirthController,
-          ),
-        ),
+            label: 'مكان الولادة',
+            child: Obx(
+              () => HintedTextField(
+                hintText: '',
+                controller: controller.placeOfBirthController.controller,
+                fillColor: controller.placeOfBirthController.fillColor.value,
+              ),
+            )),
         AddVerticalSpacing(value: 15.h),
         LabeledWidget(
           label: 'تاريخ الولادة',
@@ -186,7 +203,7 @@ class StudentMotherInfoSubWidget extends StatelessWidget {
         ),
         AddVerticalSpacing(value: 15.h),
         LabeledWidget(
-          label: 'الحاة التعليمية',
+          label: 'الحالة التعليمية',
           child: Obx(
             () => Container(
               decoration: BoxDecoration(
@@ -228,9 +245,13 @@ class StudentMotherInfoSubWidget extends StatelessWidget {
         AddVerticalSpacing(value: 15.h),
         LabeledWidget(
           label: 'رقم الهاتف',
-          child: HintedTextField(
-            hintText: '',
-            controller: controller.phoneNumberController,
+          child: Obx(
+            () => HintedTextField(
+              hintText: '',
+              controller: controller.phoneNumberController.controller,
+              fillColor: controller.phoneNumberController.fillColor.value,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            ),
           ),
         ),
         AddVerticalSpacing(value: 30.h),
@@ -257,76 +278,5 @@ class StudentMotherInfoSubWidget extends StatelessWidget {
         )
       ],
     );
-  }
-}
-
-class StudentMotherInfoSubWidgetController extends GetxController {
-  final TextEditingController firstNameController = TextEditingController();
-  final TextEditingController lastNameController = TextEditingController();
-  final TextEditingController fatherNameController = TextEditingController();
-  final TextEditingController motherNameController = TextEditingController();
-  final TextEditingController careerController = TextEditingController();
-  final TextEditingController tieNumberController = TextEditingController();
-  final TextEditingController tiePlaceController = TextEditingController();
-  final TextEditingController placeOfBirthController = TextEditingController();
-  final TextEditingController phoneNumberController = TextEditingController();
-
-  RxBool doesLiveWithHusband = true.obs;
-  Rx<DateTime?> dateOfBirth = Rx<DateTime?>(null);
-  Rx<Religion> religion = Religion.undefined.obs;
-  Rx<EducationalStatus> educationalStatus = EducationalStatus.none.obs;
-
-  void changeReligion(Religion? newReligion) {
-    if (newReligion != null) religion.value = newReligion;
-  }
-
-  void changeEducationalStatus(EducationalStatus? newEducationalStatus) {
-    if (newEducationalStatus != null) {
-      educationalStatus.value = newEducationalStatus;
-    }
-  }
-
-  void changeDateOfBirth(DateTime? dateTime) {
-    dateOfBirth.value = dateTime;
-  }
-
-  void toggleLivesWithHusband() {
-    doesLiveWithHusband.value = !doesLiveWithHusband.value;
-  }
-
-  bool validateFields() {
-    //TODO: Add Validation Here
-    return true;
-  }
-
-  Mother encapsulateObject() {
-    return Mother(
-      id: -1,
-      firstName: firstNameController.text,
-      lastName: lastNameController.text,
-      fatherName: fatherNameController.text,
-      motherName: motherNameController.text,
-      doesLiveWithHusband: doesLiveWithHusband.value,
-      career: careerController.text,
-      tieNumber: int.parse(tieNumberController.text),
-      tiePlace: tiePlaceController.text,
-      placeOfBirth: placeOfBirthController.text,
-      dateOfBirth: dateOfBirth.value!,
-      religion: religion.value,
-      educationalStatus: educationalStatus.value,
-      phoneNumber: phoneNumberController.text,
-    );
-  }
-
-  void toNextPage() {
-    if (validateFields() == true) {
-      Get.find<AddStudentFamilyInfoDialogController>().toNextPage();
-    }
-  }
-
-  void toPreviousPage() {
-    if (validateFields() == true) {
-      Get.find<AddStudentFamilyInfoDialogController>().toPreviousPage();
-    }
   }
 }
