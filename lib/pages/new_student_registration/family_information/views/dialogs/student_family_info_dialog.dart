@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/pages/new_student_registration/family_information/controllers/dialog_controllers/student_family_info_dialog_controller.dart';
+import 'package:kalam_noor/pages/new_student_registration/family_information/views/widgets/student_family_info_card.dart';
 import 'package:kalam_noor/to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/text_fields.dart';
@@ -31,6 +32,10 @@ class StudentFamilyInfoDialog extends StatelessWidget {
               color: Colors.white,
               borderRadius:
                   BorderRadius.circular(GlobalStyles.globalBorderRadius),
+            ),
+            constraints: BoxConstraints(
+              minHeight: StudentFamilyDialogConstants.collapsedDialogHeight,
+              maxHeight: StudentFamilyDialogConstants.expandedDialogHeight,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -65,7 +70,7 @@ class StudentFamilyInfoDialog extends StatelessWidget {
                     ),
                   ],
                 ),
-                AddVerticalSpacing(value: 10.h),
+                AddVerticalSpacing(value: 20.h),
                 Obx(
                   () {
                     if (dialogController.familySearchResult.value == null) {
@@ -73,36 +78,70 @@ class StudentFamilyInfoDialog extends StatelessWidget {
                     }
                     return Expanded(
                       child: ListView(
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         children: [
                           LabeledWidget(
                             label: 'نتائج البحث',
+                            spacing: 20.h,
                             child: dialogController
                                     .familySearchResult.value!.isEmpty
                                 //TODO: SARI Consider Adding an AddFamily Button
                                 ? SizedBox(
-                                    height: 400.h,
+                                    height: StudentFamilyDialogConstants
+                                        .noSearchResultCardHeight,
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       mainAxisSize: MainAxisSize.max,
-                                      children: const [
-                                        Text('لم يتم العثور على نتائج'),
+                                      children: [
+                                        const Text('لم يتم العثور على نتائج'),
+                                        AddVerticalSpacing(value: 25.h),
+                                        CustomFilledButton(
+                                            width: 350.w,
+                                            height: 50.h,
+                                            onTap: () => dialogController
+                                                .addFamilyInfo(),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                const Text(
+                                                  'إضافة معلومات أسرة الطالب',
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                AddHorizontalSpacing(
+                                                    value: 20.w),
+                                                const Icon(
+                                                  Icons.add,
+                                                  color: Colors.white,
+                                                )
+                                              ],
+                                            ))
                                       ],
                                     ),
                                   )
-                                : ListView.builder(
-                                    itemCount: dialogController
-                                        .familySearchResult.value!.length,
-                                    itemBuilder: (context, index) {
-                                      return ListTile(
-                                        //TODO: Build Card For Each Family
-                                        title: Text(
-                                          dialogController.familySearchResult
-                                              .value![index].userName,
-                                        ),
-                                      );
-                                    },
+                                : SizedBox(
+                                    height: StudentFamilyDialogConstants
+                                            .searchResultCardHeight *
+                                        3.5,
+                                    child: ListView.separated(
+                                      shrinkWrap: true,
+                                      itemCount: dialogController
+                                          .familySearchResult.value!.length,
+                                      itemBuilder: (context, index) {
+                                        return StudentFamilyInfoCard(
+                                          familyInfo: dialogController
+                                              .familySearchResult.value![index],
+                                        );
+                                      },
+                                      separatorBuilder:
+                                          (BuildContext context, int index) {
+                                        return const Divider();
+                                      },
+                                    ),
                                   ),
                           ),
                         ],

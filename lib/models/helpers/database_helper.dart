@@ -1,5 +1,7 @@
+import 'package:get/get.dart';
 import 'package:kalam_noor/models/agendas/families.dart';
 import 'package:kalam_noor/models/agendas/father.dart';
+import 'package:kalam_noor/models/agendas/mother.dart';
 import 'package:kalam_noor/models/educational/class.dart';
 
 import '../../pages/addresses_management/main_page/controllers/addresses_management_stats_controller.dart';
@@ -283,7 +285,8 @@ abstract class DatabaseHelper {
   //Families
   static Future<List<Family>> getFamiliesByTieNumber(
       {required int tieNumber}) async {
-    await Future.delayed(const Duration(seconds: 3));
+    //TODO: Remove this duration later
+    await Future.delayed(1000.milliseconds);
     List<int> fathersWithMatchingTieNumber = [];
     fathersWithMatchingTieNumber = dummyFathers
         .where((father) => father.tieNumber == tieNumber)
@@ -296,5 +299,13 @@ abstract class DatabaseHelper {
       }
     }
     return familiesWithMatchingTieNumber;
+  }
+
+  static Future<Father> getFatherByFamilyId({required int familyId}) async {
+    return dummyFathers.firstWhere((element) => element.id == familyId);
+  }
+
+  static Future<Mother> getMotherByFamilyId({required int familyId}) async {
+    return dummyMothers.firstWhere((element) => element.id == familyId);
   }
 }

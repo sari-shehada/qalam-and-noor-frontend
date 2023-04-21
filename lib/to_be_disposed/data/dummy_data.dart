@@ -1,6 +1,7 @@
 import 'package:kalam_noor/models/agendas/father.dart';
 import 'package:kalam_noor/models/agendas/mother.dart';
 import 'package:kalam_noor/models/agendas/responsible_person.dart';
+import 'package:kalam_noor/models/enums.dart';
 
 import '../../models/address/address.dart';
 import '../../models/address/area.dart';
@@ -159,10 +160,46 @@ List<Illness> dummyIllnesses = [
   Illness(id: 2, name: 'فقر دم'),
 ];
 
-List<Family> dummyFamilies = [];
+List<Family> dummyFamilies = [
+  Family(id: 1, userName: 'aaa', password: 'sss', fatherId: 1, motherId: 1),
+];
 
-List<Father> dummyFathers = [];
+List<Father> dummyFathers = [
+  Father(
+      id: 1,
+      firstName: 'عدي',
+      lastName: 'ع.',
+      fatherName: 'أحمد',
+      motherName: 'لانا',
+      career: 'مهندس',
+      placeOfResidence: 'الرياض',
+      tieNumber: 200,
+      tiePlace: 'النبك',
+      placeOfBirth: 'النبك',
+      dateOfBirth: DateTime.now(),
+      civilRegisterSecretary: '1920',
+      religion: Religion.islam,
+      educationalStatus: EducationalStatus.master,
+      phoneNumber: '09111111111',
+      permanentAddress: 'النبك شارع الأديب'),
+];
 
-List<Mother> dummyMothers = [];
+List<Mother> dummyMothers = [
+  Mother(
+      id: 1,
+      firstName: 'هيا',
+      lastName: 'ه.',
+      fatherName: 'محمد',
+      motherName: 'اميرة',
+      doesLiveWithHusband: true,
+      career: 'ربة منزل',
+      tieNumber: 300,
+      tiePlace: 'النبك',
+      placeOfBirth: 'النبك',
+      dateOfBirth: DateTime.now(),
+      religion: Religion.islam,
+      educationalStatus: EducationalStatus.bachelor,
+      phoneNumber: '09xxx'),
+];
 
 List<ResponsiblePerson> dummyResponsiblePeople = [];
