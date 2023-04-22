@@ -39,7 +39,8 @@ class _LoaderPageState extends State<LoaderPage> {
             AddVerticalSpacing(value: 170.h),
             Text(
               'قلم و نور',
-              style: ProjectFonts.headlineMedium.copyWith(fontSize: 50.sp),
+              //TODO:
+              style: ProjectFonts.headlineMedium().copyWith(fontSize: 50.sp),
             ),
           ],
         ),

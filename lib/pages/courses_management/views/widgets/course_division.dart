@@ -27,7 +27,7 @@ class CoursesDivision extends StatelessWidget {
           children: [
             Text(
               "$subjectsType :",
-              style: ProjectFonts.titleLarge,
+              style: ProjectFonts.titleLarge(),
             ),
             IconButton(
                 onPressed: () {},

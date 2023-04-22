@@ -58,16 +58,17 @@ class StudentFamilyInfoWidget extends StatelessWidget {
               ],
             );
           }
-          return Container(
-            height: 188.h,
-            alignment: Alignment.center,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: CustomTintedButton(
-                height: 150.h,
-                useShadow: false,
-                onTap: () => controller.selectStudentFamily(),
-                child: 'إضافة معلومات أسرة الطالب',
+          return Expanded(
+            child: Container(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: CustomTintedButton(
+                  height: 150.h,
+                  useShadow: false,
+                  onTap: () => controller.selectStudentFamily(),
+                  child: 'إضافة معلومات أسرة الطالب',
+                ),
               ),
             ),
           );

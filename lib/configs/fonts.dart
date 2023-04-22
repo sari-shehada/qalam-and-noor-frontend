@@ -11,11 +11,14 @@ class ProjectFonts {
       fontWeight: FontWeight.bold,
       color: lightColorScheme.primary);
 
-  static TextStyle get headlineMedium => TextStyle(
+  static TextStyle headlineMedium() {
+    return TextStyle(
       fontFamily: fontFamily,
-      fontSize: 45.sp,
-      fontWeight: FontWeight.normal,
-      color: lightColorScheme.primary);
+      fontSize: 28.sp,
+      fontWeight: FontWeight.bold,
+      color: lightColorScheme.primary,
+    );
+  }
 
   static TextStyle get headlineSmall => TextStyle(
       fontFamily: fontFamily,
@@ -23,12 +26,14 @@ class ProjectFonts {
       fontWeight: FontWeight.w300,
       color: lightColorScheme.primary);
 
-  static TextStyle get titleLarge => TextStyle(
-        fontFamily: fontFamily,
-        fontWeight: FontWeight.w300,
-        fontSize: 22.sp,
-        color: lightColorScheme.inverseSurface,
-      );
+  static TextStyle titleLarge() {
+    return TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: 22.sp,
+      color: lightColorScheme.primary,
+      letterSpacing: 0.sp,
+    );
+  }
 
   static TextStyle get titleMedium => TextStyle(
         fontFamily: fontFamily,
