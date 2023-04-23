@@ -27,7 +27,7 @@ class StudentMedicalInfoWidget extends StatelessWidget {
               ),
             )
           //TODO:
-          : SizedBox.shrink(),
+          : const SizedBox.shrink(),
     );
   }
 }

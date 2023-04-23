@@ -51,6 +51,6 @@ class AddStudentMedicalInfoDialogController extends GetxController
 }
 
 class AddStudentMedicalInfoConstants {
-  static double get dialogInitialHeight => 500.h;
+  static double get dialogInitialHeight => 700.h;
   static double get dialogExtendedHeight => 900.h;
 }

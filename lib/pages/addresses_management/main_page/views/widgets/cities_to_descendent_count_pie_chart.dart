@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/configs/fonts.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../controllers/addresses_management_stats_controller.dart';
@@ -12,7 +14,7 @@ class LargestCitiesByDescendentCountPieChart extends StatelessWidget {
     required this.onFailedToLoadText,
   });
 
-  final LegendTitle? legendTitle;
+  final String? legendTitle;
   final Future<List<CityToDescendentCount>> future;
   final String onFailedToLoadText;
   @override
@@ -28,24 +30,40 @@ class LargestCitiesByDescendentCountPieChart extends StatelessWidget {
         }
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
-            return SfCircularChart(
-              tooltipBehavior: TooltipBehavior(enable: true),
-              legend: Legend(isVisible: true, title: legendTitle),
-              series: <CircularSeries>[
-                PieSeries<CityToDescendentCount, String>(
-                  // enableTooltip: true,
-                  // explode: true,
-                  // explodeAll: true,
-                  explodeGesture: ActivationMode.singleTap,
-                  dataSource: snapshot.data,
-                  pointColorMapper: (CityToDescendentCount data, _) =>
-                      data.color,
-                  xValueMapper: (CityToDescendentCount data, _) =>
-                      data.city.name,
-                  yValueMapper: (CityToDescendentCount data, _) =>
-                      data.descendentCount,
-                  animationDuration: 600,
+            return Column(
+              children: [
+                Expanded(
+                  child: SfCircularChart(
+                    tooltipBehavior: TooltipBehavior(enable: true),
+                    legend: Legend(
+                      isVisible: true,
+                    ),
+                    series: <CircularSeries>[
+                      PieSeries<CityToDescendentCount, String>(
+                        // enableTooltip: true,
+                        // explode: true,
+                        // explodeAll: true,
+                        explodeGesture: ActivationMode.singleTap,
+                        dataSource: snapshot.data,
+                        pointColorMapper: (CityToDescendentCount data, _) =>
+                            data.color,
+                        xValueMapper: (CityToDescendentCount data, _) =>
+                            data.city.name,
+                        yValueMapper: (CityToDescendentCount data, _) =>
+                            data.descendentCount,
+                        animationDuration: 600,
+                      ),
+                    ],
+                  ),
                 ),
+                if (legendTitle != null)
+                  Container(
+                    padding: EdgeInsets.only(bottom: 25.h),
+                    child: Text(
+                      legendTitle!,
+                      style: ProjectFonts.titleMedium(),
+                    ),
+                  ),
               ],
             );
           }

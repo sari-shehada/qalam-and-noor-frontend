@@ -40,7 +40,6 @@ class AddOrEditCityDialogController extends GetxController {
       }
       City city = City(id: (dummyCities.length + 1), name: cityController.text);
       await DatabaseHelper.addCity(city);
-      Get.find<AddressesManagementStatsController>().refreshCitiesCount();
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;

@@ -25,10 +25,12 @@ import '../pages/vaccines_management_page/controllers/vaccines_management_contro
 
 class NavigationController {
   static void toLoginPage() {
-    Get.offAll(() => const LoginPage(),
-        binding: LoginPageBindings(),
-        transition: Transition.fadeIn,
-        duration: const Duration(milliseconds: 800));
+    Get.offAll(
+      () => const LoginPage(),
+      binding: LoginPageBindings(),
+      transition: Transition.fadeIn,
+      duration: const Duration(milliseconds: 800),
+    );
   }
 
   static void toDashboard(Employee employee) {

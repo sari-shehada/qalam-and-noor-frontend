@@ -5,6 +5,8 @@ import 'package:kalam_noor/models/address/city.dart';
 import 'package:kalam_noor/models/helpers/database_helper.dart';
 import 'package:kalam_noor/pages/addresses_management/main_page/views/dialogs/add_or_edit_city_dialog.dart';
 
+import 'addresses_management_stats_controller.dart';
+
 class AddressManagementController extends GetxController {
   late Rx<Future<RxList<City>>> cities;
   Rx<CitiesSortingOption> currentSortingOption = CitiesSortingOption.none.obs;
@@ -45,6 +47,7 @@ class AddressManagementController extends GetxController {
       barrierDismissible: true,
     );
     if (result == true) {
+      Get.find<AddressesManagementStatsController>().refreshCitiesCount();
       cities.value = getCitiesToDisplay();
     }
   }

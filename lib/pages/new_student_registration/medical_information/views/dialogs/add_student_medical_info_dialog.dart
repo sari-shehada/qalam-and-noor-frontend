@@ -10,7 +10,7 @@ import 'package:kalam_noor/pages/new_student_registration/medical_information/vi
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 
 import '../../../../../tools/ui_tools/ui_tools.dart';
-import '../widgets/studnet_illnesses_info_sub_widget.dart';
+import '../widgets/student_illnesses_info_sub_widget.dart';
 
 class AddStudentMedicalInfoDialog extends StatelessWidget {
   const AddStudentMedicalInfoDialog({super.key});
@@ -48,71 +48,73 @@ class AddStudentMedicalInfoDialog extends StatelessWidget {
                 ),
                 AddVerticalSpacing(value: 25.h),
                 Expanded(
-                    child: Stack(
-                  children: [
-                    TabBarView(
-                      controller: dialogController.tabController,
-                      children: const [
-                        StudentBasicMedicalInfoSubWidget(),
-                        StudentIllnessesInfoSubWidget(),
-                        StudentVaccinesInfoSubWidget(),
-                        StudentPsychologicalStatusesInfoSubWidget(),
-                      ],
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        height: 80.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(
-                                GlobalStyles.globalBorderRadius),
-                            bottomRight: Radius.circular(
-                                GlobalStyles.globalBorderRadius),
-                          ),
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.white,
-                              Colors.white.withOpacity(0),
-                            ],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
-                          ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20.w, vertical: 15.h),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: CustomOutlinedButton(
-                                  onTap: () => dialogController.previousPage(),
-                                  child: dialogController.pageIndex.value == 0
-                                      ? 'إلغاء'
-                                      : 'السابق',
-                                  outlineColor:
-                                      dialogController.pageIndex.value == 0
-                                          ? Colors.redAccent
-                                          : null,
-                                ),
-                              ),
-                              AddHorizontalSpacing(value: 20.w),
-                              Expanded(
-                                child: CustomFilledButton(
-                                  onTap: () => dialogController.nextPage(),
-                                  child: dialogController.pageIndex.value ==
-                                          dialogController.sections.length - 1
-                                      ? 'إضافة المعلومات'
-                                      : 'التالي',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                  child: Stack(
+                    children: [
+                      TabBarView(
+                        controller: dialogController.tabController,
+                        children: const [
+                          StudentBasicMedicalInfoSubWidget(),
+                          StudentIllnessesInfoSubWidget(),
+                          StudentVaccinesInfoSubWidget(),
+                          StudentPsychologicalStatusesInfoSubWidget(),
+                        ],
                       ),
-                    )
-                  ],
-                ))
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: 80.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(
+                                  GlobalStyles.globalBorderRadius),
+                              bottomRight: Radius.circular(
+                                  GlobalStyles.globalBorderRadius),
+                            ),
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.white,
+                                Colors.white.withOpacity(0),
+                              ],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                            ),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20.w, vertical: 15.h),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: CustomOutlinedButton(
+                                    onTap: () =>
+                                        dialogController.previousPage(),
+                                    child: dialogController.pageIndex.value == 0
+                                        ? 'إلغاء'
+                                        : 'السابق',
+                                    outlineColor:
+                                        dialogController.pageIndex.value == 0
+                                            ? Colors.redAccent
+                                            : null,
+                                  ),
+                                ),
+                                AddHorizontalSpacing(value: 20.w),
+                                Expanded(
+                                  child: CustomFilledButton(
+                                    onTap: () => dialogController.nextPage(),
+                                    child: dialogController.pageIndex.value ==
+                                            dialogController.sections.length - 1
+                                        ? 'إضافة المعلومات'
+                                        : 'التالي',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

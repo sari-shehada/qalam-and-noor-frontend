@@ -6,6 +6,7 @@ import '../../../../models/address/area.dart';
 import '../../../../models/address/city.dart';
 import '../../../../models/helpers/database_helper.dart';
 import '../../main_page/controllers/address_management_controller.dart';
+import '../../main_page/controllers/addresses_management_stats_controller.dart';
 
 class CityDetailsController extends GetxController {
   final City city;
@@ -54,6 +55,7 @@ class CityDetailsController extends GetxController {
       barrierDismissible: true,
     );
     if (result == true) {
+      Get.find<AddressesManagementStatsController>().refreshAreasCount();
       areas.value = getAreasInCity();
     }
   }

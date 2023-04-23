@@ -27,7 +27,7 @@ class CourseCard extends StatelessWidget {
             children: [
               Text(
                 courseName,
-                style: ProjectFonts.titleMedium.copyWith(color: Colors.white),
+                style: ProjectFonts.titleMedium().copyWith(color: Colors.white),
               ),
               const Spacer(),
               IconButton(

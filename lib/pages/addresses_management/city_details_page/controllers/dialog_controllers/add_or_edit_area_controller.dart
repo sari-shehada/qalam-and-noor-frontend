@@ -42,7 +42,6 @@ class AddOrEditAreaController extends GetxController {
         return;
       }
       Area area = Area(id: -1, name: areaController.text, cityId: cityId);
-      Get.find<AddressesManagementStatsController>().refreshAreasCount();
       await DatabaseHelper.addNewArea(area);
       Get.back(result: true);
     } finally {

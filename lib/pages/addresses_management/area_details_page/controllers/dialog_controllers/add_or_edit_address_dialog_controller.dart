@@ -49,7 +49,7 @@ class AddOrEditAddressDialogController extends GetxController {
           details: detailsController.text == '' ? null : detailsController.text,
           areaId: areaId);
       await DatabaseHelper.addNewAddress(address);
-      Get.find<AddressesManagementStatsController>().refreshAddressesCount();
+
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;

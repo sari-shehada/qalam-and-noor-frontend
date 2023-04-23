@@ -157,9 +157,7 @@ class AddressesManagementPage extends StatelessWidget {
                       width: double.infinity,
                       decoration: statsContainerDecoration,
                       child: LargestCitiesByDescendentCountPieChart(
-                        legendTitle: LegendTitle(
-                          text: 'أكبر المدن من حيث عدد الأحياء',
-                        ),
+                        legendTitle: 'أكبر المدن من حيث عدد الأحياء',
                         future: statsController.citiesToAreasCount,
                         onFailedToLoadText: 'تعذر بناء إحصيائات عدد الأحياء',
                       ),
@@ -172,9 +170,7 @@ class AddressesManagementPage extends StatelessWidget {
                       width: double.infinity,
                       decoration: statsContainerDecoration,
                       child: LargestCitiesByDescendentCountPieChart(
-                        legendTitle: LegendTitle(
-                          text: 'أكبر المدن من حيث عدد العناوين',
-                        ),
+                        legendTitle: 'أكبر المدن من حيث عدد العناوين',
                         future: statsController.citiesToAddressesCount,
                         onFailedToLoadText: 'تعذر بناء إحصيائات عدد العناوين',
                       ),
