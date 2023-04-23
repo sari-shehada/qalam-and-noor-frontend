@@ -237,6 +237,26 @@ abstract class DatabaseHelper {
     return dummyPsychologicalStatuses;
   }
 
+  static Future<PsychologicalStatus> addPsychologicalStatus(
+      PsychologicalStatus psychologicalStatus) async {
+    //TODO: Change to an api call
+    psychologicalStatus =
+        psychologicalStatus.copyWith(id: dummyPsychologicalStatuses.length + 1);
+    dummyPsychologicalStatuses.add(psychologicalStatus);
+    return psychologicalStatus;
+  }
+
+  static Future<PsychologicalStatus> updatePsychologicalStatusById({
+    required PsychologicalStatus psychologicalStatus,
+  }) async {
+    //TODO: Change to an api call
+    dummyPsychologicalStatuses[dummyPsychologicalStatuses.indexOf(
+            dummyPsychologicalStatuses.firstWhere(
+                (element) => element.id == psychologicalStatus.id))] =
+        psychologicalStatus;
+    return psychologicalStatus;
+  }
+
   //Vaccines
   static Future<List<Vaccine>> getVaccines() async {
     return dummyVaccines;

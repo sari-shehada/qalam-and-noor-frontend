@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/medical/vaccine.dart';
 import 'package:kalam_noor/to_be_disposed/data/dummy_data.dart';
-
 import '../../../../models/helpers/database_helper.dart';
 import '../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../tools/ui_tools/buttons.dart';

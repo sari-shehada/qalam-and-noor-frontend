@@ -41,7 +41,8 @@ class MedicalsManagementPage extends StatelessWidget {
                 //TODO: Come up with a good desc
                 subtitle: ' اللقاحات اللقاحات اللقاحات',
                 iconData: FontAwesomeIcons.faceMehBlank,
-                onTap: () {},
+                onTap: () => NavigationController
+                    .toPsychologicalStatusesManagementPage(),
               )
             ],
           ),

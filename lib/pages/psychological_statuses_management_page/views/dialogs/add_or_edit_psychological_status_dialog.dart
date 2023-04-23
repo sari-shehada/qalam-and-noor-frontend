@@ -1,20 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/medical/illness.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:kalam_noor/models/medical/psychological_status.dart';
+import 'package:kalam_noor/pages/psychological_statuses_management_page/controllers/dialog_controllers/add_or_edit_psychological_status_dialog_controller.dart';
 import '../../../../to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 import '../../../../tools/ui_tools/buttons.dart';
 import '../../../../tools/ui_tools/text_fields.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
-import '../../controllers/dialog_controllers/add_or_edit_illness_dialog_controller.dart';
+import '../../../vaccines_management_page/controllers/dialog_controllers/add_or_edit_vaccine_dialog_controller.dart';
 
-class AddOrEditIllnessDialog extends StatelessWidget {
-  const AddOrEditIllnessDialog({super.key, this.illness});
-  final Illness? illness;
+class AddOrEditPsychologicalStatusDialog extends StatelessWidget {
+  const AddOrEditPsychologicalStatusDialog(
+      {super.key, this.psychologicalStatus});
+  final PsychologicalStatus? psychologicalStatus;
   @override
   Widget build(BuildContext context) {
-    AddOrEditIllnessController controller =
-        Get.put(AddOrEditIllnessController(illness: illness));
+    AddOrEditPsychologicalStatusDialogController controller = Get.put(
+        AddOrEditPsychologicalStatusDialogController(
+            psychologicalStatus: psychologicalStatus));
     final ThemeData themeData = Get.theme;
     final TextTheme textTheme = themeData.textTheme;
     return Center(
@@ -34,17 +39,17 @@ class AddOrEditIllnessDialog extends StatelessWidget {
               Obx(() {
                 return Text(
                   controller.isEditMode.value == false
-                      ? 'إضافة مرض'
-                      : 'تعديل معلومات المرض',
+                      ? 'إضافة حالة مزاجية'
+                      : 'تعديل معلومات الحالة المزاجية',
                   style: textTheme.headlineMedium,
                 );
               }),
               AddVerticalSpacing(value: 40.h),
               LabeledWidget(
-                label: 'اسم المرض',
+                label: 'اسم الحالة',
                 child: HintedTextField(
                   hintText: '',
-                  controller: controller.illnessController,
+                  controller: controller.psychologicalStatusController,
                 ),
               ),
               AddVerticalSpacing(value: 30.h),
@@ -63,12 +68,13 @@ class AddOrEditIllnessDialog extends StatelessWidget {
                       () => controller.isEditMode.value == false
                           ? CustomFilledButton(
                               height: 50.h,
-                              onTap: () => controller.addIllness(),
+                              onTap: () => controller.addPsychologicalStatus(),
                               child: 'اضافة',
                             )
                           : CustomFilledButton(
                               height: 50.h,
-                              onTap: () => controller.updateIllnessInfo(),
+                              onTap: () =>
+                                  controller.updatePsychologicalStatusInfo(),
                               child: 'إجراء التعديل',
                             ),
                     ),
