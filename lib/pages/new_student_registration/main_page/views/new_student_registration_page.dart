@@ -7,6 +7,7 @@ import 'package:kalam_noor/pages/new_student_registration/main_page/controllers/
 import 'package:kalam_noor/pages/new_student_registration/medical_information/views/widgets/student_medical_info_widget.dart';
 import 'package:kalam_noor/pages/new_student_registration/personal_information/views/widgets/student_personal_info_widget.dart';
 import 'package:kalam_noor/pages/new_student_registration/previous_school_information/views/widgets/student_previous_school_info_widget.dart';
+import 'package:kalam_noor/to_be_disposed/data/dummy_data.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
@@ -42,11 +43,9 @@ class NewStudentRegistrationPage extends StatelessWidget {
         iconData: FontAwesomeIcons.userPlus,
         backButtonEnabled: true,
         actionButton: CustomAppBarActionButton(
-            label: 'تسجيل الطالب',
-            onTap: () {
-              controller.personalInfoSectionStatus.value =
-                  NewStudentRegistrationSectionStatus.valid;
-            }),
+          label: 'تسجيل الطالب',
+          onTap: () => printStuff(),
+        ),
       ),
       body: SizedBox.expand(
         child: Padding(
@@ -152,4 +151,10 @@ class NewStudentRegistrationPage extends StatelessWidget {
       ),
     );
   }
+}
+
+void printStuff() {
+  print('Students $dummyStudents');
+  print('Vaccines $dummyTakenVaccines');
+  print('Illnesses $dummyStudentIllnesses');
 }

@@ -14,14 +14,14 @@ class LoginPageController extends GetxController {
   Rx<CustomButtonStatus> loginButtonStatus = CustomButtonStatus.enabled.obs;
   bool validateFields() {
     if (userNameField.text.isEmpty) {
-      SnackbarService.showErrorSnackBar(
+      SnackBarService.showErrorSnackBar(
         title: 'اسم مستخدم فارغ',
         message: 'الرجاء ملئ جميع الحقول أدناه',
       );
       return false;
     }
     if (passwordField.text.isEmpty) {
-      SnackbarService.showErrorSnackBar(
+      SnackBarService.showErrorSnackBar(
         title: 'كلمة سر فارغة',
         message: 'الرجاء ملئ جميع الحقول أدناه',
       );

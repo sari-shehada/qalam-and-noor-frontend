@@ -1,10 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:kalam_noor/models/enums.dart';
+import '../../../../models/enums.dart';
 
-class Student {
-  final int id;
+class StudentPersonalInfo {
   final int publicRecordId;
   final String firstName;
   final bool isMale;
@@ -17,12 +16,8 @@ class Student {
   final int incidentNumber;
   final DateTime dateOfIncident;
   final String landline;
-  final int addressId;
   final DateTime joinDate;
-  final DateTime? leaveDate;
-  final int familyId;
-  Student({
-    required this.id,
+  StudentPersonalInfo({
     required this.publicRecordId,
     required this.firstName,
     required this.isMale,
@@ -34,56 +29,10 @@ class Student {
     required this.incidentNumber,
     required this.dateOfIncident,
     required this.landline,
-    required this.addressId,
     required this.joinDate,
-    this.leaveDate,
-    required this.familyId,
   });
 
-  // Future<Father> getFatherInfo() async {
-  //   father ??= Father(
-  //       id: 200,
-  //       firstName: 'أحمد',
-  //       lastName: 'ا',
-  //       fatherName: 'محمد',
-  //       motherName: 'فاطمة',
-  //       career: 'طبيب اسنان',
-  //       placeOfResidence: "النبك",
-  //       tieNumber: 400,
-  //       tiePlace: "النبك",
-  //       placeOfBirth: "النبك",
-  //       dateOfBirth: DateTime(
-  //         1994,
-  //       ),
-  //       religion: Religion.islam,
-  //       educationalStatus: EducationalStatus.doctorate,
-  //       phoneNumber: '0999999999',
-  //       permanentAddress: 'النبك / الحي الغربي / شارع ابو سيفو النفوري',
-  //       civilRegisterSecretary: '');
-  //   return father!;
-  // }
-
-  // Future<Mother> getMotherInfo() async {
-  //   mother ??= Mother(
-  //       id: 300,
-  //       firstName: 'سارة',
-  //       lastName: 'س',
-  //       fatherName: 'احمد',
-  //       motherName: 'لما',
-  //       doesLiveWithHusband: true,
-  //       career: 'هندسة تقانة معلومات',
-  //       tieNumber: 213,
-  //       tiePlace: 'النبك',
-  //       placeOfBirth: 'النبك',
-  //       dateOfBirth: DateTime(1995),
-  //       religion: Religion.islam,
-  //       educationalStatus: EducationalStatus.master,
-  //       phoneNumber: '0966666666');
-  //   return mother!;
-  // }
-
-  Student copyWith({
-    int? id,
+  StudentPersonalInfo copyWith({
     int? publicRecordId,
     String? firstName,
     bool? isMale,
@@ -95,13 +44,9 @@ class Student {
     int? incidentNumber,
     DateTime? dateOfIncident,
     String? landline,
-    int? addressId,
     DateTime? joinDate,
-    DateTime? leaveDate,
-    int? familyId,
   }) {
-    return Student(
-      id: id ?? this.id,
+    return StudentPersonalInfo(
       publicRecordId: publicRecordId ?? this.publicRecordId,
       firstName: firstName ?? this.firstName,
       isMale: isMale ?? this.isMale,
@@ -113,16 +58,12 @@ class Student {
       incidentNumber: incidentNumber ?? this.incidentNumber,
       dateOfIncident: dateOfIncident ?? this.dateOfIncident,
       landline: landline ?? this.landline,
-      addressId: addressId ?? this.addressId,
       joinDate: joinDate ?? this.joinDate,
-      leaveDate: leaveDate ?? this.leaveDate,
-      familyId: familyId ?? this.familyId,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
       'publicRecordId': publicRecordId,
       'firstName': firstName,
       'isMale': isMale,
@@ -134,16 +75,12 @@ class Student {
       'incidentNumber': incidentNumber,
       'dateOfIncident': dateOfIncident.millisecondsSinceEpoch,
       'landline': landline,
-      'addressId': addressId,
       'joinDate': joinDate.millisecondsSinceEpoch,
-      'leaveDate': leaveDate?.millisecondsSinceEpoch,
-      'familyId': familyId,
     };
   }
 
-  factory Student.fromMap(Map<String, dynamic> map) {
-    return Student(
-      id: map['id'] as int,
+  factory StudentPersonalInfo.fromMap(Map<String, dynamic> map) {
+    return StudentPersonalInfo(
       publicRecordId: map['publicRecordId'] as int,
       firstName: map['firstName'] as String,
       isMale: map['isMale'] as bool,
@@ -157,31 +94,25 @@ class Student {
       dateOfIncident:
           DateTime.fromMillisecondsSinceEpoch(map['dateOfIncident'] as int),
       landline: map['landline'] as String,
-      addressId: map['addressId'] as int,
       joinDate: DateTime.fromMillisecondsSinceEpoch(map['joinDate'] as int),
-      leaveDate: map['leaveDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['leaveDate'] as int)
-          : null,
-      familyId: map['familyId'] as int,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory Student.fromJson(String source) =>
-      Student.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory StudentPersonalInfo.fromJson(String source) =>
+      StudentPersonalInfo.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'Student(id: $id, publicRecordId: $publicRecordId, firstName: $firstName, isMale: $isMale, dateOfBirth: $dateOfBirth, placeOfBirth: $placeOfBirth, phoneNumber: $phoneNumber, religion: $religion, whatsappNumber: $whatsappNumber, incidentNumber: $incidentNumber, dateOfIncident: $dateOfIncident, landline: $landline, addressId: $addressId, joinDate: $joinDate, leaveDate: $leaveDate, familyId: $familyId)';
+    return 'StudentPersonalInfo(publicRecordId: $publicRecordId, firstName: $firstName, isMale: $isMale, dateOfBirth: $dateOfBirth, placeOfBirth: $placeOfBirth, phoneNumber: $phoneNumber, religion: $religion, whatsappNumber: $whatsappNumber, incidentNumber: $incidentNumber, dateOfIncident: $dateOfIncident, landline: $landline, joinDate: $joinDate)';
   }
 
   @override
-  bool operator ==(covariant Student other) {
+  bool operator ==(covariant StudentPersonalInfo other) {
     if (identical(this, other)) return true;
 
-    return other.id == id &&
-        other.publicRecordId == publicRecordId &&
+    return other.publicRecordId == publicRecordId &&
         other.firstName == firstName &&
         other.isMale == isMale &&
         other.dateOfBirth == dateOfBirth &&
@@ -192,16 +123,12 @@ class Student {
         other.incidentNumber == incidentNumber &&
         other.dateOfIncident == dateOfIncident &&
         other.landline == landline &&
-        other.addressId == addressId &&
-        other.joinDate == joinDate &&
-        other.leaveDate == leaveDate &&
-        other.familyId == familyId;
+        other.joinDate == joinDate;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-        publicRecordId.hashCode ^
+    return publicRecordId.hashCode ^
         firstName.hashCode ^
         isMale.hashCode ^
         dateOfBirth.hashCode ^
@@ -212,9 +139,6 @@ class Student {
         incidentNumber.hashCode ^
         dateOfIncident.hashCode ^
         landline.hashCode ^
-        addressId.hashCode ^
-        joinDate.hashCode ^
-        leaveDate.hashCode ^
-        familyId.hashCode;
+        joinDate.hashCode;
   }
 }

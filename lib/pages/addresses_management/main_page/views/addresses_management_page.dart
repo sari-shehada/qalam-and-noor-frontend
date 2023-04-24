@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/pages/addresses_management/main_page/controllers/addresses_management_stats_controller.dart';
 import 'package:kalam_noor/pages/addresses_management/main_page/views/widgets/cities_to_descendent_count_pie_chart.dart';
 import 'package:kalam_noor/pages/addresses_management/main_page/views/widgets/numeric_stats_widget.dart';
@@ -121,30 +122,36 @@ class AddressesManagementPage extends StatelessWidget {
                         child: Row(
                           children: [
                             Expanded(
-                                child: AddressesManagementNumericStatsWidget(
-                              future: statsController.citiesCount,
-                              label: 'مدينة',
-                            )),
+                              child: AddressesManagementNumericStatsWidget(
+                                future: statsController.citiesCount,
+                                label: 'مدينة',
+                                color: GlobalStyles.miscColors[0],
+                              ),
+                            ),
                             VerticalDivider(
                               indent: 20.h,
                               width: 1.w,
                               endIndent: 25.h,
                             ),
                             Expanded(
-                                child: AddressesManagementNumericStatsWidget(
-                              future: statsController.areasCount,
-                              label: 'حي',
-                            )),
+                              child: AddressesManagementNumericStatsWidget(
+                                future: statsController.areasCount,
+                                label: 'حي',
+                                color: GlobalStyles.miscColors[1],
+                              ),
+                            ),
                             VerticalDivider(
                               indent: 20.h,
                               width: 1.w,
                               endIndent: 25.h,
                             ),
                             Expanded(
-                                child: AddressesManagementNumericStatsWidget(
-                              future: statsController.addressesCount,
-                              label: 'عنوان',
-                            )),
+                              child: AddressesManagementNumericStatsWidget(
+                                future: statsController.addressesCount,
+                                label: 'عنوان',
+                                color: GlobalStyles.miscColors[2],
+                              ),
+                            ),
                           ],
                         ),
                       ),

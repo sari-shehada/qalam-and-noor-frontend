@@ -1,7 +1,10 @@
 import 'package:kalam_noor/models/agendas/father.dart';
 import 'package:kalam_noor/models/agendas/mother.dart';
 import 'package:kalam_noor/models/agendas/responsible_person.dart';
+import 'package:kalam_noor/models/agendas/student.dart';
+import 'package:kalam_noor/models/educational/school_year.dart';
 import 'package:kalam_noor/models/enums.dart';
+import 'package:kalam_noor/models/medical/student_illness.dart';
 
 import '../../models/address/address.dart';
 import '../../models/address/area.dart';
@@ -9,9 +12,14 @@ import '../../models/address/area.dart';
 import '../../models/address/city.dart';
 import '../../models/agendas/families.dart';
 import '../../models/educational/class.dart';
+import '../../models/educational/year_record.dart';
 import '../../models/medical/illness.dart';
+import '../../models/medical/medical_record.dart';
 import '../../models/medical/psychological_status.dart';
+import '../../models/medical/taken_vaccine.dart';
 import '../../models/medical/vaccine.dart';
+import '../../models/previous_schools/previous_schools.dart';
+import '../../models/previous_schools/student_previous_school.dart';
 
 List<City> dummyCities = [
   City(
@@ -203,3 +211,17 @@ List<Mother> dummyMothers = [
 ];
 
 List<ResponsiblePerson> dummyResponsiblePeople = [];
+
+List<Student> dummyStudents = [];
+
+List<MedicalRecord> dummyMedicalRecords = [];
+
+List<TakenVaccine> dummyTakenVaccines = [];
+List<StudentIllness> dummyStudentIllnesses = [];
+
+List<SchoolYear> dummySchoolYears = [];
+
+List<PreviousSchool> dummyPreviousSchools = [];
+List<StudentPreviousSchool> dummyStudentPreviousSchools = [];
+
+List<YearRecord> dummyYearRecords = [];

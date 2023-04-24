@@ -22,7 +22,7 @@ class AddOrEditIllnessController extends GetxController {
 
   bool validateFields() {
     if (illnessController.text.isEmpty) {
-      SnackbarService.showErrorSnackBar(
+      SnackBarService.showErrorSnackBar(
           title: 'اسم مرض فارغ', message: 'الرجاء ملء حقل اسم المرض');
       return false;
     }

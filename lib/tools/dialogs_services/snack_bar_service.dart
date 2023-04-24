@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../../configs/project_themes.dart';
 import '../ui_tools/ui_tools.dart';
 
-class SnackbarService {
+class SnackBarService {
   static void showErrorSnackBar(
       {required String title, required String message}) {
     Get.showSnackbar(GetSnackBar(

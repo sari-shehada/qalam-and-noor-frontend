@@ -4,16 +4,14 @@ import 'dart:convert';
 class YearRecord {
   int id;
   int classId;
-  int schoolYearClassroomId;
+  int? schoolYearClassroomId;
   int studentId;
-  DateTime recordDate;
-  bool didPass;
+  bool? didPass;
   YearRecord({
     required this.id,
     required this.classId,
     required this.schoolYearClassroomId,
     required this.studentId,
-    required this.recordDate,
     required this.didPass,
   });
 
@@ -22,7 +20,6 @@ class YearRecord {
     int? classId,
     int? schoolYearClassroomId,
     int? studentId,
-    DateTime? recordDate,
     bool? didPass,
   }) {
     return YearRecord(
@@ -31,7 +28,6 @@ class YearRecord {
       schoolYearClassroomId:
           schoolYearClassroomId ?? this.schoolYearClassroomId,
       studentId: studentId ?? this.studentId,
-      recordDate: recordDate ?? this.recordDate,
       didPass: didPass ?? this.didPass,
     );
   }
@@ -42,7 +38,6 @@ class YearRecord {
       'classId': classId,
       'schoolYearClassroomId': schoolYearClassroomId,
       'studentId': studentId,
-      'recordDate': recordDate.millisecondsSinceEpoch,
       'didPass': didPass,
     };
   }
@@ -51,10 +46,11 @@ class YearRecord {
     return YearRecord(
       id: map['id'] as int,
       classId: map['classId'] as int,
-      schoolYearClassroomId: map['schoolYearClassroomId'] as int,
+      schoolYearClassroomId: map['schoolYearClassroomId'] != null
+          ? map['schoolYearClassroomId'] as int
+          : null,
       studentId: map['studentId'] as int,
-      recordDate: DateTime.fromMillisecondsSinceEpoch(map['recordDate'] as int),
-      didPass: map['didPass'] as bool,
+      didPass: map['didPass'] != null ? map['didPass'] as bool : null,
     );
   }
 
@@ -65,7 +61,7 @@ class YearRecord {
 
   @override
   String toString() {
-    return 'YearRecord(id: $id, classId: $classId, schoolYearClassroomId: $schoolYearClassroomId, studentId: $studentId, recordDate: $recordDate, didPass: $didPass)';
+    return 'YearRecord(id: $id, classId: $classId, schoolYearClassroomId: $schoolYearClassroomId, studentId: $studentId, didPass: $didPass)';
   }
 
   @override
@@ -76,7 +72,6 @@ class YearRecord {
         other.classId == classId &&
         other.schoolYearClassroomId == schoolYearClassroomId &&
         other.studentId == studentId &&
-        other.recordDate == recordDate &&
         other.didPass == didPass;
   }
 
@@ -86,7 +81,6 @@ class YearRecord {
         classId.hashCode ^
         schoolYearClassroomId.hashCode ^
         studentId.hashCode ^
-        recordDate.hashCode ^
         didPass.hashCode;
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
+import 'package:kalam_noor/configs/styles.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../controllers/addresses_management_stats_controller.dart';
@@ -38,6 +39,7 @@ class LargestCitiesByDescendentCountPieChart extends StatelessWidget {
                     legend: Legend(
                       isVisible: true,
                     ),
+                    palette: GlobalStyles.miscColors,
                     series: <CircularSeries>[
                       PieSeries<CityToDescendentCount, String>(
                         // enableTooltip: true,

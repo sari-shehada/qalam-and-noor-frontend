@@ -18,7 +18,7 @@ class ValidationTextField<T> {
   bool validate() {
     String? message = validator(controller);
     if (message != null) {
-      SnackbarService.showErrorSnackBar(
+      SnackBarService.showErrorSnackBar(
           title: 'خطأ في المدخلات', message: message);
       fillColor.value = Colors.red.withOpacity(.3);
 

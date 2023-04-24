@@ -28,7 +28,7 @@ class AddOrEditAreaController extends GetxController {
 
   bool validateFields() {
     if (areaController.text.isEmpty) {
-      SnackbarService.showErrorSnackBar(
+      SnackBarService.showErrorSnackBar(
           title: 'اسم منطقة فارغ', message: 'الرجاء ملء حقل اسم المنطقة');
       return false;
     }

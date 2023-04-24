@@ -80,6 +80,7 @@ class StudentAddressInfoDialog extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Container(
+                                    height: 49.h,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(14.r),
                                       color: Get
@@ -149,6 +150,7 @@ class StudentAddressInfoDialog extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Container(
+                                    height: 49.h,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(14.r),
                                       color: Get
@@ -219,6 +221,7 @@ class StudentAddressInfoDialog extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Container(
+                                    height: 49.h,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(14.r),
                                       color: Get

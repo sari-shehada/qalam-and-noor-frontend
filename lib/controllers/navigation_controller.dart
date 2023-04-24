@@ -122,7 +122,7 @@ class NavigationController {
       binding: NewStudentRegistrationBindings(),
     );
     if (result == true) {
-      SnackbarService.showSuccessSnackBar(
+      SnackBarService.showSuccessSnackBar(
           title: 'تمت العملية بنجاح', message: 'تمت إضافة طالب جديد');
     }
   }

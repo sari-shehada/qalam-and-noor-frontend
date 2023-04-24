@@ -19,7 +19,7 @@ class StudentFamilyInfoDialogController extends GetxController {
       StudentFamilyDialogConstants.collapsedDialogHeight.obs;
   Future<void> applySearch() async {
     if (tieNumberEditingController.text.isEmpty) {
-      SnackbarService.showErrorSnackBar(
+      SnackBarService.showErrorSnackBar(
         title: 'حدث خطأ',
         message: 'الرجاء ادخال رقم قيد',
       );

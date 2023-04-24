@@ -65,7 +65,7 @@ class RegisterNewStudentLogicController extends GetxController {
       }
       Get.back();
       // resetForm();
-      SnackbarService.showSuccessSnackBar(
+      SnackBarService.showSuccessSnackBar(
         title: 'تمت العملية بنجاح',
         message: 'تم تسجيل طالب جديد',
       );

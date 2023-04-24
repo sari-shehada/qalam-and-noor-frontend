@@ -63,7 +63,7 @@ class AddressesManagementStatsController extends GetxController {
 class CityToDescendentCount {
   final City city;
   final int descendentCount;
-  final Color? color;
+  Color? color;
   CityToDescendentCount({
     required this.city,
     required this.descendentCount,

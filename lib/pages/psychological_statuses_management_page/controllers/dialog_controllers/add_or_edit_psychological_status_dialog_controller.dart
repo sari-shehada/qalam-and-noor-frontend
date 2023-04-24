@@ -24,7 +24,7 @@ class AddOrEditPsychologicalStatusDialogController extends GetxController {
 
   bool validateFields() {
     if (psychologicalStatusController.text.isEmpty) {
-      SnackbarService.showErrorSnackBar(
+      SnackBarService.showErrorSnackBar(
           title: 'اسم حالة فارغ',
           message: 'الرجاء ملء حقل اسم الحالة المزاجية');
       return false;

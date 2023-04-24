@@ -1,3 +1,4 @@
+import 'package:countup/countup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -28,9 +29,13 @@ class AddressesManagementNumericStatsWidget extends StatelessWidget {
                     child: FittedBox(
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 5.w),
-                        child: Text(
-                          snapshot.data.toString(),
-                          style: TextStyle(color: themeData.primaryColor),
+                        child: Countup(
+                          begin: 0,
+                          end: snapshot.data!.toDouble(),
+                          duration: 2000.milliseconds,
+                          curve: Curves.fastLinearToSlowEaseIn,
+                          style:
+                              TextStyle(color: color ?? themeData.primaryColor),
                         ),
                       ),
                     ),

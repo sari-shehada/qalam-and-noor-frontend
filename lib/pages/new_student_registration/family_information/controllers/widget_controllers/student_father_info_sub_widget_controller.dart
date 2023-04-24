@@ -163,7 +163,7 @@ class StudentFatherInfoSubWidgetController extends GetxController {
         phoneNumberController.validate() &&
         permanentAddressController.validate()) {
       if (dateOfBirth.value == null) {
-        SnackbarService.showErrorSnackBar(
+        SnackBarService.showErrorSnackBar(
           title: 'مدخلات فارغة',
           message: 'الرجاء إدخال تاريخ ميلاد الأب',
         );

@@ -25,7 +25,7 @@ class AddOrEditCityDialogController extends GetxController {
 
   bool validateFields() {
     if (cityController.text.isEmpty) {
-      SnackbarService.showErrorSnackBar(
+      SnackBarService.showErrorSnackBar(
           title: 'اسم مدينة فارغ', message: 'الرجاء ملء حقل اسم المدينة');
       return false;
     }

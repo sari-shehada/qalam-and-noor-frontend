@@ -315,7 +315,7 @@ class StudentPersonalInfoWidget extends StatelessWidget {
                           initialDate: DateTime.now(),
                           lastDate: DateTime.now(),
                           onDateChanged: (DateTime value) =>
-                              controller.changeDateOfBirth(value),
+                              controller.changeJoinDate(value),
                         ),
                       ),
                     ),

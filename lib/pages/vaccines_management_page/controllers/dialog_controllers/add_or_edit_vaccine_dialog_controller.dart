@@ -23,7 +23,7 @@ class AddOrEditVaccineDialogController extends GetxController {
 
   bool validateFields() {
     if (vaccineController.text.isEmpty) {
-      SnackbarService.showErrorSnackBar(
+      SnackBarService.showErrorSnackBar(
           title: 'اسم لقاح فارغ', message: 'الرجاء ملء حقل اسم اللقاح');
       return false;
     }

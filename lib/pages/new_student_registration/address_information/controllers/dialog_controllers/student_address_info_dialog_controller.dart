@@ -69,7 +69,7 @@ class StudentAddressInfoDialogController extends GetxController {
 
   void returnData() {
     if (selectedAddress.value == null) {
-      SnackbarService.showErrorSnackBar(
+      SnackBarService.showErrorSnackBar(
           title: 'لم يتم اختيار عنوان',
           message: 'يرجى اختيار عنوان ومن ثم المتابعة');
       return;

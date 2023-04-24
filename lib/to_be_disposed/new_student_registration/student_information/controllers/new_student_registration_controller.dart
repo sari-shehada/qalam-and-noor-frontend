@@ -63,7 +63,7 @@ class NewStudentRegistrationController extends GetxController {
         buttonStatus.value = CustomButtonStatus.enabled;
       }
       resetForm();
-      SnackbarService.showSuccessSnackBar(
+      SnackBarService.showSuccessSnackBar(
         title: 'تمت العملية بنجاح',
         message: 'تم تسجيل طالب جديد',
       );

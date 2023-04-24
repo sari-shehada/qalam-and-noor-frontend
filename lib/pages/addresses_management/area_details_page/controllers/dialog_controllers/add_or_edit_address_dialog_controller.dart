@@ -30,7 +30,7 @@ class AddOrEditAddressDialogController extends GetxController {
 
   bool validateFields() {
     if (addressController.text.isEmpty) {
-      SnackbarService.showErrorSnackBar(
+      SnackBarService.showErrorSnackBar(
           title: 'اسم عنوان فارغ', message: 'الرجاء ملء حقل اسم العنوان');
       return false;
     }

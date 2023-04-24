@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/new_student_registration/personal_information/models/student_personal_info.dart';
 
 import '../../../../models/enums.dart';
 import '../../../../tools/dialogs_services/snack_bar_service.dart';
@@ -48,27 +49,25 @@ class StudentPersonalInfoController extends GetxController {
   }
 
   bool validateFields() {
+    //TODO: Add validation here
     return true;
   }
 
-  Future<void> registerStudent() async {
-    if (validateFields()) {
-      try {
-        //TODO: Add registeration here
-
-        buttonStatus.value = CustomButtonStatus.processing;
-        await Future.delayed(
-          Duration(milliseconds: 800),
-        );
-      } finally {
-        buttonStatus.value = CustomButtonStatus.enabled;
-      }
-      resetForm();
-      SnackbarService.showSuccessSnackBar(
-        title: 'تمت العملية بنجاح',
-        message: 'تم تسجيل طالب جديد',
-      );
-    }
+  StudentPersonalInfo encapsulateData() {
+    return StudentPersonalInfo(
+      publicRecordId: int.parse(publicRecordIdController.text),
+      firstName: firstNameController.text,
+      isMale: isMale.value,
+      dateOfBirth: dateOfBirth.value!,
+      placeOfBirth: placeOfBirthController.text,
+      phoneNumber: phoneNumberController.text,
+      religion: religion.value,
+      whatsappNumber: whatsappNumberController.text,
+      incidentNumber: int.parse(incidentNumberController.text),
+      dateOfIncident: dateOfIncident.value!,
+      landline: landlineController.text,
+      joinDate: joinDate.value!,
+    );
   }
 
   void resetForm() {

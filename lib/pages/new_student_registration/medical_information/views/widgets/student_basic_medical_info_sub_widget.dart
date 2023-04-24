@@ -21,39 +21,43 @@ class StudentBasicMedicalInfoSubWidget extends StatelessWidget {
         children: [
           LabeledWidget(
             label: 'الطول (بالسنتيمتر)',
-            child: HintedTextField(
-              hintText: '',
-              //TODO:
-              controller: TextEditingController(),
+            child: Obx(
+              () => HintedTextField(
+                fillColor: controller.studentHeightController.fillColor.value,
+                hintText: '',
+                controller: controller.studentHeightController.controller,
+              ),
             ),
           ),
           AddVerticalSpacing(value: 20.h),
           LabeledWidget(
             label: 'الوزن (بالكيلوغرام)',
-            child: HintedTextField(
-              hintText: '',
-              //TODO:
-              controller: TextEditingController(),
+            child: Obx(
+              () => HintedTextField(
+                fillColor: controller.studentWeightController.fillColor.value,
+                hintText: '',
+                controller: controller.studentWeightController.controller,
+              ),
             ),
           ),
-          AddVerticalSpacing(value: 20.h),
-          LabeledWidget(
-            label: 'زمرة الدم',
-            child: HintedTextField(
-              hintText: '',
-              //TODO:
-              controller: TextEditingController(),
-            ),
-          ),
-          AddVerticalSpacing(value: 20.h),
-          LabeledWidget(
-            label: 'عامل الارتصاص',
-            child: HintedTextField(
-              hintText: '',
-              //TODO:
-              controller: TextEditingController(),
-            ),
-          ),
+          // AddVerticalSpacing(value: 20.h),
+          // LabeledWidget(
+          //   label: 'زمرة الدم',
+          //   child: HintedTextField(
+          //     hintText: '',
+          //     //TODO:
+          //     controller: TextEditingController(),
+          //   ),
+          // ),
+          // AddVerticalSpacing(value: 20.h),
+          // LabeledWidget(
+          //   label: 'عامل الارتصاص',
+          //   child: HintedTextField(
+          //     hintText: '',
+          //     //TODO:
+          //     controller: TextEditingController(),
+          //   ),
+          // ),
           AddVerticalSpacing(value: 80.h),
         ],
       ),

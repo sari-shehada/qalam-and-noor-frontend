@@ -5,7 +5,6 @@ import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/pages/new_student_registration/medical_information/controllers/dialog_controllers/add_student_medical_info_dialog_controller.dart';
 import 'package:kalam_noor/pages/new_student_registration/medical_information/views/widgets/student_basic_medical_info_sub_widget.dart';
-import 'package:kalam_noor/pages/new_student_registration/medical_information/views/widgets/student_psychological_statuses_info_widget.dart';
 import 'package:kalam_noor/pages/new_student_registration/medical_information/views/widgets/student_vaccines_info_sub_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 
@@ -51,12 +50,13 @@ class AddStudentMedicalInfoDialog extends StatelessWidget {
                   child: Stack(
                     children: [
                       TabBarView(
+                        physics: NeverScrollableScrollPhysics(),
                         controller: dialogController.tabController,
                         children: const [
                           StudentBasicMedicalInfoSubWidget(),
                           StudentIllnessesInfoSubWidget(),
                           StudentVaccinesInfoSubWidget(),
-                          StudentPsychologicalStatusesInfoSubWidget(),
+                          // StudentPsychologicalStatusesInfoSubWidget(),
                         ],
                       ),
                       Align(

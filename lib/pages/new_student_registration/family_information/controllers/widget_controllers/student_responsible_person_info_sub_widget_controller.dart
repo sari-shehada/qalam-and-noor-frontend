@@ -82,7 +82,7 @@ class StudentResponsiblePersonInfoSubWidgetController extends GetxController {
         placeOfBirthController.validate() &&
         phoneNumberController.validate()) {
       if (dateOfBirth.value == null) {
-        SnackbarService.showErrorSnackBar(
+        SnackBarService.showErrorSnackBar(
           title: 'مدخلات فارغة',
           message: 'الرجاء إدخال تاريخ الولادة',
         );
