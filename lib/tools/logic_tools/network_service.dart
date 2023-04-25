@@ -11,7 +11,6 @@ abstract class HttpService {
     required MapperReturnType Function(JsonParseType responseData) dataMapper,
   }) async {
     http.Response response = await getUnparsed(url);
-    print(response.body);
     return dataMapper(jsonDecode(response.body) as JsonParseType);
   }
 
@@ -21,13 +20,15 @@ abstract class HttpService {
 
   static Future<int?> post({
     required String url,
-    Map<String, dynamic>? body,
+    String? serializedBody,
   }) async {
     Uri uriParsedFromURL = Uri.parse(_baseURL + url);
-    http.Response response = await http.post(
-      uriParsedFromURL,
-      body: body,
-    );
+    http.Response response =
+        await http.post(uriParsedFromURL, body: serializedBody, headers: {
+      'Access-Control-Allow-Origin': "*",
+      'Content-Type': 'application/json',
+      'Accept': '*/*'
+    });
     return int.tryParse(response.body.toString());
   }
 }
