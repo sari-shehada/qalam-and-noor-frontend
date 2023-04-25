@@ -1,14 +1,10 @@
-import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/agendas/families.dart';
 import 'package:kalam_noor/models/agendas/father.dart';
 import 'package:kalam_noor/models/agendas/mother.dart';
 import 'package:kalam_noor/models/educational/class.dart';
-import 'package:kalam_noor/pages/addresses_management/main_page/views/widgets/cities_table.dart';
-import 'package:kalam_noor/tools/logic_tools/network_service.dart';
 
-import '../../pages/addresses_management/main_page/controllers/addresses_management_stats_controller.dart';
+import '../../pages/addresses_management/main_page/models/city_to_descendent_count.dart';
 import '../address/address.dart';
 import '../address/area.dart';
 import '../address/city.dart';

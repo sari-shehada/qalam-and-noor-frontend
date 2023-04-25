@@ -5,7 +5,7 @@ import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../controllers/addresses_management_stats_controller.dart';
+import '../../models/city_to_descendent_count.dart';
 
 class LargestCitiesByDescendentCountPieChart extends StatelessWidget {
   const LargestCitiesByDescendentCountPieChart({
@@ -48,7 +48,7 @@ class LargestCitiesByDescendentCountPieChart extends StatelessWidget {
                         explodeGesture: ActivationMode.singleTap,
                         dataSource: snapshot.data,
                         pointColorMapper: (CityToDescendentCount data, _) =>
-                            data.color,
+                            Colors.black,
                         xValueMapper: (CityToDescendentCount data, _) =>
                             data.city.name,
                         yValueMapper: (CityToDescendentCount data, _) =>

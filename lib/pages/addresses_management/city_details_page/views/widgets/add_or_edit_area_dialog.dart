@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../../../tools/ui_tools/buttons.dart';
@@ -70,11 +69,13 @@ class AddOrEditAreaDialog extends StatelessWidget {
                     child: Obx(
                       () => controller.isEditMode.value == false
                           ? CustomFilledButton(
+                              buttonStatus: controller.buttonStatus,
                               height: 50.h,
                               onTap: () => controller.addArea(),
                               child: 'اضافة',
                             )
                           : CustomFilledButton(
+                              buttonStatus: controller.buttonStatus,
                               height: 50.h,
                               onTap: () => controller.updateAreaInfo(),
                               child: 'إجراء التعديل',

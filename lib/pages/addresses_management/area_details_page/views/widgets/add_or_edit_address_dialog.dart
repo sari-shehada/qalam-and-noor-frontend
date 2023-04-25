@@ -76,11 +76,13 @@ class AddOrEditAddressDialog extends StatelessWidget {
                     child: Obx(
                       () => controller.isEditMode.value == false
                           ? CustomFilledButton(
+                              buttonStatus: controller.buttonStatus,
                               height: 50.h,
                               onTap: () => controller.addAddress(),
                               child: 'اضافة',
                             )
                           : CustomFilledButton(
+                              buttonStatus: controller.buttonStatus,
                               height: 50.h,
                               onTap: () => controller.updateAddressInfo(),
                               child: 'إجراء التعديل',

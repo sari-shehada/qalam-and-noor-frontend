@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/area_db_helper.dart';
 import 'package:kalam_noor/pages/addresses_management/city_details_page/views/widgets/add_or_edit_area_dialog.dart';
 
 import '../../../../models/address/area.dart';
 import '../../../../models/address/city.dart';
-import '../../../../models/helpers/database_helper.dart';
 import '../../main_page/controllers/address_management_controller.dart';
 import '../../main_page/controllers/addresses_management_stats_controller.dart';
 
@@ -26,7 +26,8 @@ class CityDetailsController extends GetxController {
   }
 
   Future<List<Area>> getAreasInCity() async {
-    List<Area> newAreas = await DatabaseHelper.getAreasInCity(cityId: city.id);
+    List<Area> newAreas =
+        await AreasDBHelper.instance.getAllByCityId(cityId: city.id);
     switch (currentSortingOption.value) {
       case CitiesSortingOption.none:
         return newAreas;

@@ -1,11 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:kalam_noor/models/helpers/database_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/address_management_helpers/address_management_db_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/addresses_db_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/area_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/cities_db_helper.dart';
 
-import '../../../../models/address/city.dart';
+import '../models/city_to_descendent_count.dart';
 
 class AddressesManagementStatsController extends GetxController {
   late Rx<Future<int>> citiesCount;
@@ -45,29 +46,18 @@ class AddressesManagementStatsController extends GetxController {
   }
 
   Future<int> getAreasCount() async {
-    return DatabaseHelper.getAreasCount();
+    return AreasDBHelper.instance.getAreasCount();
   }
 
   Future<int> getAddressesCount() async {
-    return DatabaseHelper.getAddressesCount();
+    return AddressesDBHelper.instance.getAddressesCount();
   }
 
   Future<List<CityToDescendentCount>> getCitiesToAreasCount() async {
-    return await DatabaseHelper.getCitiesToAreasCount();
+    return await AddressManagementDBHelper.instance.getCitiesToAreasCount();
   }
 
   Future<List<CityToDescendentCount>> getCitiesToAddressesCount() async {
-    return await DatabaseHelper.getCitiesToAddressesCount();
+    return await AddressManagementDBHelper.instance.getCitiesToAddressesCount();
   }
-}
-
-class CityToDescendentCount {
-  final City city;
-  final int descendentCount;
-  Color? color;
-  CityToDescendentCount({
-    required this.city,
-    required this.descendentCount,
-    this.color,
-  });
 }

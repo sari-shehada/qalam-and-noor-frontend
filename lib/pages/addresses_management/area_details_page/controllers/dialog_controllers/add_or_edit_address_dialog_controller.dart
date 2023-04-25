@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/addresses_db_helper.dart';
 
 import '../../../../../models/address/address.dart';
 import '../../../../../models/helpers/database_helper.dart';
@@ -48,7 +49,7 @@ class AddOrEditAddressDialogController extends GetxController {
           name: addressController.text,
           details: detailsController.text == '' ? null : detailsController.text,
           areaId: areaId);
-      await DatabaseHelper.addNewAddress(address);
+      await AddressesDBHelper.instance.insert(address);
 
       Get.back(result: true);
     } finally {
@@ -64,7 +65,7 @@ class AddOrEditAddressDialogController extends GetxController {
       }
       address = address.copyWith(
           name: addressController.text, details: detailsController.text);
-      await DatabaseHelper.updateAddressById(address: address);
+      await AddressesDBHelper.instance.update(address);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;

@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 
 import 'package:kalam_noor/models/address/address.dart';
 import 'package:kalam_noor/models/address/area.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/addresses_db_helper.dart';
 import 'package:kalam_noor/pages/addresses_management/area_details_page/views/widgets/add_or_edit_address_dialog.dart';
 
-import '../../../../models/helpers/database_helper.dart';
 import '../../main_page/controllers/address_management_controller.dart';
 import '../../main_page/controllers/addresses_management_stats_controller.dart';
 
@@ -22,7 +22,7 @@ class AreaDetailsController extends GetxController {
 
   Future<List<Address>> getAddressesInArea() async {
     List<Address> newAddresses =
-        await DatabaseHelper.getAddressesInArea(areaId: area.id);
+        await AddressesDBHelper.instance.getAllByAreaId(areaId: area.id);
     switch (currentSortingOption.value) {
       case CitiesSortingOption.none:
         return newAddresses;

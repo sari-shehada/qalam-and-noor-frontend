@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/area_db_helper.dart';
 
 import '../../../../../models/address/area.dart';
-import '../../../../../models/helpers/database_helper.dart';
 import '../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
-import '../../../main_page/controllers/addresses_management_stats_controller.dart';
 
 class AddOrEditAreaController extends GetxController {
   RxBool isEditMode = false.obs;
@@ -42,7 +41,7 @@ class AddOrEditAreaController extends GetxController {
         return;
       }
       Area area = Area(id: -1, name: areaController.text, cityId: cityId);
-      await DatabaseHelper.addNewArea(area);
+      await AreasDBHelper.instance.insert(area);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;
@@ -56,7 +55,7 @@ class AddOrEditAreaController extends GetxController {
         return;
       }
       area = area.copyWith(name: areaController.text);
-      await DatabaseHelper.updateAreaById(area: area);
+      await AreasDBHelper.instance.update(area);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;
