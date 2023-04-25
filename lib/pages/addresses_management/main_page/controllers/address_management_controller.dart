@@ -17,7 +17,8 @@ class AddressManagementController extends GetxController {
 
   Future<RxList<City>> getCitiesToDisplay() async {
     RxList<City> cities = <City>[].obs;
-    List<City> res = await CitiesDBHelper.instance.getAll();
+    cities.value = await CitiesDBHelper.instance.getAll();
+
     switch (currentSortingOption.value) {
       case CitiesSortingOption.none:
         return cities;
