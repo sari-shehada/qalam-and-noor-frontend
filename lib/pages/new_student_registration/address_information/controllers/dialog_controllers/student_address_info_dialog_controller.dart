@@ -9,6 +9,7 @@ import '../../../../../models/address/address.dart';
 import '../../../../../models/address/area.dart';
 import '../../../../../models/address/city.dart';
 import '../../../../../models/helpers/database_helper.dart';
+import '../../../../../models/helpers/database_helpers/cities_helper.dart';
 import '../../../../addresses_management/area_details_page/views/widgets/add_or_edit_address_dialog.dart';
 import '../../../../addresses_management/city_details_page/views/widgets/add_or_edit_area_dialog.dart';
 
@@ -38,7 +39,7 @@ class StudentAddressInfoDialogController extends GetxController {
     areaDropDownButtonEnabled.value = false;
     addressDropDownButtonEnabled.value = false;
     await Future.delayed(2.seconds);
-    cities.value = await DatabaseHelper.getAllCities();
+    cities.value = await CitiesDBHelper.instance.getAll();
     cityDropDownButtonEnabled.value = true;
     isProcessing.value = false;
   }

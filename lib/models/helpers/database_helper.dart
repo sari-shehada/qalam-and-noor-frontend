@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/agendas/families.dart';
 import 'package:kalam_noor/models/agendas/father.dart';
 import 'package:kalam_noor/models/agendas/mother.dart';
 import 'package:kalam_noor/models/educational/class.dart';
+import 'package:kalam_noor/pages/addresses_management/main_page/views/widgets/cities_table.dart';
+import 'package:kalam_noor/tools/logic_tools/network_service.dart';
 
 import '../../pages/addresses_management/main_page/controllers/addresses_management_stats_controller.dart';
 import '../address/address.dart';
@@ -13,23 +17,14 @@ import '../../to_be_disposed/data/dummy_data.dart';
 import '../medical/illness.dart';
 import '../medical/psychological_status.dart';
 import '../medical/vaccine.dart';
+import 'database_helpers/cities_helper.dart';
 
 abstract class DatabaseHelper {
   //Addresses
 
-  //Cities
-  static Future<List<City>> getAllCities() async {
-    //TODO: Change to an api call
-    await Future.delayed(
-      const Duration(
-        milliseconds: 400,
-      ),
-    );
-    return dummyCities;
-  }
-
+  // //Cities
   static Future<List<CityToDescendentCount>> getCitiesToAreasCount() async {
-    List<City> cities = await getAllCities();
+    List<City> cities = await CitiesDBHelper.instance.getAll();
     List<CityToDescendentCount> citiesToAreasCount = [];
     for (City city in cities) {
       int areasCount = await getCityAreasCount(city.id);
@@ -59,7 +54,7 @@ abstract class DatabaseHelper {
   }
 
   static Future<List<CityToDescendentCount>> getCitiesToAddressesCount() async {
-    List<City> cities = await getAllCities();
+    List<City> cities = await CitiesDBHelper.instance.getAll();
     List<CityToDescendentCount> citiesToAddressesCount = [];
     for (City city in cities) {
       int addressesCount = await getCityAddressesCount(cityId: city.id);
