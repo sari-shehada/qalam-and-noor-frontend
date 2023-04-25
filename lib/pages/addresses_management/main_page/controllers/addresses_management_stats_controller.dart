@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:kalam_noor/models/helpers/database_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/cities_db_helper.dart';
 
 import '../../../../models/address/city.dart';
 
@@ -40,7 +41,7 @@ class AddressesManagementStatsController extends GetxController {
   }
 
   Future<int> getCitiesCount() async {
-    return DatabaseHelper.getCitiesCount();
+    return CitiesDBHelper.instance.getCitiesCount();
   }
 
   Future<int> getAreasCount() async {

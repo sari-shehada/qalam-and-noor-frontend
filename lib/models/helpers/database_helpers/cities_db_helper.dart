@@ -3,7 +3,7 @@ import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
 import 'package:kalam_noor/tools/logic_tools/network_service.dart';
 
 class CitiesDBHelper implements CRUDInterface<City> {
-  static String get _controllerName => 'CityController/';
+  String get _controllerName => 'CityController/';
   static CitiesDBHelper get instance => CitiesDBHelper();
 
   @override
@@ -34,10 +34,15 @@ class CitiesDBHelper implements CRUDInterface<City> {
     return city;
   }
 
+  Future<int> getCitiesCount() async {
+    return await getAll().then((value) => value.length);
+  }
+
   @override
   Future<bool> insert(City object) async {
     String url = '${_controllerName}InsertCity';
-    int? result = await HttpService.post(url: url, body: object.toMap());
+    int? result =
+        await HttpService.post(url: url, serializedBody: object.toJson());
     if (result == null) return false;
     return result == 1;
   }
@@ -45,7 +50,8 @@ class CitiesDBHelper implements CRUDInterface<City> {
   @override
   Future<bool> update(City object) async {
     String url = '${_controllerName}UpdateCity';
-    int? result = await HttpService.post(url: url, body: object.toMap());
+    int? result =
+        await HttpService.post(url: url, serializedBody: object.toJson());
     if (result == null) return false;
     return result == 1;
   }

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/cities_db_helper.dart';
 
 import '../../../../../models/address/city.dart';
-import '../../../../../models/helpers/database_helper.dart';
-import '../../../../../to_be_disposed/data/dummy_data.dart';
 import '../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
-import '../addresses_management_stats_controller.dart';
 
 class AddOrEditCityDialogController extends GetxController {
   RxBool isEditMode = false.obs;
@@ -38,8 +36,8 @@ class AddOrEditCityDialogController extends GetxController {
       if (validateFields() == false) {
         return;
       }
-      City city = City(id: (dummyCities.length + 1), name: cityController.text);
-      await DatabaseHelper.addCity(city);
+      City city = City(id: -1, name: cityController.text);
+      await CitiesDBHelper.instance.insert(city);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;
@@ -53,7 +51,7 @@ class AddOrEditCityDialogController extends GetxController {
         return;
       }
       city = city!.copyWith(name: cityController.text);
-      await DatabaseHelper.updateCityById(city: city!);
+      await CitiesDBHelper.instance.update(city!);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;

@@ -5,7 +5,7 @@ import 'package:kalam_noor/models/address/city.dart';
 import 'package:kalam_noor/models/helpers/database_helper.dart';
 import 'package:kalam_noor/pages/addresses_management/main_page/views/dialogs/add_or_edit_city_dialog.dart';
 
-import '../../../../models/helpers/database_helpers/cities_helper.dart';
+import '../../../../models/helpers/database_helpers/cities_db_helper.dart';
 import 'addresses_management_stats_controller.dart';
 
 class AddressManagementController extends GetxController {

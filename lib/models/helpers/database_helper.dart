@@ -17,7 +17,7 @@ import '../../to_be_disposed/data/dummy_data.dart';
 import '../medical/illness.dart';
 import '../medical/psychological_status.dart';
 import '../medical/vaccine.dart';
-import 'database_helpers/cities_helper.dart';
+import 'database_helpers/cities_db_helper.dart';
 
 abstract class DatabaseHelper {
   //Addresses

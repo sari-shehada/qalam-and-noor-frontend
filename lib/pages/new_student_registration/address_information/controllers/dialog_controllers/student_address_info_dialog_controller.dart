@@ -9,7 +9,8 @@ import '../../../../../models/address/address.dart';
 import '../../../../../models/address/area.dart';
 import '../../../../../models/address/city.dart';
 import '../../../../../models/helpers/database_helper.dart';
-import '../../../../../models/helpers/database_helpers/cities_helper.dart';
+
+import '../../../../../models/helpers/database_helpers/cities_db_helper.dart';
 import '../../../../addresses_management/area_details_page/views/widgets/add_or_edit_address_dialog.dart';
 import '../../../../addresses_management/city_details_page/views/widgets/add_or_edit_area_dialog.dart';
 
