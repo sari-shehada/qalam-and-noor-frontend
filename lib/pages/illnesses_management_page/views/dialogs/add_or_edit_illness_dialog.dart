@@ -62,11 +62,13 @@ class AddOrEditIllnessDialog extends StatelessWidget {
                     child: Obx(
                       () => controller.isEditMode.value == false
                           ? CustomFilledButton(
+                              buttonStatus: controller.buttonStatus,
                               height: 50.h,
                               onTap: () => controller.addIllness(),
                               child: 'اضافة',
                             )
                           : CustomFilledButton(
+                              buttonStatus: controller.buttonStatus,
                               height: 50.h,
                               onTap: () => controller.updateIllnessInfo(),
                               child: 'إجراء التعديل',

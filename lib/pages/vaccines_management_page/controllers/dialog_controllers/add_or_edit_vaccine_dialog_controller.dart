@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/vaccines_db_helper.dart';
 import 'package:kalam_noor/models/medical/vaccine.dart';
 import 'package:kalam_noor/to_be_disposed/data/dummy_data.dart';
 import '../../../../models/helpers/database_helper.dart';
@@ -38,7 +39,7 @@ class AddOrEditVaccineDialogController extends GetxController {
       }
       Vaccine vaccine =
           Vaccine(id: (dummyVaccines.length + 1), name: vaccineController.text);
-      await DatabaseHelper.addVaccine(vaccine);
+      await VaccinesDBHelper.instance.insert(vaccine);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;
@@ -52,7 +53,7 @@ class AddOrEditVaccineDialogController extends GetxController {
         return;
       }
       vaccine = vaccine!.copyWith(name: vaccineController.text);
-      await DatabaseHelper.updateVaccineById(vaccine: vaccine!);
+      await VaccinesDBHelper.instance.update(vaccine!);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;

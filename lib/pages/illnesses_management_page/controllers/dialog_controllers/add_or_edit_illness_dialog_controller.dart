@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/illnesses_db_helper.dart';
 import 'package:kalam_noor/models/medical/illness.dart';
 import 'package:kalam_noor/to_be_disposed/data/dummy_data.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
-
-import '../../../../models/helpers/database_helper.dart';
 import '../../../../tools/dialogs_services/snack_bar_service.dart';
 
 class AddOrEditIllnessController extends GetxController {
@@ -37,7 +36,7 @@ class AddOrEditIllnessController extends GetxController {
       }
       Illness illness = Illness(
           id: (dummyIllnesses.length + 1), name: illnessController.text);
-      await DatabaseHelper.addIllness(illness);
+      await IllnessesDBHelper.instance.insert(illness);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;
@@ -51,7 +50,7 @@ class AddOrEditIllnessController extends GetxController {
         return;
       }
       illness = illness!.copyWith(name: illnessController.text);
-      await DatabaseHelper.updateIllnessById(illness: illness!);
+      await IllnessesDBHelper.instance.update(illness!);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;

@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/illnesses_db_helper.dart';
 import 'package:kalam_noor/models/medical/illness.dart';
-
-import '../../../models/helpers/database_helper.dart';
 import '../views/dialogs/add_or_edit_illness_dialog.dart';
 
 class IllnessesManagementController extends GetxController {
@@ -16,7 +15,7 @@ class IllnessesManagementController extends GetxController {
 
   Future<RxList<Illness>> getIllnessesToDisplay() async {
     RxList<Illness> illnesses = <Illness>[].obs;
-    await DatabaseHelper.getIllnesses().then((list) {
+    await IllnessesDBHelper.instance.getAll().then((list) {
       for (Illness illness in list) {
         illnesses.add(illness);
       }

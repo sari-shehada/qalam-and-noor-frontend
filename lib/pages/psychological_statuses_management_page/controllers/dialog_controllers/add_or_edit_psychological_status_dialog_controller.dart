@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/psychological_statuses_db_helper.dart';
 import 'package:kalam_noor/models/medical/psychological_status.dart';
 import 'package:kalam_noor/to_be_disposed/data/dummy_data.dart';
 import '../../../../models/helpers/database_helper.dart';
@@ -41,7 +42,7 @@ class AddOrEditPsychologicalStatusDialogController extends GetxController {
       PsychologicalStatus psychologicalStatus = PsychologicalStatus(
           id: (dummyPsychologicalStatuses.length + 1),
           name: psychologicalStatusController.text);
-      await DatabaseHelper.addPsychologicalStatus(psychologicalStatus);
+      await PsychologicalStatusesDBHelper.instance.insert(psychologicalStatus);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;
@@ -56,8 +57,7 @@ class AddOrEditPsychologicalStatusDialogController extends GetxController {
       }
       psychologicalStatus = psychologicalStatus!
           .copyWith(name: psychologicalStatusController.text);
-      await DatabaseHelper.updatePsychologicalStatusById(
-          psychologicalStatus: psychologicalStatus!);
+      await PsychologicalStatusesDBHelper.instance.update(psychologicalStatus!);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;

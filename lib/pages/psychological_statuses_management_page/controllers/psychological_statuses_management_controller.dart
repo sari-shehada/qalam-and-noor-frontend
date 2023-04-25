@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/psychological_statuses_db_helper.dart';
 import 'package:kalam_noor/models/medical/psychological_status.dart';
 import 'package:kalam_noor/pages/psychological_statuses_management_page/views/dialogs/add_or_edit_psychological_status_dialog.dart';
 
@@ -13,7 +14,7 @@ class PsychologicalStatusesManagementController extends GetxController {
   Future<RxList<PsychologicalStatus>> getPsychologicalStatusToDisplay() async {
     RxList<PsychologicalStatus> psychologicalStatuses =
         <PsychologicalStatus>[].obs;
-    await DatabaseHelper.getPsychologicalStatuses().then((list) {
+    await PsychologicalStatusesDBHelper.instance.getAll().then((list) {
       for (PsychologicalStatus psychologicalStatus in list) {
         psychologicalStatuses.add(psychologicalStatus);
       }

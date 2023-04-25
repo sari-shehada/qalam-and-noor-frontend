@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/vaccines_db_helper.dart';
 import 'package:kalam_noor/models/medical/taken_vaccine.dart';
 import 'package:kalam_noor/models/medical/vaccine.dart';
 import 'package:kalam_noor/pages/vaccines_management_page/views/dialogs/add_or_edit_vaccine_dialog.dart';
-
-import '../../../../../models/helpers/database_helper.dart';
 
 class StudentVaccinesInfoSubWidgetController extends GetxController {
   late Rx<Future<List<Vaccine>>> vaccines;
@@ -15,7 +14,7 @@ class StudentVaccinesInfoSubWidgetController extends GetxController {
   }
 
   Future<List<Vaccine>> getVaccines() async {
-    return await DatabaseHelper.getVaccines();
+    return await VaccinesDBHelper.instance.getAll();
   }
 
   void selectVaccine(Vaccine vaccine) async {

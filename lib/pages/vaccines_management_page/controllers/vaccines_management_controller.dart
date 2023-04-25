@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/vaccines_db_helper.dart';
 import 'package:kalam_noor/models/medical/vaccine.dart';
 import '../views/dialogs/add_or_edit_vaccine_dialog.dart';
 
@@ -15,7 +15,7 @@ class VaccinesManagementController extends GetxController {
 
   Future<RxList<Vaccine>> getVaccinesToDisplay() async {
     RxList<Vaccine> vaccines = <Vaccine>[].obs;
-    await DatabaseHelper.getVaccines().then((list) {
+    await VaccinesDBHelper.instance.getAll().then((list) {
       for (Vaccine vaccine in list) {
         vaccines.add(vaccine);
       }

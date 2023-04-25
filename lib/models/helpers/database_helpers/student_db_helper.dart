@@ -15,7 +15,6 @@ import 'package:kalam_noor/models/previous_schools/student_previous_school.dart'
 import 'package:kalam_noor/pages/new_student_registration/family_information/models/family_info.dart';
 import 'package:kalam_noor/pages/new_student_registration/personal_information/models/student_personal_info.dart';
 import 'package:kalam_noor/pages/new_student_registration/personal_information/models/student_registration_info.dart';
-
 import '../../../to_be_disposed/data/dummy_data.dart';
 import '../../medical/medical_record.dart';
 
@@ -68,18 +67,20 @@ abstract class StudentDBHelper {
         registrationInfo.medicalInfo.record.copyWith(id: student.id);
     await addStudentMedicalRecord(medicalRecord);
     for (Illness illness in registrationInfo.medicalInfo.illnesses) {
-      IllnessesDBHelper.addStudentIllness(StudentIllness(
-          id: -1, medicalRecordId: medicalRecord.id, illnessId: illness.id));
+      //FIXME:
+      // IllnessesDBHelper.addStudentIllness(StudentIllness(
+      //     id: -1, medicalRecordId: medicalRecord.id, illnessId: illness.id));
     }
     for (TakenVaccine takenVaccine
         in registrationInfo.medicalInfo.takenVaccines) {
-      VaccinesDBHelper.addStudentTakenVaccine(
-        TakenVaccine(
-            id: -1,
-            medicalRecordId: medicalRecord.id,
-            vaccineId: takenVaccine.vaccineId,
-            shotDate: takenVaccine.shotDate),
-      );
+          //FIXME:
+      // VaccinesDBHelper.addStudentTakenVaccine(
+      //   TakenVaccine(
+      //       id: -1,
+      //       medicalRecordId: medicalRecord.id,
+      //       vaccineId: takenVaccine.vaccineId,
+      //       shotDate: takenVaccine.shotDate),
+      // );
     }
     if (registrationInfo.studentPreviousSchool != null) {
       PreviousSchoolsDBHelper.addStudentPreviousSchool(

@@ -1,11 +1,60 @@
-import 'package:kalam_noor/models/medical/student_illness.dart';
-import 'package:kalam_noor/to_be_disposed/data/dummy_data.dart';
+import 'package:kalam_noor/models/medical/illness.dart';
+import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
+import '../../../tools/logic_tools/network_service.dart';
 
-abstract class IllnessesDBHelper {
-  static Future<StudentIllness> addStudentIllness(
-      StudentIllness studentIllness) async {
-    studentIllness = studentIllness.copyWith(id: dummyStudentIllnesses.length);
-    dummyStudentIllnesses.add(studentIllness);
-    return studentIllness;
+class IllnessesDBHelper implements CRUDInterface<Illness> {
+  String get _controllerName => 'IlnessController/';
+  static IllnessesDBHelper get instance => IllnessesDBHelper();
+
+  @override
+  Future<List<Illness>> getAll() async {
+    String url = '${_controllerName}GetIlnesses';
+    List<Illness> allIllnesses =
+        await HttpService.getParsed<List<Illness>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return Illness.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allIllnesses;
+  }
+
+  @override
+  Future<Illness?> getById(int id) async {
+    String url = '${_controllerName}GetIlnessById?id=$id';
+    Illness? illness =
+        await HttpService.getParsed<Illness?, Map<String, dynamic>>(
+      url: url,
+      dataMapper: (responseData) {
+        return Illness.fromMap(responseData);
+      },
+    );
+    return illness;
+  }
+
+  Future<int> getCitiesCount() async {
+    return await getAll().then((value) => value.length);
+  }
+
+  @override
+  Future<bool> insert(Illness object) async {
+    String url = '${_controllerName}InsertIlness';
+    int? result =
+        await HttpService.post(url: url, serializedBody: object.toJson());
+    if (result == null) return false;
+    return result == 1;
+  }
+
+  @override
+  Future<bool> update(Illness object) async {
+    String url = '${_controllerName}UpdateIlness';
+    int? result =
+        await HttpService.post(url: url, serializedBody: object.toJson());
+    if (result == null) return false;
+    return result == 1;
   }
 }

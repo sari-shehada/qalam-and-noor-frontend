@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/illnesses_db_helper.dart';
 import 'package:kalam_noor/models/medical/illness.dart';
 import 'package:kalam_noor/pages/illnesses_management_page/views/dialogs/add_or_edit_illness_dialog.dart';
 
@@ -11,7 +11,7 @@ class StudentIllnessesInfoSubWidgetController extends GetxController {
     illnesses = getIllnesses().obs;
   }
   Future<List<Illness>> getIllnesses() async {
-    return await DatabaseHelper.getIllnesses();
+    return await IllnessesDBHelper.instance.getAll();
   }
 
   void selectIllness(Illness illness) {

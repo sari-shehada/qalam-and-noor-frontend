@@ -67,11 +67,13 @@ class AddOrEditPsychologicalStatusDialog extends StatelessWidget {
                     child: Obx(
                       () => controller.isEditMode.value == false
                           ? CustomFilledButton(
+                              buttonStatus: controller.buttonStatus,
                               height: 50.h,
                               onTap: () => controller.addPsychologicalStatus(),
                               child: 'اضافة',
                             )
                           : CustomFilledButton(
+                              buttonStatus: controller.buttonStatus,
                               height: 50.h,
                               onTap: () =>
                                   controller.updatePsychologicalStatusInfo(),

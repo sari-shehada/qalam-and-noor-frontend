@@ -62,11 +62,13 @@ class AddOrEditVaccineDialog extends StatelessWidget {
                     child: Obx(
                       () => controller.isEditMode.value == false
                           ? CustomFilledButton(
+                              buttonStatus: controller.buttonStatus,
                               height: 50.h,
                               onTap: () => controller.addVaccine(),
                               child: 'اضافة',
                             )
                           : CustomFilledButton(
+                              buttonStatus: controller.buttonStatus,
                               height: 50.h,
                               onTap: () => controller.updateVaccineInfo(),
                               child: 'إجراء التعديل',
