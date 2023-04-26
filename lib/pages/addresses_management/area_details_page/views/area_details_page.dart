@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../../models/address/address.dart';
 import '../../../../tools/ui_tools/custom_drop_down_menu.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
+import '../../../../tools/widgets/empty_item_widget.dart';
 import '../../main_page/controllers/address_management_controller.dart';
 import '../controllers/area_details_controller.dart';
 
@@ -97,10 +98,11 @@ class AreaDetailsPage extends StatelessWidget {
               }
               if (snapshot.hasData) {
                 if (snapshot.data!.isEmpty) {
-                  //TODO:
                   return const Center(
-                    //TODO: Change later
-                    child: Text('no addresses yet'),
+                    child: EmptyItemWidget(
+                      itemName: 'عناوين',
+                      iconData: FontAwesomeIcons.mapLocationDot,
+                    ),
                   );
                 } else {
                   List<Address> areas = snapshot.data as List<Address>;
@@ -154,9 +156,9 @@ class AreaDetailsPage extends StatelessWidget {
                   );
                 }
               } else {
-                return const Center(
-                  //TODO:
-                  child: Text('no addresses yet'),
+                return const EmptyItemWidget(
+                  itemName: 'عناوين',
+                  iconData: FontAwesomeIcons.streetView,
                 );
               }
             },
