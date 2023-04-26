@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/pages/new_student_registration/family_information/controllers/dialog_controllers/student_family_info_dialog_controller.dart';
 import 'package:kalam_noor/pages/new_student_registration/family_information/models/family_info.dart';
+import 'package:kalam_noor/tools/logic_tools/datetime_helper.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
 class StudentFamilyInfoCard extends StatelessWidget {
@@ -82,7 +83,8 @@ class StudentFamilyInfoCard extends StatelessWidget {
                                 style: subLabelTextStyle,
                               ),
                               Text(
-                                '${familyInfo.father.dateOfBirth}',
+                                DateTimeHelper.getDateWithoutTime(
+                                    familyInfo.father.dateOfBirth),
                                 style: subLabelDataTextStyle,
                               ),
                             ],
@@ -95,7 +97,7 @@ class StudentFamilyInfoCard extends StatelessWidget {
                                 style: subLabelTextStyle,
                               ),
                               Text(
-                                familyInfo.father.permanentAddress,
+                                familyInfo.father.permenantAddress,
                                 style: subLabelDataTextStyle,
                               ),
                             ],
@@ -153,7 +155,8 @@ class StudentFamilyInfoCard extends StatelessWidget {
                                 style: subLabelTextStyle,
                               ),
                               Text(
-                                '${familyInfo.mother.dateOfBirth}',
+                                DateTimeHelper.getDateWithoutTime(
+                                    familyInfo.mother.dateOfBirth),
                                 style: subLabelDataTextStyle,
                               ),
                             ],
@@ -166,7 +169,7 @@ class StudentFamilyInfoCard extends StatelessWidget {
                                 style: subLabelTextStyle,
                               ),
                               Text(
-                                familyInfo.mother.doesLiveWithHusband == true
+                                familyInfo.mother.doesLiveWithHasband == true
                                     ? 'نعم'
                                     : 'لا',
                                 style: subLabelDataTextStyle,

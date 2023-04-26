@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
 import 'buttons.dart';
@@ -77,6 +78,8 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                         onTap: actionButton!.onTap,
                         height: 74.h,
                         width: 403.w,
+                        buttonStatus: (actionButton as CustomAppBarActionButton)
+                            .buttonStatus,
                         child: Center(
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 40.w),
@@ -114,8 +117,10 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 class CustomAppBarActionButton {
   final String label;
   final VoidCallback onTap;
+  final Rx<CustomButtonStatus>? buttonStatus;
   CustomAppBarActionButton({
     required this.label,
     required this.onTap,
+    this.buttonStatus,
   });
 }

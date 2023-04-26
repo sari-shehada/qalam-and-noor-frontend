@@ -132,7 +132,7 @@ class StudentFatherInfoSubWidgetController extends GetxController {
       motherName: motherNameController.getValue(),
       career: careerController.getValue(),
       placeOfResidence: placeOfResidenceController.getValue(),
-      tieNumber: int.parse(tieNumberController.getValue()),
+      tieNumber: tieNumberController.getValue(),
       tiePlace: tiePlaceController.getValue(),
       placeOfBirth: placeOfBirthController.getValue(),
       dateOfBirth: dateOfBirth.value!,
@@ -140,7 +140,7 @@ class StudentFatherInfoSubWidgetController extends GetxController {
       religion: religion.value,
       educationalStatus: educationalStatus.value,
       phoneNumber: phoneNumberController.getValue(),
-      permanentAddress: permanentAddressController.getValue(),
+      permenantAddress: permanentAddressController.getValue(),
     );
   }
 

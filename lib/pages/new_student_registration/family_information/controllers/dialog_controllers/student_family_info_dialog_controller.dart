@@ -5,6 +5,9 @@ import 'package:kalam_noor/models/agendas/families.dart';
 import 'package:kalam_noor/models/agendas/father.dart';
 import 'package:kalam_noor/models/agendas/mother.dart';
 import 'package:kalam_noor/models/helpers/database_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/father_db_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/mother_db_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/student_family_db_helper.dart';
 import 'package:kalam_noor/pages/new_student_registration/family_information/models/family_info.dart';
 import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 
@@ -45,14 +48,19 @@ class StudentFamilyInfoDialogController extends GetxController {
         StudentFamilyDialogConstants.collapsedDialogHeight.h;
     searchButtonStatus.value = CustomButtonStatus.processing;
     List<Family> families =
-        await DatabaseHelper.getFamiliesByTieNumber(tieNumber: data);
+        await StudentFamilyDBHelper.instance.getByFatherTieNumber(
+      //TODO:
+      tieNumber: data.toString(),
+    );
     familySearchResult.value = [];
     for (Family family in families) {
       {
-        Father father =
-            await DatabaseHelper.getFatherByFamilyId(familyId: family.id);
-        Mother mother =
-            await DatabaseHelper.getMotherByFamilyId(familyId: family.id);
+        Father? father = await FatherDBhelper.instance.getById(family.fatherId);
+        Mother? mother = await MotherDBHelper.instance.getById(family.motherId);
+        if (father == null || mother == null) {
+          //TODO: Describe the issue
+          throw Exception();
+        }
         familySearchResult.value!
             .add(FamilyInfo(family: family, father: father, mother: mother));
       }

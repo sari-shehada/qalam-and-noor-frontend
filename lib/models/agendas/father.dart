@@ -11,7 +11,7 @@ class Father {
   final String motherName;
   final String career;
   final String placeOfResidence;
-  final int tieNumber;
+  final String tieNumber;
   final String tiePlace;
   final String placeOfBirth;
   final DateTime dateOfBirth;
@@ -21,7 +21,9 @@ class Father {
   //enum
   final EducationalStatus educationalStatus;
   final String phoneNumber;
-  final String permanentAddress;
+
+  ///TODO:
+  final String permenantAddress;
   Father({
     required this.id,
     required this.firstName,
@@ -38,7 +40,7 @@ class Father {
     required this.religion,
     required this.educationalStatus,
     required this.phoneNumber,
-    required this.permanentAddress,
+    required this.permenantAddress,
   });
 
   Father copyWith({
@@ -49,7 +51,7 @@ class Father {
     String? motherName,
     String? career,
     String? placeOfResidence,
-    int? tieNumber,
+    String? tieNumber,
     String? tiePlace,
     String? placeOfBirth,
     DateTime? dateOfBirth,
@@ -57,7 +59,7 @@ class Father {
     Religion? religion,
     EducationalStatus? educationalStatus,
     String? phoneNumber,
-    String? permanentAddress,
+    String? permenantAddress,
   }) {
     return Father(
       id: id ?? this.id,
@@ -76,7 +78,7 @@ class Father {
       religion: religion ?? this.religion,
       educationalStatus: educationalStatus ?? this.educationalStatus,
       phoneNumber: phoneNumber ?? this.phoneNumber,
-      permanentAddress: permanentAddress ?? this.permanentAddress,
+      permenantAddress: permenantAddress ?? this.permenantAddress,
     );
   }
 
@@ -97,7 +99,7 @@ class Father {
       'religion': religion.index,
       'educationalStatus': educationalStatus.index,
       'phoneNumber': phoneNumber,
-      'permanentAddress': permanentAddress,
+      'permenantAddress': permenantAddress,
     };
   }
 
@@ -110,17 +112,16 @@ class Father {
       motherName: map['motherName'] as String,
       career: map['career'] as String,
       placeOfResidence: map['placeOfResidence'] as String,
-      tieNumber: map['tieNumber'] as int,
+      tieNumber: map['tieNumber'] as String,
       tiePlace: map['tiePlace'] as String,
       placeOfBirth: map['placeOfBirth'] as String,
-      dateOfBirth:
-          DateTime.fromMillisecondsSinceEpoch(map['dateOfBirth'] as int),
+      dateOfBirth: DateTime.parse(map['dateOfBirth']),
       civilRegisterSecretary: map['civilRegisterSecretary'] as String,
       religion: Religion.values[map['religion'] as int],
       educationalStatus:
           EducationalStatus.values[map['educationalStatus'] as int],
       phoneNumber: map['phoneNumber'] as String,
-      permanentAddress: map['permanentAddress'] as String,
+      permenantAddress: map['permenantAddress'] as String,
     );
   }
 
@@ -131,7 +132,7 @@ class Father {
 
   @override
   String toString() {
-    return 'Father(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, career: $career, placeOfResidence: $placeOfResidence, tieNumber: $tieNumber, tiePlace: $tiePlace, placeOfBirth: $placeOfBirth, dateOfBirth: $dateOfBirth, civilRegisterSecretary: $civilRegisterSecretary, religion: $religion, educationalStatus: $educationalStatus, phoneNumber: $phoneNumber, permanentAddress: $permanentAddress)';
+    return 'Father(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, career: $career, placeOfResidence: $placeOfResidence, tieNumber: $tieNumber, tiePlace: $tiePlace, placeOfBirth: $placeOfBirth, dateOfBirth: $dateOfBirth, civilRegisterSecretary: $civilRegisterSecretary, religion: $religion, educationalStatus: $educationalStatus, phoneNumber: $phoneNumber, permenantAddress: $permenantAddress)';
   }
 
   @override
@@ -153,7 +154,7 @@ class Father {
         other.religion == religion &&
         other.educationalStatus == educationalStatus &&
         other.phoneNumber == phoneNumber &&
-        other.permanentAddress == permanentAddress;
+        other.permenantAddress == permenantAddress;
   }
 
   @override
@@ -173,6 +174,6 @@ class Father {
         religion.hashCode ^
         educationalStatus.hashCode ^
         phoneNumber.hashCode ^
-        permanentAddress.hashCode;
+        permenantAddress.hashCode;
   }
 }

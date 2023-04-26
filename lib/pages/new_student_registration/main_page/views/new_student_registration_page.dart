@@ -44,7 +44,8 @@ class NewStudentRegistrationPage extends StatelessWidget {
         backButtonEnabled: true,
         actionButton: CustomAppBarActionButton(
           label: 'تسجيل الطالب',
-          onTap: () => printStuff(),
+          buttonStatus: controller.buttonStatus,
+          onTap: () => controller.registerStudent(),
         ),
       ),
       body: SizedBox.expand(

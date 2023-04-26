@@ -4,18 +4,22 @@ import 'dart:convert';
 class Class {
   final int id;
   final String name;
+  final int? previousClassId;
   Class({
     required this.id,
     required this.name,
+    this.previousClassId,
   });
 
   Class copyWith({
     int? id,
     String? name,
+    int? previousClassId,
   }) {
     return Class(
       id: id ?? this.id,
       name: name ?? this.name,
+      previousClassId: previousClassId ?? this.previousClassId,
     );
   }
 
@@ -23,6 +27,7 @@ class Class {
     return <String, dynamic>{
       'id': id,
       'name': name,
+      'previousClassId': previousClassId,
     };
   }
 
@@ -30,6 +35,8 @@ class Class {
     return Class(
       id: map['id'] as int,
       name: map['name'] as String,
+      previousClassId:
+          map['previousClassId'] != null ? map['previousClassId'] as int : null,
     );
   }
 
@@ -39,15 +46,18 @@ class Class {
       Class.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'Class(id: $id, name: $name)';
+  String toString() =>
+      'Class(id: $id, name: $name, previousClassId: $previousClassId)';
 
   @override
   bool operator ==(covariant Class other) {
     if (identical(this, other)) return true;
 
-    return other.id == id && other.name == name;
+    return other.id == id &&
+        other.name == name &&
+        other.previousClassId == previousClassId;
   }
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode;
+  int get hashCode => id.hashCode ^ name.hashCode ^ previousClassId.hashCode;
 }

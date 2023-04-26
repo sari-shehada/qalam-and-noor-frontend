@@ -54,7 +54,7 @@ class NewStudentRegistrationController extends GetxController {
         address:
             Get.find<StudentAddressInfoController>().addressInfo.value!.address,
         //TODO:
-        enrolledClass: Class(id: -1, name: 'First Class'),
+        enrolledClass: Class(id: 2, name: 'الثاني', previousClassId: 1),
       );
       await StudentDBHelper.instance
           .registerNewStudent(registrationInfo: registrationInfo);

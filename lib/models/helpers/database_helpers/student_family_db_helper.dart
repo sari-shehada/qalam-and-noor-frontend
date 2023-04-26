@@ -23,6 +23,22 @@ class StudentFamilyDBHelper implements CRUDInterface<Family> {
     return allFamilies;
   }
 
+  Future<List<Family>> getByFatherTieNumber({required String tieNumber}) async {
+    String url =
+        '${_controllerName}GetFamiliesByFatherTieNumber?tieNumber=$tieNumber';
+    List<Family> allFamilies = await HttpService.getParsed<List<Family>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return Family.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allFamilies;
+  }
+
   @override
   Future<Family?> getById(int id) async {
     String url = '${_controllerName}GetStudentFamilyById?id=$id';

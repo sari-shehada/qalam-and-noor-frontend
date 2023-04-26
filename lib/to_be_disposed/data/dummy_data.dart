@@ -181,7 +181,7 @@ List<Father> dummyFathers = [
       motherName: 'لانا',
       career: 'مهندس',
       placeOfResidence: 'الرياض',
-      tieNumber: 200,
+      tieNumber: '200',
       tiePlace: 'النبك',
       placeOfBirth: 'النبك',
       dateOfBirth: DateTime.now(),
@@ -189,7 +189,7 @@ List<Father> dummyFathers = [
       religion: Religion.islam,
       educationalStatus: EducationalStatus.master,
       phoneNumber: '09111111111',
-      permanentAddress: 'النبك شارع الأديب'),
+      permenantAddress: 'النبك شارع الأديب'),
 ];
 
 List<Mother> dummyMothers = [
@@ -199,9 +199,9 @@ List<Mother> dummyMothers = [
       lastName: 'ه.',
       fatherName: 'محمد',
       motherName: 'اميرة',
-      doesLiveWithHusband: true,
+      doesLiveWithHasband: true,
       career: 'ربة منزل',
-      tieNumber: 300,
+      tieNumber: '300',
       tiePlace: 'النبك',
       placeOfBirth: 'النبك',
       dateOfBirth: DateTime.now(),
