@@ -56,8 +56,8 @@ class NewStudentRegistrationController extends GetxController {
         //TODO:
         enrolledClass: Class(id: -1, name: 'First Class'),
       );
-      await StudentDBHelper.registerNewStudent(
-          registrationInfo: registrationInfo);
+      await StudentDBHelper.instance
+          .registerNewStudent(registrationInfo: registrationInfo);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;

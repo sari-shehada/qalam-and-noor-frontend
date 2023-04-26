@@ -48,7 +48,7 @@ class LargestCitiesByDescendentCountPieChart extends StatelessWidget {
                         explodeGesture: ActivationMode.singleTap,
                         dataSource: snapshot.data,
                         pointColorMapper: (CityToDescendentCount data, _) =>
-                            Colors.black,
+                            null,
                         xValueMapper: (CityToDescendentCount data, _) =>
                             data.city.name,
                         yValueMapper: (CityToDescendentCount data, _) =>

@@ -1,17 +1,62 @@
 import 'package:kalam_noor/models/educational/year_record.dart';
-import 'package:kalam_noor/to_be_disposed/data/dummy_data.dart';
+import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
 
-abstract class YearRecordsDBHelper {
-  static Future<YearRecord> addStudentYearRecord(
-      {required int studentId, required int classId}) async {
-    YearRecord yearRecord = YearRecord(
-        id: -1,
-        classId: classId,
-        schoolYearClassroomId: null,
-        studentId: studentId,
-        didPass: null);
-    yearRecord = yearRecord.copyWith(id: dummyYearRecords.length);
-    dummyYearRecords.add(yearRecord);
+import '../../../tools/logic_tools/network_service.dart';
+
+class YearRecordsDBHelper implements CRUDInterface<YearRecord> {
+  String get _controllerName => 'YearRecordController/';
+  static YearRecordsDBHelper get instance => YearRecordsDBHelper();
+
+  @override
+  Future<List<YearRecord>> getAll() async {
+    String url = '${_controllerName}GetYearRecords';
+    List<YearRecord> allYearRecords =
+        await HttpService.getParsed<List<YearRecord>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return YearRecord.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allYearRecords;
+  }
+
+  @override
+  Future<YearRecord?> getById(int id) async {
+    String url = '${_controllerName}GetYearRecordById?id=$id';
+    YearRecord? yearRecord =
+        await HttpService.getParsed<YearRecord?, Map<String, dynamic>>(
+      url: url,
+      dataMapper: (responseData) {
+        return YearRecord.fromMap(responseData);
+      },
+    );
     return yearRecord;
+  }
+
+  //TODO: Consider Removing
+  Future<int> getYearRecordsCount() async {
+    return await getAll().then((value) => value.length);
+  }
+
+  @override
+  Future<bool> insert(YearRecord object) async {
+    String url = '${_controllerName}InsertYearRecord';
+    int? result =
+        await HttpService.post(url: url, serializedBody: object.toJson());
+    if (result == null) return false;
+    return result == 1;
+  }
+
+  @override
+  Future<bool> update(YearRecord object) async {
+    String url = '${_controllerName}UpdateYearRecord';
+    int? result =
+        await HttpService.post(url: url, serializedBody: object.toJson());
+    if (result == null) return false;
+    return result == 1;
   }
 }

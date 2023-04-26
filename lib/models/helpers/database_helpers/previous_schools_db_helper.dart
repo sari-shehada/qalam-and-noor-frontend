@@ -1,12 +1,59 @@
-import 'package:kalam_noor/models/previous_schools/student_previous_school.dart';
-import 'package:kalam_noor/to_be_disposed/data/dummy_data.dart';
+import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
 
-abstract class PreviousSchoolsDBHelper {
-  static Future<StudentPreviousSchool> addStudentPreviousSchool(
-      StudentPreviousSchool studentPreviousSchool) async {
-    studentPreviousSchool =
-        studentPreviousSchool.copyWith(id: dummyStudentPreviousSchools.length);
-    dummyStudentPreviousSchools.add(studentPreviousSchool);
+import '../../../tools/logic_tools/network_service.dart';
+import '../../previous_schools/student_previous_school.dart';
+
+class StudentPreviousSchoolsDBHelper
+    implements CRUDInterface<StudentPreviousSchool> {
+  String get _controllerName => 'StudentPreviousSchoolController/';
+  static StudentPreviousSchoolsDBHelper get instance =>
+      StudentPreviousSchoolsDBHelper();
+
+  @override
+  Future<List<StudentPreviousSchool>> getAll() async {
+    String url = '${_controllerName}GetStudentStudentPreviousSchools';
+    List<StudentPreviousSchool> allStudentPreviousSchools =
+        await HttpService.getParsed<List<StudentPreviousSchool>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return StudentPreviousSchool.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allStudentPreviousSchools;
+  }
+
+  @override
+  Future<StudentPreviousSchool?> getById(int id) async {
+    String url = '${_controllerName}GetStudentStudentPreviousSchoolById?id=$id';
+    StudentPreviousSchool? studentPreviousSchool = await HttpService.getParsed<
+        StudentPreviousSchool?, Map<String, dynamic>>(
+      url: url,
+      dataMapper: (responseData) {
+        return StudentPreviousSchool.fromMap(responseData);
+      },
+    );
     return studentPreviousSchool;
+  }
+
+  @override
+  Future<StudentPreviousSchool> insert(StudentPreviousSchool object) async {
+    String url = '${_controllerName}InsertStudentStudentPreviousSchool';
+    int? result =
+        await HttpService.post(url: url, serializedBody: object.toJson());
+    if (result == null) return throw Exception();
+    return object.copyWith(id: result);
+  }
+
+  @override
+  Future<bool> update(StudentPreviousSchool object) async {
+    String url = '${_controllerName}UpdateStudentStudentPreviousSchool';
+    int? result =
+        await HttpService.post(url: url, serializedBody: object.toJson());
+    if (result == null) return false;
+    return result == 1;
   }
 }

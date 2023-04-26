@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/addresses_db_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/area_db_helper.dart';
 import 'package:kalam_noor/pages/addresses_management/main_page/views/dialogs/add_or_edit_city_dialog.dart';
 import 'package:kalam_noor/pages/new_student_registration/address_information/models/student_address_info.dart';
 import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
@@ -8,7 +10,6 @@ import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../models/address/address.dart';
 import '../../../../../models/address/area.dart';
 import '../../../../../models/address/city.dart';
-import '../../../../../models/helpers/database_helper.dart';
 
 import '../../../../../models/helpers/database_helpers/cities_db_helper.dart';
 import '../../../../addresses_management/area_details_page/views/widgets/add_or_edit_address_dialog.dart';
@@ -39,14 +40,12 @@ class StudentAddressInfoDialogController extends GetxController {
     cityDropDownButtonEnabled.value = false;
     areaDropDownButtonEnabled.value = false;
     addressDropDownButtonEnabled.value = false;
-    await Future.delayed(2.seconds);
     cities.value = await CitiesDBHelper.instance.getAll();
     cityDropDownButtonEnabled.value = true;
     isProcessing.value = false;
   }
 
   void selectCity(City? city) {
-    print(city);
     if (city == null) {
       return;
     }
@@ -92,8 +91,7 @@ class StudentAddressInfoDialogController extends GetxController {
     selectedArea.value = null;
     selectedAddress.value = null;
     changeContainerHeight(ContainerStageHeight.stage1);
-    await Future.delayed(2.seconds);
-    areas.value = await DatabaseHelper.getAreasInCity(cityId: city.id);
+    areas.value = await AreasDBHelper.instance.getAllByCityId(cityId: city.id);
     areaDropDownButtonEnabled.value = true;
     changeContainerHeight(ContainerStageHeight.stage2);
     isProcessing.value = false;
@@ -104,8 +102,9 @@ class StudentAddressInfoDialogController extends GetxController {
     addressDropDownButtonEnabled.value = false;
     selectedAddress.value = null;
     changeContainerHeight(ContainerStageHeight.stage2);
-    await Future.delayed(2.seconds);
-    addresses.value = await DatabaseHelper.getAddressesInArea(areaId: area.id);
+
+    addresses.value =
+        await AddressesDBHelper.instance.getAllByAreaId(areaId: area.id);
     addressDropDownButtonEnabled.value = true;
     changeContainerHeight(ContainerStageHeight.stage3);
     isProcessing.value = false;

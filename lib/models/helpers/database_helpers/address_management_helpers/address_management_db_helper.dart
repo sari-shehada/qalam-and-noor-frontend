@@ -4,7 +4,6 @@ import '../../../../pages/addresses_management/main_page/models/city_to_descende
 import '../../../address/city.dart';
 
 class AddressManagementDBHelper {
-  //TODO: change controller name
   String get _controllerName => 'CityController/';
   static AddressManagementDBHelper get instance => AddressManagementDBHelper();
 
@@ -21,22 +20,20 @@ class AddressManagementDBHelper {
         ).toList();
       },
     );
-    print(citiesToAreasCount[0].city);
     final List<CityToDescendentCount> statsList = [];
     citiesToAreasCount.sort(
       (a, b) => b.descendentCount.compareTo(a.descendentCount),
     );
-
     int pieChartItemsToDisplay = 5;
     int othersCount = 0;
     for (int i = 0; i < citiesToAreasCount.length; i++) {
       if (i < pieChartItemsToDisplay) {
         statsList.add(citiesToAreasCount[i]);
       } else {
-        othersCount += statsList[i].descendentCount;
+        othersCount += citiesToAreasCount[i].descendentCount;
       }
     }
-    if (statsList.length > pieChartItemsToDisplay) {
+    if (othersCount > 0) {
       statsList.add(
         CityToDescendentCount(
             city: City(id: -1, name: 'مدن أخرى'), descendentCount: othersCount),
@@ -58,19 +55,17 @@ class AddressManagementDBHelper {
         ).toList();
       },
     );
-
     final List<CityToDescendentCount> statsList = [];
     citiesToAreasCount.sort(
       (a, b) => b.descendentCount.compareTo(a.descendentCount),
     );
-
     int pieChartItemsToDisplay = 5;
     int othersCount = 0;
     for (int i = 0; i < citiesToAreasCount.length; i++) {
       if (i < pieChartItemsToDisplay) {
         statsList.add(citiesToAreasCount[i]);
       } else {
-        othersCount += statsList[i].descendentCount;
+        othersCount += citiesToAreasCount[i].descendentCount;
       }
     }
     if (statsList.length > pieChartItemsToDisplay) {

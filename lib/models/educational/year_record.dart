@@ -6,7 +6,7 @@ class YearRecord {
   int classId;
   int? schoolYearClassroomId;
   int studentId;
-  bool? didPass;
+  bool didPass;
   YearRecord({
     required this.id,
     required this.classId,
@@ -50,7 +50,7 @@ class YearRecord {
           ? map['schoolYearClassroomId'] as int
           : null,
       studentId: map['studentId'] as int,
-      didPass: map['didPass'] != null ? map['didPass'] as bool : null,
+      didPass: map['didPass'] as bool,
     );
   }
 

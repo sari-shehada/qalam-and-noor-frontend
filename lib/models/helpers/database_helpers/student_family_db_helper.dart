@@ -1,37 +1,59 @@
 import 'package:kalam_noor/models/agendas/families.dart';
-import 'package:kalam_noor/models/agendas/father.dart';
-import 'package:kalam_noor/models/agendas/mother.dart';
-import 'package:kalam_noor/models/agendas/responsible_person.dart';
-import 'package:kalam_noor/to_be_disposed/data/dummy_data.dart';
 
-abstract class StudentFamilyDBHelper {
-  static Future<Father> addFather(Father father) async {
-    //TODO: Change to API Call
-    father = father.copyWith(id: dummyFathers.length);
-    dummyFathers.add(father);
-    return father;
+import '../../../tools/logic_tools/crud_interface.dart';
+import '../../../tools/logic_tools/network_service.dart';
+
+class StudentFamilyDBHelper implements CRUDInterface<Family> {
+  String get _controllerName => 'FamilyController/';
+  static StudentFamilyDBHelper get instance => StudentFamilyDBHelper();
+
+  @override
+  Future<List<Family>> getAll() async {
+    String url = '${_controllerName}GetStudentFamilies';
+    List<Family> allFamilies = await HttpService.getParsed<List<Family>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return Family.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allFamilies;
   }
 
-  static Future<Mother> addMother(Mother mother) async {
-    //TODO: Change to API Call
-    mother = mother.copyWith(id: dummyMothers.length);
-    dummyMothers.add(mother);
-    return mother;
-  }
-
-  static Future<ResponsiblePerson> addResponsiblePerson(
-      //TODO: Change to API Call
-      ResponsiblePerson responsiblePerson) async {
-    responsiblePerson =
-        responsiblePerson.copyWith(id: dummyResponsiblePeople.length);
-    dummyResponsiblePeople.add(responsiblePerson);
-    return responsiblePerson;
-  }
-
-  static Future<Family> addFamily(Family family) async {
-    //TODO: Change to API Call
-    family = family.copyWith(id: dummyFamilies.length);
-    dummyFamilies.add(family);
+  @override
+  Future<Family?> getById(int id) async {
+    String url = '${_controllerName}GetStudentFamilyById?id=$id';
+    Family? family = await HttpService.getParsed<Family?, Map<String, dynamic>>(
+      url: url,
+      dataMapper: (responseData) {
+        return Family.fromMap(responseData);
+      },
+    );
     return family;
+  }
+
+  Future<int> getFamiliesCount() async {
+    return await getAll().then((value) => value.length);
+  }
+
+  @override
+  Future<Family> insert(Family object) async {
+    String url = '${_controllerName}InsertStudentFamily';
+    int? result =
+        await HttpService.post(url: url, serializedBody: object.toJson());
+    if (result == null) throw Exception();
+    return object.copyWith(id: result);
+  }
+
+  @override
+  Future<bool> update(Family object) async {
+    String url = '${_controllerName}UpdateStudentFamily';
+    int? result =
+        await HttpService.post(url: url, serializedBody: object.toJson());
+    if (result == null) return false;
+    return result == 1;
   }
 }
