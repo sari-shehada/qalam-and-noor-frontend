@@ -5,7 +5,7 @@ import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
-import '../../../../../to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
+import '../../../../../tools/ui_tools/labeled_widget.dart';
 import '../../controllers/student_address_info_controller.dart';
 
 class StudentAddressInfoWidget extends StatelessWidget {
@@ -82,7 +82,7 @@ class StudentAddressInfoWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Spacer(),
+                    const Spacer(),
                     CustomTintedButton(
                       onTap: () => controller.selectStudentAddress(),
                       child: 'إعادة تحديد العنوان',

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 import 'package:kalam_noor/controllers/navigation_controller.dart';
 import 'package:kalam_noor/pages/medicals_management/views/widgets/medicals_menu_list_tile.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';

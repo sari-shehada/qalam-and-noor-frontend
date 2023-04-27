@@ -8,8 +8,8 @@ import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
 import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
-import '../../../to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 import '../../../tools/ui_tools/custom_drop_down_menu.dart';
+import '../../../tools/ui_tools/labeled_widget.dart';
 import '../../../tools/ui_tools/ui_tools.dart';
 import '../controllers/vaccines_management_controller.dart';
 

@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/agendas/responsible_person.dart';
 import 'package:kalam_noor/pages/new_student_registration/family_information/models/family_info.dart';
-import 'package:kalam_noor/pages/new_student_registration/family_information/views/dialogs/add_student_family_info_dialog.dart';
 
 import '../views/dialogs/student_family_info_dialog.dart';
 

@@ -36,7 +36,7 @@ class TakenVaccine {
       'id': id,
       'medicalRecordId': medicalRecordId,
       'vaccineId': vaccineId,
-      'shotDate': shotDate.millisecondsSinceEpoch,
+      'shotDate': shotDate.toIso8601String(),
       'notes': notes,
     };
   }
@@ -46,7 +46,7 @@ class TakenVaccine {
       id: map['id'] as int,
       medicalRecordId: map['medicalRecordId'] as int,
       vaccineId: map['vaccineId'] as int,
-      shotDate: DateTime.fromMillisecondsSinceEpoch(map['shotDate'] as int),
+      shotDate: DateTime.parse(map['shotDate']),
       notes: map['notes'] != null ? map['notes'] as String : null,
     );
   }

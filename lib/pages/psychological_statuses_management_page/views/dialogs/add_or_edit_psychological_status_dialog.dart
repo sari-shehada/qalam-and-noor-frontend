@@ -1,15 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:kalam_noor/models/medical/psychological_status.dart';
 import 'package:kalam_noor/pages/psychological_statuses_management_page/controllers/dialog_controllers/add_or_edit_psychological_status_dialog_controller.dart';
-import '../../../../to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 import '../../../../tools/ui_tools/buttons.dart';
+import '../../../../tools/ui_tools/labeled_widget.dart';
 import '../../../../tools/ui_tools/text_fields.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
-import '../../../vaccines_management_page/controllers/dialog_controllers/add_or_edit_vaccine_dialog_controller.dart';
 
 class AddOrEditPsychologicalStatusDialog extends StatelessWidget {
   const AddOrEditPsychologicalStatusDialog(

@@ -3,8 +3,6 @@ import 'package:kalam_noor/models/helpers/database_helpers/psychological_statuse
 import 'package:kalam_noor/models/medical/psychological_status.dart';
 import 'package:kalam_noor/pages/psychological_statuses_management_page/views/dialogs/add_or_edit_psychological_status_dialog.dart';
 
-import '../../../models/helpers/database_helper.dart';
-
 class PsychologicalStatusesManagementController extends GetxController {
   RxInt psychologicalStatusesCount = 0.obs;
   Rx<PsychologicalStatusSortingOption> currentSortingOption =

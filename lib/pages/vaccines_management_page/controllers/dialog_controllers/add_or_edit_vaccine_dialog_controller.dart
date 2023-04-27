@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/vaccines_db_helper.dart';
 import 'package:kalam_noor/models/medical/vaccine.dart';
-import 'package:kalam_noor/to_be_disposed/data/dummy_data.dart';
-import '../../../../models/helpers/database_helper.dart';
 import '../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../tools/ui_tools/buttons.dart';
 
@@ -37,8 +35,7 @@ class AddOrEditVaccineDialogController extends GetxController {
       if (validateFields() == false) {
         return;
       }
-      Vaccine vaccine =
-          Vaccine(id: (dummyVaccines.length + 1), name: vaccineController.text);
+      Vaccine vaccine = Vaccine(id: -1, name: vaccineController.text);
       await VaccinesDBHelper.instance.insert(vaccine);
       Get.back(result: true);
     } finally {

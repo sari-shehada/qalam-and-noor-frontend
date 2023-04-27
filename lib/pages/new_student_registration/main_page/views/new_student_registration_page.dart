@@ -7,10 +7,10 @@ import 'package:kalam_noor/pages/new_student_registration/main_page/controllers/
 import 'package:kalam_noor/pages/new_student_registration/medical_information/views/widgets/student_medical_info_widget.dart';
 import 'package:kalam_noor/pages/new_student_registration/personal_information/views/widgets/student_personal_info_widget.dart';
 import 'package:kalam_noor/pages/new_student_registration/previous_school_information/views/widgets/student_previous_school_info_widget.dart';
-import 'package:kalam_noor/to_be_disposed/data/dummy_data.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
+import '../../enrolled_class_information/views/student_enrolled_class_info_widget.dart';
 import '../../family_information/views/widgets/student_family_info_widget.dart';
 
 class NewStudentRegistrationPage extends StatelessWidget {
@@ -124,20 +124,58 @@ class NewStudentRegistrationPage extends StatelessWidget {
                           ),
                           AddHorizontalSpacing(value: 30.w),
                           Expanded(
-                            child: AnimatedContainer(
-                              duration:
-                                  NewStudentRegistrationControllerConstants
-                                      .animationDuration,
-                              curve: NewStudentRegistrationControllerConstants
-                                  .animationCurve,
-                              width: double.infinity,
-                              decoration: backContainerDecoration.copyWith(
-                                color: controller.getSectionStatusColor(
-                                    controller
-                                        .previousSchoolInfoSectionStatus.value),
-                              ),
-                              padding: containerPadding,
-                              child: const StudentPreviousSchoolInfoWidget(),
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: AnimatedContainer(
+                                    duration:
+                                        NewStudentRegistrationControllerConstants
+                                            .animationDuration,
+                                    curve:
+                                        NewStudentRegistrationControllerConstants
+                                            .animationCurve,
+                                    width: double.infinity,
+                                    decoration:
+                                        backContainerDecoration.copyWith(
+                                      color: controller.getSectionStatusColor(
+                                          controller
+                                              .previousSchoolInfoSectionStatus
+                                              .value),
+                                    ),
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 15.h,
+                                      horizontal: 20.w,
+                                    ),
+                                    child:
+                                        const StudentPreviousSchoolInfoWidget(),
+                                  ),
+                                ),
+                                AddVerticalSpacing(value: 20.h),
+                                Expanded(
+                                  child: AnimatedContainer(
+                                    duration:
+                                        NewStudentRegistrationControllerConstants
+                                            .animationDuration,
+                                    curve:
+                                        NewStudentRegistrationControllerConstants
+                                            .animationCurve,
+                                    width: double.infinity,
+                                    decoration:
+                                        backContainerDecoration.copyWith(
+                                      color: controller.getSectionStatusColor(
+                                          controller
+                                              .previousSchoolInfoSectionStatus
+                                              .value),
+                                    ),
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 15.h,
+                                      horizontal: 20.w,
+                                    ),
+                                    child:
+                                        const StudentEnrolledClassInfoWidget(),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -152,10 +190,4 @@ class NewStudentRegistrationPage extends StatelessWidget {
       ),
     );
   }
-}
-
-void printStuff() {
-  print('Students $dummyStudents');
-  print('Vaccines $dummyTakenVaccines');
-  print('Illnesses $dummyStudentIllnesses');
 }

@@ -13,10 +13,10 @@ class Student {
   final String phoneNumber;
   //enum
   final Religion religion;
-  final String whatsappNumber;
-  final int incidentNumber;
-  final DateTime dateOfIncident;
-  final String landline;
+  final String whatsappPhoneNumber;
+  final String incidentNumber;
+  final DateTime incidentDate;
+  final String landLine;
   final int addressId;
   final DateTime joinDate;
   final DateTime? leaveDate;
@@ -30,57 +30,15 @@ class Student {
     required this.placeOfBirth,
     required this.phoneNumber,
     required this.religion,
-    required this.whatsappNumber,
+    required this.whatsappPhoneNumber,
     required this.incidentNumber,
-    required this.dateOfIncident,
-    required this.landline,
+    required this.incidentDate,
+    required this.landLine,
     required this.addressId,
     required this.joinDate,
     this.leaveDate,
     required this.familyId,
   });
-
-  // Future<Father> getFatherInfo() async {
-  //   father ??= Father(
-  //       id: 200,
-  //       firstName: 'أحمد',
-  //       lastName: 'ا',
-  //       fatherName: 'محمد',
-  //       motherName: 'فاطمة',
-  //       career: 'طبيب اسنان',
-  //       placeOfResidence: "النبك",
-  //       tieNumber: 400,
-  //       tiePlace: "النبك",
-  //       placeOfBirth: "النبك",
-  //       dateOfBirth: DateTime(
-  //         1994,
-  //       ),
-  //       religion: Religion.islam,
-  //       educationalStatus: EducationalStatus.doctorate,
-  //       phoneNumber: '0999999999',
-  //       permanentAddress: 'النبك / الحي الغربي / شارع ابو سيفو النفوري',
-  //       civilRegisterSecretary: '');
-  //   return father!;
-  // }
-
-  // Future<Mother> getMotherInfo() async {
-  //   mother ??= Mother(
-  //       id: 300,
-  //       firstName: 'سارة',
-  //       lastName: 'س',
-  //       fatherName: 'احمد',
-  //       motherName: 'لما',
-  //       doesLiveWithHusband: true,
-  //       career: 'هندسة تقانة معلومات',
-  //       tieNumber: 213,
-  //       tiePlace: 'النبك',
-  //       placeOfBirth: 'النبك',
-  //       dateOfBirth: DateTime(1995),
-  //       religion: Religion.islam,
-  //       educationalStatus: EducationalStatus.master,
-  //       phoneNumber: '0966666666');
-  //   return mother!;
-  // }
 
   Student copyWith({
     int? id,
@@ -91,10 +49,10 @@ class Student {
     String? placeOfBirth,
     String? phoneNumber,
     Religion? religion,
-    String? whatsappNumber,
-    int? incidentNumber,
-    DateTime? dateOfIncident,
-    String? landline,
+    String? whatsappPhoneNumber,
+    String? incidentNumber,
+    DateTime? incidentDate,
+    String? landLine,
     int? addressId,
     DateTime? joinDate,
     DateTime? leaveDate,
@@ -109,10 +67,10 @@ class Student {
       placeOfBirth: placeOfBirth ?? this.placeOfBirth,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       religion: religion ?? this.religion,
-      whatsappNumber: whatsappNumber ?? this.whatsappNumber,
+      whatsappPhoneNumber: whatsappPhoneNumber ?? this.whatsappPhoneNumber,
       incidentNumber: incidentNumber ?? this.incidentNumber,
-      dateOfIncident: dateOfIncident ?? this.dateOfIncident,
-      landline: landline ?? this.landline,
+      incidentDate: incidentDate ?? this.incidentDate,
+      landLine: landLine ?? this.landLine,
       addressId: addressId ?? this.addressId,
       joinDate: joinDate ?? this.joinDate,
       leaveDate: leaveDate ?? this.leaveDate,
@@ -126,17 +84,17 @@ class Student {
       'publicRecordId': publicRecordId,
       'firstName': firstName,
       'isMale': isMale,
-      'dateOfBirth': dateOfBirth.millisecondsSinceEpoch,
+      'dateOfBirth': dateOfBirth.toIso8601String(),
       'placeOfBirth': placeOfBirth,
       'phoneNumber': phoneNumber,
       'religion': religion.index,
-      'whatsappNumber': whatsappNumber,
+      'whatsappPhoneNumber': whatsappPhoneNumber,
       'incidentNumber': incidentNumber,
-      'dateOfIncident': dateOfIncident.millisecondsSinceEpoch,
-      'landline': landline,
+      'incidentDate': incidentDate.toIso8601String(),
+      'landLine': landLine,
       'addressId': addressId,
-      'joinDate': joinDate.millisecondsSinceEpoch,
-      'leaveDate': leaveDate?.millisecondsSinceEpoch,
+      'joinDate': joinDate.toIso8601String(),
+      'leaveDate': leaveDate?.toIso8601String(),
       'familyId': familyId,
     };
   }
@@ -147,21 +105,18 @@ class Student {
       publicRecordId: map['publicRecordId'] as int,
       firstName: map['firstName'] as String,
       isMale: map['isMale'] as bool,
-      dateOfBirth:
-          DateTime.fromMillisecondsSinceEpoch(map['dateOfBirth'] as int),
+      dateOfBirth: DateTime.parse(map['dateOfBirth']),
       placeOfBirth: map['placeOfBirth'] as String,
       phoneNumber: map['phoneNumber'] as String,
       religion: Religion.values[map['religion'] as int],
-      whatsappNumber: map['whatsappNumber'] as String,
-      incidentNumber: map['incidentNumber'] as int,
-      dateOfIncident:
-          DateTime.fromMillisecondsSinceEpoch(map['dateOfIncident'] as int),
-      landline: map['landline'] as String,
+      whatsappPhoneNumber: map['whatsappPhoneNumber'] as String,
+      incidentNumber: map['incidentNumber'] as String,
+      incidentDate: DateTime.parse(map['incidentDate']),
+      landLine: map['landLine'] as String,
       addressId: map['addressId'] as int,
-      joinDate: DateTime.fromMillisecondsSinceEpoch(map['joinDate'] as int),
-      leaveDate: map['leaveDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['leaveDate'] as int)
-          : null,
+      joinDate: DateTime.parse(map['joinDate']),
+      leaveDate:
+          map['leaveDate'] != null ? DateTime.parse(map['leaveDate']) : null,
       familyId: map['familyId'] as int,
     );
   }
@@ -173,7 +128,7 @@ class Student {
 
   @override
   String toString() {
-    return 'Student(id: $id, publicRecordId: $publicRecordId, firstName: $firstName, isMale: $isMale, dateOfBirth: $dateOfBirth, placeOfBirth: $placeOfBirth, phoneNumber: $phoneNumber, religion: $religion, whatsappNumber: $whatsappNumber, incidentNumber: $incidentNumber, dateOfIncident: $dateOfIncident, landline: $landline, addressId: $addressId, joinDate: $joinDate, leaveDate: $leaveDate, familyId: $familyId)';
+    return 'Student(id: $id, publicRecordId: $publicRecordId, firstName: $firstName, isMale: $isMale, dateOfBirth: $dateOfBirth, placeOfBirth: $placeOfBirth, phoneNumber: $phoneNumber, religion: $religion, whatsappPhoneNumber: $whatsappPhoneNumber, incidentNumber: $incidentNumber, incidentDate: $incidentDate, landLine: $landLine, addressId: $addressId, joinDate: $joinDate, leaveDate: $leaveDate, familyId: $familyId)';
   }
 
   @override
@@ -188,10 +143,10 @@ class Student {
         other.placeOfBirth == placeOfBirth &&
         other.phoneNumber == phoneNumber &&
         other.religion == religion &&
-        other.whatsappNumber == whatsappNumber &&
+        other.whatsappPhoneNumber == whatsappPhoneNumber &&
         other.incidentNumber == incidentNumber &&
-        other.dateOfIncident == dateOfIncident &&
-        other.landline == landline &&
+        other.incidentDate == incidentDate &&
+        other.landLine == landLine &&
         other.addressId == addressId &&
         other.joinDate == joinDate &&
         other.leaveDate == leaveDate &&
@@ -208,10 +163,10 @@ class Student {
         placeOfBirth.hashCode ^
         phoneNumber.hashCode ^
         religion.hashCode ^
-        whatsappNumber.hashCode ^
+        whatsappPhoneNumber.hashCode ^
         incidentNumber.hashCode ^
-        dateOfIncident.hashCode ^
-        landline.hashCode ^
+        incidentDate.hashCode ^
+        landLine.hashCode ^
         addressId.hashCode ^
         joinDate.hashCode ^
         leaveDate.hashCode ^

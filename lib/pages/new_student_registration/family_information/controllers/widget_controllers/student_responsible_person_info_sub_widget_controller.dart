@@ -4,7 +4,7 @@ import 'package:kalam_noor/pages/new_student_registration/family_information/con
 import 'package:kalam_noor/pages/new_student_registration/family_information/controllers/widget_controllers/student_mother_info_sub_widget_controller.dart';
 import 'package:kalam_noor/pages/new_student_registration/family_information/models/validation_text_field.dart';
 
-import '../../../../../models/agendas/families.dart';
+import '../../../../../models/agendas/family.dart';
 import '../../../../../models/agendas/father.dart';
 import '../../../../../models/agendas/mother.dart';
 import '../../../../../models/agendas/responsible_person.dart';

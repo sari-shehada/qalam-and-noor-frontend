@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 
 import '../../../../models/enums.dart';
+import '../../../../tools/ui_tools/labeled_widget.dart';
 import '../../../../tools/ui_tools/text_fields.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
-import '../../../new_student_registration/student_information/views/new_student_registration_page.dart';
 import '../../controllers/logic_controller.dart';
 
 class StudentCivilianInformationSubWindow extends StatelessWidget {
@@ -59,8 +59,8 @@ class StudentCivilianInformationSubWindow extends StatelessWidget {
                                 color: Get.theme.colorScheme.primary,
                               ),
                               isExpanded: true,
-                              icon: SizedBox.shrink(),
-                              underline: SizedBox.shrink(),
+                              icon: const SizedBox.shrink(),
+                              underline: const SizedBox.shrink(),
                               itemHeight: 60.h,
                               items: Religion.values
                                   .map(

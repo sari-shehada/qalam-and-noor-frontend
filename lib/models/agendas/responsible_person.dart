@@ -46,7 +46,7 @@ class ResponsiblePerson {
       'lastName': lastName,
       'relationToStudent': relationToStudent,
       'phoneNumber': phoneNumber,
-      'dateOfBirth': dateOfBirth.millisecondsSinceEpoch,
+      'dateOfBirth': dateOfBirth.toIso8601String(),
       'placeOfBirth': placeOfBirth,
     };
   }
@@ -58,8 +58,7 @@ class ResponsiblePerson {
       lastName: map['lastName'] as String,
       relationToStudent: map['relationToStudent'] as String,
       phoneNumber: map['phoneNumber'] as String,
-      dateOfBirth:
-          DateTime.fromMillisecondsSinceEpoch(map['dateOfBirth'] as int),
+      dateOfBirth: DateTime.parse(map['dateOfBirth']),
       placeOfBirth: map['placeOfBirth'] as String,
     );
   }

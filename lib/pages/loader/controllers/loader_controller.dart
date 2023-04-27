@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
+import 'package:kalam_noor/controllers/account_controller.dart';
 
 import '../../../controllers/navigation_controller.dart';
-import '../../../to_be_disposed/methods/dummy_methods.dart';
 import '../../../models/agendas/employee.dart';
 import '../../../models/shared_prefs_helper.dart';
 
@@ -14,7 +14,9 @@ class LoaderController extends GetxController {
     //TODO: Add getting the job title as well as other info about the employee and navigating accordingly
 
     //TODO: Refactor the identity model
-    Employee employee = await getEmployeeCredentials('11');
+    int employeeId = await SharedPrefsHelper.instance.getLoginData();
+    final Employee employee = await Get.find<AccountController>()
+        .getCredentials(employeeId: employeeId);
     NavigationController.toDashboard(employee);
     return;
   }

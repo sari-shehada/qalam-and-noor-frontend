@@ -55,7 +55,7 @@ class AddStudentFamilyInfoDialog extends StatelessWidget {
                       TabBarView(
                         physics: const NeverScrollableScrollPhysics(),
                         controller: dialogController.tabController,
-                        children: [
+                        children: const [
                           StudentFatherInfoSubWidget(),
                           StudentMotherInfoSubWidget(),
                           StudentResponsiblePersonInfoSubWidget(),

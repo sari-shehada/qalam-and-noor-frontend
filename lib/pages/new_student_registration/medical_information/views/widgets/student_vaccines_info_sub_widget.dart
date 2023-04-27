@@ -28,7 +28,7 @@ class StudentVaccinesInfoSubWidget extends StatelessWidget {
               return Column(
                 children: [
                   //TODO:
-                  Text('Error'),
+                  const Text('Error'),
                   CustomFilledButton(
                     onTap: () => controller.getVaccines(),
                     child: 'Retry',
@@ -39,7 +39,7 @@ class StudentVaccinesInfoSubWidget extends StatelessWidget {
             if (snapshot.hasData) {
               if ((snapshot.data as List).isEmpty) {
                 //TODO:
-                return Text('No Results Found');
+                return const Text('No Results Found');
               }
               List<Vaccine> vaccines = snapshot.data!;
               return Column(
@@ -86,7 +86,7 @@ class StudentVaccinesInfoSubWidget extends StatelessWidget {
                                             .contains(vaccine))
                                           Column(
                                             children: [
-                                              Text('تاريخ الجرعة'),
+                                              const Text('تاريخ الجرعة'),
                                               AddVerticalSpacing(value: 5.h),
                                               Text(
                                                 DateTimeHelper

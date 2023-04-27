@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 
+import '../../../../tools/ui_tools/labeled_widget.dart';
 import '../../../../tools/ui_tools/text_fields.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
 import '../../controllers/logic_controller.dart';

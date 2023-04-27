@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/educational/class.dart';
-import 'package:kalam_noor/to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
+
 import 'package:kalam_noor/pages/school_classes_management/controllers/school_classes_management_controller.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 
-import '../../../configs/fonts.dart';
+import '../../../models/educational/school_class.dart';
+import '../../../tools/ui_tools/labeled_widget.dart';
 
 class SchoolClassesManagementPage extends StatelessWidget {
   const SchoolClassesManagementPage({super.key});
@@ -60,13 +60,13 @@ class SchoolClassesManagementPage extends StatelessWidget {
                   future: controller.classes,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
+                      return const Center(
                         child: CircularProgressIndicator(),
                       );
                     } else if (snapshot.connectionState ==
                         ConnectionState.done) {
                       if (snapshot.hasData) {
-                        List<Class> classes = snapshot.data!;
+                        List<SchoolClass> classes = snapshot.data!;
                         //TODO:
                         return Expanded(
                           child: GridView.builder(
@@ -100,12 +100,12 @@ class SchoolClassesManagementPage extends StatelessWidget {
                           ),
                         );
                       } else {
-                        return Center(
+                        return const Center(
                           child: Text('No classes found'),
                         );
                       }
                     }
-                    return SizedBox.shrink();
+                    return const SizedBox.shrink();
                   },
                 ),
               ),

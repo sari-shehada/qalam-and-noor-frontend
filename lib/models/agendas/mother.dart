@@ -86,7 +86,7 @@ class Mother {
       'tieNumber': tieNumber,
       'tiePlace': tiePlace,
       'placeOfBirth': placeOfBirth,
-      'dateOfBirth': dateOfBirth,
+      'dateOfBirth': dateOfBirth.toIso8601String(),
       'religion': religion.index,
       'educationalStatus': educationalStatus.index,
       'phoneNumber': phoneNumber,

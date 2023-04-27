@@ -5,8 +5,8 @@ import 'package:kalam_noor/pages/new_student_registration/family_information/con
 import 'package:kalam_noor/pages/new_student_registration/family_information/views/widgets/student_family_info_card.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
-import '../../../../../to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
+import '../../../../../tools/ui_tools/labeled_widget.dart';
 
 class StudentFamilyInfoWidget extends StatelessWidget {
   const StudentFamilyInfoWidget({

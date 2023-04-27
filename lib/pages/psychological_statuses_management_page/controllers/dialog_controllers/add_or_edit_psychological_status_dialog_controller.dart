@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/psychological_statuses_db_helper.dart';
 import 'package:kalam_noor/models/medical/psychological_status.dart';
-import 'package:kalam_noor/to_be_disposed/data/dummy_data.dart';
-import '../../../../models/helpers/database_helper.dart';
 import '../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../tools/ui_tools/buttons.dart';
 
@@ -39,9 +37,8 @@ class AddOrEditPsychologicalStatusDialogController extends GetxController {
       if (validateFields() == false) {
         return;
       }
-      PsychologicalStatus psychologicalStatus = PsychologicalStatus(
-          id: (dummyPsychologicalStatuses.length + 1),
-          name: psychologicalStatusController.text);
+      PsychologicalStatus psychologicalStatus =
+          PsychologicalStatus(id: -1, name: psychologicalStatusController.text);
       await PsychologicalStatusesDBHelper.instance.insert(psychologicalStatus);
       Get.back(result: true);
     } finally {

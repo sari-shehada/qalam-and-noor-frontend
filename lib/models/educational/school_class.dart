@@ -1,22 +1,22 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class Class {
+class SchoolClass {
   final int id;
   final String name;
   final int? previousClassId;
-  Class({
+  SchoolClass({
     required this.id,
     required this.name,
     this.previousClassId,
   });
 
-  Class copyWith({
+  SchoolClass copyWith({
     int? id,
     String? name,
     int? previousClassId,
   }) {
-    return Class(
+    return SchoolClass(
       id: id ?? this.id,
       name: name ?? this.name,
       previousClassId: previousClassId ?? this.previousClassId,
@@ -31,8 +31,8 @@ class Class {
     };
   }
 
-  factory Class.fromMap(Map<String, dynamic> map) {
-    return Class(
+  factory SchoolClass.fromMap(Map<String, dynamic> map) {
+    return SchoolClass(
       id: map['id'] as int,
       name: map['name'] as String,
       previousClassId:
@@ -42,15 +42,15 @@ class Class {
 
   String toJson() => json.encode(toMap());
 
-  factory Class.fromJson(String source) =>
-      Class.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory SchoolClass.fromJson(String source) =>
+      SchoolClass.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() =>
       'Class(id: $id, name: $name, previousClassId: $previousClassId)';
 
   @override
-  bool operator ==(covariant Class other) {
+  bool operator ==(covariant SchoolClass other) {
     if (identical(this, other)) return true;
 
     return other.id == id &&

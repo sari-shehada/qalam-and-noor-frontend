@@ -5,11 +5,11 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/models/medical/psychological_status.dart';
 import 'package:kalam_noor/pages/psychological_statuses_management_page/controllers/psychological_statuses_management_controller.dart';
 import 'package:kalam_noor/pages/psychological_statuses_management_page/views/widgets/psychological_statuses_table.dart';
-import '../../../to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 import '../../../tools/ui_tools/buttons.dart';
 import '../../../tools/ui_tools/custom_appbar.dart';
 import '../../../tools/ui_tools/custom_drop_down_menu.dart';
 import '../../../tools/ui_tools/custom_scaffold.dart';
+import '../../../tools/ui_tools/labeled_widget.dart';
 import '../../../tools/ui_tools/ui_tools.dart';
 import '../../../tools/widgets/empty_item_widget.dart';
 

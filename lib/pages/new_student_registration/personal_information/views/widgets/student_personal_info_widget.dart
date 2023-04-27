@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../../../configs/fonts.dart';
 import '../../../../../models/enums.dart';
-import '../../../../../to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
+import '../../../../../tools/ui_tools/labeled_widget.dart';
 import '../../../../../tools/ui_tools/text_fields.dart';
 import '../../../../../tools/ui_tools/ui_tools.dart';
 import '../../controllers/student_personal_info_controller.dart';
@@ -35,20 +35,29 @@ class StudentPersonalInfoWidget extends StatelessWidget {
                   // Divider(color: Colors.red),
                   LabeledWidget(
                     label: 'رقم سجل الطالب',
-                    child: HintedTextField(
-                      hintText: '',
-                      controller: controller.publicRecordIdController,
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
+                    child: Obx(
+                      () => HintedTextField(
+                        hintText: '',
+                        fillColor:
+                            controller.publicRecordIdController.fillColor.value,
+                        controller:
+                            controller.publicRecordIdController.controller,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                      ),
                     ),
                   ),
                   AddVerticalSpacing(value: 20.h),
                   LabeledWidget(
                     label: 'الاسم الأول',
-                    child: HintedTextField(
-                      controller: controller.firstNameController,
-                      hintText: '',
+                    child: Obx(
+                      () => HintedTextField(
+                        fillColor:
+                            controller.firstNameController.fillColor.value,
+                        controller: controller.firstNameController.controller,
+                        hintText: '',
+                      ),
                     ),
                   ),
                   AddVerticalSpacing(value: 20.h),
@@ -112,9 +121,14 @@ class StudentPersonalInfoWidget extends StatelessWidget {
                   AddVerticalSpacing(value: 20.h),
                   LabeledWidget(
                     label: 'مكان الولادة',
-                    child: HintedTextField(
-                      controller: controller.placeOfBirthController,
-                      hintText: '',
+                    child: Obx(
+                      () => HintedTextField(
+                        fillColor:
+                            controller.placeOfBirthController.fillColor.value,
+                        controller:
+                            controller.placeOfBirthController.controller,
+                        hintText: '',
+                      ),
                     ),
                   ),
                   AddVerticalSpacing(value: 20.h),
@@ -201,12 +215,17 @@ class StudentPersonalInfoWidget extends StatelessWidget {
                   AddVerticalSpacing(value: 20.h),
                   LabeledWidget(
                     label: 'رقم الواقعة',
-                    child: HintedTextField(
-                      hintText: '',
-                      controller: controller.incidentNumberController,
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
+                    child: Obx(
+                      () => HintedTextField(
+                        hintText: '',
+                        fillColor:
+                            controller.incidentNumberController.fillColor.value,
+                        controller:
+                            controller.incidentNumberController.controller,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                      ),
                     ),
                   ),
                   AddVerticalSpacing(value: 30.h),
@@ -251,34 +270,47 @@ class StudentPersonalInfoWidget extends StatelessWidget {
                 children: [
                   LabeledWidget(
                     label: 'رقم الهاتف المحمول',
-                    child: HintedTextField(
-                      hintText: '',
-                      controller: controller.phoneNumberController,
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
+                    child: Obx(
+                      () => HintedTextField(
+                        hintText: '',
+                        fillColor:
+                            controller.phoneNumberController.fillColor.value,
+                        controller: controller.phoneNumberController.controller,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                      ),
                     ),
                   ),
                   AddVerticalSpacing(value: 20.h),
                   LabeledWidget(
                     label: 'رقم الواتساب',
-                    child: HintedTextField(
-                      hintText: '',
-                      controller: controller.whatsappNumberController,
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
+                    child: Obx(
+                      () => HintedTextField(
+                        hintText: '',
+                        fillColor:
+                            controller.whatsappNumberController.fillColor.value,
+                        controller:
+                            controller.whatsappNumberController.controller,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                      ),
                     ),
                   ),
                   AddVerticalSpacing(value: 20.h),
                   LabeledWidget(
                     label: 'رقم الهاتف الارضي',
-                    child: HintedTextField(
-                      hintText: '',
-                      controller: controller.landlineController,
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
+                    child: Obx(
+                      () => HintedTextField(
+                        hintText: '',
+                        fillColor:
+                            controller.landlineController.fillColor.value,
+                        controller: controller.landlineController.controller,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                      ),
                     ),
                   ),
                 ],

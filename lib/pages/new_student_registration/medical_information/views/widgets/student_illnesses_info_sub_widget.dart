@@ -27,7 +27,7 @@ class StudentIllnessesInfoSubWidget extends StatelessWidget {
               return Column(
                 children: [
                   //TODO:
-                  Text('Error'),
+                  const Text('Error'),
                   CustomFilledButton(
                     onTap: () => controller.getIllnesses(),
                     child: 'Retry',
@@ -38,7 +38,7 @@ class StudentIllnessesInfoSubWidget extends StatelessWidget {
             if (snapshot.hasData) {
               if ((snapshot.data as List).isEmpty) {
                 //TODO:
-                return Text('No Results Found');
+                return const Text('No Results Found');
               }
               List<Illness> illnesses = snapshot.data!;
               return Column(

@@ -5,10 +5,11 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/pages/new_student_registration/family_information/controllers/dialog_controllers/student_family_info_dialog_controller.dart';
 import 'package:kalam_noor/pages/new_student_registration/family_information/views/widgets/student_family_info_card.dart';
-import 'package:kalam_noor/to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/text_fields.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+
+import '../../../../../tools/ui_tools/labeled_widget.dart';
 
 class StudentFamilyInfoDialog extends StatelessWidget {
   const StudentFamilyInfoDialog({super.key});

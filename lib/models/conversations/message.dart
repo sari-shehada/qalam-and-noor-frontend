@@ -53,7 +53,7 @@ class Message {
       'body': body,
       'sender': sender.index,
       'sequence': sequence,
-      'date': date.millisecondsSinceEpoch,
+      'date': date.toIso8601String(),
       'conversationId': conversationId,
     };
   }
@@ -65,7 +65,7 @@ class Message {
       body: map['body'] as String,
       sender: ConversationParty.values[map['sender'] as int],
       sequence: map['sequence'] as int,
-      date: DateTime.fromMillisecondsSinceEpoch(map['date'] as int),
+      date: DateTime.parse(map['date']),
       conversationId: map['conversationId'] as int,
     );
   }

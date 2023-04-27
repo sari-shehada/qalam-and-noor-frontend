@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/controllers/account_controller.dart';
 
 import '../../../controllers/navigation_controller.dart';
-import '../../../to_be_disposed/methods/dummy_methods.dart';
-import '../../../models/agendas/employee.dart';
 import '../../../models/shared_prefs_helper.dart';
 import '../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../tools/ui_tools/buttons.dart';
@@ -34,12 +33,15 @@ class LoginPageController extends GetxController {
   Future<void> login() async {
     loginButtonStatus.value = CustomButtonStatus.processing;
     if (validateFields()) {
-      await Future.delayed(const Duration(
-        milliseconds: 500,
-      ));
-      Employee employee = await getEmployeeCredentials('11');
-      NavigationController.toDashboard(employee);
-      SharedPrefsHelper.instance.setLoginStatus(true);
+      final AccountController controller = Get.find<AccountController>();
+      final bool loginResult = await controller.login(
+        userName: userNameField.text,
+        password: passwordField.text,
+      );
+      if (loginResult == true) {
+        NavigationController.toDashboard(controller.employee);
+        SharedPrefsHelper.instance.saveLoginData(controller.employee.id);
+      }
     }
     loginButtonStatus.value = CustomButtonStatus.enabled;
   }

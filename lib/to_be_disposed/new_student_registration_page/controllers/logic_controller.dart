@@ -54,11 +54,11 @@ class RegisterNewStudentLogicController extends GetxController {
   Future<void> registerStudent() async {
     if (validateFields()) {
       try {
-        //TODO: Add registeration here
+        //TODO: Add registration here
 
         registerButtonStatus.value = CustomButtonStatus.processing;
         await Future.delayed(
-          Duration(milliseconds: 800),
+          const Duration(milliseconds: 800),
         );
       } finally {
         registerButtonStatus.value = CustomButtonStatus.enabled;

@@ -6,14 +6,12 @@ import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/pages/addresses_management/main_page/controllers/addresses_management_stats_controller.dart';
 import 'package:kalam_noor/pages/addresses_management/main_page/views/widgets/cities_to_descendent_count_pie_chart.dart';
 import 'package:kalam_noor/pages/addresses_management/main_page/views/widgets/numeric_stats_widget.dart';
-import 'package:kalam_noor/to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_drop_down_menu.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../models/address/city.dart';
-import '../../../../to_be_disposed/views/test_page.dart';
+import '../../../../tools/ui_tools/labeled_widget.dart';
 import '../controllers/address_management_controller.dart';
 
 import '../../../../tools/ui_tools/buttons.dart';

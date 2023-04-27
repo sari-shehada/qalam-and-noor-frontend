@@ -1,11 +1,11 @@
-import 'package:kalam_noor/models/agendas/families.dart';
+import 'package:kalam_noor/models/agendas/family.dart';
 
 import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 
-class StudentFamilyDBHelper implements CRUDInterface<Family> {
+class FamiliesDBHelper implements CRUDInterface<Family> {
   String get _controllerName => 'FamilyController/';
-  static StudentFamilyDBHelper get instance => StudentFamilyDBHelper();
+  static FamiliesDBHelper get instance => FamiliesDBHelper();
 
   @override
   Future<List<Family>> getAll() async {

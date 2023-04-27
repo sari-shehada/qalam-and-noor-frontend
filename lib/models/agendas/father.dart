@@ -94,7 +94,7 @@ class Father {
       'tieNumber': tieNumber,
       'tiePlace': tiePlace,
       'placeOfBirth': placeOfBirth,
-      'dateOfBirth': dateOfBirth.millisecondsSinceEpoch,
+      'dateOfBirth': dateOfBirth.toIso8601String(),
       'civilRegisterSecretary': civilRegisterSecretary,
       'religion': religion.index,
       'educationalStatus': educationalStatus.index,

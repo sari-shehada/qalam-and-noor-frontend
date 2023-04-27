@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/medical/medical_record.dart';
 import 'package:kalam_noor/pages/new_student_registration/family_information/models/validation_text_field.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 
 class StudentBasicMedicalInfoSubWidgetController extends GetxController {
   final ValidationTextField studentHeightController = ValidationTextField(

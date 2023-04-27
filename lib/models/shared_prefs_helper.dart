@@ -18,8 +18,24 @@ class SharedPrefsHelper {
   Future<void> setLoginStatus(bool val) async {
     await spInstance.setBool(SharedPrefsKeys.loginStatusKey, val);
   }
+
+  Future<void> saveLoginData(int id) async {
+    await setLoginStatus(true);
+    await spInstance.setInt(SharedPrefsKeys.employeeIdKey, id);
+  }
+
+  Future<int> getLoginData() async {
+    return spInstance.getInt(SharedPrefsKeys.employeeIdKey) ?? -1;
+  }
+
+  Future<bool> deleteLoginData() async {
+    await setLoginStatus(false);
+    await spInstance.remove(SharedPrefsKeys.employeeIdKey);
+    return true;
+  }
 }
 
 class SharedPrefsKeys {
   static String get loginStatusKey => 'isLoggedIn';
+  static String get employeeIdKey => 'employeeId';
 }

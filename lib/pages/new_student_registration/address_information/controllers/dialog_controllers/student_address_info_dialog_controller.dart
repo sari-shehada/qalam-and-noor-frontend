@@ -128,7 +128,7 @@ class StudentAddressInfoDialogController extends GetxController {
   }
 
   Future<void> addCity() async {
-    var result = await Get.dialog(AddOrEditCityDialog());
+    var result = await Get.dialog(const AddOrEditCityDialog());
     if (result == true) {
       getCities();
     }

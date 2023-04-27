@@ -12,11 +12,12 @@ class StudentPersonalInfo {
   final String phoneNumber;
   //enum
   final Religion religion;
-  final String whatsappNumber;
-  final int incidentNumber;
-  final DateTime dateOfIncident;
-  final String landline;
+  final String whatsappPhoneNumber;
+  final String incidentNumber;
+  final DateTime incidentDate;
+  final String landLine;
   final DateTime joinDate;
+
   StudentPersonalInfo({
     required this.publicRecordId,
     required this.firstName,
@@ -25,10 +26,10 @@ class StudentPersonalInfo {
     required this.placeOfBirth,
     required this.phoneNumber,
     required this.religion,
-    required this.whatsappNumber,
+    required this.whatsappPhoneNumber,
     required this.incidentNumber,
-    required this.dateOfIncident,
-    required this.landline,
+    required this.incidentDate,
+    required this.landLine,
     required this.joinDate,
   });
 
@@ -40,10 +41,10 @@ class StudentPersonalInfo {
     String? placeOfBirth,
     String? phoneNumber,
     Religion? religion,
-    String? whatsappNumber,
-    int? incidentNumber,
-    DateTime? dateOfIncident,
-    String? landline,
+    String? whatsappPhoneNumber,
+    String? incidentNumber,
+    DateTime? incidentDate,
+    String? landLine,
     DateTime? joinDate,
   }) {
     return StudentPersonalInfo(
@@ -54,10 +55,10 @@ class StudentPersonalInfo {
       placeOfBirth: placeOfBirth ?? this.placeOfBirth,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       religion: religion ?? this.religion,
-      whatsappNumber: whatsappNumber ?? this.whatsappNumber,
+      whatsappPhoneNumber: whatsappPhoneNumber ?? this.whatsappPhoneNumber,
       incidentNumber: incidentNumber ?? this.incidentNumber,
-      dateOfIncident: dateOfIncident ?? this.dateOfIncident,
-      landline: landline ?? this.landline,
+      incidentDate: incidentDate ?? this.incidentDate,
+      landLine: landLine ?? this.landLine,
       joinDate: joinDate ?? this.joinDate,
     );
   }
@@ -67,15 +68,15 @@ class StudentPersonalInfo {
       'publicRecordId': publicRecordId,
       'firstName': firstName,
       'isMale': isMale,
-      'dateOfBirth': dateOfBirth.millisecondsSinceEpoch,
+      'dateOfBirth': dateOfBirth.toIso8601String(),
       'placeOfBirth': placeOfBirth,
       'phoneNumber': phoneNumber,
       'religion': religion.index,
-      'whatsappNumber': whatsappNumber,
+      'whatsappPhoneNumber': whatsappPhoneNumber,
       'incidentNumber': incidentNumber,
-      'dateOfIncident': dateOfIncident.millisecondsSinceEpoch,
-      'landline': landline,
-      'joinDate': joinDate.millisecondsSinceEpoch,
+      'incidentDate': incidentDate.toIso8601String(),
+      'landLine': landLine,
+      'joinDate': joinDate.toIso8601String(),
     };
   }
 
@@ -84,17 +85,15 @@ class StudentPersonalInfo {
       publicRecordId: map['publicRecordId'] as int,
       firstName: map['firstName'] as String,
       isMale: map['isMale'] as bool,
-      dateOfBirth:
-          DateTime.fromMillisecondsSinceEpoch(map['dateOfBirth'] as int),
+      dateOfBirth: DateTime.parse(map['dateOfBirth']),
       placeOfBirth: map['placeOfBirth'] as String,
       phoneNumber: map['phoneNumber'] as String,
       religion: Religion.values[map['religion'] as int],
-      whatsappNumber: map['whatsappNumber'] as String,
-      incidentNumber: map['incidentNumber'] as int,
-      dateOfIncident:
-          DateTime.fromMillisecondsSinceEpoch(map['dateOfIncident'] as int),
-      landline: map['landline'] as String,
-      joinDate: DateTime.fromMillisecondsSinceEpoch(map['joinDate'] as int),
+      whatsappPhoneNumber: map['whatsappPhoneNumber'] as String,
+      incidentNumber: map['incidentNumber'] as String,
+      incidentDate: DateTime.parse(map['incidentDate']),
+      landLine: map['landLine'] as String,
+      joinDate: DateTime.parse(map['joinDate']),
     );
   }
 
@@ -105,7 +104,7 @@ class StudentPersonalInfo {
 
   @override
   String toString() {
-    return 'StudentPersonalInfo(publicRecordId: $publicRecordId, firstName: $firstName, isMale: $isMale, dateOfBirth: $dateOfBirth, placeOfBirth: $placeOfBirth, phoneNumber: $phoneNumber, religion: $religion, whatsappNumber: $whatsappNumber, incidentNumber: $incidentNumber, dateOfIncident: $dateOfIncident, landline: $landline, joinDate: $joinDate)';
+    return 'StudentPersonalInfo( publicRecordId: $publicRecordId, firstName: $firstName, isMale: $isMale, dateOfBirth: $dateOfBirth, placeOfBirth: $placeOfBirth, phoneNumber: $phoneNumber, religion: $religion, whatsappPhoneNumber: $whatsappPhoneNumber, incidentNumber: $incidentNumber, incidentDate: $incidentDate, landLine: $landLine, joinDate: $joinDate)';
   }
 
   @override
@@ -119,10 +118,10 @@ class StudentPersonalInfo {
         other.placeOfBirth == placeOfBirth &&
         other.phoneNumber == phoneNumber &&
         other.religion == religion &&
-        other.whatsappNumber == whatsappNumber &&
+        other.whatsappPhoneNumber == whatsappPhoneNumber &&
         other.incidentNumber == incidentNumber &&
-        other.dateOfIncident == dateOfIncident &&
-        other.landline == landline &&
+        other.incidentDate == incidentDate &&
+        other.landLine == landLine &&
         other.joinDate == joinDate;
   }
 
@@ -135,10 +134,10 @@ class StudentPersonalInfo {
         placeOfBirth.hashCode ^
         phoneNumber.hashCode ^
         religion.hashCode ^
-        whatsappNumber.hashCode ^
+        whatsappPhoneNumber.hashCode ^
         incidentNumber.hashCode ^
-        dateOfIncident.hashCode ^
-        landline.hashCode ^
+        incidentDate.hashCode ^
+        landLine.hashCode ^
         joinDate.hashCode;
   }
 }

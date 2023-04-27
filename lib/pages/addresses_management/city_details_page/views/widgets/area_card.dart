@@ -5,10 +5,7 @@ import 'package:kalam_noor/models/address/area.dart';
 import 'package:kalam_noor/pages/addresses_management/area_details_page/controllers/area_details_controller.dart';
 import 'package:kalam_noor/pages/addresses_management/area_details_page/views/area_details_page.dart';
 
-import 'package:kalam_noor/pages/addresses_management/main_page/controllers/address_management_controller.dart';
-
 import '../../../city_details_page/controllers/city_details_controller.dart';
-import '../../../city_details_page/views/city_details_page.dart';
 
 import '../../../../../tools/ui_tools/ui_tools.dart';
 

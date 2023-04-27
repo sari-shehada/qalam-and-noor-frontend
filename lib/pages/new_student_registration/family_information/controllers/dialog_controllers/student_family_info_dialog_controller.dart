@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/families.dart';
+import 'package:kalam_noor/models/agendas/family.dart';
 import 'package:kalam_noor/models/agendas/father.dart';
 import 'package:kalam_noor/models/agendas/mother.dart';
-import 'package:kalam_noor/models/helpers/database_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/father_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/mother_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/student_family_db_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/families_db_helper.dart';
 import 'package:kalam_noor/pages/new_student_registration/family_information/models/family_info.dart';
 import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 
@@ -48,7 +47,7 @@ class StudentFamilyInfoDialogController extends GetxController {
         StudentFamilyDialogConstants.collapsedDialogHeight.h;
     searchButtonStatus.value = CustomButtonStatus.processing;
     List<Family> families =
-        await StudentFamilyDBHelper.instance.getByFatherTieNumber(
+        await FamiliesDBHelper.instance.getByFatherTieNumber(
       //TODO:
       tieNumber: data.toString(),
     );

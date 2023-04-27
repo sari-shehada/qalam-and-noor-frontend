@@ -7,7 +7,6 @@ import '../../../tools/ui_tools/ui_tools.dart';
 
 import '../../../configs/fonts.dart';
 
-//TODO: Rethink
 class LoaderPage extends StatefulWidget {
   const LoaderPage({super.key});
 

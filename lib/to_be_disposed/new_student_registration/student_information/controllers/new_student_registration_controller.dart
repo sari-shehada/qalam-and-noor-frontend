@@ -57,7 +57,7 @@ class NewStudentRegistrationController extends GetxController {
 
         buttonStatus.value = CustomButtonStatus.processing;
         await Future.delayed(
-          Duration(milliseconds: 800),
+          const Duration(milliseconds: 800),
         );
       } finally {
         buttonStatus.value = CustomButtonStatus.enabled;

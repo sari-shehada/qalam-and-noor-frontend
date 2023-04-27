@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:kalam_noor/configs/assets.dart';
 
 class Employee {
-  final String id;
+  final int id;
   final String firstName;
   final String lastName;
   final String fatherName;
@@ -14,7 +14,6 @@ class Employee {
   String phoneNumber;
   DateTime startDate;
   int numberOfChildren;
-  double salary;
   int jobTitleId;
   int addressId;
 
@@ -29,7 +28,6 @@ class Employee {
     required this.phoneNumber,
     required this.startDate,
     required this.numberOfChildren,
-    required this.salary,
     required this.jobTitleId,
     required this.addressId,
   });
@@ -49,7 +47,7 @@ class Employee {
   }
 
   Employee copyWith({
-    String? id,
+    int? id,
     String? firstName,
     String? lastName,
     String? fatherName,
@@ -59,7 +57,6 @@ class Employee {
     String? phoneNumber,
     DateTime? startDate,
     int? numberOfChildren,
-    double? salary,
     int? jobTitleId,
     int? addressId,
   }) {
@@ -74,7 +71,6 @@ class Employee {
       phoneNumber: phoneNumber ?? this.phoneNumber,
       startDate: startDate ?? this.startDate,
       numberOfChildren: numberOfChildren ?? this.numberOfChildren,
-      salary: salary ?? this.salary,
       jobTitleId: jobTitleId ?? this.jobTitleId,
       addressId: addressId ?? this.addressId,
     );
@@ -92,7 +88,6 @@ class Employee {
       'phoneNumber': phoneNumber,
       'startDate': startDate.millisecondsSinceEpoch,
       'numberOfChildren': numberOfChildren,
-      'salary': salary,
       'jobTitleId': jobTitleId,
       'addressId': addressId,
     };
@@ -100,7 +95,7 @@ class Employee {
 
   factory Employee.fromMap(Map<String, dynamic> map) {
     return Employee(
-      id: map['id'] as String,
+      id: map['id'] as int,
       firstName: map['firstName'] as String,
       lastName: map['lastName'] as String,
       fatherName: map['fatherName'] as String,
@@ -111,7 +106,6 @@ class Employee {
       phoneNumber: map['phoneNumber'] as String,
       startDate: DateTime.fromMillisecondsSinceEpoch(map['startDate'] as int),
       numberOfChildren: map['numberOfChildren'] as int,
-      salary: map['salary'] as double,
       jobTitleId: map['jobTitleId'] as int,
       addressId: map['addressId'] as int,
     );
@@ -124,7 +118,7 @@ class Employee {
 
   @override
   String toString() {
-    return 'Employee(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, isMale: $isMale, dateOfBirth: $dateOfBirth, phoneNumber: $phoneNumber, startDate: $startDate, numberOfChildren: $numberOfChildren, salary: $salary, jobTitleId: $jobTitleId, addressId: $addressId)';
+    return 'Employee(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, isMale: $isMale, dateOfBirth: $dateOfBirth, phoneNumber: $phoneNumber, startDate: $startDate, numberOfChildren: $numberOfChildren, jobTitleId: $jobTitleId, addressId: $addressId)';
   }
 
   @override
@@ -141,7 +135,6 @@ class Employee {
         other.phoneNumber == phoneNumber &&
         other.startDate == startDate &&
         other.numberOfChildren == numberOfChildren &&
-        other.salary == salary &&
         other.jobTitleId == jobTitleId &&
         other.addressId == addressId;
   }
@@ -158,7 +151,6 @@ class Employee {
         phoneNumber.hashCode ^
         startDate.hashCode ^
         numberOfChildren.hashCode ^
-        salary.hashCode ^
         jobTitleId.hashCode ^
         addressId.hashCode;
   }

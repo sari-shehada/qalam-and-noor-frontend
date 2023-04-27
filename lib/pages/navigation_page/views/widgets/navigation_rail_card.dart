@@ -49,7 +49,7 @@ class NavigationRailCard extends StatelessWidget {
                             .dashboardDestinations[index].iconData,
                         color: dashboardController.selectedIndex.value == index
                             ? lightColorScheme.primary
-                            : Color(0xFF757D8A),
+                            : const Color(0xFF757D8A),
                         size: 33.sp,
                       ),
                     ),

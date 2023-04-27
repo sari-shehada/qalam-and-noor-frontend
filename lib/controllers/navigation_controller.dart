@@ -97,7 +97,6 @@ class NavigationController {
   }
 
   static void toIllnessesManagementPage() {
-    //TODO:
     Get.to(
       () => const IllnessesManagementPage(),
       binding: BindingsBuilder.put(
@@ -107,7 +106,6 @@ class NavigationController {
   }
 
   static void toPsychologicalStatusesManagementPage() {
-    //TODO:
     Get.to(
       () => const PsychologicalStatusesManagementPage(),
       binding: BindingsBuilder.put(
@@ -118,7 +116,7 @@ class NavigationController {
 
   static void toAddNewStudentPage() async {
     var result = await Get.to(
-      () => NewStudentRegistrationPage(),
+      () => const NewStudentRegistrationPage(),
       binding: NewStudentRegistrationBindings(),
     );
     if (result == true) {

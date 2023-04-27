@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:kalam_noor/models/address/address.dart';
-import 'package:kalam_noor/models/educational/class.dart';
-import 'package:kalam_noor/models/previous_schools/previous_schools.dart';
+import 'package:kalam_noor/models/educational/school_class.dart';
 import 'package:kalam_noor/models/previous_schools/student_previous_school.dart';
 import 'package:kalam_noor/pages/new_student_registration/family_information/models/family_info.dart';
 import 'package:kalam_noor/pages/new_student_registration/medical_information/models/medical_info.dart';
@@ -13,7 +12,7 @@ class StudentRegistrationInfo {
   final MedicalInfo medicalInfo;
   final Address address;
   final StudentPreviousSchool? studentPreviousSchool;
-  final Class enrolledClass;
+  final SchoolClass enrolledClass;
   StudentRegistrationInfo({
     required this.personalInfo,
     required this.familyInfo,

@@ -7,7 +7,6 @@ import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import '../../../configs/project_themes.dart';
 import '../../../configs/styles.dart';
 import '../../../controllers/account_controller.dart';
-import '../../../to_be_disposed/methods/dummy_methods.dart';
 import '../../../tools/ui_tools/ui_tools.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -64,7 +63,7 @@ class SettingsPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(
                           GlobalStyles.globalBorderRadius),
                       child: InkWell(
-                        onTap: () => logout(),
+                        onTap: () => accountController.logout(),
                         borderRadius: BorderRadius.circular(
                             GlobalStyles.globalBorderRadius),
                         child: Center(

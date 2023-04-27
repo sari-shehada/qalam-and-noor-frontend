@@ -7,6 +7,7 @@ import 'package:kalam_noor/models/enums.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import '../../../../tools/ui_tools/buttons.dart';
+import '../../../../tools/ui_tools/labeled_widget.dart';
 import '../../../../tools/ui_tools/text_fields.dart';
 import '../controllers/new_student_registration_controller.dart';
 
@@ -20,10 +21,7 @@ class NewStudentRegistrationPage extends StatelessWidget {
     );
 
     const Color scaffoldBackgroundColor = Color(0xffF5F6F8);
-    final TextStyle titleTextStyle = TextStyle(
-      fontSize: 20.sp,
-      color: Colors.black,
-    );
+
     return Scaffold(
       floatingActionButton: CustomFilledButton(
         onTap: () => controller.registerStudent(),
@@ -570,43 +568,7 @@ class NewStudentRegistrationPage extends StatelessWidget {
 //                 ),
 //               ),
 
-class LabeledWidget extends StatelessWidget {
-  const LabeledWidget({
-    super.key,
-    required this.label,
-    this.spacing = 20,
-    required this.child,
-    this.labelTextStyle,
-    this.mainAxisSize = MainAxisSize.max,
-  });
 
-  final String label;
-  final double spacing;
-  final Widget child;
-  final TextStyle? labelTextStyle;
-  final MainAxisSize mainAxisSize;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: mainAxisSize,
-      children: [
-        Align(
-          alignment: Alignment.centerRight,
-          child: Text(
-            label,
-            style: labelTextStyle ??
-                TextStyle(
-                  fontSize: 20.sp,
-                  color: Colors.black,
-                ),
-          ),
-        ),
-        AddVerticalSpacing(value: spacing.h),
-        child
-      ],
-    );
-  }
-}
 
 // Padding(
 //         padding: EdgeInsets.all(30.w),

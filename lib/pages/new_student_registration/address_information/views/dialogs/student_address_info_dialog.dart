@@ -5,10 +5,10 @@ import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/models/address/address.dart';
 import 'package:kalam_noor/models/address/area.dart';
 import 'package:kalam_noor/models/address/city.dart';
-import 'package:kalam_noor/to_be_disposed/new_student_registration/student_information/views/new_student_registration_page.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 
 import '../../../../../configs/fonts.dart';
+import '../../../../../tools/ui_tools/labeled_widget.dart';
 import '../../../../../tools/ui_tools/ui_tools.dart';
 import '../../controllers/dialog_controllers/student_address_info_dialog_controller.dart';
 

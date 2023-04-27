@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:kalam_noor/models/agendas/families.dart';
+import 'package:kalam_noor/models/agendas/family.dart';
 import 'package:kalam_noor/models/agendas/father.dart';
 import 'package:kalam_noor/models/agendas/mother.dart';
 import 'package:kalam_noor/models/agendas/responsible_person.dart';

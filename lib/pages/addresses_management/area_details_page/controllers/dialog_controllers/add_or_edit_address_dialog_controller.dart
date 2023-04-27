@@ -3,10 +3,8 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/addresses_db_helper.dart';
 
 import '../../../../../models/address/address.dart';
-import '../../../../../models/helpers/database_helper.dart';
 import '../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
-import '../../../main_page/controllers/addresses_management_stats_controller.dart';
 
 class AddOrEditAddressDialogController extends GetxController {
   RxBool isEditMode = false.obs;

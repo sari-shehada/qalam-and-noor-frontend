@@ -50,7 +50,7 @@ class AddStudentMedicalInfoDialog extends StatelessWidget {
                   child: Stack(
                     children: [
                       TabBarView(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         controller: dialogController.tabController,
                         children: const [
                           StudentBasicMedicalInfoSubWidget(),

@@ -1,4 +1,4 @@
-import 'package:kalam_noor/models/agendas/families.dart';
+import 'package:kalam_noor/models/agendas/family.dart';
 import 'package:kalam_noor/models/agendas/father.dart';
 import 'package:kalam_noor/models/agendas/mother.dart';
 import 'package:kalam_noor/models/agendas/responsible_person.dart';
@@ -6,10 +6,10 @@ import 'package:kalam_noor/models/agendas/student.dart';
 import 'package:kalam_noor/models/educational/year_record.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/medical_record_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/mother_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/previous_schools_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/responsible_person_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/student_family_db_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/families_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/student_illnesses_db_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/student_previous_schools_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/taken_vaccines_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/year_records_db_helper.dart';
 import 'package:kalam_noor/models/medical/illness.dart';
@@ -30,7 +30,7 @@ class StudentDBHelper implements CRUDInterface<Student> {
 
   @override
   Future<List<Student>> getAll() async {
-    String url = '${_controllerName}GetStudent';
+    String url = '${_controllerName}GetStudents';
     List<Student> allStudents =
         await HttpService.getParsed<List<Student>, List>(
       url: url,
@@ -67,7 +67,7 @@ class StudentDBHelper implements CRUDInterface<Student> {
     String url = '${_controllerName}InsertStudent';
     int? result =
         await HttpService.post(url: url, serializedBody: object.toJson());
-    if (result == null) return throw Exception();
+    if (result == null) throw Exception('Couldn\'t add student');
     return object.copyWith(id: result);
   }
 
@@ -93,12 +93,13 @@ class StudentDBHelper implements CRUDInterface<Student> {
       placeOfBirth: personalInfo.placeOfBirth,
       phoneNumber: personalInfo.phoneNumber,
       religion: personalInfo.religion,
-      whatsappNumber: personalInfo.whatsappNumber,
+      whatsappPhoneNumber: personalInfo.whatsappPhoneNumber,
       incidentNumber: personalInfo.incidentNumber,
-      dateOfIncident: personalInfo.dateOfIncident,
-      landline: personalInfo.landline,
+      incidentDate: personalInfo.incidentDate,
+      landLine: personalInfo.landLine,
       addressId: registrationInfo.address.id,
       joinDate: personalInfo.joinDate,
+      leaveDate: null,
       familyId: -1,
     );
     if (familyInfo.family.id == -1) {
@@ -109,7 +110,7 @@ class StudentDBHelper implements CRUDInterface<Student> {
         responsiblePerson = await ResponsiblePersonDBHelper.instance
             .insert(familyInfo.responsiblePerson!);
       }
-      Family family = await StudentFamilyDBHelper.instance.insert(
+      Family family = await FamiliesDBHelper.instance.insert(
         //TODO: Generate Credentials
         Family(
             id: -1,
@@ -147,18 +148,18 @@ class StudentDBHelper implements CRUDInterface<Student> {
         StudentPreviousSchool(
             id: -1,
             studentId: student.id,
-            previousSchoolId:
-                registrationInfo.studentPreviousSchool!.previousSchoolId,
+            previousSchoolId: registrationInfo.studentPreviousSchool!.id,
             notes: registrationInfo.studentPreviousSchool!.notes),
       );
     }
     YearRecordsDBHelper.instance.insert(
       YearRecord(
-          id: -1,
-          studentId: student.id,
-          classId: registrationInfo.enrolledClass.id,
-          schoolYearClassroomId: -1,
-          didPass: false),
+        id: -1,
+        studentId: student.id,
+        classId: registrationInfo.enrolledClass.id,
+        schoolYearClassroomId: -1,
+        didPass: false,
+      ),
     );
     return student;
   }
