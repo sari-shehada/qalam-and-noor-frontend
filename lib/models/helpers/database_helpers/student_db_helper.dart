@@ -15,7 +15,6 @@ import 'package:kalam_noor/models/helpers/database_helpers/year_records_db_helpe
 import 'package:kalam_noor/models/medical/illness.dart';
 import 'package:kalam_noor/models/medical/student_illness.dart';
 import 'package:kalam_noor/models/medical/taken_vaccine.dart';
-import 'package:kalam_noor/models/previous_schools/student_previous_school.dart';
 import 'package:kalam_noor/pages/new_student_registration/family_information/models/family_info.dart';
 import 'package:kalam_noor/pages/new_student_registration/personal_information/models/student_personal_info.dart';
 import 'package:kalam_noor/pages/new_student_registration/personal_information/models/student_registration_info.dart';
@@ -56,10 +55,6 @@ class StudentDBHelper implements CRUDInterface<Student> {
       },
     );
     return student;
-  }
-
-  Future<int> getFathersCount() async {
-    return await getAll().then((value) => value.length);
   }
 
   @override
@@ -103,13 +98,18 @@ class StudentDBHelper implements CRUDInterface<Student> {
       familyId: -1,
     );
     if (familyInfo.family.id == -1) {
+      print('adding a new family');
+      print('adding father info');
       Father father = await FatherDBhelper.instance.insert(familyInfo.father);
+      print('adding mother info');
       Mother mother = await MotherDBHelper.instance.insert(familyInfo.mother);
       ResponsiblePerson? responsiblePerson;
       if (familyInfo.responsiblePerson != null) {
+        print('adding responsible person info');
         responsiblePerson = await ResponsiblePersonDBHelper.instance
             .insert(familyInfo.responsiblePerson!);
       }
+      print('adding family info');
       Family family = await FamiliesDBHelper.instance.insert(
         //TODO: Generate Credentials
         Family(
@@ -122,19 +122,29 @@ class StudentDBHelper implements CRUDInterface<Student> {
       );
       student = student.copyWith(familyId: family.id);
     } else {
+      print(
+          'assigning familyId to student (family already exists in the system)');
       student =
           student.copyWith(familyId: registrationInfo.familyInfo.family.id);
     }
+    print('adding student info');
     student = await insert(student);
     MedicalRecord medicalRecord =
         registrationInfo.medicalInfo.record.copyWith(id: student.id);
+    print('adding student medical record info');
     await MedicalRecordDBHelper.instance.insert(medicalRecord);
+    print(
+        'Adding student illnesses ${registrationInfo.medicalInfo.illnesses.length}');
     for (Illness illness in registrationInfo.medicalInfo.illnesses) {
+      print('Adding student illness');
       StudentIllnessesDBHelper.instance.insert(StudentIllness(
-          id: -1, medicalRecordId: medicalRecord.id, illnessId: illness.id));
+          id: -1, medicalRecordId: medicalRecord.id, ilnessId: illness.id));
     }
+    print(
+        'Adding student taken vaccines ${registrationInfo.medicalInfo.takenVaccines.length}');
     for (TakenVaccine takenVaccine
         in registrationInfo.medicalInfo.takenVaccines) {
+      print('Adding student taken vaccine');
       TakenVaccinesDBHelper.instance.insert(
         TakenVaccine(
             id: -1,
@@ -144,14 +154,14 @@ class StudentDBHelper implements CRUDInterface<Student> {
       );
     }
     if (registrationInfo.studentPreviousSchool != null) {
+      print('Adding student previous school');
       StudentPreviousSchoolsDBHelper.instance.insert(
-        StudentPreviousSchool(
-            id: -1,
-            studentId: student.id,
-            previousSchoolId: registrationInfo.studentPreviousSchool!.id,
-            notes: registrationInfo.studentPreviousSchool!.notes),
+        registrationInfo.studentPreviousSchool!.copyWith(
+          studentId: student.id,
+        ),
       );
     }
+    print('Adding student year record');
     YearRecordsDBHelper.instance.insert(
       YearRecord(
         id: -1,
@@ -161,6 +171,7 @@ class StudentDBHelper implements CRUDInterface<Student> {
         didPass: false,
       ),
     );
+    print('Finished Registering a new student');
     return student;
   }
 }

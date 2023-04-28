@@ -42,7 +42,7 @@ class StudentIllnessesDBHelper implements CRUDInterface<StudentIllness> {
 
   @override
   Future<bool> insert(StudentIllness object) async {
-    String url = '${_controllerName}InsertIlnessMedicalRecord';
+    String url = '${_controllerName}InsertIlnessMedicalRecords';
     int? result =
         await HttpService.post(url: url, serializedBody: object.toJson());
     if (result == null) return false;

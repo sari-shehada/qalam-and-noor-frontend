@@ -9,7 +9,7 @@ class FamiliesDBHelper implements CRUDInterface<Family> {
 
   @override
   Future<List<Family>> getAll() async {
-    String url = '${_controllerName}GetStudentFamilies';
+    String url = '${_controllerName}GetFamilies';
     List<Family> allFamilies = await HttpService.getParsed<List<Family>, List>(
       url: url,
       dataMapper: (parsedData) {
@@ -41,7 +41,7 @@ class FamiliesDBHelper implements CRUDInterface<Family> {
 
   @override
   Future<Family?> getById(int id) async {
-    String url = '${_controllerName}GetStudentFamilyById?id=$id';
+    String url = '${_controllerName}GetFamilyById?id=$id';
     Family? family = await HttpService.getParsed<Family?, Map<String, dynamic>>(
       url: url,
       dataMapper: (responseData) {
@@ -57,7 +57,7 @@ class FamiliesDBHelper implements CRUDInterface<Family> {
 
   @override
   Future<Family> insert(Family object) async {
-    String url = '${_controllerName}InsertStudentFamily';
+    String url = '${_controllerName}InsertFamily';
     int? result =
         await HttpService.post(url: url, serializedBody: object.toJson());
     if (result == null) throw Exception();
@@ -66,7 +66,7 @@ class FamiliesDBHelper implements CRUDInterface<Family> {
 
   @override
   Future<bool> update(Family object) async {
-    String url = '${_controllerName}UpdateStudentFamily';
+    String url = '${_controllerName}UpdateFamily';
     int? result =
         await HttpService.post(url: url, serializedBody: object.toJson());
     if (result == null) return false;

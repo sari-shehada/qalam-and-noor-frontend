@@ -119,14 +119,19 @@ class StudentResponsiblePersonInfoSubWidgetController extends GetxController {
 
     Family family = Family(
       id: -1,
-      //TODO: Generate Later
       userName: 'asd',
       password: 'assd',
       fatherId: father.id,
       motherId: mother.id,
+      responsiblePersonId: responsiblePerson?.id,
     );
     Get.back(
-      result: FamilyInfo(family: family, father: father, mother: mother),
+      result: FamilyInfo(
+        family: family,
+        father: father,
+        mother: mother,
+        responsiblePerson: responsiblePerson,
+      ),
     );
   }
 

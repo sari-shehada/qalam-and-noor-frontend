@@ -29,15 +29,6 @@ class StudentFamilyInfoDialogController extends GetxController {
     }
 
     int parsedSearchValue = int.parse(tieNumberEditingController.text);
-    //TODO: Dispose, Use somwhere else
-
-    // if (parsedSearchValue < 1) {
-    //   SnackbarService.showErrorSnackBar(
-    //     title: 'حدث خطأ',
-    //     message: 'لا يمكن ان يكون رقم الثيد سالب',
-    //   );
-    //   return;
-    // }
     await _getSearchData(parsedSearchValue);
   }
 

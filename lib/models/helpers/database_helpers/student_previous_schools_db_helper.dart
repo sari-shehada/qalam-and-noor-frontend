@@ -11,7 +11,7 @@ class StudentPreviousSchoolsDBHelper
 
   @override
   Future<List<StudentPreviousSchool>> getAll() async {
-    String url = '${_controllerName}GetStudentStudentPreviousSchools';
+    String url = '${_controllerName}GetStudentPreviousSchools';
     List<StudentPreviousSchool> allStudentPreviousSchools =
         await HttpService.getParsed<List<StudentPreviousSchool>, List>(
       url: url,
@@ -28,7 +28,7 @@ class StudentPreviousSchoolsDBHelper
 
   @override
   Future<StudentPreviousSchool?> getById(int id) async {
-    String url = '${_controllerName}GetStudentStudentPreviousSchoolById?id=$id';
+    String url = '${_controllerName}GetStudentPreviousSchoolById?id=$id';
     StudentPreviousSchool? studentPreviousSchool = await HttpService.getParsed<
         StudentPreviousSchool?, Map<String, dynamic>>(
       url: url,
@@ -41,16 +41,17 @@ class StudentPreviousSchoolsDBHelper
 
   @override
   Future<StudentPreviousSchool> insert(StudentPreviousSchool object) async {
-    String url = '${_controllerName}InsertStudentStudentPreviousSchool';
+    print(object);
+    String url = '${_controllerName}InsertStudentPreviousSchool';
     int? result =
         await HttpService.post(url: url, serializedBody: object.toJson());
-    if (result == null) return throw Exception();
+    if (result == null) throw Exception();
     return object.copyWith(id: result);
   }
 
   @override
   Future<bool> update(StudentPreviousSchool object) async {
-    String url = '${_controllerName}UpdateStudentStudentPreviousSchool';
+    String url = '${_controllerName}UpdateStudentPreviousSchool';
     int? result =
         await HttpService.post(url: url, serializedBody: object.toJson());
     if (result == null) return false;

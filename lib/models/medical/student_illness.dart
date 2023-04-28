@@ -4,26 +4,26 @@ import 'dart:convert';
 class StudentIllness {
   final int id;
   final int medicalRecordId;
-  final int illnessId;
-  String? notes;
+  final int ilnessId;
+  String? note;
   StudentIllness({
     required this.id,
     required this.medicalRecordId,
-    required this.illnessId,
-    this.notes,
+    required this.ilnessId,
+    this.note,
   });
 
   StudentIllness copyWith({
     int? id,
     int? medicalRecordId,
-    int? illnessId,
-    String? notes,
+    int? ilnessId,
+    String? note,
   }) {
     return StudentIllness(
       id: id ?? this.id,
       medicalRecordId: medicalRecordId ?? this.medicalRecordId,
-      illnessId: illnessId ?? this.illnessId,
-      notes: notes ?? this.notes,
+      ilnessId: ilnessId ?? this.ilnessId,
+      note: note ?? this.note,
     );
   }
 
@@ -31,8 +31,8 @@ class StudentIllness {
     return <String, dynamic>{
       'id': id,
       'medicalRecordId': medicalRecordId,
-      'illnessId': illnessId,
-      'notes': notes,
+      'ilnessId': ilnessId,
+      'note': note,
     };
   }
 
@@ -40,8 +40,8 @@ class StudentIllness {
     return StudentIllness(
       id: map['id'] as int,
       medicalRecordId: map['medicalRecordId'] as int,
-      illnessId: map['illnessId'] as int,
-      notes: map['notes'] != null ? map['notes'] as String : null,
+      ilnessId: map['ilnessId'] as int,
+      note: map['note'] != null ? map['note'] as String : null,
     );
   }
 
@@ -52,7 +52,7 @@ class StudentIllness {
 
   @override
   String toString() {
-    return 'StudentIllness(id: $id, medicalRecordId: $medicalRecordId, illnessId: $illnessId, notes: $notes)';
+    return 'StudentIllness(id: $id, medicalRecordId: $medicalRecordId, ilnessId: $ilnessId, note: $note)';
   }
 
   @override
@@ -61,15 +61,15 @@ class StudentIllness {
 
     return other.id == id &&
         other.medicalRecordId == medicalRecordId &&
-        other.illnessId == illnessId &&
-        other.notes == notes;
+        other.ilnessId == ilnessId &&
+        other.note == note;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
         medicalRecordId.hashCode ^
-        illnessId.hashCode ^
-        notes.hashCode;
+        ilnessId.hashCode ^
+        note.hashCode;
   }
 }
