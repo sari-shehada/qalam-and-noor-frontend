@@ -42,7 +42,7 @@ class SchoolClassesDBHelper implements CRUDInterface<SchoolClass> {
     String url = '${_controllerName}InsertClass';
     int? result =
         await HttpService.post(url: url, serializedBody: object.toJson());
-    if (result == null) return throw Exception();
+    if (result == null) throw Exception();
     return object.copyWith(id: result);
   }
 

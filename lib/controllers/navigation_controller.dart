@@ -11,7 +11,7 @@ import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 import '../pages/addresses_management/main_page/views/addresses_management_page.dart';
 import '../pages/new_student_registration/main_page/views/new_student_registration_page.dart';
 import '../pages/psychological_statuses_management_page/views/psychological_statuses_management_page.dart';
-import '../pages/school_classes_management/views/school_classes_management_page.dart';
+import '../pages/school_classes_management_page/main_page/views/school_classes_management_page.dart';
 import '../pages/school_year_management/views/school_year_management_page.dart';
 import '../models/agendas/employee.dart';
 import '../pages/dashboard/views/dashboard_page.dart';
