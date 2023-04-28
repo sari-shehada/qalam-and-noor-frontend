@@ -57,6 +57,11 @@ class StudentDBHelper implements CRUDInterface<Student> {
     return student;
   }
 
+  Future<int> getStudentsCount() async {
+    final List allStudents = await getAll();
+    return allStudents.length;
+  }
+
   @override
   Future<Student> insert(Student object) async {
     String url = '${_controllerName}InsertStudent';

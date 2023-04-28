@@ -23,22 +23,21 @@ class MedicalsManagementPage extends StatelessWidget {
             children: [
               MedicalsMenuListTile(
                 title: 'اللقاحات',
-                //TODO: Come up with a good desc
-                subtitle: 'اللقاحات اللقاحات اللقاحات',
+                subtitle:
+                    'اضافة وتعديل اللقاحات التي من الممكن للطالب اخذها قبل او خلال وجوده بالمدرسة',
                 iconData: FontAwesomeIcons.syringe,
                 onTap: () => NavigationController.toVaccinesManagementPage(),
               ),
               MedicalsMenuListTile(
                 title: 'الأمراض',
-                //TODO: Come up with a good desc
-                subtitle: ' اللقاحات اللقاحات اللقاحات',
+                subtitle:
+                    'اضافة وتعديل الأمراض التي من الممكن للطالب امتلاكها عند التسجيل بالمدرسة',
                 iconData: FontAwesomeIcons.virus,
                 onTap: () => NavigationController.toIllnessesManagementPage(),
               ),
               MedicalsMenuListTile(
-                title: 'الحالات المزاجية',
-                //TODO: Come up with a good desc
-                subtitle: ' اللقاحات اللقاحات اللقاحات',
+                title: 'الحالات الاجتماعية',
+                subtitle: 'اضافة وتعديل الحالات الاجتماعية أو النفسية للطلاب',
                 iconData: FontAwesomeIcons.faceMehBlank,
                 onTap: () => NavigationController
                     .toPsychologicalStatusesManagementPage(),

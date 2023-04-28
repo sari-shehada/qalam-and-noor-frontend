@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/dashboard/views/widgets/student_count_widget.dart';
 import 'package:kalam_noor/pages/settings/views/settings_page.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../controllers/account_controller.dart';
 import '../controllers/dashboard_controller.dart';
@@ -137,9 +139,36 @@ class DashboardPage extends StatelessWidget {
                             height: 402,
                           ),
                           AddHorizontalSpacing(value: 30.w),
-                          const _DashboardContainer(
-                            width: 588,
-                            height: 402,
+                          FutureBuilder<int>(
+                            future: controller.studentCount.value,
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return ClipRRect(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20.r),
+                                  ),
+                                  child: Shimmer.fromColors(
+                                    baseColor: Get.theme.colorScheme.primary
+                                        .withOpacity(.03),
+                                    highlightColor: Get
+                                        .theme.colorScheme.primary
+                                        .withOpacity(.2),
+                                    direction: ShimmerDirection.rtl,
+                                    child: const _DashboardContainer(
+                                      width: 588,
+                                      height: 402,
+                                    ),
+                                  ),
+                                );
+                              }
+                              return _DashboardContainer(
+                                width: 588,
+                                height: 402,
+                                child: StudentCountWidget(
+                                    count: snapshot.data ?? 0),
+                              );
+                            },
                           ),
                         ],
                       ),
