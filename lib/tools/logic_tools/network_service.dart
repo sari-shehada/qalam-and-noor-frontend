@@ -15,7 +15,10 @@ abstract class HttpService {
   }
 
   static Future<http.Response> getUnparsed(String url) async {
-    return await http.get(Uri.parse(_baseURL + url));
+    String combinedUrl = _baseURL + url;
+    http.Response response = await http.get(Uri.parse(combinedUrl));
+    print('On URL "$combinedUrl" Result was: ${response.body}');
+    return response;
   }
 
   static Future<int?> post({
