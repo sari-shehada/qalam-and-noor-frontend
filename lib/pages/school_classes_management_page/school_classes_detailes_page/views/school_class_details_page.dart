@@ -1,16 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/addresses_management/main_page/controllers/address_management_controller.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/main_page/controllers/school_classes_management_controller.dart';
-import 'package:kalam_noor/pages/school_classes_management_page/school_classes_detailes_page/views/widgets/classroom_card.dart';
+import 'package:kalam_noor/pages/school_classes_management_page/school_classes_detailes_page/views/widgets/classroom_table.dart';
 import '../../../../models/educational/classroom.dart';
 import '../../../../tools/ui_tools/buttons.dart';
 import '../../../../tools/ui_tools/custom_appbar.dart';
 import '../../../../tools/ui_tools/custom_drop_down_menu.dart';
 import '../../../../tools/ui_tools/custom_scaffold.dart';
+import '../../../../tools/ui_tools/labeled_widget.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
 import '../../../../tools/widgets/empty_item_widget.dart';
 import '../controllers/school_class_details_controller.dart';
@@ -58,7 +57,7 @@ class SchoolClassDetailsPage extends StatelessWidget {
         end: 60.w,
       ),
       appBar: CustomAppBar(
-        title: controller.schoolClass.name,
+        title: 'الصف ${controller.schoolClass.name}',
         iconData: FontAwesomeIcons.locationDot,
         backButtonEnabled: true,
         actionButton: Row(
@@ -84,50 +83,61 @@ class SchoolClassDetailsPage extends StatelessWidget {
           ],
         ),
       ),
-      body: Obx(
-        () => FutureBuilder(
-          future: controller.classrooms.value,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            if (snapshot.hasError) {
-              return const Center(
-                //TODO: Change later
-                child: Text('Error Loading Classrooms'),
-              );
-            }
-            if (snapshot.hasData) {
-              if (snapshot.data!.isEmpty) {
-                return const EmptyItemWidget(
-                  itemName: 'شعب',
-                  iconData: FontAwesomeIcons.mapLocationDot,
-                );
-              } else {
-                List<Classroom> Classrooms = snapshot.data as List<Classroom>;
-                return GridView.builder(
-                  padding: EdgeInsets.zero,
-                  itemCount: Classrooms.length,
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisExtent: 90.h,
-                    crossAxisSpacing: 10.w,
+      body: SizedBox.expand(
+        child: Column(
+          children: [
+            AddVerticalSpacing(value: 40.h),
+            Expanded(
+              flex: 70,
+              child: LabeledWidget(
+                label: 'الشعب ضمن الصف ${controller.schoolClass.name}',
+                labelTextStyle: TextStyle(
+                  fontSize: 30.sp,
+                ),
+                spacing: 35.h,
+                child: Obx(
+                  () => FutureBuilder(
+                    future: controller.classrooms.value,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      if (snapshot.hasError) {
+                        return const Center(
+                          //TODO: Change later
+                          child: Text('Error Loading Classrooms'),
+                        );
+                      }
+                      if (snapshot.hasData) {
+                        if (snapshot.data!.isEmpty) {
+                          return const EmptyItemWidget(
+                            itemName: 'شعب',
+                            iconData: FontAwesomeIcons.mapLocationDot,
+                          );
+                        } else {
+                          List<Classroom> classrooms =
+                              snapshot.data as List<Classroom>;
+
+                          return Expanded(
+                            child: ClassroomsTable(
+                              classrooms: classrooms,
+                            ),
+                          );
+                        }
+                      } else {
+                        return const EmptyItemWidget(
+                          itemName: 'شعب',
+                          iconData: FontAwesomeIcons.mapLocation,
+                        );
+                      }
+                    },
                   ),
-                  itemBuilder: (context, index) => ClassroomCard(
-                    classroom: Classrooms[index],
-                  ),
-                );
-              }
-            } else {
-              return const EmptyItemWidget(
-                itemName: 'شعب',
-                iconData: FontAwesomeIcons.mapLocation,
-              );
-            }
-          },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

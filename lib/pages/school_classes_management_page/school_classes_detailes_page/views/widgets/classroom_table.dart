@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/educational/school_class.dart';
-import 'package:kalam_noor/pages/school_classes_management_page/main_page/views/widgets/class_row.dart';
+import 'package:kalam_noor/models/educational/classroom.dart';
 
-class SchoolClassesTable extends StatelessWidget {
-  const SchoolClassesTable({super.key, required this.schoolClasses});
+import 'classroom_row.dart';
 
-  final List<SchoolClass> schoolClasses;
+class ClassroomsTable extends StatelessWidget {
+  const ClassroomsTable({super.key, required this.classrooms});
+
+  final List<Classroom> classrooms;
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Get.theme;
@@ -29,7 +30,7 @@ class SchoolClassesTable extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    flex: 9,
+                    flex: 7,
                     child: Container(
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(
@@ -40,7 +41,24 @@ class SchoolClassesTable extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        'إسم المرحلة الدراسية',
+                        'إسم الشعبة',
+                        style: textTheme.titleLarge,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 20.h, horizontal: 20.w),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          left: BorderSide(color: colorScheme.primary),
+                        ),
+                      ),
+                      child: Text(
+                        'السعة الكلية',
                         style: textTheme.titleLarge,
                       ),
                     ),
@@ -64,16 +82,14 @@ class SchoolClassesTable extends StatelessWidget {
             Expanded(
               child: ListView.builder(
                 padding: EdgeInsets.only(bottom: 100.h),
-                itemCount: schoolClasses.length,
+                itemCount: classrooms.length,
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   Color rowColor = index % 2 == 0
                       ? Colors.white
                       : Get.theme.colorScheme.primaryContainer.withOpacity(.2);
-                  return SchoolClassRow(
-                    schoolClass: schoolClasses[index],
-                    rowColor: rowColor,
-                  );
+                  return ClassroomRow(
+                      classroom: classrooms[index], rowColor: rowColor);
                 },
               ),
             )

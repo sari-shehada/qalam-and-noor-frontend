@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/configs/fonts.dart';
+import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/models/educational/classroom.dart';
 
 import '../../../../../tools/ui_tools/ui_tools.dart';
@@ -43,6 +45,27 @@ class ClassroomCard extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
+                Container(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
+                  decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.circular(GlobalStyles.globalBorderRadius),
+                    color: GlobalStyles.miscColors[2],
+                  ),
+                  child: Row(
+                    children: [
+                      Text('السعة الكلية'),
+                      AddHorizontalSpacing(value: 10.w),
+                      Text(
+                        '${classroom.maxCapacity.toString()} طالب',
+                        style: ProjectFonts.labelLarge().copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 AddHorizontalSpacing(value: 10.w),
                 IconButton(
                   onPressed: () => controller.updateClassroomInfo(classroom),

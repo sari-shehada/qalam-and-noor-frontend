@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
@@ -31,20 +32,55 @@ class AddOrEditClassroomDialog extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Obx(() {
-                return Text(
-                  controller.isEditMode.value == false
-                      ? 'إضافة شعبة'
-                      : 'تعديل معلومات الشعبة',
-                  style: textTheme.headlineMedium,
-                );
-              }),
+              Obx(
+                () {
+                  return Text(
+                    controller.isEditMode.value == false
+                        ? 'إضافة شعبة'
+                        : 'تعديل معلومات الشعبة',
+                    style: textTheme.headlineMedium,
+                  );
+                },
+              ),
               AddVerticalSpacing(value: 40.h),
               LabeledWidget(
                 label: 'اسم الشعبة',
                 child: HintedTextField(
                   hintText: '',
                   controller: controller.classroomController,
+                ),
+              ),
+              AddVerticalSpacing(value: 20),
+              LabeledWidget(
+                label: 'السعة الكلية',
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Obx(
+                        () {
+                          return Slider(
+                            min: 10.0,
+                            max: 100.0,
+                            divisions: 90,
+                            value: controller.maxCapacity.value,
+                            onChanged: (value) =>
+                                controller.changeMaxCapacity(value),
+                          );
+                        },
+                      ),
+                    ),
+                    AddHorizontalSpacing(value: 10.w),
+                    SizedBox(
+                      width: 80.w,
+                      child: HintedTextField(
+                        hintText: '',
+                        controller: controller.maxCapacityController,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
               AddVerticalSpacing(value: 30.h),
