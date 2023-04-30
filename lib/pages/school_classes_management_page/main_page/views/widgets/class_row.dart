@@ -6,9 +6,7 @@ import 'package:kalam_noor/pages/school_classes_management_page/courses_manageme
 import 'package:kalam_noor/pages/school_classes_management_page/main_page/controllers/school_classes_management_controller.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/school_classes_detailes_page/controllers/school_class_details_controller.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/school_classes_detailes_page/views/school_class_details_page.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import '../../../../../models/educational/school_class.dart';
-import '../school_classes_management_page.dart';
 
 class SchoolClassRow extends StatelessWidget {
   const SchoolClassRow(
@@ -79,8 +77,7 @@ class SchoolClassRow extends StatelessWidget {
                             controller.updateSchoolClassInfo(schoolClass),
                         tooltip: 'إدارة بنية الامتحانات للصف',
                         icon: Icon(
-                          //TODO: Change this later
-                          Icons.find_replace,
+                          Icons.percent,
                           color: Get.theme.colorScheme.primary.withOpacity(.7),
                         ),
                       ),
@@ -99,8 +96,7 @@ class SchoolClassRow extends StatelessWidget {
                         ),
                         tooltip: 'إدارة الشعب للصف',
                         icon: Icon(
-                          //TODO: Change this later
-                          Icons.find_replace,
+                          Icons.domain_add_rounded,
                           color: Get.theme.colorScheme.primary.withOpacity(.7),
                         ),
                       ),

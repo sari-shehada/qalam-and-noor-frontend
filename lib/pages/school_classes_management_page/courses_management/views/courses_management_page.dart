@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/educational/course.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/courses_management/controllers/courses_management_controller.dart';
-import 'package:kalam_noor/pages/school_classes_management_page/courses_management/views/widgets/course_card.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/courses_management/views/widgets/courses_table.dart';
 import '../../../../tools/ui_tools/buttons.dart';
 import '../../../../tools/ui_tools/custom_appbar.dart';

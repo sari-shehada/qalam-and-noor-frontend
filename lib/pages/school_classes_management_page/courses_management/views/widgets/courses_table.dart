@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:kalam_noor/models/educational/course.dart';
-import 'package:kalam_noor/pages/school_classes_management_page/courses_management/views/widgets/course_card.dart';
+
+import 'course_row.dart';
 
 class CoursesTable extends StatelessWidget {
   const CoursesTable({super.key, required this.courses});
@@ -30,7 +29,7 @@ class CoursesTable extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    flex: 85,
+                    flex: 7,
                     child: Container(
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(
@@ -47,7 +46,43 @@ class CoursesTable extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    flex: 15,
+                    flex: 1,
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 20.h, horizontal: 20.w),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          left: BorderSide(color: colorScheme.primary),
+                        ),
+                      ),
+                      child: Text(
+                        'الدرجة الكلية',
+                        style: textTheme.titleLarge,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 20.h, horizontal: 20.w),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          left: BorderSide(color: colorScheme.primary),
+                        ),
+                      ),
+                      child: Text(
+                        'مقرر إجباري؟',
+                        style: textTheme.titleLarge,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
                     child: Container(
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(
