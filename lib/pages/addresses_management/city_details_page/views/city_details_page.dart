@@ -95,7 +95,7 @@ class CityDetailsPage extends StatelessWidget {
             if (snapshot.hasError) {
               return const Center(
                 //TODO: Change later
-                child: Text('Error Loading Cities'),
+                child: Text('Error Loading Areas'),
               );
             }
             if (snapshot.hasData) {
@@ -122,7 +122,7 @@ class CityDetailsPage extends StatelessWidget {
               }
             } else {
               return const EmptyItemWidget(
-                itemName: 'احياء',
+                itemName: 'مناطق',
                 iconData: FontAwesomeIcons.mapLocation,
               );
             }

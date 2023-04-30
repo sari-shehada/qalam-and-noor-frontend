@@ -41,14 +41,14 @@ class AddOrEditAreaDialog extends StatelessWidget {
               Obx(() {
                 return Text(
                   controller.isEditMode.value == false
-                      ? 'إضافة حي'
-                      : 'تعديل معلومات الحي',
+                      ? 'إضافة منطقة'
+                      : 'تعديل معلومات المنطقة',
                   style: textTheme.headlineMedium,
                 );
               }),
               AddVerticalSpacing(value: 40.h),
               LabeledWidget(
-                label: 'اسم الحي',
+                label: 'إسم المنطقة',
                 child: HintedTextField(
                   hintText: '',
                   controller: controller.areaController,
