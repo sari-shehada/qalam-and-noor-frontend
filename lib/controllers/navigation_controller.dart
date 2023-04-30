@@ -23,6 +23,7 @@ import '../pages/login_page/views/login_page.dart';
 import '../pages/medicals_management/views/medicals_management_page.dart';
 
 import '../pages/login_page/controllers/login_page_bindings.dart';
+import '../pages/statistics_page/views/stats_page.dart';
 import '../pages/vaccines_management_page/controllers/vaccines_management_controller.dart';
 
 class NavigationController {
@@ -46,12 +47,6 @@ class NavigationController {
             iconData: FontAwesomeIcons.house,
             destination: const DashboardPage(),
           ),
-          //TODO: Replace this with something else
-          // NavigationRailDestinationCard(
-          //   title: 'تسجيل طالب جديد',
-          //   iconData: FontAwesomeIcons.userPlus,
-          //   destination: const NewStudentRegistrationPage(),
-          // ),
           NavigationRailDestinationCard(
             title: 'إدارة العام الدراسي',
             iconData: FontAwesomeIcons.school,
@@ -63,11 +58,6 @@ class NavigationController {
             destination: const SchoolClassesManagementPage(),
           ),
           NavigationRailDestinationCard(
-            title: 'إدارة الشعب',
-            iconData: FontAwesomeIcons.school,
-            destination: const Scaffold(),
-          ),
-          NavigationRailDestinationCard(
             title: 'إدارة الشؤون الصحية',
             iconData: FontAwesomeIcons.syringe,
             destination: const MedicalsManagementPage(),
@@ -76,6 +66,12 @@ class NavigationController {
             title: 'إدارة العناوين',
             iconData: FontAwesomeIcons.mapLocationDot,
             destination: const AddressesManagementPage(),
+          ),
+          NavigationRailDestinationCard(
+            title: 'إحصائيات',
+            //TODO:
+            iconData: FontAwesomeIcons.home,
+            destination: const StatsPage(),
           ),
           NavigationRailDestinationCard(
             title: 'بريد المدرسة',
