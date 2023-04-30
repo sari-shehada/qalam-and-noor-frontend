@@ -6,13 +6,13 @@ class TakenVaccine {
   final int medicalRecordId;
   final int vaccineId;
   final DateTime shotDate;
-  String? notes;
+  String? note;
   TakenVaccine({
     required this.id,
     required this.medicalRecordId,
     required this.vaccineId,
     required this.shotDate,
-    this.notes,
+    this.note,
   });
 
   TakenVaccine copyWith({
@@ -20,14 +20,14 @@ class TakenVaccine {
     int? medicalRecordId,
     int? vaccineId,
     DateTime? shotDate,
-    String? notes,
+    String? note,
   }) {
     return TakenVaccine(
       id: id ?? this.id,
       medicalRecordId: medicalRecordId ?? this.medicalRecordId,
       vaccineId: vaccineId ?? this.vaccineId,
       shotDate: shotDate ?? this.shotDate,
-      notes: notes ?? this.notes,
+      note: note ?? this.note,
     );
   }
 
@@ -37,7 +37,7 @@ class TakenVaccine {
       'medicalRecordId': medicalRecordId,
       'vaccineId': vaccineId,
       'shotDate': shotDate.toIso8601String(),
-      'notes': notes,
+      'note': note,
     };
   }
 
@@ -47,7 +47,7 @@ class TakenVaccine {
       medicalRecordId: map['medicalRecordId'] as int,
       vaccineId: map['vaccineId'] as int,
       shotDate: DateTime.parse(map['shotDate']),
-      notes: map['notes'] != null ? map['notes'] as String : null,
+      note: map['note'] != null ? map['note'] as String : null,
     );
   }
 
@@ -58,7 +58,7 @@ class TakenVaccine {
 
   @override
   String toString() {
-    return 'TakenVaccine(id: $id, medicalRecordId: $medicalRecordId, vaccineId: $vaccineId, shotDate: $shotDate, notes: $notes)';
+    return 'TakenVaccine(id: $id, medicalRecordId: $medicalRecordId, vaccineId: $vaccineId, shotDate: $shotDate, note: $note)';
   }
 
   @override
@@ -69,7 +69,7 @@ class TakenVaccine {
         other.medicalRecordId == medicalRecordId &&
         other.vaccineId == vaccineId &&
         other.shotDate == shotDate &&
-        other.notes == notes;
+        other.note == note;
   }
 
   @override
@@ -78,6 +78,6 @@ class TakenVaccine {
         medicalRecordId.hashCode ^
         vaccineId.hashCode ^
         shotDate.hashCode ^
-        notes.hashCode;
+        note.hashCode;
   }
 }

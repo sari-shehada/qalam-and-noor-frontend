@@ -4,7 +4,6 @@ import 'package:kalam_noor/models/agendas/mother.dart';
 import 'package:kalam_noor/models/agendas/responsible_person.dart';
 import 'package:kalam_noor/models/agendas/student.dart';
 import 'package:kalam_noor/models/educational/year_record.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/medical_record_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/mother_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/responsible_person_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/families_db_helper.dart';
@@ -22,6 +21,7 @@ import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 import '../../medical/medical_record.dart';
 import 'father_db_helper.dart';
+import 'medical_records_db_helper.dart';
 
 class StudentDBHelper implements CRUDInterface<Student> {
   String get _controllerName => 'StudentController/';
@@ -135,15 +135,17 @@ class StudentDBHelper implements CRUDInterface<Student> {
     print('adding student info');
     student = await insert(student);
     MedicalRecord medicalRecord =
-        registrationInfo.medicalInfo.record.copyWith(id: student.id);
+        registrationInfo.medicalInfo.record.copyWith(studentId: student.id);
     print('adding student medical record info');
-    await MedicalRecordDBHelper.instance.insert(medicalRecord);
+    await MedicalRecordsDBHelper.instance.insert(medicalRecord);
     print(
         'Adding student illnesses ${registrationInfo.medicalInfo.illnesses.length}');
     for (Illness illness in registrationInfo.medicalInfo.illnesses) {
       print('Adding student illness');
       StudentIllnessesDBHelper.instance.insert(StudentIllness(
-          id: -1, medicalRecordId: medicalRecord.id, ilnessId: illness.id));
+          id: -1,
+          medicalRecordId: medicalRecord.studentId,
+          ilnessId: illness.id));
     }
     print(
         'Adding student taken vaccines ${registrationInfo.medicalInfo.takenVaccines.length}');
@@ -153,7 +155,7 @@ class StudentDBHelper implements CRUDInterface<Student> {
       TakenVaccinesDBHelper.instance.insert(
         TakenVaccine(
             id: -1,
-            medicalRecordId: medicalRecord.id,
+            medicalRecordId: medicalRecord.studentId,
             vaccineId: takenVaccine.vaccineId,
             shotDate: takenVaccine.shotDate),
       );

@@ -14,9 +14,7 @@ class NavigationBindings extends Bindings {
     Get.put(
       NavigationPageController(dashboardDestinations: railDestinations),
     );
-    Get.put(
-      AccountController(employee: employee),
-    );
+    Get.put(AccountController());
     Get.put(DashboardController());
   }
 

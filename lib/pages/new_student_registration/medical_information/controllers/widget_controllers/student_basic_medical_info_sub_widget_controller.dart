@@ -32,8 +32,8 @@ class StudentBasicMedicalInfoSubWidgetController extends GetxController {
   MedicalRecord encapsulateFields() {
     if (validateFields()) {
       MedicalRecord medicalRecord = MedicalRecord(
-          id: -1,
-          studentHeight: double.parse(studentHeightController.getValue()),
+          studentId: -1,
+          studentHight: double.parse(studentHeightController.getValue()),
           studentWeight: double.parse(studentWeightController.getValue()));
       return medicalRecord;
     }

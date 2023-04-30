@@ -25,7 +25,7 @@ class StudentPreviousSchoolInfoController extends GetxController {
       id: -1,
       studentId: -1,
       previousSchoolId: studentPreviousSchoolInfo.value!.previousSchool.id,
-      notes: studentPreviousSchoolInfo.value!.notes,
+      note: studentPreviousSchoolInfo.value!.notes,
     );
   }
 }

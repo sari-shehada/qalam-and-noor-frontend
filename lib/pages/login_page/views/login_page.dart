@@ -83,10 +83,22 @@ class LoginPage extends StatelessWidget {
                       labelTextStyle: textTheme.titleMedium!.copyWith(
                         color: colorScheme.onPrimary,
                       ),
-                      child: HintedTextField(
-                        hintText: '',
-                        controller: loginPageController.passwordField,
-                        fillColor: const Color(0xFFBACCE2),
+                      child: Obx(
+                        () => HintedTextField(
+                          hintText: '',
+                          controller: loginPageController.passwordField,
+                          fillColor: const Color(0xFFBACCE2),
+                          obscureText: loginPageController.obscureText.value,
+                          suffixIcon: InkWell(
+                            onTap: () =>
+                                loginPageController.toggleObscureText(),
+                            child: Icon(
+                              loginPageController.obscureText.value
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     AddVerticalSpacing(value: 50.h),

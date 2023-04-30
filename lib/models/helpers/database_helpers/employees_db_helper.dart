@@ -24,7 +24,7 @@ class EmployeesDBHelper implements CRUDInterface<Employee> {
   }
 
   @override
-  Future<Employee?> getById(int id) async {
+  Future<Employee> getById(int id) async {
     String url = '${_controllerName}GetEmployeeById?id=$id';
     Employee? employee =
         await HttpService.getParsed<Employee?, Map<String, dynamic>>(
@@ -33,6 +33,9 @@ class EmployeesDBHelper implements CRUDInterface<Employee> {
         return Employee.fromMap(responseData);
       },
     );
+    if (employee == null) {
+      throw Exception('No employee found with ID: $id');
+    }
     return employee;
   }
 

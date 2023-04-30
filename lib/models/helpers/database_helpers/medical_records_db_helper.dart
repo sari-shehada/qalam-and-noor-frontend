@@ -1,4 +1,3 @@
-
 import 'package:kalam_noor/models/medical/medical_record.dart';
 import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
@@ -9,7 +8,7 @@ class MedicalRecordsDBHelper implements CRUDInterface<MedicalRecord> {
 
   @override
   Future<List<MedicalRecord>> getAll() async {
-    String url = '${_controllerName}GetMedicalRecord';
+    String url = '${_controllerName}GetMedicalRecords';
     List<MedicalRecord> allMedicalRecords =
         await HttpService.getParsed<List<MedicalRecord>, List>(
       url: url,
@@ -46,8 +45,8 @@ class MedicalRecordsDBHelper implements CRUDInterface<MedicalRecord> {
     String url = '${_controllerName}InsertMedicalRecord';
     int? result =
         await HttpService.post(url: url, serializedBody: object.toJson());
-    if (result == null) return throw Exception();
-    return object.copyWith(id: result);
+    if (result == null) throw Exception();
+    return object.copyWith(studentId: result);
   }
 
   @override

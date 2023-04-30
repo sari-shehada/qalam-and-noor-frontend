@@ -9,20 +9,7 @@ class LoaderBindings extends Bindings {
     Get.put(LoaderController());
     //TODO:
     Get.put(
-      AccountController(
-        employee: Employee(
-            id: 12,
-            firstName: 'محمد',
-            lastName: 'المحمد',
-            fatherName: 'أحمد',
-            motherName: 'لمى',
-            dateOfBirth: DateTime.now(),
-            phoneNumber: '09999999',
-            startDate: DateTime.now(),
-            numberOfChildren: 2,
-            jobTitleId: 1,
-            addressId: 1),
-      ),
+      AccountController(),
     );
   }
 }

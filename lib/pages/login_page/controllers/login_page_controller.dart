@@ -8,6 +8,7 @@ import '../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../tools/ui_tools/buttons.dart';
 
 class LoginPageController extends GetxController {
+  RxBool obscureText = true.obs;
   TextEditingController userNameField = TextEditingController();
   TextEditingController passwordField = TextEditingController();
   Rx<CustomButtonStatus> loginButtonStatus = CustomButtonStatus.enabled.obs;
@@ -28,6 +29,10 @@ class LoginPageController extends GetxController {
     }
     //TODO: Add futher validation
     return true;
+  }
+
+  void toggleObscureText() {
+    obscureText.value = !obscureText.value;
   }
 
   Future<void> login() async {

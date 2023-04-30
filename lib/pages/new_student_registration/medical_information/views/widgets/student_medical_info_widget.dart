@@ -57,7 +57,7 @@ class StudentMedicalInfoWidget extends StatelessWidget {
                                 style: ProjectFonts.titleLarge(),
                               ),
                               Text(
-                                '${controller.medicalInfo.value!.record.studentHeight.toString()} سم',
+                                '${controller.medicalInfo.value!.record.studentHight.toString()} سم',
                                 style: ProjectFonts.titleLarge().copyWith(
                                   color: Get.theme.colorScheme.onBackground,
                                 ),

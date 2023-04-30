@@ -1,15 +1,14 @@
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/employees_db_helper.dart';
 
 import '../models/agendas/employee.dart';
 import '../models/shared_prefs_helper.dart';
 import 'navigation_controller.dart';
 
 class AccountController extends GetxController {
-  Employee employee;
+  late Employee employee;
 
-  AccountController({
-    required this.employee,
-  });
+  AccountController();
 
   Future<void> logout() async {
     await SharedPrefsHelper.instance.deleteLoginData();
@@ -19,19 +18,7 @@ class AccountController extends GetxController {
   Future<Employee> getCredentials({
     required int employeeId,
   }) async {
-    //TODO:
-    employee = Employee(
-        id: 12,
-        firstName: 'محمد',
-        lastName: 'المحمد',
-        fatherName: 'أحمد',
-        motherName: 'لمى',
-        dateOfBirth: DateTime.now(),
-        phoneNumber: '09999999',
-        startDate: DateTime.now(),
-        numberOfChildren: 2,
-        jobTitleId: 1,
-        addressId: 1);
+    employee = await EmployeesDBHelper.instance.getById(employeeId);
     return employee;
   }
 
@@ -40,18 +27,7 @@ class AccountController extends GetxController {
     required String password,
   }) async {
     //TODO:
-    employee = Employee(
-        id: 12,
-        firstName: 'محمد',
-        lastName: 'المحمد',
-        fatherName: 'أحمد',
-        motherName: 'لمى',
-        dateOfBirth: DateTime.now(),
-        phoneNumber: '09999999',
-        startDate: DateTime.now(),
-        numberOfChildren: 2,
-        jobTitleId: 1,
-        addressId: 1);
+    await getCredentials(employeeId: 13);
     return true;
   }
 }

@@ -127,18 +127,20 @@ class StudentsDBHelper implements CRUDInterface<Student> {
     }
     student = await insert(student);
     MedicalRecord medicalRecord =
-        registrationInfo.medicalInfo.record.copyWith(id: student.id);
+        registrationInfo.medicalInfo.record.copyWith(studentId: student.id);
     await MedicalRecordsDBHelper.instance.insert(medicalRecord);
     for (Illness illness in registrationInfo.medicalInfo.illnesses) {
       StudentIllnessesDBHelper.instance.insert(StudentIllness(
-          id: -1, medicalRecordId: medicalRecord.id, ilnessId: illness.id));
+          id: -1,
+          medicalRecordId: medicalRecord.studentId,
+          ilnessId: illness.id));
     }
     for (TakenVaccine takenVaccine
         in registrationInfo.medicalInfo.takenVaccines) {
       TakenVaccinesDBHelper.instance.insert(
         TakenVaccine(
             id: -1,
-            medicalRecordId: medicalRecord.id,
+            medicalRecordId: medicalRecord.studentId,
             vaccineId: takenVaccine.vaccineId,
             shotDate: takenVaccine.shotDate),
       );
@@ -149,7 +151,7 @@ class StudentsDBHelper implements CRUDInterface<Student> {
             id: -1,
             studentId: student.id,
             previousSchoolId: registrationInfo.studentPreviousSchool!.id,
-            notes: registrationInfo.studentPreviousSchool!.notes),
+            note: registrationInfo.studentPreviousSchool!.note),
       );
     }
     YearRecordsDBHelper.instance.insert(

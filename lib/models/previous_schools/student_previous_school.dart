@@ -5,25 +5,25 @@ class StudentPreviousSchool {
   int id;
   int studentId;
   int previousSchoolId;
-  String notes;
+  String note;
   StudentPreviousSchool({
     required this.id,
     required this.studentId,
     required this.previousSchoolId,
-    required this.notes,
+    required this.note,
   });
 
   StudentPreviousSchool copyWith({
     int? id,
     int? studentId,
     int? previousSchoolId,
-    String? notes,
+    String? note,
   }) {
     return StudentPreviousSchool(
       id: id ?? this.id,
       studentId: studentId ?? this.studentId,
       previousSchoolId: previousSchoolId ?? this.previousSchoolId,
-      notes: notes ?? this.notes,
+      note: note ?? this.note,
     );
   }
 
@@ -32,7 +32,7 @@ class StudentPreviousSchool {
       'id': id,
       'studentId': studentId,
       'previousSchoolId': previousSchoolId,
-      'notes': notes,
+      'note': note,
     };
   }
 
@@ -41,7 +41,7 @@ class StudentPreviousSchool {
       id: map['id'] as int,
       studentId: map['studentId'] as int,
       previousSchoolId: map['previousSchoolId'] as int,
-      notes: map['notes'] as String,
+      note: map['note'] as String,
     );
   }
 
@@ -53,7 +53,7 @@ class StudentPreviousSchool {
 
   @override
   String toString() {
-    return 'StudentPreviousSchool(id: $id, studentId: $studentId, previousSchoolId: $previousSchoolId, notes: $notes)';
+    return 'StudentPreviousSchool(id: $id, studentId: $studentId, previousSchoolId: $previousSchoolId, note: $note)';
   }
 
   @override
@@ -63,7 +63,7 @@ class StudentPreviousSchool {
     return other.id == id &&
         other.studentId == studentId &&
         other.previousSchoolId == previousSchoolId &&
-        other.notes == notes;
+        other.note == note;
   }
 
   @override
@@ -71,6 +71,6 @@ class StudentPreviousSchool {
     return id.hashCode ^
         studentId.hashCode ^
         previousSchoolId.hashCode ^
-        notes.hashCode;
+        note.hashCode;
   }
 }

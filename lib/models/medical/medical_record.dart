@@ -2,39 +2,39 @@
 import 'dart:convert';
 
 class MedicalRecord {
-  final int id;
-  double studentHeight;
+  final int studentId;
+  double studentHight;
   double studentWeight;
   MedicalRecord({
-    required this.id,
-    required this.studentHeight,
+    required this.studentId,
+    required this.studentHight,
     required this.studentWeight,
   });
 
   MedicalRecord copyWith({
-    int? id,
-    double? studentHeight,
+    int? studentId,
+    double? studentHight,
     double? studentWeight,
   }) {
     return MedicalRecord(
-      id: id ?? this.id,
-      studentHeight: studentHeight ?? this.studentHeight,
+      studentId: studentId ?? this.studentId,
+      studentHight: studentHight ?? this.studentHight,
       studentWeight: studentWeight ?? this.studentWeight,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'studentHeight': studentHeight,
+      'studentId': studentId,
+      'studentHight': studentHight,
       'studentWeight': studentWeight,
     };
   }
 
   factory MedicalRecord.fromMap(Map<String, dynamic> map) {
     return MedicalRecord(
-      id: map['id'] as int,
-      studentHeight: map['studentHeight'] as double,
+      studentId: map['studentId'] as int,
+      studentHight: map['studentHight'] as double,
       studentWeight: map['studentWeight'] as double,
     );
   }
@@ -46,18 +46,18 @@ class MedicalRecord {
 
   @override
   String toString() =>
-      'MedicalRecord(id: $id, studentHeight: $studentHeight, studentWeight: $studentWeight)';
+      'MedicalRecord(studentId: $studentId, studentHight: $studentHight, studentWeight: $studentWeight)';
 
   @override
   bool operator ==(covariant MedicalRecord other) {
     if (identical(this, other)) return true;
 
-    return other.id == id &&
-        other.studentHeight == studentHeight &&
+    return other.studentId == studentId &&
+        other.studentHight == studentHight &&
         other.studentWeight == studentWeight;
   }
 
   @override
   int get hashCode =>
-      id.hashCode ^ studentHeight.hashCode ^ studentWeight.hashCode;
+      studentId.hashCode ^ studentHight.hashCode ^ studentWeight.hashCode;
 }

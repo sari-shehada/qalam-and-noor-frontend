@@ -14,6 +14,8 @@ class HintedTextField extends StatelessWidget {
     this.textColor = Colors.black, //TODO: Change later
     this.hintColor = Colors.grey, //TODO: Change later
     this.inputFormatters,
+    this.obscureText = false,
+    this.suffixIcon,
   });
 
   final String hintText;
@@ -23,10 +25,13 @@ class HintedTextField extends StatelessWidget {
   final Color hintColor;
   final Color textColor;
   final List<TextInputFormatter>? inputFormatters;
+  final bool obscureText;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      obscureText: obscureText,
       inputFormatters: inputFormatters,
       style: TextStyle(
         fontSize: 22.sp,
@@ -51,6 +56,7 @@ class HintedTextField extends StatelessWidget {
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(14.r),
         ),
+        suffixIcon: suffixIcon,
         filled: true,
         //TODO: Change based on seed color
         fillColor: fillColor ?? const Color(0xFFE3E3E3),

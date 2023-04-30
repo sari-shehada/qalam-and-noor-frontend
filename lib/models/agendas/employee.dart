@@ -11,7 +11,7 @@ class Employee {
   final String motherName;
   final bool isMale;
   DateTime dateOfBirth;
-  String phoneNumber;
+  // String phoneNumber;
   DateTime startDate;
   int numberOfChildren;
   int jobTitleId;
@@ -25,7 +25,6 @@ class Employee {
     required this.motherName,
     this.isMale = true,
     required this.dateOfBirth,
-    required this.phoneNumber,
     required this.startDate,
     required this.numberOfChildren,
     required this.jobTitleId,
@@ -54,7 +53,6 @@ class Employee {
     String? motherName,
     bool? isMale,
     DateTime? dateOfBirth,
-    String? phoneNumber,
     DateTime? startDate,
     int? numberOfChildren,
     int? jobTitleId,
@@ -68,7 +66,6 @@ class Employee {
       motherName: motherName ?? this.motherName,
       isMale: isMale ?? this.isMale,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
-      phoneNumber: phoneNumber ?? this.phoneNumber,
       startDate: startDate ?? this.startDate,
       numberOfChildren: numberOfChildren ?? this.numberOfChildren,
       jobTitleId: jobTitleId ?? this.jobTitleId,
@@ -84,9 +81,8 @@ class Employee {
       'fatherName': fatherName,
       'motherName': motherName,
       'isMale': isMale,
-      'dateOfBirth': dateOfBirth.millisecondsSinceEpoch,
-      'phoneNumber': phoneNumber,
-      'startDate': startDate.millisecondsSinceEpoch,
+      'dateOfBirth': dateOfBirth.toIso8601String(),
+      'startDate': startDate.toIso8601String(),
       'numberOfChildren': numberOfChildren,
       'jobTitleId': jobTitleId,
       'addressId': addressId,
@@ -101,10 +97,8 @@ class Employee {
       fatherName: map['fatherName'] as String,
       motherName: map['motherName'] as String,
       isMale: map['isMale'] as bool,
-      dateOfBirth:
-          DateTime.fromMillisecondsSinceEpoch(map['dateOfBirth'] as int),
-      phoneNumber: map['phoneNumber'] as String,
-      startDate: DateTime.fromMillisecondsSinceEpoch(map['startDate'] as int),
+      dateOfBirth: DateTime.parse(map['dateOfBirth']),
+      startDate: DateTime.parse(map['startDate']),
       numberOfChildren: map['numberOfChildren'] as int,
       jobTitleId: map['jobTitleId'] as int,
       addressId: map['addressId'] as int,
@@ -118,7 +112,7 @@ class Employee {
 
   @override
   String toString() {
-    return 'Employee(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, isMale: $isMale, dateOfBirth: $dateOfBirth, phoneNumber: $phoneNumber, startDate: $startDate, numberOfChildren: $numberOfChildren, jobTitleId: $jobTitleId, addressId: $addressId)';
+    return 'Employee(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, isMale: $isMale, dateOfBirth: $dateOfBirth, startDate: $startDate, numberOfChildren: $numberOfChildren, jobTitleId: $jobTitleId, addressId: $addressId)';
   }
 
   @override
@@ -132,7 +126,6 @@ class Employee {
         other.motherName == motherName &&
         other.isMale == isMale &&
         other.dateOfBirth == dateOfBirth &&
-        other.phoneNumber == phoneNumber &&
         other.startDate == startDate &&
         other.numberOfChildren == numberOfChildren &&
         other.jobTitleId == jobTitleId &&
@@ -148,7 +141,6 @@ class Employee {
         motherName.hashCode ^
         isMale.hashCode ^
         dateOfBirth.hashCode ^
-        phoneNumber.hashCode ^
         startDate.hashCode ^
         numberOfChildren.hashCode ^
         jobTitleId.hashCode ^
