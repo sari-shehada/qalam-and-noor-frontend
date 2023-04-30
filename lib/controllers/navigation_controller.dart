@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/pages/illnesses_management_page/controllers/illness_management_controller.dart';
@@ -24,6 +23,7 @@ import '../pages/medicals_management/views/medicals_management_page.dart';
 
 import '../pages/login_page/controllers/login_page_bindings.dart';
 import '../pages/statistics_page/views/stats_page.dart';
+import '../pages/student_display_page/views/students_display.dart';
 import '../pages/vaccines_management_page/controllers/vaccines_management_controller.dart';
 
 class NavigationController {
@@ -40,7 +40,6 @@ class NavigationController {
     Get.offAll(
       () => const NavigationPage(),
       binding: NavigationBindings(
-        employee: employee,
         railDestinations: [
           NavigationRailDestinationCard(
             title: 'لوحة التحكم',
@@ -68,9 +67,14 @@ class NavigationController {
             destination: const AddressesManagementPage(),
           ),
           NavigationRailDestinationCard(
+            title: 'إدارة الطلاب',
+            iconData: FontAwesomeIcons.person,
+            destination: const StudentsDisplayPage(),
+          ),
+          NavigationRailDestinationCard(
             title: 'إحصائيات',
             //TODO:
-            iconData: FontAwesomeIcons.home,
+            iconData: FontAwesomeIcons.chartPie,
             destination: const StatsPage(),
           ),
           NavigationRailDestinationCard(
