@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/school_classes_management_page/courses_management/controllers/courses_management_controller.dart';
+import 'package:kalam_noor/pages/school_classes_management_page/courses_management/views/courses_management_page.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/main_page/controllers/school_classes_management_controller.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/school_classes_detailes_page/controllers/school_class_details_controller.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/school_classes_detailes_page/views/school_class_details_page.dart';
@@ -51,8 +53,20 @@ class SchoolClassRow extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
-                        onPressed: () =>
-                            controller.updateSchoolClassInfo(schoolClass),
+                        onPressed: () {
+                          Get.to(
+                            const CoursesManagementPage(),
+                            binding: BindingsBuilder(
+                              () {
+                                Get.put(
+                                  CoursesManagementController(
+                                    schoolClass: schoolClass,
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                        },
                         tooltip: 'إدارة المقررات في الصف',
                         icon: Icon(
                           Icons.book,
@@ -76,8 +90,10 @@ class SchoolClassRow extends StatelessWidget {
                           const SchoolClassDetailsPage(),
                           binding: BindingsBuilder(
                             () {
-                              Get.put(SchoolClassDetailsController(
-                                  schoolClass: schoolClass));
+                              Get.put(
+                                SchoolClassDetailsController(
+                                    schoolClass: schoolClass),
+                              );
                             },
                           ),
                         ),

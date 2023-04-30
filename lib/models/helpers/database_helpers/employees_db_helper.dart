@@ -23,6 +23,22 @@ class EmployeesDBHelper implements CRUDInterface<Employee> {
     return allEmployees;
   }
 
+  Future<List<Employee>> getAllTeachers() async {
+    String url = '${_controllerName}GetTeachers';
+    List<Employee> allTeachers =
+        await HttpService.getParsed<List<Employee>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return Employee.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allTeachers;
+  }
+
   @override
   Future<Employee> getById(int id) async {
     String url = '${_controllerName}GetEmployeeById?id=$id';
