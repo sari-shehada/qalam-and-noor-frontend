@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 
 class CityStatsCard extends StatelessWidget {
   const CityStatsCard({
@@ -40,7 +41,7 @@ class CityStatsCard extends StatelessWidget {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(
-                    child: CircularProgressIndicator(),
+                    child: LoaderWidget(),
                   );
                 } else {
                   if (snapshot.hasData) {

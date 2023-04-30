@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_drop_down_menu.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
+import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
 import '../../../../models/address/area.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
@@ -89,7 +90,7 @@ class CityDetailsPage extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: LoaderWidget(),
               );
             }
             if (snapshot.hasError) {

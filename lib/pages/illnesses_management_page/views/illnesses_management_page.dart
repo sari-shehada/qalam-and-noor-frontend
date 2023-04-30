@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/medical/illness.dart';
 import 'package:kalam_noor/pages/illnesses_management_page/views/widgets/illnesses_table.dart';
+import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import '../../../tools/ui_tools/buttons.dart';
 import '../../../tools/ui_tools/custom_appbar.dart';
 import '../../../tools/ui_tools/custom_drop_down_menu.dart';
@@ -97,7 +98,7 @@ class IllnessesManagementPage extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
-                        child: CircularProgressIndicator(),
+                        child: LoaderWidget(),
                       );
                     }
                     if (snapshot.hasError) {

@@ -5,6 +5,7 @@ import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/models/medical/illness.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
+import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
 import '../../controllers/widget_controllers/student_illnesses_info_sub_widget_controller.dart';
@@ -21,7 +22,7 @@ class StudentIllnessesInfoSubWidget extends StatelessWidget {
         future: controller.illnesses.value,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: LoaderWidget());
           } else {
             if (snapshot.hasError) {
               return Column(

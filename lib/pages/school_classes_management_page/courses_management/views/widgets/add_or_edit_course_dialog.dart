@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/courses_management/controllers/dialog_controllers/add_or_edit_course_dialog_controller.dart';
+import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import '../../../../../configs/fonts.dart';
 import '../../../../../models/agendas/employee.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
@@ -74,7 +75,7 @@ class AddOrEditCourseDialog extends StatelessWidget {
                         padding: EdgeInsetsDirectional.only(end: 20.w),
                         child: Obx(
                           () => controller.isProcessing.value
-                              ? const CircularProgressIndicator()
+                              ? const LoaderWidget()
                               : DropdownButton<Employee>(
                                   value: controller.selectedTeacher.value,
                                   onChanged: (value) =>

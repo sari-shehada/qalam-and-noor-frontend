@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/main_page/controllers/school_classes_management_controller.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/school_classes_detailes_page/views/widgets/classroom_table.dart';
+import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import '../../../../models/educational/classroom.dart';
 import '../../../../tools/ui_tools/buttons.dart';
 import '../../../../tools/ui_tools/custom_appbar.dart';
@@ -101,7 +102,7 @@ class SchoolClassDetailsPage extends StatelessWidget {
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
-                          child: CircularProgressIndicator(),
+                          child: LoaderWidget(),
                         );
                       }
                       if (snapshot.hasError) {

@@ -8,6 +8,7 @@ import 'package:kalam_noor/pages/addresses_management/main_page/views/widgets/ci
 import 'package:kalam_noor/pages/addresses_management/main_page/views/widgets/numeric_stats_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_drop_down_menu.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
+import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
 import '../../../../models/address/city.dart';
@@ -199,7 +200,7 @@ class AddressesManagementPage extends StatelessWidget {
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
-                          child: CircularProgressIndicator(),
+                          child: LoaderWidget(),
                         );
                       }
                       if (snapshot.hasError) {

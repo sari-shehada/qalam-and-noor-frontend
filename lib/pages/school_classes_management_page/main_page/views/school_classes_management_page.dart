@@ -6,6 +6,7 @@ import 'package:kalam_noor/pages/school_classes_management_page/main_page/contro
 import 'package:kalam_noor/pages/school_classes_management_page/main_page/views/widgets/classes_table.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_drop_down_menu.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
+import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
 import '../../../../../tools/ui_tools/labeled_widget.dart';
@@ -99,7 +100,7 @@ class SchoolClassesManagementPage extends StatelessWidget {
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
-                          child: CircularProgressIndicator(),
+                          child: LoaderWidget(),
                         );
                       }
                       if (snapshot.hasError) {

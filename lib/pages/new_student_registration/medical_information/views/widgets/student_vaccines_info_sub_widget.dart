@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/models/medical/vaccine.dart';
 import 'package:kalam_noor/pages/new_student_registration/medical_information/controllers/widget_controllers/student_vaccines_info_sub_widget_controller.dart';
 import 'package:kalam_noor/tools/logic_tools/datetime_helper.dart';
+import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 
 import '../../../../../configs/fonts.dart';
 import '../../../../../configs/styles.dart';
@@ -22,7 +23,7 @@ class StudentVaccinesInfoSubWidget extends StatelessWidget {
         future: controller.vaccines.value,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: LoaderWidget());
           } else {
             if (snapshot.hasError) {
               return Column(

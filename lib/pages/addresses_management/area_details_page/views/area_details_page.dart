@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../../../../models/address/address.dart';
 import '../../../../tools/ui_tools/custom_drop_down_menu.dart';
+import '../../../../tools/ui_tools/loader_widget.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
 import '../../../../tools/widgets/empty_item_widget.dart';
 import '../../main_page/controllers/address_management_controller.dart';
@@ -87,7 +88,7 @@ class AreaDetailsPage extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(
-                  child: CircularProgressIndicator(),
+                  child: LoaderWidget(),
                 );
               }
               if (snapshot.hasError) {

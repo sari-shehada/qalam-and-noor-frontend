@@ -7,6 +7,7 @@ import 'package:kalam_noor/pages/vaccines_management_page/views/widgets/vaccines
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
+import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
 import '../../../tools/ui_tools/custom_drop_down_menu.dart';
 import '../../../tools/ui_tools/labeled_widget.dart';
@@ -94,7 +95,7 @@ class VaccinesManagementPage extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
-                        child: CircularProgressIndicator(),
+                        child: LoaderWidget(),
                       );
                     }
                     if (snapshot.hasError) {
