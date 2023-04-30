@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/controllers/navigation_controller.dart';
 import 'package:kalam_noor/models/agendas/student.dart';
 import 'package:kalam_noor/pages/new_student_registration/main_page/views/new_student_registration_page.dart';
 import 'package:kalam_noor/pages/student_display_page/controllers/students_display_controller.dart';
@@ -30,14 +31,7 @@ class StudentsDisplayPage extends StatelessWidget {
       floatingActionButton: CustomFilledButton(
         height: 74.h,
         width: 300.w,
-        onTap: () {
-          Get.to(
-            const NewStudentRegistrationPage(),
-            binding: BindingsBuilder.put(
-              () => NewStudentRegistrationController(),
-            ),
-          );
-        },
+        onTap: () => NavigationController.toAddNewStudentPage(),
         child: Center(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 40.w),

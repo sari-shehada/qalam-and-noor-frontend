@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import '../../configs/fonts.dart';
 
 import '../../configs/project_themes.dart';
@@ -109,9 +110,9 @@ class CustomFilledButton extends StatelessWidget {
                   return Center(
                     child: SizedBox.square(
                       dimension: 30.h,
-                      child: CircularProgressIndicator(
+                      child: LoaderWidget(
                         color: loadingColor,
-                        strokeWidth: 4.sp,
+                        size: 30.h,
                       ),
                     ),
                   );

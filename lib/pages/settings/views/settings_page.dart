@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 
-import '../../../configs/project_themes.dart';
-import '../../../configs/styles.dart';
 import '../../../controllers/account_controller.dart';
-import '../../../tools/ui_tools/ui_tools.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -15,83 +13,69 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AccountController accountController = Get.find();
+    final ThemeData themeData = Get.theme;
+    final ColorScheme colorScheme = themeData.colorScheme;
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: 'الملف الشخصي',
         iconData: FontAwesomeIcons.gear,
         backButtonEnabled: true,
+        actionButton: CustomTintedButton(
+          width: 200.w,
+          onTap: () => Get.find<AccountController>().logout(),
+          child: 'تسجيل الخروج',
+          foregroundColor: colorScheme.error,
+          backgroundColor: colorScheme.errorContainer,
+        ),
       ),
       body: SizedBox.expand(
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 50.h, horizontal: 50.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AddVerticalSpacing(value: 30.h),
-              Row(
+        child: Column(
+          children: [
+            Container(
+              height: 300.h,
+              decoration: BoxDecoration(
+                color: themeData.scaffoldBackgroundColor,
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 20.h),
+                    blurRadius: 12,
+                    color: colorScheme.primary.withOpacity(.09),
+                  ),
+                ],
+              ),
+              padding: EdgeInsetsDirectional.only(
+                top: 30.h,
+                bottom: 30.h,
+                start: 120.w,
+                end: 30.w,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CircleAvatar(
-                    radius: 120.r,
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0.h),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0, 2),
+                          blurRadius: 20,
+                          color: Colors.black.withOpacity(.06),
+                        ),
+                      ],
+                    ),
+                    padding: EdgeInsets.all(8.0.h),
+                    child: ClipOval(
                       child: Image.asset(
-                        accountController.employee
-                            .getAvatarImage(circular: true),
-                        height: 300.h,
-                        width: 300.h,
+                        accountController.employee.getAvatarImage(),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                 ],
               ),
-              const Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    height: 58.h,
-                    width: 200.w,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          color: lightColorScheme.tertiary, width: 2.w),
-                      borderRadius: BorderRadius.circular(
-                          GlobalStyles.globalBorderRadius),
-                    ),
-                    child: Material(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(
-                          GlobalStyles.globalBorderRadius),
-                      child: InkWell(
-                        onTap: () => accountController.logout(),
-                        borderRadius: BorderRadius.circular(
-                            GlobalStyles.globalBorderRadius),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'تسجيل الخروج',
-                                style: TextStyle(
-                                    fontSize: 16.sp,
-                                    color: lightColorScheme.tertiary),
-                              ),
-                              AddHorizontalSpacing(value: 20.w),
-                              FaIcon(
-                                FontAwesomeIcons.doorOpen,
-                                color: lightColorScheme.tertiary,
-                                size: 25.sp,
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              )
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
