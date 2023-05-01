@@ -8,8 +8,8 @@ import '../../main_page/controllers/school_classes_management_controller.dart';
 class CoursesManagementController extends GetxController {
   final SchoolClass schoolClass;
   late Rx<Future<List<Course>>> courses;
-  Rx<SchoolClassesSortingOption> currentSortingOption =
-      SchoolClassesSortingOption.none.obs;
+  Rx<SchoolCoursesSortingOption> currentSortingOption =
+      SchoolCoursesSortingOption.none.obs;
 
   CoursesManagementController({
     required this.schoolClass,
@@ -17,7 +17,7 @@ class CoursesManagementController extends GetxController {
     courses = getCoursesInClass().obs;
   }
 
-  void changeSortingOption(SchoolClassesSortingOption? sortingOption) {
+  void changeSortingOption(SchoolCoursesSortingOption? sortingOption) {
     currentSortingOption.value = sortingOption ?? currentSortingOption.value;
     courses.value = getCoursesInClass();
   }
@@ -26,20 +26,50 @@ class CoursesManagementController extends GetxController {
     List<Course> newCourses =
         await CoursesDBHelper.instance.getCoursesByClassId(schoolClass.id);
     switch (currentSortingOption.value) {
-      case SchoolClassesSortingOption.none:
+      case SchoolCoursesSortingOption.none:
         return newCourses;
-      case SchoolClassesSortingOption.byNameAsc:
+      case SchoolCoursesSortingOption.byMaxGradeAsc:
         {
           newCourses.sort(
-            (a, b) => a.name.compareTo(b.name),
+            (a, b) => a.totalGrade.compareTo(b.totalGrade),
           );
           return newCourses;
         }
-      case SchoolClassesSortingOption.byNameDesc:
+      case SchoolCoursesSortingOption.byMaxGradeDesc:
         {
           newCourses.sort(
-            (a, b) => b.name.compareTo(a.name),
+            (a, b) => b.totalGrade.compareTo(a.totalGrade),
           );
+          return newCourses;
+        }
+      case SchoolCoursesSortingOption.byTypeAsc:
+        {
+          List<Course> courses = [];
+          courses = newCourses
+              .where(
+                (element) => element.isEnriching == false,
+              )
+              .toList();
+          courses.addAll(
+            newCourses.where((element) => element.isEnriching == true),
+          );
+          newCourses = courses;
+          return newCourses;
+        }
+      case SchoolCoursesSortingOption.byTypeDesc:
+        {
+          List<Course> courses = [];
+          courses = newCourses
+              .where(
+                (element) => element.isEnriching == true,
+              )
+              .toList();
+          courses.addAll(
+            newCourses.where(
+              (element) => element.isEnriching == false,
+            ),
+          );
+          newCourses = courses;
           return newCourses;
         }
     }
@@ -69,3 +99,19 @@ class CoursesManagementController extends GetxController {
     }
   }
 }
+
+enum SchoolCoursesSortingOption {
+  none,
+  byMaxGradeAsc,
+  byMaxGradeDesc,
+  byTypeAsc,
+  byTypeDesc,
+}
+
+Map<SchoolCoursesSortingOption, String> schoolCoursesSortingOptionAsString = {
+  SchoolCoursesSortingOption.none: 'دون ترتيب',
+  SchoolCoursesSortingOption.byMaxGradeAsc: 'حسب علامة المقرر تصاعدياً',
+  SchoolCoursesSortingOption.byMaxGradeDesc: 'حسب علامة المقرر تنازلياً',
+  SchoolCoursesSortingOption.byTypeAsc: 'حسب نوع المقرر تصاعدياً',
+  SchoolCoursesSortingOption.byTypeDesc: 'حسب نوع المقرر تنازلياً',
+};

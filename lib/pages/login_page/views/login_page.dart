@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/configs/fonts.dart';
 import '../../../tools/ui_tools/labeled_widget.dart';
 import '../controllers/login_page_controller.dart';
 import '../../../tools/ui_tools/text_fields.dart';
@@ -16,7 +17,6 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Get.theme;
     final ColorScheme colorScheme = themeData.colorScheme;
-    final TextTheme textTheme = themeData.textTheme;
     LoginPageController loginPageController = Get.find();
     return Scaffold(
       body: Center(
@@ -49,7 +49,7 @@ class LoginPage extends StatelessWidget {
                     const AddVerticalSpacing(value: 60),
                     Text(
                       'قلم و نور',
-                      style: textTheme.displayMedium,
+                      style: ProjectFonts.displayMedium(),
                     )
                   ],
                 ),
@@ -69,7 +69,7 @@ class LoginPage extends StatelessWidget {
                   children: [
                     LabeledWidget(
                       label: 'اسم المستخدم',
-                      labelTextStyle: textTheme.titleMedium!
+                      labelTextStyle: ProjectFonts.titleMedium()
                           .copyWith(color: colorScheme.onPrimary),
                       child: HintedTextField(
                         hintText: '',
@@ -80,9 +80,8 @@ class LoginPage extends StatelessWidget {
                     AddVerticalSpacing(value: 25.h),
                     LabeledWidget(
                       label: 'كلمة السر',
-                      labelTextStyle: textTheme.titleMedium!.copyWith(
-                        color: colorScheme.onPrimary,
-                      ),
+                      labelTextStyle: ProjectFonts.titleMedium()
+                          .copyWith(color: colorScheme.onPrimary),
                       child: Obx(
                         () => HintedTextField(
                           hintText: '',

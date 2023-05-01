@@ -75,7 +75,9 @@ class AddOrEditCourseDialog extends StatelessWidget {
                         padding: EdgeInsetsDirectional.only(end: 20.w),
                         child: Obx(
                           () => controller.isProcessing.value
-                              ? const LoaderWidget()
+                              ? LoaderWidget(
+                                  size: 30.sp,
+                                )
                               : DropdownButton<Employee>(
                                   value: controller.selectedTeacher.value,
                                   onChanged: (value) =>

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/models/educational/course.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/courses_management/controllers/courses_management_controller.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/courses_management/views/widgets/courses_table.dart';
+import 'package:kalam_noor/tools/ui_tools/labeled_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import '../../../../tools/ui_tools/buttons.dart';
 import '../../../../tools/ui_tools/custom_appbar.dart';
@@ -67,58 +70,67 @@ class CoursesManagementPage extends StatelessWidget {
               style: textTheme.titleLarge,
             ),
             AddHorizontalSpacing(value: 25.w),
-            CustomDropDownButton<SchoolClassesSortingOption>(
+            CustomDropDownButton<SchoolCoursesSortingOption>(
               dropdownColor: colorScheme.primaryContainer,
               textStyle: textTheme.titleMedium,
               backgroundColor: colorScheme.primaryContainer,
               value: controller.currentSortingOption,
-              items: SchoolClassesSortingOption.values
-                  .map((e) => DropdownMenuItem<SchoolClassesSortingOption>(
+              items: SchoolCoursesSortingOption.values
+                  .map((e) => DropdownMenuItem<SchoolCoursesSortingOption>(
                       value: e,
-                      child: Text(schoolClassesSortingOptionsAsString[e]!)))
+                      child: Text(schoolCoursesSortingOptionAsString[e]!)))
                   .toList(),
-              onChanged: (SchoolClassesSortingOption? value) =>
+              onChanged: (SchoolCoursesSortingOption? value) =>
                   controller.changeSortingOption(value),
             ),
           ],
         ),
       ),
       body: Obx(
-        () => FutureBuilder(
-          future: controller.courses.value,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: LoaderWidget(),
-              );
-            }
-            if (snapshot.hasError) {
-              return const Center(
-                //TODO: Change later
-                child: Text('Error Loading Courses'),
-              );
-            }
-            if (snapshot.hasData) {
-              if (snapshot.data!.isEmpty) {
-                return const EmptyItemWidget(
-                  itemName: 'مواد',
-                  iconData: FontAwesomeIcons.mapLocationDot,
-                );
-              } else {
-                List<Course> courses = snapshot.data as List<Course>;
-                return Expanded(
-                  child: CoursesTable(
-                    courses: courses,
+        () => LabeledWidget(
+          label: 'المقررات في الصف ${controller.schoolClass.name}',
+          labelTextStyle: TextStyle(
+            fontSize: 30.sp,
+          ),
+          spacing: 25.h,
+          child: FutureBuilder(
+            future: controller.courses.value,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Expanded(
+                  child: Center(
+                    child: LoaderWidget(),
                   ),
                 );
               }
-            } else {
-              return const EmptyItemWidget(
-                itemName: 'مواد',
-                iconData: FontAwesomeIcons.mapLocation,
-              );
-            }
-          },
+              if (snapshot.hasError) {
+                return Center(
+                  //TODO: Change later
+                  child: Text('Error Loading Courses'),
+                );
+              }
+              if (snapshot.hasData) {
+                if (snapshot.data!.isEmpty) {
+                  return const EmptyItemWidget(
+                    itemName: 'مواد',
+                    iconData: FontAwesomeIcons.mapLocationDot,
+                  );
+                } else {
+                  List<Course> courses = snapshot.data as List<Course>;
+                  return Expanded(
+                    child: CoursesTable(
+                      courses: courses,
+                    ),
+                  );
+                }
+              } else {
+                return const EmptyItemWidget(
+                  itemName: 'مواد',
+                  iconData: FontAwesomeIcons.mapLocation,
+                );
+              }
+            },
+          ),
         ),
       ),
     );

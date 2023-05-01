@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/educational/course.dart';
@@ -13,96 +14,94 @@ class CoursesTable extends StatelessWidget {
     final ThemeData themeData = Get.theme;
     final ColorScheme colorScheme = themeData.colorScheme;
     final TextTheme textTheme = themeData.textTheme;
-    return Scaffold(
-      body: SizedBox.expand(
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: colorScheme.primaryContainer,
-                border: Border.all(color: colorScheme.primary),
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(15.r),
-                  topLeft: Radius.circular(15.r),
-                ),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 7,
-                    child: Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(
-                          vertical: 20.h, horizontal: 20.w),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          left: BorderSide(color: colorScheme.primary),
-                        ),
-                      ),
-                      child: Text(
-                        'إسم المقرر ',
-                        style: textTheme.titleLarge,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(
-                          vertical: 20.h, horizontal: 20.w),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          left: BorderSide(color: colorScheme.primary),
-                        ),
-                      ),
-                      child: Text(
-                        'الدرجة الكلية',
-                        style: textTheme.titleLarge,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(
-                          vertical: 20.h, horizontal: 20.w),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          left: BorderSide(color: colorScheme.primary),
-                        ),
-                      ),
-                      child: Text(
-                        'مقرر إجباري؟',
-                        style: textTheme.titleLarge,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(
-                          vertical: 15.h, horizontal: 20.w),
-                      child: Text(
-                        'الاجراءات',
-                        textAlign: TextAlign.center,
-                        style: textTheme.titleLarge,
-                      ),
-                    ),
-                  ),
-                ],
+    return SizedBox.expand(
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: colorScheme.primaryContainer,
+              border: Border.all(color: colorScheme.primary),
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(15.r),
+                topLeft: Radius.circular(15.r),
               ),
             ),
-            Expanded(
-              child: ListView.builder(
-                padding: EdgeInsets.only(bottom: 100.h),
-                itemCount: courses.length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 7,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        left: BorderSide(color: colorScheme.primary),
+                      ),
+                    ),
+                    child: Text(
+                      'إسم المقرر ',
+                      style: textTheme.titleLarge,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        left: BorderSide(color: colorScheme.primary),
+                      ),
+                    ),
+                    child: Text(
+                      'الدرجة الكلية',
+                      style: textTheme.titleLarge,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        left: BorderSide(color: colorScheme.primary),
+                      ),
+                    ),
+                    child: Text(
+                      'نوع المقرر',
+                      style: textTheme.titleLarge,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
+                    child: Text(
+                      'الاجراءات',
+                      textAlign: TextAlign.center,
+                      style: textTheme.titleLarge,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Column(
+              children: List.generate(
+                courses.length,
+                (index) {
                   Color rowColor = index % 2 == 0
                       ? Colors.white
                       : Get.theme.colorScheme.primaryContainer.withOpacity(.2);
@@ -111,10 +110,16 @@ class CoursesTable extends StatelessWidget {
                     rowColor: rowColor,
                   );
                 },
-              ),
-            )
-          ],
-        ),
+              )
+                  .animate(
+                    interval: const Duration(milliseconds: 15),
+                  )
+                  .fade(
+                    duration: const Duration(milliseconds: 200),
+                  ),
+            ),
+          )
+        ],
       ),
     );
   }

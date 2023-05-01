@@ -101,8 +101,10 @@ class SchoolClassDetailsPage extends StatelessWidget {
                     future: controller.classrooms.value,
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: LoaderWidget(),
+                        return const Expanded(
+                          child: Center(
+                            child: LoaderWidget(),
+                          ),
                         );
                       }
                       if (snapshot.hasError) {

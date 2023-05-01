@@ -62,7 +62,7 @@ class CourseRow extends StatelessWidget {
                   padding:
                       EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
                   child: Text(
-                    course.isEnriching ? 'لا' : 'نعم',
+                    course.isEnriching ? 'إثرائي' : 'الزامي',
                     style: textTheme.titleLarge!
                         .copyWith(fontWeight: FontWeight.normal),
                   ),
