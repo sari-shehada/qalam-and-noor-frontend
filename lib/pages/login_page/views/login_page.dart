@@ -83,20 +83,34 @@ class LoginPage extends StatelessWidget {
                       labelTextStyle: ProjectFonts.titleMedium()
                           .copyWith(color: colorScheme.onPrimary),
                       child: Obx(
-                        () => HintedTextField(
-                          hintText: '',
-                          controller: loginPageController.passwordField,
-                          fillColor: const Color(0xFFBACCE2),
-                          obscureText: loginPageController.obscureText.value,
-                          suffixIcon: InkWell(
-                            onTap: () =>
-                                loginPageController.toggleObscureText(),
-                            child: Icon(
-                              loginPageController.obscureText.value
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
+                        () => Stack(
+                          children: [
+                            HintedTextField(
+                              hintText: '',
+                              controller: loginPageController.passwordField,
+                              fillColor: const Color(0xFFBACCE2),
+                              obscureText:
+                                  loginPageController.obscureText.value,
                             ),
-                          ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.only(
+                                end: 22.w,
+                                top: 17.h,
+                              ),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: InkWell(
+                                  onTap: () =>
+                                      loginPageController.toggleObscureText(),
+                                  child: Icon(
+                                    loginPageController.obscureText.value
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                     ),

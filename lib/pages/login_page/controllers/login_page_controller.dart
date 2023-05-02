@@ -44,7 +44,7 @@ class LoginPageController extends GetxController {
         password: passwordField.text,
       );
       if (loginResult == true) {
-        NavigationController.toDashboard(controller.employee);
+        NavigationController.toDashboard();
         SharedPrefsHelper.instance.saveLoginData(controller.employee.id);
       }
     }

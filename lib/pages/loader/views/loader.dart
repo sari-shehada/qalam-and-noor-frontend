@@ -17,9 +17,9 @@ class LoaderPage extends StatefulWidget {
 class _LoaderPageState extends State<LoaderPage> {
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       LoaderController loaderController = Get.find();
-      loaderController.loadApplication();
+      await loaderController.loadApplication();
       loaderController.dispose();
     });
     return Scaffold(

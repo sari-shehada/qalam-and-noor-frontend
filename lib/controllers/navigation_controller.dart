@@ -13,7 +13,6 @@ import '../pages/new_student_registration/main_page/views/new_student_registrati
 import '../pages/psychological_statuses_management_page/views/psychological_statuses_management_page.dart';
 import '../pages/school_classes_management_page/main_page/views/school_classes_management_page.dart';
 import '../pages/school_year_management/views/school_year_management_page.dart';
-import '../models/agendas/employee.dart';
 import '../pages/dashboard/views/dashboard_page.dart';
 
 import '../pages/navigation_page/controllers/navigation_bindings.dart';
@@ -32,14 +31,16 @@ class NavigationController {
     Get.offAll(
       () => const LoginPage(),
       binding: LoginPageBindings(),
+      routeName: 'login',
       transition: Transition.fadeIn,
       duration: const Duration(milliseconds: 800),
     );
   }
 
-  static void toDashboard(Employee employee) {
+  static void toDashboard() {
     Get.offAll(
       () => const NavigationPage(),
+      routeName: 'dashboard',
       binding: NavigationBindings(
         railDestinations: [
           NavigationRailDestinationCard(

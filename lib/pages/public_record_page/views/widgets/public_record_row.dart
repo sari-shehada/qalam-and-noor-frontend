@@ -14,7 +14,7 @@ class PublicRecordRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70.h,
+      // height: 70.h,
       child: Container(
         color: rowColor,
         child: Material(

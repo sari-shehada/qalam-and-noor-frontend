@@ -17,7 +17,7 @@ class LoaderController extends GetxController {
     int employeeId = await SharedPrefsHelper.instance.getLoginData();
     final Employee employee = await Get.find<AccountController>()
         .getCredentials(employeeId: employeeId);
-    NavigationController.toDashboard(employee);
+    NavigationController.toDashboard();
     return;
   }
 }
