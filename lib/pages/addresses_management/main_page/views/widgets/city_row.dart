@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/models/address/city.dart';
 
 import '../../../city_details_page/controllers/city_details_controller.dart';
@@ -19,9 +20,6 @@ class CityRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AddressManagementController controller = Get.find();
-    final ThemeData themeData = Get.theme;
-    final ColorScheme colorScheme = themeData.colorScheme;
-    final TextTheme textTheme = themeData.textTheme;
     return SizedBox(
       height: 70.h,
       child: Container(
@@ -44,7 +42,7 @@ class CityRow extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: Text(
                       city.name,
-                      style: textTheme.titleMedium!
+                      style: ProjectFonts.titleMedium()
                           .copyWith(fontWeight: FontWeight.normal),
                     ),
                   ),

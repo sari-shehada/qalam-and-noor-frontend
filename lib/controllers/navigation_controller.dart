@@ -4,6 +4,7 @@ import 'package:kalam_noor/pages/illnesses_management_page/controllers/illness_m
 import 'package:kalam_noor/pages/illnesses_management_page/views/illnesses_management_page.dart';
 import 'package:kalam_noor/pages/new_student_registration/main_page/controllers/new_student_registration_bindings.dart';
 import 'package:kalam_noor/pages/psychological_statuses_management_page/controllers/psychological_statuses_management_controller.dart';
+import 'package:kalam_noor/pages/public_record_page/views/public_record_page.dart';
 import 'package:kalam_noor/pages/school_inbox_page/views/school_inbox_page.dart';
 import 'package:kalam_noor/pages/vaccines_management_page/views/vaccines_management_page.dart';
 import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
@@ -70,6 +71,11 @@ class NavigationController {
             title: 'إدارة الطلاب',
             iconData: FontAwesomeIcons.person,
             destination: const StudentsDisplayPage(),
+          ),
+          NavigationRailDestinationCard(
+            title: 'السجل العام',
+            iconData: FontAwesomeIcons.sheetPlastic,
+            destination: const PublicRecordPage(),
           ),
           NavigationRailDestinationCard(
             title: 'إحصائيات',
