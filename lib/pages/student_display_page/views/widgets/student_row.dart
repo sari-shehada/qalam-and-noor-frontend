@@ -11,7 +11,7 @@ class StudentRow extends StatelessWidget {
   final Color rowColor;
   @override
   Widget build(BuildContext context) {
-    StudentsDisplayController controller = Get.find();
+    StudentsManagementController controller = Get.find();
     final ThemeData themeData = Get.theme;
     final TextTheme textTheme = themeData.textTheme;
     return SizedBox(

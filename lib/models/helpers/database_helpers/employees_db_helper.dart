@@ -1,6 +1,7 @@
 import 'package:kalam_noor/models/agendas/employee.dart';
 import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
+import '../../agendas/job_title.dart';
 
 class EmployeesDBHelper implements CRUDInterface<Employee> {
   String get _controllerName => 'EmployeeController/';
@@ -37,6 +38,23 @@ class EmployeesDBHelper implements CRUDInterface<Employee> {
       },
     );
     return allTeachers;
+  }
+
+  Future<List<Employee>> getAllByJobTitleId(JobTitle jobTitle) async {
+    String url =
+        '${_controllerName}GetEmployeesByJobTitleId?jobTitleId=${jobTitle.id}';
+    List<Employee> employees =
+        await HttpService.getParsed<List<Employee>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return Employee.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return employees;
   }
 
   @override

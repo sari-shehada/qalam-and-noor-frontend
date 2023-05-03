@@ -47,6 +47,9 @@ class StudentPersonalInfoController extends GetxController {
         if (controller.text.isEmpty) {
           return 'يرجى ملء حقل رقم الهاتف';
         }
+        if (controller.text.length != 10) {
+          return 'رقم الهاتف لا يطابق البنية الصحيحة لأرقام الهواتف في سوريا';
+        }
         return null;
       });
   ValidationTextField whatsappNumberController = ValidationTextField(
@@ -58,13 +61,14 @@ class StudentPersonalInfoController extends GetxController {
         return null;
       });
   ValidationTextField landlineController = ValidationTextField(
-      controller: TextEditingController(),
-      validator: (controller) {
-        if (controller.text.isEmpty) {
-          return 'يرجى ملء حقل الهاتف الأرضي';
-        }
-        return null;
-      });
+    controller: TextEditingController(),
+    validator: (controller) {
+      if (controller.text.isEmpty) {
+        return 'يرجى ملء حقل الهاتف الأرضي';
+      }
+      return null;
+    },
+  );
 
   Rx<DateTime?> dateOfBirth = Rx<DateTime?>(null);
   Rx<DateTime?> dateOfIncident = Rx<DateTime?>(null);

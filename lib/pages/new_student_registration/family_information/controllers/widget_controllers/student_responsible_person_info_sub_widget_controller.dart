@@ -57,6 +57,9 @@ class StudentResponsiblePersonInfoSubWidgetController extends GetxController {
           //TODO:
           return 'الرجاء ملئ حقل ...';
         }
+        if (controller.text.length != 10) {
+          return 'رقم الهاتف لا يطابق البنية الصحيحة لأرقام الهواتف في سوريا';
+        }
         return null;
       });
 

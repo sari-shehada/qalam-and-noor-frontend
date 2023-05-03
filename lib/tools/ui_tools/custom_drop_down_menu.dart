@@ -13,6 +13,7 @@ class CustomDropDownButton<T> extends StatelessWidget {
     this.onChanged,
     this.isExpanded = false,
     this.isDense = true,
+    this.hint,
   });
 
   final Color? backgroundColor;
@@ -23,6 +24,7 @@ class CustomDropDownButton<T> extends StatelessWidget {
   final void Function(T?)? onChanged;
   final bool isExpanded;
   final bool isDense;
+  final String? hint;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,6 +47,7 @@ class CustomDropDownButton<T> extends StatelessWidget {
             value: value.value,
             items: items,
             onChanged: onChanged,
+            hint: hint == null ? null : Text(hint!),
           );
         },
       ),

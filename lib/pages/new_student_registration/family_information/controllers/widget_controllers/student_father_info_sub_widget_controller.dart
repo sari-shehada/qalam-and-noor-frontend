@@ -95,9 +95,9 @@ class StudentFatherInfoSubWidgetController extends GetxController {
         if (controller.text.isEmpty) {
           return 'الرجاء ملئ حقل رقم الهاتف';
         }
-        // if (controller.text.length != 10) {
-        //   return 'رقم الهاتف لا يطابق البنية الصحيحة لأرقام الهواتف في سوريا';
-        // }
+        if (controller.text.length != 10) {
+          return 'رقم الهاتف لا يطابق البنية الصحيحة لأرقام الهواتف في سوريا';
+        }
         return null;
       });
   final ValidationTextField permanentAddressController = ValidationTextField(

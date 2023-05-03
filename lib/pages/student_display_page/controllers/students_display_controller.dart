@@ -2,13 +2,13 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/models/agendas/student.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/students_db_helper.dart';
 
-class StudentsDisplayController extends GetxController {
+class StudentsManagementController extends GetxController {
   RxInt studentsCount = 0.obs;
   Rx<StudentsSortingOption> currentSortingOption =
       StudentsSortingOption.none.obs;
   late Rx<Future<RxList<Student>>> students;
 
-  StudentsDisplayController() {
+  StudentsManagementController() {
     students = getStudentsToDisplay().obs;
   }
 

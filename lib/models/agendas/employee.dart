@@ -147,9 +147,3 @@ class Employee {
         addressId.hashCode;
   }
 }
-
-enum JobTitle {
-  secretKeeper,
-  socialAdministrator,
-  teacher,
-}
