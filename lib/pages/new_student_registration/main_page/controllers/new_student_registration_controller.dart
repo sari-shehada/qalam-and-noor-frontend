@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/student_db_helper.dart';
@@ -8,6 +10,7 @@ import 'package:kalam_noor/pages/new_student_registration/medical_information/co
 import 'package:kalam_noor/pages/new_student_registration/personal_information/controllers/student_personal_info_controller.dart';
 import 'package:kalam_noor/pages/new_student_registration/personal_information/models/student_registration_info.dart';
 import 'package:kalam_noor/pages/new_student_registration/previous_school_information/controllers/add_student_previous_school_info_widget_controller.dart';
+import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 
 class NewStudentRegistrationController extends GetxController {
@@ -64,9 +67,11 @@ class NewStudentRegistrationController extends GetxController {
           .registerNewStudent(registrationInfo: registrationInfo);
       Get.back(result: true);
     } catch (e) {
-      print('Exception Caught when attempting to register a student');
-      print(e);
-      print(e.runtimeType);
+      log(e.toString());
+      SnackBarService.showErrorSnackBar(
+        title: 'حدث خطأ',
+        message: e.toString(),
+      );
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;
     }

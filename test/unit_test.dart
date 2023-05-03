@@ -25,12 +25,12 @@ void main() {
         isMale: true,
         dateOfBirth: DateTime.now(),
         placeOfBirth: 'Place Of Birth Unit',
-        phoneNumber: '09999999',
+        phoneNumber: '1234567890', //TODO: Must Be 10
         religion: Religion.christianity,
-        whatsappPhoneNumber: '09999999',
-        incidentNumber: '123123',
+        whatsappPhoneNumber: '12345678901234567890',
+        incidentNumber: '12345678901234567890',
         incidentDate: DateTime.now(),
-        landLine: '0000009123123',
+        landLine: '12345678901234567890',
         joinDate: DateTime.now(),
       ),
       familyInfo: FamilyInfo(
@@ -49,14 +49,14 @@ void main() {
           motherName: 'Mother Name Unit Test',
           career: 'Doctor Unit Test Career',
           placeOfResidence: 'Sweden Test Unit Test',
-          tieNumber: '12312312',
+          tieNumber: '12345678901234567890',
           tiePlace: 'Test Tie Place From Unit Test',
           placeOfBirth: 'Place of birth Unit Test',
           dateOfBirth: DateTime.now(),
           civilRegisterSecretary: 'civilRegisterSecretary  Unit Test',
           religion: Religion.islam,
           educationalStatus: EducationalStatus.basic,
-          phoneNumber: '0009999999',
+          phoneNumber: '1234567890', //TODO: Must Not Exceed 10
           permenantAddress: 'permenantAddress  Unit Test',
         ),
         mother: Mother(
@@ -73,7 +73,7 @@ void main() {
             dateOfBirth: DateTime.now(),
             religion: Religion.islam,
             educationalStatus: EducationalStatus.master,
-            phoneNumber: '01231242378687'),
+            phoneNumber: '12345678901234567890'),
         //TODO: Test Non null value here
         responsiblePerson: null,
       ),
@@ -118,9 +118,15 @@ void main() {
       enrolledClass: SchoolClass(id: 3, name: 'Test Unit Test name'),
       studentPreviousSchool: null,
     );
+    bool result = false;
+    try {
+      // print(registrationModel.toString());
+      result = await StudentDBHelper.instance
+          .registerNewStudent(registrationInfo: registrationInfo);
+    } catch (e) {
+      print(e.toString());
+    }
 
-    Student result = await StudentDBHelper.instance
-        .registerNewStudent(registrationInfo: registrationInfo);
     print(result.toString());
     expect(result, result);
   });

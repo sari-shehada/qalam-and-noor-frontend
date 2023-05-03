@@ -5,7 +5,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 abstract class HttpService {
-  static const String _baseURL = 'http://qalamandnoor-001-site1.ftempurl.com/';
+  // static const String _baseURL = 'http://qalamandnoor-001-site1.ftempurl.com/';
+  static const String _baseURL = 'https://localhost:7109/';
   static Future<MapperReturnType> getParsed<MapperReturnType, JsonParseType>({
     required String url,
     required MapperReturnType Function(JsonParseType responseData) dataMapper,
@@ -33,5 +34,23 @@ abstract class HttpService {
       'Accept': '*/*'
     });
     return int.tryParse(response.body.toString());
+  }
+
+  static Future<dynamic> rawPost({
+    required String url,
+    String? serializedBody,
+  }) async {
+    Uri uriParsedFromURL = Uri.parse(_baseURL + url);
+    print(serializedBody);
+    http.Response response = await http.post(
+      uriParsedFromURL,
+      body: serializedBody,
+      headers: {
+        'Access-Control-Allow-Origin': "*",
+        'Content-Type': 'application/json',
+        'Accept': '*/*'
+      },
+    );
+    return response.body.toString();
   }
 }
