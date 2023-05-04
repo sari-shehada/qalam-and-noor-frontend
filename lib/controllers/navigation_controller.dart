@@ -38,6 +38,8 @@ class NavigationController {
       () => const NavigationPage(),
       routeName: 'dashboard',
       binding: navigationBinding,
+      transition: Transition.fadeIn,
+      duration: const Duration(milliseconds: 600),
     );
   }
 

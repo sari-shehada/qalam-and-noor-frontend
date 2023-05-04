@@ -12,7 +12,7 @@ import 'pages/loader/controllers/loader_bindings.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  HttpOverrides.global = HttpCertificateOverrides();
+  // HttpOverrides.global = HttpCertificateOverrides();
   await SharedPrefsHelper.init();
   runApp(const WebApp());
 }
