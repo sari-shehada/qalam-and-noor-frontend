@@ -7,6 +7,7 @@ import 'package:kalam_noor/models/agendas/employee.dart';
 import 'package:kalam_noor/models/agendas/job_title.dart';
 import 'package:kalam_noor/pages/employees_management_page/main_page/views/widgets/employees_table.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
+import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
 
 import '../../../../controllers/navigation_controller.dart';
 import '../../../../tools/ui_tools/buttons.dart';
@@ -152,9 +153,10 @@ class EmployeesManagementPage extends StatelessWidget {
                       );
                     }
                     if (snapshot.hasError) {
-                      //TODO: Change later
-                      return const Center(
-                        child: Text('error loading Students'),
+                      return ErrorLoadingSomethingWidget(
+                        somethingName: 'الموظفين',
+                        bottomPadding: 180.h,
+                        retryCallback: () => controller.refreshEmployees(),
                       );
                     }
                     if (snapshot.hasData) {
