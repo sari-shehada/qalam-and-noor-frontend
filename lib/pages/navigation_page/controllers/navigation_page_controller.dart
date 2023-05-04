@@ -12,8 +12,14 @@ class NavigationPageController extends GetxController
   RxInt selectedIndex = (0).obs;
   RxDouble elementsOpacity = 0.0.obs;
   final List<NavigationRailDestinationCard> dashboardDestinations;
+  final bool hasMiddleSection;
+  final bool hasBottomSection;
 
-  NavigationPageController({required this.dashboardDestinations}) {
+  NavigationPageController({
+    required this.dashboardDestinations,
+    required this.hasMiddleSection,
+    required this.hasBottomSection,
+  }) {
     tabController =
         TabController(length: dashboardDestinations.length, vsync: this);
   }

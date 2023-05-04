@@ -38,7 +38,6 @@ class EmployeesManagementController extends GetxController {
   }
 
   Future<List<Employee>> getEmployees() async {
-    print(currentDisplayOption.value);
     List<Employee> employees = [];
     if (currentDisplayOption.value == null) {
       employees = await EmployeesDBHelper.instance.getAll();
@@ -48,22 +47,37 @@ class EmployeesManagementController extends GetxController {
     }
     switch (currentSortingOption.value) {
       case EmployeeSortingOption.none:
-        return employees;
+        break;
       case EmployeeSortingOption.nameAsc:
         {
           employees.sort(
             (a, b) => a.firstName.compareTo(b.firstName),
           );
-          return employees;
+          break;
         }
       case EmployeeSortingOption.nameDesc:
         {
           employees.sort(
             (a, b) => b.firstName.compareTo(a.firstName),
           );
-          return employees;
+          break;
+        }
+      case EmployeeSortingOption.startDateAsc:
+        {
+          employees.sort(
+            (a, b) => a.startDate.compareTo(b.startDate),
+          );
+          break;
+        }
+      case EmployeeSortingOption.startDateDesc:
+        {
+          employees.sort(
+            (a, b) => b.startDate.compareTo(a.startDate),
+          );
+          break;
         }
     }
+    return employees;
   }
 
   void refreshEmployees() {

@@ -30,32 +30,39 @@ class CustomNavigationRail extends StatelessWidget {
                 blurRadius: 60)
           ]),
           child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 45.h, horizontal: 25.w),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RailHeader(dashboardController: dashboardController),
-                  AddVerticalSpacing(value: 45.h),
-                  const NavigationRailCard(index: 0),
-                  AddVerticalSpacing(value: 40.h),
-                  SizedBox(
-                    height: 560.h,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount:
-                          dashboardController.dashboardDestinations.length - 2,
-                      itemBuilder: (context, index) => NavigationRailCard(
-                        index: index + 1,
-                      ),
-                    ),
-                  ),
-                  const Spacer(),
-                  NavigationRailCard(
-                      index:
-                          dashboardController.dashboardDestinations.length - 1),
-                ],
-              )),
+            padding: EdgeInsets.symmetric(vertical: 45.h, horizontal: 25.w),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RailHeader(dashboardController: dashboardController),
+                AddVerticalSpacing(value: 45.h),
+                const NavigationRailCard(index: 0),
+                AddVerticalSpacing(value: 40.h),
+                dashboardController.hasMiddleSection
+                    ? SizedBox(
+                        height: 580.h,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount:
+                              dashboardController.dashboardDestinations.length -
+                                  2,
+                          itemBuilder: (context, index) => NavigationRailCard(
+                            index: index + 1,
+                          ),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+                const Spacer(),
+                dashboardController.hasBottomSection
+                    ? NavigationRailCard(
+                        index:
+                            dashboardController.dashboardDestinations.length -
+                                1)
+                    : const SizedBox.shrink()
+              ],
+            ),
+          ),
         ),
       ),
     );

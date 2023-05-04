@@ -24,7 +24,7 @@ class JobTitlesDBHelper implements CRUDInterface<JobTitle> {
   }
 
   @override
-  Future<JobTitle?> getById(int id) async {
+  Future<JobTitle> getById(int id) async {
     String url = '${_controllerName}GetJobTitleById?id=$id';
     JobTitle? jobTitle =
         await HttpService.getParsed<JobTitle?, Map<String, dynamic>>(
@@ -33,6 +33,9 @@ class JobTitlesDBHelper implements CRUDInterface<JobTitle> {
         return JobTitle.fromMap(responseData);
       },
     );
+    if (jobTitle == null) {
+      throw Exception('Job Title was not found for the given id: $id');
+    }
     return jobTitle;
   }
 

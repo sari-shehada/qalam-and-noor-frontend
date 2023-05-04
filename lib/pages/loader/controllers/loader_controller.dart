@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/controllers/account_controller.dart';
 
 import '../../../controllers/navigation_controller.dart';
-import '../../../models/agendas/employee.dart';
 import '../../../models/shared_prefs_helper.dart';
 
 class LoaderController extends GetxController {
@@ -15,8 +14,7 @@ class LoaderController extends GetxController {
 
     //TODO: Refactor the identity model
     int employeeId = await SharedPrefsHelper.instance.getLoginData();
-    final Employee employee = await Get.find<AccountController>()
-        .getCredentials(employeeId: employeeId);
+    await Get.find<AccountController>().getCredentials(employeeId: employeeId);
     NavigationController.toDashboard();
     return;
   }

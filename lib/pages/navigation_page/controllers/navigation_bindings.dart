@@ -7,14 +7,23 @@ import 'navigation_page_controller.dart';
 
 class NavigationBindings extends Bindings {
   final List<NavigationRailDestinationCard> railDestinations;
+  final bool hasMiddleSection;
+  final bool hasBottomSection;
   @override
   void dependencies() {
     Get.put(
-      NavigationPageController(dashboardDestinations: railDestinations),
+      NavigationPageController(
+          dashboardDestinations: railDestinations,
+          hasBottomSection: hasBottomSection,
+          hasMiddleSection: hasMiddleSection),
     );
     Get.put(AccountController());
     Get.put(DashboardController());
   }
 
-  NavigationBindings({required this.railDestinations});
+  NavigationBindings({
+    required this.railDestinations,
+    required this.hasMiddleSection,
+    required this.hasBottomSection,
+  });
 }

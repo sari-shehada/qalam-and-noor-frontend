@@ -10,6 +10,8 @@ abstract class EmployeesManagementConstants {
     EmployeeSortingOption.none: 'دون ترتيب',
     EmployeeSortingOption.nameAsc: 'الاسم تصاعدياً',
     EmployeeSortingOption.nameDesc: 'الاسم تنازلياً',
+    EmployeeSortingOption.startDateAsc: 'تاريخ المزاولة تصاعدياً',
+    EmployeeSortingOption.startDateDesc: 'تاريخ المزاولة تنازلياً',
   };
 }
 
@@ -24,4 +26,6 @@ enum EmployeeSortingOption {
   none,
   nameAsc,
   nameDesc,
+  startDateAsc,
+  startDateDesc,
 }
