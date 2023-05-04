@@ -1,31 +1,10 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-import 'package:kalam_noor/models/agendas/family.dart';
-import 'package:kalam_noor/models/agendas/father.dart';
-import 'package:kalam_noor/models/agendas/mother.dart';
-import 'package:kalam_noor/models/agendas/responsible_person.dart';
 import 'package:kalam_noor/models/agendas/student.dart';
-import 'package:kalam_noor/models/educational/year_record.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/mother_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/responsible_person_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/families_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/student_illnesses_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/student_previous_schools_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/taken_vaccines_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/year_records_db_helper.dart';
-import 'package:kalam_noor/models/medical/illness.dart';
-import 'package:kalam_noor/models/medical/student_illness.dart';
-import 'package:kalam_noor/models/medical/taken_vaccine.dart';
 import 'package:kalam_noor/models/student_registration_model.dart';
-import 'package:kalam_noor/pages/new_student_registration/family_information/models/family_info.dart';
-import 'package:kalam_noor/pages/new_student_registration/personal_information/models/student_personal_info.dart';
 import 'package:kalam_noor/pages/new_student_registration/personal_information/models/student_registration_info.dart';
 import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
-import '../../medical/medical_record.dart';
-import 'father_db_helper.dart';
-import 'medical_records_db_helper.dart';
 
 class StudentDBHelper implements CRUDInterface<Student> {
   String get _controllerName => 'StudentController/';
@@ -130,7 +109,6 @@ class StudentDBHelper implements CRUDInterface<Student> {
         familyId: -1,
       ),
     );
-    print(registrationModel.toString());
     return await registerStudent(registrationModel);
   }
 }

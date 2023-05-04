@@ -113,7 +113,7 @@ abstract class DestinationsHelper {
             onPressed: () {
               Get.find<AccountController>().logout();
             },
-            child: Text('logout'),
+            child: const Text('logout'),
           ),
         ),
       ),
@@ -128,12 +128,12 @@ abstract class DestinationsHelper {
         body: Center(
           child: Column(
             children: [
-              Text('Not Supported'),
+              const Text('Not Supported'),
               ElevatedButton(
                 onPressed: () {
                   Get.find<AccountController>().logout();
                 },
-                child: Text('logout'),
+                child: const Text('logout'),
               ),
             ],
           ),

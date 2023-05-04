@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/pages/loader/controllers/loader_page_animation_controller.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';

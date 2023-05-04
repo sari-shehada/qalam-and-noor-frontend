@@ -41,7 +41,6 @@ class StudentPreviousSchoolsDBHelper
 
   @override
   Future<StudentPreviousSchool> insert(StudentPreviousSchool object) async {
-    print(object);
     String url = '${_controllerName}InsertStudentPreviousSchool';
     int? result =
         await HttpService.post(url: url, serializedBody: object.toJson());
