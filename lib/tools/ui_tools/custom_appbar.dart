@@ -54,10 +54,10 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                         15.w,
                       ),
                       onPressed: () => Get.back(),
-                      icon: FaIcon(
+                      iconSize: 24.sp,
+                      icon: const FaIcon(
                         FontAwesomeIcons.arrowRight,
                         color: Colors.black,
-                        size: 24.sp,
                       ),
                     ),
                   )

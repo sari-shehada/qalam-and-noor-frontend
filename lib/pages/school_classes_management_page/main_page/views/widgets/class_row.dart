@@ -51,6 +51,7 @@ class SchoolClassRow extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
+                        padding: EdgeInsets.all(7.sp),
                         onPressed: () {
                           Get.to(
                             const CoursesManagementPage(),
@@ -66,6 +67,7 @@ class SchoolClassRow extends StatelessWidget {
                           );
                         },
                         tooltip: 'إدارة المقررات في الصف',
+                        iconSize: 24.sp,
                         icon: Icon(
                           Icons.book,
                           color: Get.theme.colorScheme.primary.withOpacity(.7),
@@ -73,9 +75,11 @@ class SchoolClassRow extends StatelessWidget {
                       ),
                       // const AddHorizontalSpacing(value: 10),
                       IconButton(
+                        padding: EdgeInsets.all(7.sp),
                         onPressed: () =>
                             controller.updateSchoolClassInfo(schoolClass),
                         tooltip: 'إدارة بنية الامتحانات للصف',
+                        iconSize: 24.sp,
                         icon: Icon(
                           Icons.percent,
                           color: Get.theme.colorScheme.primary.withOpacity(.7),
@@ -83,6 +87,7 @@ class SchoolClassRow extends StatelessWidget {
                       ),
                       // const AddHorizontalSpacing(value: 10),
                       IconButton(
+                        padding: EdgeInsets.all(7.sp),
                         onPressed: () => Get.to(
                           const SchoolClassDetailsPage(),
                           binding: BindingsBuilder(
@@ -94,6 +99,7 @@ class SchoolClassRow extends StatelessWidget {
                             },
                           ),
                         ),
+                        iconSize: 24.sp,
                         tooltip: 'إدارة الشعب للصف',
                         icon: Icon(
                           Icons.domain_add_rounded,
@@ -102,9 +108,11 @@ class SchoolClassRow extends StatelessWidget {
                       ),
                       // const AddHorizontalSpacing(value: 10),
                       IconButton(
+                        padding: EdgeInsets.all(7.sp),
                         onPressed: () =>
                             controller.updateSchoolClassInfo(schoolClass),
                         tooltip: 'تعديل معلومات الصف',
+                        iconSize: 24.sp,
                         icon: Icon(
                           Icons.edit,
                           color: Get.theme.colorScheme.primary.withOpacity(.7),
