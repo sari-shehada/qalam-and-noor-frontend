@@ -33,6 +33,10 @@ class SharedPrefsHelper {
     await spInstance.remove(SharedPrefsKeys.employeeIdKey);
     return true;
   }
+
+  Future<bool> clearAll() async {
+    return await spInstance.clear();
+  }
 }
 
 class SharedPrefsKeys {
