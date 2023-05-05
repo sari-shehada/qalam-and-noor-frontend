@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/navigation_page_controller.dart';
+import 'widgets/cross_switcher.dart';
 import 'widgets/navigation_rail.dart';
 
 class NavigationPage extends StatelessWidget {
@@ -9,7 +10,7 @@ class NavigationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NavigationPageController dashboardController = Get.find();
+    NavigationPageController navigationController = Get.find();
     return Scaffold(
       body: SizedBox.expand(
         child: Stack(
@@ -18,30 +19,28 @@ class NavigationPage extends StatelessWidget {
               padding: EdgeInsets.only(
                   right: DashboardControllerConstants
                       .navigationRailCollapsedWidth),
-              child: AnimatedSwitcher(
-                duration: const Duration(
-                  seconds: 2,
-                ),
-                child: TabBarView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  controller: dashboardController.tabController,
+              child: Obx(() {
+                return FadeIndexedStack(
+                  duration: 600.milliseconds,
+                  index: navigationController.selectedIndex.value,
                   children: List.generate(
-                      dashboardController.dashboardDestinations.length,
-                      (index) => dashboardController
+                      navigationController.dashboardDestinations.length,
+                      (index) => navigationController
                           .dashboardDestinations[index].destination),
-                ),
-                // child: Obx(
-                //   () => FadeIndexedStack(
-                //     duration:
-                //         DashboardControllerConstants.railAnimationDuration,
-                //     index: dashboardController.selectedIndex.value,
-                //     children: List.generate(
-                //         dashboardController.dashboardDestinations.length,
-                //         (index) => dashboardController
-                //             .dashboardDestinations[index].destination),
-                //   ),
-                // ),
-              ),
+
+                  // child: Obx(
+                  //   () => FadeIndexedStack(
+                  //     duration:
+                  //         DashboardControllerConstants.railAnimationDuration,
+                  //     index: dashboardController.selectedIndex.value,
+                  //     children: List.generate(
+                  //         dashboardController.dashboardDestinations.length,
+                  //         (index) => dashboardController
+                  //             .dashboardDestinations[index].destination),
+                  //   ),
+                  // ),
+                );
+              }),
             ),
             const CustomNavigationRail(),
             const VerticalDivider(
