@@ -46,13 +46,19 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             backButtonEnabled
-                ? IconButton(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(horizontal: 40.w),
-                    onPressed: () => Get.back(),
-                    icon: const Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.black,
+                ? Padding(
+                    padding: EdgeInsets.only(right: 40.w, left: 20.w),
+                    child: IconButton(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.all(
+                        15.w,
+                      ),
+                      onPressed: () => Get.back(),
+                      icon: FaIcon(
+                        FontAwesomeIcons.arrowRight,
+                        color: Colors.black,
+                        size: 24.sp,
+                      ),
                     ),
                   )
                 : const SizedBox.shrink(),
