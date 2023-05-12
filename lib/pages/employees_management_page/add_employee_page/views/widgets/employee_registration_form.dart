@@ -241,7 +241,7 @@ class EmployeeRegistrationForm extends StatelessWidget {
                           padding: EdgeInsetsDirectional.only(
                             start: 30.w,
                           ),
-                          child: Text('أختر المسمى الوظيفي'),
+                          child: const Text('أختر المسمى الوظيفي'),
                         ),
                         items: controller.jobTitles
                             .map(

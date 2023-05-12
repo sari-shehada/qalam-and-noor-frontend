@@ -55,7 +55,7 @@ class ClassroomCard extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Text('السعة الكلية'),
+                      const Text('السعة الكلية'),
                       AddHorizontalSpacing(value: 10.w),
                       Text(
                         '${classroom.maxCapacity.toString()} طالب',

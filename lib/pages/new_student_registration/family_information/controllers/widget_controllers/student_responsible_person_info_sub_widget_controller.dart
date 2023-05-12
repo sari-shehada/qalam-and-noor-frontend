@@ -108,7 +108,7 @@ class StudentResponsiblePersonInfoSubWidgetController extends GetxController {
   void returnData() {
     Father father;
     Mother mother;
-    ResponsiblePerson? responsiblePerson = null;
+    ResponsiblePerson? responsiblePerson;
     if (responsiblePersonExists.value) {
       if (!validateFields()) {
         return;

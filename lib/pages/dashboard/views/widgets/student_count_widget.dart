@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:kalam_noor/configs/assets.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
 class StudentCountWidget extends StatelessWidget {
   const StudentCountWidget({super.key, required this.count});
@@ -60,7 +59,7 @@ class StudentCountWidget extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: Container(
               padding: EdgeInsets.only(right: 25.w, top: 20.h, bottom: 20.h),
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               width: 160.w,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

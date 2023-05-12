@@ -58,7 +58,7 @@ class SettingsPage extends StatelessWidget {
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          offset: Offset(0, 2),
+                          offset: const Offset(0, 2),
                           blurRadius: 20,
                           color: Colors.black.withOpacity(.06),
                         ),

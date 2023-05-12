@@ -72,7 +72,6 @@ class AddEmployeeController extends GetxController {
         formController.encapsulateFields(),
       );
       Get.back(result: true);
-    } catch (e) {
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;
     }

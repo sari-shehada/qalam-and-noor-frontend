@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/models/educational/course.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/courses_management/controllers/courses_management_controller.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/courses_management/views/widgets/courses_table.dart';
@@ -15,7 +13,6 @@ import '../../../../tools/ui_tools/custom_drop_down_menu.dart';
 import '../../../../tools/ui_tools/custom_scaffold.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
 import '../../../../tools/widgets/empty_item_widget.dart';
-import '../../main_page/controllers/school_classes_management_controller.dart';
 
 class CoursesManagementPage extends StatelessWidget {
   const CoursesManagementPage({super.key});
@@ -104,7 +101,7 @@ class CoursesManagementPage extends StatelessWidget {
                 );
               }
               if (snapshot.hasError) {
-                return Center(
+                return const Center(
                   //TODO: Change later
                   child: Text('Error Loading Courses'),
                 );

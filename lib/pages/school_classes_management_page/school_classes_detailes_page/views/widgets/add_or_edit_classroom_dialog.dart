@@ -50,7 +50,7 @@ class AddOrEditClassroomDialog extends StatelessWidget {
                   controller: controller.classroomController,
                 ),
               ),
-              AddVerticalSpacing(value: 20),
+              AddVerticalSpacing(value: 20.h),
               LabeledWidget(
                 label: 'السعة الكلية',
                 child: Row(

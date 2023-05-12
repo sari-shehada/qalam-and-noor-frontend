@@ -14,7 +14,7 @@ class LoaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LoadingAnimationWidget.threeRotatingDots(
-      color: color ?? Color(0xFF265CB1),
+      color: color ?? const Color(0xFF265CB1),
       size: size ?? 80.h,
     );
   }

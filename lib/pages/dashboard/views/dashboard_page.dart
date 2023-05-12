@@ -15,9 +15,6 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Get.theme;
-    final ColorScheme colorScheme = themeData.colorScheme;
-    final TextTheme textTheme = themeData.textTheme;
     DashboardController controller = Get.find();
     AccountController accountController = Get.find();
     return Scaffold(
@@ -107,7 +104,7 @@ class DashboardPage extends StatelessWidget {
                           '${accountController.employee.firstName} ${accountController.employee.lastName}',
                           style: TextStyle(
                             fontSize: 27.sp,
-                            color: Color(0xFF5D636D),
+                            color: const Color(0xFF5D636D),
                           ),
                         ),
                         const Spacer(),
@@ -119,7 +116,7 @@ class DashboardPage extends StatelessWidget {
                           child: FaIcon(
                             FontAwesomeIcons.gear,
                             size: 30.sp,
-                            color: Color(0xFF5D636D),
+                            color: const Color(0xFF5D636D),
                           ),
                         )
                       ],
