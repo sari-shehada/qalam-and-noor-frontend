@@ -11,12 +11,14 @@ class Employee {
   final String motherName;
   final bool isMale;
   DateTime dateOfBirth;
+  final String placeOfBirth;
   // String phoneNumber;
-  DateTime startDate;
-  int numberOfChildren;
-  int jobTitleId;
-  int addressId;
-
+  final DateTime startDate;
+  final int numberOfChildren;
+  final int jobTitleId;
+  final int addressId;
+  final String userName;
+  final String password;
   Employee({
     required this.id,
     required this.firstName,
@@ -25,10 +27,13 @@ class Employee {
     required this.motherName,
     this.isMale = true,
     required this.dateOfBirth,
+    required this.placeOfBirth,
     required this.startDate,
     required this.numberOfChildren,
     required this.jobTitleId,
     required this.addressId,
+    required this.userName,
+    required this.password,
   });
 
   String getAvatarImage({bool circular = false}) {
@@ -53,10 +58,13 @@ class Employee {
     String? motherName,
     bool? isMale,
     DateTime? dateOfBirth,
+    String? placeOfBirth,
     DateTime? startDate,
     int? numberOfChildren,
     int? jobTitleId,
     int? addressId,
+    String? userName,
+    String? password,
   }) {
     return Employee(
       id: id ?? this.id,
@@ -66,10 +74,13 @@ class Employee {
       motherName: motherName ?? this.motherName,
       isMale: isMale ?? this.isMale,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      placeOfBirth: placeOfBirth ?? this.placeOfBirth,
       startDate: startDate ?? this.startDate,
       numberOfChildren: numberOfChildren ?? this.numberOfChildren,
       jobTitleId: jobTitleId ?? this.jobTitleId,
       addressId: addressId ?? this.addressId,
+      userName: userName ?? this.userName,
+      password: password ?? this.password,
     );
   }
 
@@ -82,10 +93,13 @@ class Employee {
       'motherName': motherName,
       'isMale': isMale,
       'dateOfBirth': dateOfBirth.toIso8601String(),
+      'placeOfBirth': placeOfBirth,
       'startDate': startDate.toIso8601String(),
       'numberOfChildren': numberOfChildren,
       'jobTitleId': jobTitleId,
       'addressId': addressId,
+      'userName': userName,
+      'password': password,
     };
   }
 
@@ -98,10 +112,13 @@ class Employee {
       motherName: map['motherName'] as String,
       isMale: map['isMale'] as bool,
       dateOfBirth: DateTime.parse(map['dateOfBirth']),
+      placeOfBirth: map['placeOfBirth'] as String,
       startDate: DateTime.parse(map['startDate']),
       numberOfChildren: map['numberOfChildren'] as int,
       jobTitleId: map['jobTitleId'] as int,
       addressId: map['addressId'] as int,
+      userName: map['userName'] as String,
+      password: map['password'] as String,
     );
   }
 
@@ -112,7 +129,7 @@ class Employee {
 
   @override
   String toString() {
-    return 'Employee(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, isMale: $isMale, dateOfBirth: $dateOfBirth, startDate: $startDate, numberOfChildren: $numberOfChildren, jobTitleId: $jobTitleId, addressId: $addressId)';
+    return 'Employee(id: $id, firstName: $firstName, lastName: $lastName, fatherName: $fatherName, motherName: $motherName, isMale: $isMale, dateOfBirth: $dateOfBirth, placeOfBirth: $placeOfBirth, startDate: $startDate, numberOfChildren: $numberOfChildren, jobTitleId: $jobTitleId, addressId: $addressId, userName: $userName, password: $password)';
   }
 
   @override
@@ -126,10 +143,13 @@ class Employee {
         other.motherName == motherName &&
         other.isMale == isMale &&
         other.dateOfBirth == dateOfBirth &&
+        other.placeOfBirth == placeOfBirth &&
         other.startDate == startDate &&
         other.numberOfChildren == numberOfChildren &&
         other.jobTitleId == jobTitleId &&
-        other.addressId == addressId;
+        other.addressId == addressId &&
+        other.userName == userName &&
+        other.password == password;
   }
 
   @override
@@ -141,9 +161,12 @@ class Employee {
         motherName.hashCode ^
         isMale.hashCode ^
         dateOfBirth.hashCode ^
+        placeOfBirth.hashCode ^
         startDate.hashCode ^
         numberOfChildren.hashCode ^
         jobTitleId.hashCode ^
-        addressId.hashCode;
+        addressId.hashCode ^
+        userName.hashCode ^
+        password.hashCode;
   }
 }

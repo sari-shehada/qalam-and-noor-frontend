@@ -1,6 +1,11 @@
 abstract class DateTimeHelper {
-  static String getDateWithoutTime(DateTime date) {
-    return '${date.day}-${monthAsLabelAR[date.month]}-${date.year}';
+  static String getDateWithoutTime(DateTime date, {String separator = '/'}) {
+    String dateAsString =
+        '${date.day}-${monthAsLabelAR[date.month]}-${date.year}';
+    if (separator != '-') {
+      dateAsString = dateAsString.split('-').join(separator);
+    }
+    return dateAsString;
   }
 }
 

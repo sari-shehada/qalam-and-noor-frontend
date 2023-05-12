@@ -81,7 +81,7 @@ class NavigationController {
     }
   }
 
-  static void toAddNewEmployeePage() async {
+  static Future<bool> toAddNewEmployeePage() async {
     var result = await Get.to(
       () => const AddEmployeePage(),
       binding: BindingsBuilder.put(() => AddEmployeeController()),
@@ -91,6 +91,8 @@ class NavigationController {
         title: 'تمت العملية بنجاح',
         message: 'تمت إضافة موظف جديد',
       );
+      return true;
     }
+    return false;
   }
 }

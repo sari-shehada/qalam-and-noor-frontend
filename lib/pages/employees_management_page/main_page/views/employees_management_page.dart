@@ -33,7 +33,7 @@ class EmployeesManagementPage extends StatelessWidget {
       floatingActionButton: CustomFilledButton(
         height: 74.h,
         width: 300.w,
-        onTap: () => NavigationController.toAddNewEmployeePage(),
+        onTap: () => controller.addNewEmployee(),
         child: Center(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 40.w),

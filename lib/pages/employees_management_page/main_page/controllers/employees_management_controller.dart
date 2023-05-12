@@ -3,6 +3,7 @@ import 'package:kalam_noor/models/agendas/employee.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/employees_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/job_titles_db_helper.dart';
 
+import '../../../../controllers/navigation_controller.dart';
 import '../../../../models/agendas/job_title.dart';
 import '../models/employee_management_constants.dart';
 
@@ -82,6 +83,13 @@ class EmployeesManagementController extends GetxController {
 
   void refreshEmployees() {
     employees.value = getEmployees();
+  }
+
+  Future<void> addNewEmployee() async {
+    var result = await NavigationController.toAddNewEmployeePage();
+    if (result == true) {
+      refreshEmployees();
+    }
   }
 
   Future<void> updateJobTitles() async {

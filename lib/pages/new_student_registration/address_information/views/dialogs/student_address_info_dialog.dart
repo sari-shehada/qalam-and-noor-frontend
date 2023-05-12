@@ -46,7 +46,7 @@ class StudentAddressInfoDialog extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'عنوان الطالب',
+                  'العنوان',
                   style: ProjectFonts.headlineMedium(),
                 ),
                 AddVerticalSpacing(value: 25.h),

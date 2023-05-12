@@ -8,7 +8,7 @@ import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
 import 'buttons.dart';
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     required this.title,
