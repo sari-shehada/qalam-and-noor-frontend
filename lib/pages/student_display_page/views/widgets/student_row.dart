@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/agendas/student.dart';
-import 'package:kalam_noor/pages/student_display_page/controllers/students_display_controller.dart';
 
 class StudentRow extends StatelessWidget {
   const StudentRow({super.key, required this.student, required this.rowColor});
@@ -10,7 +9,7 @@ class StudentRow extends StatelessWidget {
   final Color rowColor;
   @override
   Widget build(BuildContext context) {
-    StudentsManagementController controller = Get.find();
+    // StudentsManagementController controller = Get.find(); //TODO: Uncomment this later when there is a use for it
     final ThemeData themeData = Get.theme;
     final TextTheme textTheme = themeData.textTheme;
     return SizedBox(

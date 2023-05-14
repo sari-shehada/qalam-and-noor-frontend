@@ -20,7 +20,6 @@ class NewStudentRegistrationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Get.theme;
     final ColorScheme colorScheme = themeData.colorScheme;
-    final TextTheme textTheme = themeData.textTheme;
 
     final NewStudentRegistrationController controller = Get.find();
 

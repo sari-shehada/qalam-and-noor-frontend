@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/configs/fonts.dart';
 
 import '../../../../../tools/ui_tools/buttons.dart';
 import '../../../../../tools/ui_tools/labeled_widget.dart';
@@ -18,9 +19,6 @@ class AddOrEditAreaDialog extends StatelessWidget {
   final dynamic argument;
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Get.theme;
-    final ColorScheme colorScheme = themeData.colorScheme;
-    final TextTheme textTheme = themeData.textTheme;
     AddOrEditAreaController controller = Get.put(
       AddOrEditAreaController(argument: argument),
     );
@@ -43,7 +41,7 @@ class AddOrEditAreaDialog extends StatelessWidget {
                   controller.isEditMode.value == false
                       ? 'إضافة منطقة'
                       : 'تعديل معلومات المنطقة',
-                  style: textTheme.headlineMedium,
+                  style: ProjectFonts.headlineMedium(),
                 );
               }),
               AddVerticalSpacing(value: 40.h),

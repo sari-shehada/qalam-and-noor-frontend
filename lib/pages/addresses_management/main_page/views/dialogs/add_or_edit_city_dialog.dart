@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/configs/fonts.dart';
 
 import '../../../../../models/address/city.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
@@ -18,9 +19,6 @@ class AddOrEditCityDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     AddOrEditCityDialogController controller =
         Get.put(AddOrEditCityDialogController(city: city));
-    final ThemeData themeData = Get.theme;
-    final ColorScheme colorScheme = themeData.colorScheme;
-    final TextTheme textTheme = themeData.textTheme;
     return Center(
       child: Material(
         borderRadius: BorderRadius.circular(15.r),
@@ -40,7 +38,7 @@ class AddOrEditCityDialog extends StatelessWidget {
                   controller.isEditMode.value == false
                       ? 'إضافة مدينة'
                       : 'تعديل معلومات المدينة',
-                  style: textTheme.headlineMedium,
+                  style: ProjectFonts.headlineMedium(),
                 );
               }),
               AddVerticalSpacing(value: 40.h),

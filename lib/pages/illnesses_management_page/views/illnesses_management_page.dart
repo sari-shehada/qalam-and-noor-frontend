@@ -16,9 +16,6 @@ class IllnessesManagementPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     IllnessesManagementController illnessesManagementController = Get.find();
-    final ThemeData themeData = Get.theme;
-    final ColorScheme colorScheme = themeData.colorScheme;
-    final TextTheme textTheme = themeData.textTheme;
     return Column(
       children: [
         Expanded(

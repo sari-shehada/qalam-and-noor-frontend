@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/configs/fonts.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
 import '../../../../../tools/ui_tools/labeled_widget.dart';
 import '../../../../../tools/ui_tools/text_fields.dart';
@@ -17,9 +18,6 @@ class AddOrEditAddressDialog extends StatelessWidget {
   final dynamic argument;
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Get.theme;
-    final ColorScheme colorScheme = themeData.colorScheme;
-    final TextTheme textTheme = themeData.textTheme;
     AddOrEditAddressDialogController controller = Get.put(
       AddOrEditAddressDialogController(argument: argument),
     );
@@ -42,7 +40,7 @@ class AddOrEditAddressDialog extends StatelessWidget {
                   controller.isEditMode.value == false
                       ? 'إضافة عنوان'
                       : 'تعديل معلومات العنوان',
-                  style: textTheme.headlineMedium,
+                  style: ProjectFonts.headlineMedium(),
                 );
               }),
               AddVerticalSpacing(value: 35.h),

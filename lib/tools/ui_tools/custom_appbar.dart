@@ -25,9 +25,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final BoxDecoration? appBarBoxDecoration;
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Get.theme;
-    final ColorScheme colorScheme = themeData.colorScheme;
-    final TextTheme textTheme = themeData.textTheme;
     assert(
         actionButton == null ||
             actionButton is CustomAppBarActionButton ||

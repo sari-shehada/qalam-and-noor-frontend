@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/pages/employees_management_page/add_employee_page/controllers/add_employee_controller.dart';
 import 'package:kalam_noor/pages/employees_management_page/add_employee_page/views/widgets/employee_registration_form.dart';
+import 'package:kalam_noor/pages/employees_management_page/add_employee_page/views/widgets/employee_section_title_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
@@ -15,7 +15,6 @@ class AddEmployeePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Get.theme.colorScheme;
     final AddEmployeeController controller = Get.find();
     return CustomScaffold(
       appBar: const CustomAppBar(
@@ -99,77 +98,6 @@ class AddEmployeePage extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class EmployeeSectionTitleWidget extends StatelessWidget {
-  const EmployeeSectionTitleWidget({
-    super.key,
-    required this.title,
-    required this.isSelected,
-    required this.changeSectionCallback,
-  });
-
-  final String title;
-  final RxBool isSelected;
-  final VoidCallback changeSectionCallback;
-  @override
-  Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Get.theme.colorScheme;
-    return Obx(
-      () {
-        return AnimatedContainer(
-          duration: 400.milliseconds,
-          decoration: BoxDecoration(
-            color: isSelected.value
-                ? colorScheme.primaryContainer
-                : colorScheme.primaryContainer.withOpacity(0),
-            borderRadius:
-                BorderRadius.circular(GlobalStyles.globalBorderRadius),
-          ),
-          child: Material(
-            color: Colors.transparent,
-            borderRadius:
-                BorderRadius.circular(GlobalStyles.globalBorderRadius),
-            child: InkWell(
-              onTap: changeSectionCallback,
-              borderRadius:
-                  BorderRadius.circular(GlobalStyles.globalBorderRadius),
-              child: SizedBox(
-                width: double.infinity,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 20.h,
-                  ),
-                  child: Center(
-                    child: TweenAnimationBuilder(
-                      tween: ColorTween(
-                        begin: isSelected.value
-                            ? colorScheme.onSurfaceVariant
-                            : colorScheme.primary,
-                        end: isSelected.value
-                            ? colorScheme.primary
-                            : colorScheme.onSurfaceVariant,
-                      ),
-                      duration: 400.milliseconds,
-                      builder: (context, value, child) {
-                        return Text(
-                          title,
-                          style: ProjectFonts.titleLarge().copyWith(
-                            color: value,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }

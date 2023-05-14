@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/models/previous_schools/previous_schools.dart';
 
 import '../../../../tools/ui_tools/buttons.dart';
@@ -21,9 +22,7 @@ class AddOrEditPreviousSchoolDialog extends StatelessWidget {
     AddOrEditPreviousSchoolDialogController controller = Get.put(
         AddOrEditPreviousSchoolDialogController(
             previousSchool: previousSchool));
-    final ThemeData themeData = Get.theme;
-    final ColorScheme colorScheme = themeData.colorScheme;
-    final TextTheme textTheme = themeData.textTheme;
+
     return Center(
       child: Material(
         borderRadius: BorderRadius.circular(15.r),
@@ -43,7 +42,7 @@ class AddOrEditPreviousSchoolDialog extends StatelessWidget {
                   controller.isEditMode.value == false
                       ? 'إضافة مدرسة'
                       : 'تعديل معلومات المدرسة',
-                  style: textTheme.headlineMedium,
+                  style: ProjectFonts.headlineMedium(),
                 );
               }),
               AddVerticalSpacing(value: 40.h),
