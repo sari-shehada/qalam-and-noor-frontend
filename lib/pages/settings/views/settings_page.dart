@@ -2,22 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/settings/controllers/settings_page_controller.dart';
+import 'package:kalam_noor/pages/settings/views/widgets/profile_image_widget.dart';
+import 'package:kalam_noor/pages/settings/views/widgets/profile_info_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
+import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
 import '../../../controllers/account_controller.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends GetView<SettingsPageController> {
   const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AccountController accountController = Get.find();
     final ThemeData themeData = Get.theme;
     final ColorScheme colorScheme = themeData.colorScheme;
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'الملف الشخصي',
+        title: controller.getFullName(),
         iconData: FontAwesomeIcons.gear,
         backButtonEnabled: true,
         actionButton: CustomTintedButton(
@@ -45,33 +48,16 @@ class SettingsPage extends StatelessWidget {
               ),
               padding: EdgeInsetsDirectional.only(
                 top: 30.h,
-                bottom: 30.h,
-                start: 120.w,
+                bottom: 40.h,
+                start: 110.w,
                 end: 30.w,
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          offset: const Offset(0, 2),
-                          blurRadius: 20,
-                          color: Colors.black.withOpacity(.06),
-                        ),
-                      ],
-                    ),
-                    padding: EdgeInsets.all(8.0.h),
-                    child: ClipOval(
-                      child: Image.asset(
-                        accountController.employee.getAvatarImage(),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
+                  const ProfileImageWidget(),
+                  AddHorizontalSpacing(value: 20.w),
+                  const ProfileInfoWidget(),
                 ],
               ),
             ),

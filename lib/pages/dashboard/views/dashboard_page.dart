@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/controllers/navigation_controller.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/student_count_widget.dart';
-import 'package:kalam_noor/pages/settings/views/settings_page.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -20,7 +20,7 @@ class DashboardPage extends StatelessWidget {
     return Scaffold(
       body: SizedBox.expand(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 50.h, horizontal: 50.w),
+          padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 50.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -109,10 +109,7 @@ class DashboardPage extends StatelessWidget {
                         ),
                         const Spacer(),
                         InkWell(
-                          //TODO:
-                          onTap: () => Get.to(
-                            () => const SettingsPage(),
-                          ),
+                          onTap: () => NavigationController.toSettingsPage(),
                           child: FaIcon(
                             FontAwesomeIcons.gear,
                             size: 30.sp,
