@@ -53,7 +53,6 @@ class _LoaderPageState extends State<LoaderPage> {
                 top: animationController.textAnimation.value,
                 child: Text(
                   'قلم و نور',
-                  //TODO:
                   style:
                       ProjectFonts.headlineMedium().copyWith(fontSize: 50.sp),
                 ),

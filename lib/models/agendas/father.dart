@@ -22,7 +22,6 @@ class Father {
   final EducationalStatus educationalStatus;
   final String phoneNumber;
 
-  ///TODO:
   final String permenantAddress;
   Father({
     required this.id,

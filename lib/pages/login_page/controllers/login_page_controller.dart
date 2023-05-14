@@ -27,7 +27,6 @@ class LoginPageController extends GetxController {
       );
       return false;
     }
-    //TODO: Add futher validation
     return true;
   }
 

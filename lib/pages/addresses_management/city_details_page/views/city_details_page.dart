@@ -6,6 +6,7 @@ import 'package:kalam_noor/tools/ui_tools/custom_drop_down_menu.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
+import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
 import '../../../../models/address/area.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
 import '../../main_page/controllers/address_management_controller.dart';
@@ -94,15 +95,15 @@ class CityDetailsPage extends StatelessWidget {
               );
             }
             if (snapshot.hasError) {
-              return const Center(
-                //TODO: Change later
-                child: Text('Error Loading Areas'),
+              return ErrorLoadingSomethingWidget(
+                somethingName: 'مناطق',
+                retryCallback: () => cityDetailsController.refreshAreas(),
               );
             }
             if (snapshot.hasData) {
               if (snapshot.data!.isEmpty) {
                 return const EmptyItemWidget(
-                  itemName: 'احياء',
+                  itemName: 'مناطق',
                   iconData: FontAwesomeIcons.mapLocationDot,
                 );
               } else {

@@ -10,7 +10,6 @@ class Mother {
   final String fatherName;
   final String motherName;
 
-  ///TODO:
   final bool doesLiveWithHasband;
   final String career;
 

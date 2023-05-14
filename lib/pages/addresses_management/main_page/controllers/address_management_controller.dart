@@ -65,6 +65,8 @@ class AddressManagementController extends GetxController {
       cities.value = getCitiesToDisplay();
     }
   }
+
+  Future<List<City>> refreshCities() => cities.value = getCitiesToDisplay();
 }
 
 enum CitiesSortingOption {

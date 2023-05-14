@@ -41,7 +41,6 @@ class StudentBasicMedicalInfoSubWidgetController extends GetxController {
   }
 
   bool validateFields() {
-    //TODO: Add validation here
     if (studentHeightController.validate() &&
         studentWeightController.validate()) {
       return true;

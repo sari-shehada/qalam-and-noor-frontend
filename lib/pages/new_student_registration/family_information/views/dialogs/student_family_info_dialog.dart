@@ -47,7 +47,7 @@ class StudentFamilyInfoDialog extends StatelessWidget {
                 ),
                 AddVerticalSpacing(value: 25.h),
                 Text(
-                  'قم بإدخال رقم القيد للطالب ثم الضغط على زر البحث ثم أختيار أسرة الطالب',
+                  'قم بإدخال رقم القيد للطالب ثم الضغط على زر البحث ثم اختيار أسرة الطالب',
                   style: textTheme.bodyLarge,
                 ),
                 AddVerticalSpacing(value: 20.h),

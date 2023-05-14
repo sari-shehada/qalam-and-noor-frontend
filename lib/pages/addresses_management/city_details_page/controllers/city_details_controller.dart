@@ -72,4 +72,6 @@ class CityDetailsController extends GetxController {
       areas.value = getAreasInCity();
     }
   }
+
+  Future<List<Area>> refreshAreas() => areas.value = getAreasInCity();
 }

@@ -37,7 +37,6 @@ class YearRecordsDBHelper implements CRUDInterface<YearRecord> {
     return yearRecord;
   }
 
-  //TODO: Consider Removing
   Future<int> getYearRecordsCount() async {
     return await getAll().then((value) => value.length);
   }

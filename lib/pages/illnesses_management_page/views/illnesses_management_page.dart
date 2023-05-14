@@ -37,15 +37,16 @@ class IllnessesManagementPage extends StatelessWidget {
                       );
                     }
                     if (snapshot.hasError) {
-                      //TODO: Change later
-                      return const Center(
-                        child: Text('error loading illnesses'),
+                      return const ErrorLoadingSomethingWidget(
+                        somethingName: 'أمراض',
                       );
                     }
                     if (snapshot.hasData) {
                       if (snapshot.data!.isEmpty) {
-                        return const ErrorLoadingSomethingWidget(
+                        return ErrorLoadingSomethingWidget(
                           somethingName: 'أمراض',
+                          retryCallback: () =>
+                              illnessesManagementController.refreshIllnesses(),
                         );
                       } else {
                         RxList<Illness> illness =
@@ -77,115 +78,3 @@ class IllnessesManagementPage extends StatelessWidget {
     );
   }
 }
-
-
-// return CustomScaffold(
-//       floatingActionButton: CustomFilledButton(
-//         height: 74.h,
-//         width: 300.w,
-//         onTap: () => illnessesManagementController.addNewIllness(),
-//         child: Center(
-//           child: Padding(
-//             padding: EdgeInsets.symmetric(horizontal: 40.w),
-//             child: Row(
-//               children: [
-//                 Text(
-//                   'إضافة مرض جديد',
-//                   style: TextStyle(
-//                     fontSize: 20.sp,
-//                     color: Colors.white,
-//                   ),
-//                 ),
-//                 const Spacer(),
-//                 FaIcon(
-//                   FontAwesomeIcons.plus,
-//                   color: Colors.white,
-//                   size: 28.sp,
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//       appBar: CustomAppBar(
-//         title: "إدارة الأمراض",
-//         iconData: FontAwesomeIcons.virus,
-//         backButtonEnabled: true,
-//         actionButton: Row(
-//           children: [
-//             Text(
-//               'ترتيب حسب:',
-//               style: textTheme.titleLarge,
-//             ),
-//             AddHorizontalSpacing(value: 25.w),
-//             CustomDropDownButton(
-//               backgroundColor: colorScheme.primaryContainer,
-//               dropdownColor: colorScheme.primaryContainer,
-//               value: illnessesManagementController.currentSortingOption,
-//               items: IllnessesSortingOption.values
-//                   .map(
-//                     (e) => DropdownMenuItem<IllnessesSortingOption>(
-//                       value: e,
-//                       child: Text(illnessesSortingOptionsAsString[e]!),
-//                     ),
-//                   )
-//                   .toList(),
-//               onChanged: (IllnessesSortingOption? value) =>
-//                   illnessesManagementController.changeSortingOption(value),
-//             ),
-//           ],
-//         ),
-//       ),
-//       bodyPadding: EdgeInsets.symmetric(horizontal: 45.w, vertical: 10.h),
-//       body: Column(
-//         children: [
-//           Expanded(
-//             flex: 70,
-//             child: LabeledWidget(
-//               label: 'الأمراض الحالية',
-//               labelTextStyle: TextStyle(
-//                 fontSize: 30.sp,
-//               ),
-//               spacing: 35.h,
-//               child: Obx(() {
-//                 return FutureBuilder<RxList<Illness>>(
-//                   future: illnessesManagementController.illnesses.value,
-//                   builder: (context, snapshot) {
-//                     if (snapshot.connectionState == ConnectionState.waiting) {
-//                       return const Center(
-//                         child: LoaderWidget(),
-//                       );
-//                     }
-//                     if (snapshot.hasError) {
-//                       //TODO: Change later
-//                       return const Center(
-//                         child: Text('error loading illnesses'),
-//                       );
-//                     }
-//                     if (snapshot.hasData) {
-//                       if (snapshot.data!.isEmpty) {
-//                         return const EmptyItemWidget(
-//                           itemName: 'أمراض',
-//                           iconData: FontAwesomeIcons.virus,
-//                         );
-//                       } else {
-//                         RxList<Illness> illness =
-//                             snapshot.data as RxList<Illness>;
-//                         return Expanded(
-//                           child: IllnessesTable(illnesses: illness),
-//                         );
-//                       }
-//                     } else {
-//                       return const EmptyItemWidget(
-//                         itemName: 'أمراض',
-//                         iconData: FontAwesomeIcons.virus,
-//                       );
-//                     }
-//                   },
-//                 );
-//               }),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );

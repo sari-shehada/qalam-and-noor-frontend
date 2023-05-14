@@ -112,7 +112,7 @@ class AddOrEditCourseDialog extends StatelessWidget {
                       ),
                     ),
                     AddHorizontalSpacing(value: 10.w),
-                    //TODO:add later
+                    //TODO: add later
                     CustomFilledButton(
                         height: 49.h,
                         width: 120.w,

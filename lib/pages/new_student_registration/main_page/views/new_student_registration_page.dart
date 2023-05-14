@@ -53,51 +53,28 @@ class NewStudentRegistrationPage extends StatelessWidget {
               EdgeInsets.only(left: 45.w, right: 45.w, top: 15.h, bottom: 35.h),
           child: Row(
             children: [
-              Obx(
-                () => AnimatedContainer(
-                  duration: NewStudentRegistrationControllerConstants
-                      .animationDuration,
-                  curve:
-                      NewStudentRegistrationControllerConstants.animationCurve,
-                  width: 860.w,
-                  padding: containerPadding,
-                  decoration: backContainerDecoration.copyWith(
-                    color: controller.getSectionStatusColor(
-                        controller.personalInfoSectionStatus.value),
-                  ),
-                  child: const StudentPersonalInfoWidget(),
-                ),
+              Container(
+                width: 860.w,
+                padding: containerPadding,
+                decoration: backContainerDecoration,
+                child: const StudentPersonalInfoWidget(),
               ),
               AddHorizontalSpacing(value: 30.w),
               Expanded(
                 child: Column(
                   children: [
-                    AnimatedContainer(
-                      duration: NewStudentRegistrationControllerConstants
-                          .animationDuration,
-                      curve: NewStudentRegistrationControllerConstants
-                          .animationCurve,
+                    Container(
                       height: 300.h,
                       width: double.infinity,
-                      decoration: backContainerDecoration.copyWith(
-                        color: controller.getSectionStatusColor(
-                            controller.familyInfoSectionStatus.value),
-                      ),
+                      decoration: backContainerDecoration,
                       padding: containerPadding,
                       child: const StudentFamilyInfoWidget(),
                     ),
                     AddVerticalSpacing(value: 30.h),
-                    AnimatedContainer(
-                      duration: NewStudentRegistrationControllerConstants
-                          .animationDuration,
-                      curve: NewStudentRegistrationControllerConstants
-                          .animationCurve,
+                    Container(
                       height: 300.h,
                       width: double.infinity,
-                      decoration: backContainerDecoration.copyWith(
-                        color: controller.getSectionStatusColor(
-                            controller.medicalInfoSectionStatus.value),
-                      ),
+                      decoration: backContainerDecoration,
                       padding: containerPadding,
                       child: const StudentMedicalInfoWidget(),
                     ),
@@ -106,17 +83,9 @@ class NewStudentRegistrationPage extends StatelessWidget {
                       child: Row(
                         children: [
                           Expanded(
-                            child: AnimatedContainer(
-                              duration:
-                                  NewStudentRegistrationControllerConstants
-                                      .animationDuration,
-                              curve: NewStudentRegistrationControllerConstants
-                                  .animationCurve,
+                            child: Container(
                               width: double.infinity,
-                              decoration: backContainerDecoration.copyWith(
-                                color: controller.getSectionStatusColor(
-                                    controller.addressInfoSectionStatus.value),
-                              ),
+                              decoration: backContainerDecoration,
                               padding: containerPadding,
                               child: const StudentAddressInfoWidget(),
                             ),
@@ -126,21 +95,9 @@ class NewStudentRegistrationPage extends StatelessWidget {
                             child: Column(
                               children: [
                                 Expanded(
-                                  child: AnimatedContainer(
-                                    duration:
-                                        NewStudentRegistrationControllerConstants
-                                            .animationDuration,
-                                    curve:
-                                        NewStudentRegistrationControllerConstants
-                                            .animationCurve,
+                                  child: Container(
                                     width: double.infinity,
-                                    decoration:
-                                        backContainerDecoration.copyWith(
-                                      color: controller.getSectionStatusColor(
-                                          controller
-                                              .previousSchoolInfoSectionStatus
-                                              .value),
-                                    ),
+                                    decoration: backContainerDecoration,
                                     padding: EdgeInsets.symmetric(
                                       vertical: 15.h,
                                       horizontal: 20.w,
@@ -151,21 +108,9 @@ class NewStudentRegistrationPage extends StatelessWidget {
                                 ),
                                 AddVerticalSpacing(value: 20.h),
                                 Expanded(
-                                  child: AnimatedContainer(
-                                    duration:
-                                        NewStudentRegistrationControllerConstants
-                                            .animationDuration,
-                                    curve:
-                                        NewStudentRegistrationControllerConstants
-                                            .animationCurve,
+                                  child: Container(
                                     width: double.infinity,
-                                    decoration:
-                                        backContainerDecoration.copyWith(
-                                      color: controller.getSectionStatusColor(
-                                          controller
-                                              .previousSchoolInfoSectionStatus
-                                              .value),
-                                    ),
+                                    decoration: backContainerDecoration,
                                     padding: EdgeInsets.symmetric(
                                       vertical: 15.h,
                                       horizontal: 20.w,

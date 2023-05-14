@@ -130,10 +130,12 @@ class StudentsDBHelper implements CRUDInterface<Student> {
         registrationInfo.medicalInfo.record.copyWith(studentId: student.id);
     await MedicalRecordsDBHelper.instance.insert(medicalRecord);
     for (Illness illness in registrationInfo.medicalInfo.illnesses) {
-      StudentIllnessesDBHelper.instance.insert(StudentIllness(
-          id: -1,
-          medicalRecordId: medicalRecord.studentId,
-          ilnessId: illness.id));
+      StudentIllnessesDBHelper.instance.insert(
+        StudentIllness(
+            id: -1,
+            medicalRecordId: medicalRecord.studentId,
+            ilnessId: illness.id),
+      );
     }
     for (TakenVaccine takenVaccine
         in registrationInfo.medicalInfo.takenVaccines) {

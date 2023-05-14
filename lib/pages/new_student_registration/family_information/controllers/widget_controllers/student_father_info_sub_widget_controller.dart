@@ -149,7 +149,6 @@ class StudentFatherInfoSubWidgetController extends GetxController {
   }
 
   bool validateFields() {
-    //TODO: Add Validation Here
     if (firstNameController.validate() &&
         lastNameController.validate() &&
         fatherNameController.validate() &&

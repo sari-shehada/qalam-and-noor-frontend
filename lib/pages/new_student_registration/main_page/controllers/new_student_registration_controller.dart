@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/student_db_helper.dart';
 import 'package:kalam_noor/pages/new_student_registration/address_information/controllers/student_address_info_controller.dart';
@@ -14,34 +13,7 @@ import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 
 class NewStudentRegistrationController extends GetxController {
-  //Section Validity Status Indicators
-  Rx<NewStudentRegistrationSectionStatus> personalInfoSectionStatus =
-      NewStudentRegistrationSectionStatus.neutral.obs;
-  Rx<NewStudentRegistrationSectionStatus> familyInfoSectionStatus =
-      NewStudentRegistrationSectionStatus.neutral.obs;
-  Rx<NewStudentRegistrationSectionStatus> medicalInfoSectionStatus =
-      NewStudentRegistrationSectionStatus.neutral.obs;
-  Rx<NewStudentRegistrationSectionStatus> addressInfoSectionStatus =
-      NewStudentRegistrationSectionStatus.neutral.obs;
-  Rx<NewStudentRegistrationSectionStatus> previousSchoolInfoSectionStatus =
-      NewStudentRegistrationSectionStatus.neutral.obs;
   Rx<CustomButtonStatus> buttonStatus = CustomButtonStatus.enabled.obs;
-
-  //Section Decoration Methods
-  Color getSectionStatusColor(NewStudentRegistrationSectionStatus status) {
-    switch (status) {
-      case NewStudentRegistrationSectionStatus.neutral:
-        return NewStudentRegistrationControllerConstants
-            .neutralSectionBackgroundColor;
-
-      case NewStudentRegistrationSectionStatus.hasError:
-        return NewStudentRegistrationControllerConstants
-            .errorSectionBackgroundColor;
-      case NewStudentRegistrationSectionStatus.valid:
-        return NewStudentRegistrationControllerConstants
-            .validSectionBackgroundColor;
-    }
-  }
 
   Future<void> registerStudent() async {
     buttonStatus.value = CustomButtonStatus.processing;
@@ -77,15 +49,3 @@ class NewStudentRegistrationController extends GetxController {
     }
   }
 }
-
-class NewStudentRegistrationControllerConstants {
-  //TODO: Tweek these colors
-  static Color get validSectionBackgroundColor => Colors.green.shade100;
-  static Color get errorSectionBackgroundColor => Colors.red.shade100;
-  static Color get neutralSectionBackgroundColor => Colors.white;
-
-  static Duration get animationDuration => const Duration(milliseconds: 600);
-  static Curve get animationCurve => Curves.fastLinearToSlowEaseIn;
-}
-
-enum NewStudentRegistrationSectionStatus { neutral, hasError, valid }

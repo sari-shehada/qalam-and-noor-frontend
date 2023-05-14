@@ -72,4 +72,7 @@ class AreaDetailsController extends GetxController {
       addresses.value = getAddressesInArea();
     }
   }
+
+  Future<List<Address>> refreshAddresses() =>
+      addresses.value = getAddressesInArea();
 }

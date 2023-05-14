@@ -66,6 +66,9 @@ class IllnessesManagementController extends GetxController {
       illnesses.value = getIllnessesToDisplay();
     }
   }
+
+  Future<List<Illness>> refreshIllnesses() =>
+      illnesses.value = getIllnessesToDisplay();
 }
 
 enum IllnessesSortingOption {

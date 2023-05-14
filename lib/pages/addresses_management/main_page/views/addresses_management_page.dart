@@ -11,6 +11,7 @@ import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
+import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
 import '../../../../models/address/city.dart';
 import '../../../../tools/ui_tools/labeled_widget.dart';
 import '../controllers/address_management_controller.dart';
@@ -19,8 +20,6 @@ import '../../../../tools/ui_tools/buttons.dart';
 import '../../../../tools/ui_tools/custom_appbar.dart';
 import 'widgets/cities_table.dart';
 
-//TODO: Consider adding some statistics in spare time
-//as well as moving current cities to a separate page to make up space for stats
 class AddressesManagementPage extends StatelessWidget {
   const AddressesManagementPage({super.key});
 
@@ -163,9 +162,9 @@ class AddressesManagementPage extends StatelessWidget {
                       width: double.infinity,
                       decoration: statsContainerDecoration,
                       child: LargestCitiesByDescendentCountPieChart(
-                        legendTitle: 'أكبر المدن من حيث عدد الأحياء',
+                        legendTitle: 'أكبر المدن من حيث عدد المناطق',
                         future: statsController.citiesToAreasCount,
-                        onFailedToLoadText: 'تعذر بناء إحصيائات عدد الأحياء',
+                        onFailedToLoadText: 'تعذر بناء إحصائيات عدد المناطق',
                       ),
                     ),
                   ),
@@ -178,7 +177,7 @@ class AddressesManagementPage extends StatelessWidget {
                       child: LargestCitiesByDescendentCountPieChart(
                         legendTitle: 'أكبر المدن من حيث عدد العناوين',
                         future: statsController.citiesToAddressesCount,
-                        onFailedToLoadText: 'تعذر بناء إحصيائات عدد العناوين',
+                        onFailedToLoadText: 'تعذر بناء إحصائيات عدد العناوين',
                       ),
                     ),
                   ),
@@ -204,9 +203,10 @@ class AddressesManagementPage extends StatelessWidget {
                         );
                       }
                       if (snapshot.hasError) {
-                        //TODO: Change later
-                        return const Center(
-                          child: Text('error loading addresses'),
+                        return ErrorLoadingSomethingWidget(
+                          somethingName: 'مدن',
+                          retryCallback: () =>
+                              addressManagementController.refreshCities(),
                         );
                       }
                       if (snapshot.hasData) {

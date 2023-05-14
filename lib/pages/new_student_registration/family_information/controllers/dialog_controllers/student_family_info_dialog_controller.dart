@@ -39,7 +39,6 @@ class StudentFamilyInfoDialogController extends GetxController {
     searchButtonStatus.value = CustomButtonStatus.processing;
     List<Family> families =
         await FamiliesDBHelper.instance.getByFatherTieNumber(
-      //TODO:
       tieNumber: data.toString(),
     );
     familySearchResult.value = [];
@@ -48,8 +47,9 @@ class StudentFamilyInfoDialogController extends GetxController {
         Father? father = await FatherDBhelper.instance.getById(family.fatherId);
         Mother? mother = await MotherDBHelper.instance.getById(family.motherId);
         if (father == null || mother == null) {
-          //TODO: Describe the issue
-          throw Exception();
+          // throw Exception(
+          //     'Tie Number is in the DB but missing father or mother info');
+          continue;
         }
         familySearchResult.value!
             .add(FamilyInfo(family: family, father: father, mother: mother));

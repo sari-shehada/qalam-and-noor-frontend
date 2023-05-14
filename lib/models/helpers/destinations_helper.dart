@@ -143,7 +143,6 @@ abstract class DestinationsHelper {
   ];
 
   static NavigationBindings getDestinations(String jobTitle) {
-    //TODO: Add job titles here in the future (when new ones are supported)
     switch (jobTitle) {
       case 'أمين سر':
         {

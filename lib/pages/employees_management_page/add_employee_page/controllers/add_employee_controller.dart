@@ -31,11 +31,8 @@ class AddEmployeeController extends GetxController {
   }
 
   void refreshSectionLabel() {
-    print('ScrollController Offset: ${scrollController.offset}');
     for (int i = sections.length - 1; i >= 0; i--) {
-      print('Inside for loop with index $i');
       if (scrollController.offset >= sections[i].beginOffset) {
-        print('Made it across the if statement with index $i');
         changeSectionBasedOnIndex(i);
         return;
       }
@@ -43,7 +40,6 @@ class AddEmployeeController extends GetxController {
   }
 
   void changeSectionBasedOnIndex(int index) {
-    print('Changing with index: $index');
     if (index == 0) {
       sections[index + 1].isCurrentOffset.value = false;
       markCurrentOffset(index);
@@ -58,7 +54,6 @@ class AddEmployeeController extends GetxController {
   }
 
   markCurrentOffset(int index) {
-    print('Marking Offset: $index');
     sections[index].isCurrentOffset.value = true;
   }
 
