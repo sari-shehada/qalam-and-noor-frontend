@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/school_inbox_page/controllers/school_inbox_controller.dart';
+import 'package:kalam_noor/pages/school_inbox_page/main_page/controllers/school_inbox_tab_bar_controller.dart';
 
 import 'school_inbox_tabbar_item.dart';
 
-class SchoolInboxTabBar extends StatelessWidget {
+class SchoolInboxTabBar extends GetView<SchoolInboxTabBarController> {
   const SchoolInboxTabBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final SchoolInboxController controller = Get.find();
     return TabBar(
       controller: controller.tabController,
       tabs: [

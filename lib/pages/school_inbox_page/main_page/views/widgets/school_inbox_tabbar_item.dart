@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../configs/fonts.dart';
-import '../../../../configs/styles.dart';
+import '../../../../../configs/fonts.dart';
+import '../../../../../configs/styles.dart';
 
 class SchoolInboxTabBarItem extends StatelessWidget {
   const SchoolInboxTabBarItem({

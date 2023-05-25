@@ -12,7 +12,7 @@ import '../../pages/employees_management_page/main_page/views/employees_manageme
 import '../../pages/medicals_management/views/medicals_management_page.dart';
 import '../../pages/public_record_page/views/public_record_page.dart';
 import '../../pages/school_classes_management_page/main_page/views/school_classes_management_page.dart';
-import '../../pages/school_inbox_page/views/school_inbox_page.dart';
+import '../../pages/school_inbox_page/main_page/views/school_inbox_page.dart';
 import '../../pages/school_year_management/views/school_year_management_page.dart';
 import '../../pages/statistics_page/views/stats_page.dart';
 import '../../pages/student_display_page/views/students_management_page.dart';
