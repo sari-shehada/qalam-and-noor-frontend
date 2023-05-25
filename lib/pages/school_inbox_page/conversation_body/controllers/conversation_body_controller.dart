@@ -70,9 +70,9 @@ class ConversationBodyController extends GetxController {
   resetTimerAndMessages() {
     conversationMessagesStatus.value = ConversationMessagesStatus.isLoading;
     conversationMessages.clear();
-    if (refreshMessagesTimer.isActive) {
-      refreshMessagesTimer.cancel();
-    }
+    refreshMessagesTimer.cancel();
+    // if (refreshMessagesTimer.isActive) {
+    // }
   }
 
   initializeTimer() {
