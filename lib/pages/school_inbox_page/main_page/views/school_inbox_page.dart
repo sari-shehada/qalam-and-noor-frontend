@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/school_inbox_page/conversation_body/views/conversation_body.dart';
 import 'package:kalam_noor/pages/school_inbox_page/main_page/controllers/conversation_query_controller.dart';
 import 'package:kalam_noor/pages/school_inbox_page/main_page/controllers/school_inbox_primary_controller.dart';
 import 'package:kalam_noor/pages/school_inbox_page/conversations_menu/views/conversations_menu.dart';
@@ -108,9 +109,9 @@ class SchoolInboxPage extends StatelessWidget {
                       child: const ConversationMenu(),
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 7,
-                    child: Container(),
+                    child: ConversationBodyWidget(),
                   ),
                 ],
               ),

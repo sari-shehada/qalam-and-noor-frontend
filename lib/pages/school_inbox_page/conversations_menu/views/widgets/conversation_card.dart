@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/models/conversations/web_conversation.dart';
 import 'package:kalam_noor/models/enums.dart';
+import 'package:kalam_noor/pages/school_inbox_page/conversation_body/controllers/selected_conversation_controller.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
 class ConversationCard extends StatelessWidget {
@@ -19,20 +19,29 @@ class ConversationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = Get.theme.colorScheme;
-    final RxBool isSelected = false.obs;
     final isParents = conversation.orginalIssuer == ConversationParty.parents;
     final RxBool isHovered = false.obs;
     return Obx(
       () {
-        isSelected;
+        int currentConversationId = -1;
+        if (Get.find<SelectedConversationController>()
+                .currentConversation
+                .value !=
+            null) {
+          currentConversationId = Get.find<SelectedConversationController>()
+              .currentConversation
+              .value!
+              .id;
+        }
+        final bool isSelected = currentConversationId == conversation.id;
         return AnimatedContainer(
           duration: 150.milliseconds,
           height: 76.h,
-          margin: isSelected.value
+          margin: isSelected
               ? EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w)
               : EdgeInsets.zero,
           decoration: BoxDecoration(
-            color: isSelected.value
+            color: isSelected
                 ? colorScheme.primaryContainer
                 : colorScheme.primaryContainer.withOpacity(0),
             borderRadius:
@@ -48,9 +57,10 @@ class ConversationCard extends StatelessWidget {
               },
               borderRadius:
                   BorderRadius.circular(GlobalStyles.globalBorderRadius),
-              onTap: () => isSelected.value = !isSelected.value,
+              onTap: () => Get.find<SelectedConversationController>()
+                  .selectConversation(conversation),
               child: AnimatedPadding(
-                padding: isSelected.value
+                padding: isSelected
                     ? EdgeInsetsDirectional.only(start: 30.w, end: 55.w)
                     : isHovered.value
                         ? EdgeInsetsDirectional.only(start: 25.w, end: 50.w)

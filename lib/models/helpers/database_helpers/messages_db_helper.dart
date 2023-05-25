@@ -4,7 +4,7 @@ import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 
 class MessagesDBHelper implements CRUDInterface<Message> {
-  String get _controllerName => 'MessageController/';
+  String get _controllerName => 'MassegeController/';
   static MessagesDBHelper get instance => MessagesDBHelper();
 
   @override
@@ -37,15 +37,32 @@ class MessagesDBHelper implements CRUDInterface<Message> {
     return message;
   }
 
+  Future<List<Message>> getByConversationId(int id) async {
+    String url =
+        '${_controllerName}GetMessagesByConversationID?conversationId=$id';
+    List<Message> messages = await HttpService.getParsed<List<Message>, List>(
+      url: url,
+      dataMapper: (responseData) {
+        return responseData
+            .map(
+              (e) => Message.fromMap(e),
+            )
+            .toList();
+      },
+    );
+    return messages;
+  }
+
   Future<int> getMessagesCount() async {
     return await getAll().then((value) => value.length);
   }
 
   @override
   Future<bool> insert(Message object) async {
-    String url = '${_controllerName}InsertMessage';
+    String url = '${_controllerName}InsertMassege';
     int? result =
         await HttpService.post(url: url, serializedBody: object.toJson());
+    print(result);
     if (result == null) return false;
     return result == 1;
   }

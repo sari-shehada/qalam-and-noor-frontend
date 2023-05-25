@@ -17,12 +17,13 @@ class NoConversationYetSubPage extends StatelessWidget {
         children: [
           FaIcon(
             FontAwesomeIcons.message,
-            size: 90.sp,
+            size: 300.sp,
+            color: Get.theme.colorScheme.onSurfaceVariant,
           ),
-          AddVerticalSpacing(value: 80.h),
+          AddVerticalSpacing(value: 140.h),
           Text(
             'اضغط على محادثة لعرض التفاصيل',
-            style: ProjectFonts.titleMedium()
+            style: ProjectFonts.displayMedium()
                 .copyWith(color: Get.theme.colorScheme.onSurfaceVariant),
           ),
         ],

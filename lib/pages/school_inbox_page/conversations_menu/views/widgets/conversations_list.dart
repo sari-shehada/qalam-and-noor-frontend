@@ -72,6 +72,7 @@ class ConversationsList extends StatelessWidget {
                 fetchingController.conversationsToDisplay;
             return Expanded(
               child: ListView.separated(
+                padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 10.h),
                 itemCount: conversationsList.length,
                 itemBuilder: (context, index) {
                   return ConversationCard(
@@ -79,7 +80,10 @@ class ConversationsList extends StatelessWidget {
                   );
                 },
                 separatorBuilder: (context, index) {
-                  return const Divider();
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15.w),
+                    child: const Divider(),
+                  );
                 },
               ),
             );

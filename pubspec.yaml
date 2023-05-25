@@ -50,6 +50,7 @@ dependencies:
   flutter_svg: ^2.0.5
   test: ^1.22.0
   loading_animation_widget:
+  intl: ^0.18.1
   # file_picker: ^5.2.6
 
 dev_dependencies:
