@@ -8,7 +8,7 @@ import '../../configs/project_themes.dart';
 import '../../configs/styles.dart';
 
 class CustomFilledButton extends StatelessWidget {
-  const CustomFilledButton({
+  CustomFilledButton({
     super.key,
     this.labelColor,
     required this.onTap,
@@ -31,94 +31,123 @@ class CustomFilledButton extends StatelessWidget {
   final Color loadingColor;
   final dynamic child;
   final bool useShadow;
+  final Rx<bool> isHovered = false.obs;
   @override
   Widget build(BuildContext context) {
     if (buttonStatus == null) {
-      return Container(
-        height: height ?? 58.h,
-        width: width,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
-          boxShadow: useShadow == true
-              ? [
-                  BoxShadow(
-                    offset: Offset(0.w, 4.h),
-                    blurRadius: 12.r,
-                    color: Colors.black.withOpacity(.08),
-                  ),
-                ]
-              : [],
-        ),
-        child: Material(
-          color: backgroundColor ?? Get.theme.colorScheme.primary,
-          elevation: 0,
-          borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
-          child: InkWell(
-            onTap: onTap,
+      return Obx(
+        () => AnimatedContainer(
+          duration: 150.milliseconds,
+          padding: isHovered.value
+              ? EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w)
+              : const EdgeInsets.all(0),
+          height: height ?? 58.h,
+          width: width,
+          decoration: BoxDecoration(
             borderRadius:
                 BorderRadius.circular(GlobalStyles.globalBorderRadius),
-            child: Center(
-              child: buildChild(),
+            boxShadow: useShadow == true
+                ? [
+                    BoxShadow(
+                      offset: Offset(0.w, 4.h),
+                      blurRadius: 12.r,
+                      color: Colors.black.withOpacity(.08),
+                    ),
+                  ]
+                : [],
+          ),
+          child: Material(
+            color: backgroundColor ?? Get.theme.colorScheme.primary,
+            elevation: 0,
+            borderRadius:
+                BorderRadius.circular(GlobalStyles.globalBorderRadius),
+            child: InkWell(
+              onTap: onTap,
+              onHover: (value) {
+                if (value) {
+                  isHovered.value = true;
+                } else {
+                  isHovered.value = false;
+                }
+              },
+              borderRadius:
+                  BorderRadius.circular(GlobalStyles.globalBorderRadius),
+              child: Center(
+                child: buildChild(),
+              ),
             ),
           ),
         ),
       );
     }
-    return Container(
-      height: height ?? 58.h,
-      width: width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0.w, 4.h),
-            blurRadius: 12.r,
-            color: Colors.black.withOpacity(.08),
-          ),
-        ],
-      ),
-      child: Material(
-        color: backgroundColor ?? Get.theme.colorScheme.primary,
-        elevation: 0,
-        borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
-        child: Obx(
-          () {
-            switch (buttonStatus!.value) {
-              case CustomButtonStatus.enabled:
-                {
-                  return InkWell(
-                    onTap: onTap,
-                    borderRadius:
-                        BorderRadius.circular(GlobalStyles.globalBorderRadius),
-                    child: Center(
-                      child: buildChild(),
-                    ),
-                  );
-                }
-              case CustomButtonStatus.disabled:
-                {
-                  return InkWell(
-                    borderRadius:
-                        BorderRadius.circular(GlobalStyles.globalBorderRadius),
-                    child: Center(
-                      child: buildChild(),
-                    ),
-                  );
-                }
-              case CustomButtonStatus.processing:
-                {
-                  return Center(
-                    child: SizedBox.square(
-                      dimension: 30.h,
-                      child: LoaderWidget(
-                        color: loadingColor,
-                        size: 30.h,
+    return Obx(
+      () => AnimatedContainer(
+        height: height ?? 58.h,
+        width: width,
+        duration: 150.milliseconds,
+        padding: isHovered.value
+            ? EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w)
+            : const EdgeInsets.all(0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0.w, 4.h),
+              blurRadius: 12.r,
+              color: Colors.black.withOpacity(.08),
+            ),
+          ],
+        ),
+        child: Material(
+          color: backgroundColor ?? Get.theme.colorScheme.primary,
+          elevation: 0,
+          borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
+          child: Obx(
+            () {
+              switch (buttonStatus!.value) {
+                case CustomButtonStatus.enabled:
+                  {
+                    return InkWell(
+                      onTap: onTap,
+                      onHover: (value) {
+                        if (value) {
+                          isHovered.value = true;
+                        } else {
+                          isHovered.value = false;
+                        }
+                      },
+                      borderRadius: BorderRadius.circular(
+                          GlobalStyles.globalBorderRadius),
+                      child: Center(
+                        child: buildChild(),
                       ),
-                    ),
-                  );
-                }
-            }
-          },
+                    );
+                  }
+                case CustomButtonStatus.disabled:
+                  {
+                    return InkWell(
+                      borderRadius: BorderRadius.circular(
+                          GlobalStyles.globalBorderRadius),
+                      child: Center(
+                        child: buildChild(),
+                      ),
+                    );
+                  }
+                case CustomButtonStatus.processing:
+                  {
+                    return Center(
+                      child: SizedBox.square(
+                        dimension: 30.h,
+                        child: LoaderWidget(
+                          color: loadingColor,
+                          size: 30.h,
+                        ),
+                      ),
+                    );
+                  }
+              }
+            },
+          ),
         ),
       ),
     );
@@ -126,7 +155,7 @@ class CustomFilledButton extends StatelessWidget {
 
   buildChild() {
     assert(child is String || child is Widget,
-        'Expected a widget or string for the child of the callToActionButton');
+        'Expected a widget or string for the child of the CustomFilledButton');
     if (child is String) {
       return Text(
         child,
@@ -144,7 +173,7 @@ class CustomFilledButton extends StatelessWidget {
 enum CustomButtonStatus { enabled, disabled, processing }
 
 class CustomOutlinedButton extends StatelessWidget {
-  const CustomOutlinedButton({
+  CustomOutlinedButton({
     super.key,
     this.outlineColor,
     required this.onTap,
@@ -166,87 +195,114 @@ class CustomOutlinedButton extends StatelessWidget {
   final Rx<CustomButtonStatus>? buttonStatus;
   final dynamic child;
   final bool useShadow;
+  final Rx<bool> isHovered = false.obs;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height ?? 58.h,
-      width: width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
-        color: backgroundColor ?? Colors.transparent,
-        border: Border.all(
-          color: outlineColor ?? Get.theme.colorScheme.primary,
-          width: outlineWidth ?? 2.w,
+    return Obx(
+      () => AnimatedContainer(
+        height: height ?? 58.h,
+        width: width,
+        duration: 150.milliseconds,
+        padding: isHovered.value
+            ? EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w)
+            : const EdgeInsets.all(0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
+          color: backgroundColor ?? Colors.transparent,
+          boxShadow: useShadow == true
+              ? [
+                  BoxShadow(
+                    offset: Offset(0.w, 4.h),
+                    blurRadius: 12.r,
+                    color: Colors.black.withOpacity(.08),
+                  ),
+                ]
+              : null,
         ),
-        boxShadow: useShadow == true
-            ? [
-                BoxShadow(
-                  offset: Offset(0.w, 4.h),
-                  blurRadius: 12.r,
-                  color: Colors.black.withOpacity(.08),
-                ),
-              ]
-            : null,
-      ),
-      child: Material(
-        color: Colors.transparent,
-        elevation: 0,
-        borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
-        child: buttonStatus == null
-            ? InkWell(
-                onTap: onTap,
+        child: Material(
+            color: Colors.transparent,
+            elevation: 0,
+            borderRadius:
+                BorderRadius.circular(GlobalStyles.globalBorderRadius),
+            child: Container(
+              decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.circular(GlobalStyles.globalBorderRadius),
-                child: Center(
-                  child: buildChild(),
+                border: Border.all(
+                  color: outlineColor ?? Get.theme.colorScheme.primary,
+                  width: outlineWidth ?? 2.w,
                 ),
-              )
-            : Obx(
-                () {
-                  switch (buttonStatus!.value) {
-                    case CustomButtonStatus.enabled:
-                      {
-                        return InkWell(
-                          onTap: onTap,
-                          borderRadius: BorderRadius.circular(
-                              GlobalStyles.globalBorderRadius),
-                          child: Center(
-                            child: buildChild(),
-                          ),
-                        );
-                      }
-                    case CustomButtonStatus.disabled:
-                      {
-                        return InkWell(
-                          borderRadius: BorderRadius.circular(
-                              GlobalStyles.globalBorderRadius),
-                          child: Center(
-                            child: buildChild(),
-                          ),
-                        );
-                      }
-                    case CustomButtonStatus.processing:
-                      {
-                        return Center(
-                          child: SizedBox.square(
-                            dimension: 30.h,
-                            child: CircularProgressIndicator(
-                              color: outlineColor,
-                              strokeWidth: 4.sp,
-                            ),
-                          ),
-                        );
-                      }
-                  }
-                },
               ),
+              child: buttonStatus == null
+                  ? InkWell(
+                      onTap: onTap,
+                      onHover: (value) {
+                        if (value) {
+                          isHovered.value = true;
+                        } else {
+                          isHovered.value = false;
+                        }
+                      },
+                      borderRadius: BorderRadius.circular(
+                          GlobalStyles.globalBorderRadius),
+                      child: Center(
+                        child: buildChild(),
+                      ),
+                    )
+                  : Obx(
+                      () {
+                        switch (buttonStatus!.value) {
+                          case CustomButtonStatus.enabled:
+                            {
+                              return InkWell(
+                                onTap: onTap,
+                                onHover: (value) {
+                                  if (value) {
+                                    isHovered.value = true;
+                                  } else {
+                                    isHovered.value = false;
+                                  }
+                                },
+                                borderRadius: BorderRadius.circular(
+                                    GlobalStyles.globalBorderRadius),
+                                child: Center(
+                                  child: buildChild(),
+                                ),
+                              );
+                            }
+                          case CustomButtonStatus.disabled:
+                            {
+                              return InkWell(
+                                borderRadius: BorderRadius.circular(
+                                    GlobalStyles.globalBorderRadius),
+                                child: Center(
+                                  child: buildChild(),
+                                ),
+                              );
+                            }
+                          case CustomButtonStatus.processing:
+                            {
+                              return Center(
+                                child: SizedBox.square(
+                                  dimension: 30.h,
+                                  child: CircularProgressIndicator(
+                                    color: outlineColor,
+                                    strokeWidth: 4.sp,
+                                  ),
+                                ),
+                              );
+                            }
+                        }
+                      },
+                    ),
+            )),
       ),
     );
   }
 
   buildChild() {
     assert(child is String || child is Widget,
-        'Expected a widget or string for the child of the callToActionButton');
+        'Expected a widget or string for the child of the ç');
     if (child is String) {
       return Text(
         child,
