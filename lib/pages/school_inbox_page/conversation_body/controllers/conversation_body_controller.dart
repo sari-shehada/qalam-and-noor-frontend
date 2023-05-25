@@ -14,7 +14,9 @@ class ConversationBodyController extends GetxController {
   late Timer refreshMessagesTimer;
   @override
   void onInit() {
-    initializeTimer();
+    refreshMessagesTimer = Timer.periodic(1.seconds, (timer) {
+      updateMessages();
+    });
     refreshMessagesTimer.cancel();
     Get.find<ConversationFetchingController>()
         .conversationListStatus
@@ -76,8 +78,11 @@ class ConversationBodyController extends GetxController {
   }
 
   initializeTimer() {
+    if (refreshMessagesTimer.isActive) {
+      return;
+    }
     refreshMessagesTimer = Timer.periodic(1.seconds, (timer) {
-      print('Timer ticked');
+      print('Ticked for: $currentConvoId');
       updateMessages();
     });
   }

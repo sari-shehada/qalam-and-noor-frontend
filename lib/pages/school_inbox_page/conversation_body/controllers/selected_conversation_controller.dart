@@ -28,6 +28,9 @@ class SelectedConversationController extends GetxController {
     if (currentConversation.value == null) {
       currentConversation.value = webConversation;
     } else {
+      if (webConversation.id == currentConversation.value!.id) {
+        return;
+      }
       reselectConvo(webConversation);
     }
   }
