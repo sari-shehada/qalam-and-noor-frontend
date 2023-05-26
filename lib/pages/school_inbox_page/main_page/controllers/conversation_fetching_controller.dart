@@ -21,7 +21,7 @@ class ConversationFetchingController extends GetxController {
     Get.find<ConversationQueryController>().query.stream.listen((event) {
       executeQuery();
     });
-    updateListTimer = Timer.periodic(200.milliseconds, (timer) {
+    updateListTimer = Timer.periodic(10.seconds, (timer) {
       refreshQuery();
     });
     executeQuery();
@@ -37,6 +37,9 @@ class ConversationFetchingController extends GetxController {
   }
 
   reInitializeTimer() {
+    if (updateListTimer.isActive) {
+      return;
+    }
     updateListTimer = Timer.periodic(4.seconds, (timer) {
       refreshQuery();
     });
@@ -45,7 +48,6 @@ class ConversationFetchingController extends GetxController {
   refreshQuery() async {
     updateListTimer.cancel();
     conversationsToDisplay.value = await getQueryList();
-
     reInitializeTimer();
   }
 
@@ -83,15 +85,16 @@ class ConversationFetchingController extends GetxController {
             }).toList();
           }
         case StudentSearchQueryType.publicRecordId:
-          return convos
-              .where(
-                (element) =>
-                    element.id ==
-                    int.parse(
-                      query.studentNameOrId.trim(),
-                    ),
-              )
-              .toList();
+          {
+            int publicRecordId = int.parse(
+              query.studentNameOrId.trim(),
+            );
+            return convos
+                .where(
+                  (element) => element.publicRecordId == publicRecordId,
+                )
+                .toList();
+          }
       }
     } catch (e) {
       conversationListStatus.value = ConversationListStatus.hasError;

@@ -125,9 +125,21 @@ class ConversationListWidget extends StatelessWidget {
                   return Obx(
                     () =>
                         conversationBodyController.conversationMessages.isEmpty
-                            ? const EmptyItemWidget(
-                                itemName: 'رسائل',
-                                iconData: FontAwesomeIcons.message,
+                            ? TweenAnimationBuilder(
+                                duration: 600.milliseconds,
+                                tween: Tween<double>(begin: 0.0, end: 1.0),
+                                builder: (BuildContext context, dynamic value,
+                                    Widget? child) {
+                                  if (value == 1) {
+                                    return const EmptyItemWidget(
+                                      itemName: 'رسائل',
+                                      iconData: FontAwesomeIcons.message,
+                                    );
+                                  }
+                                  return const Center(
+                                    child: LoaderWidget(),
+                                  );
+                                },
                               )
                             : ListView.builder(
                                 controller: conversationCommunicationController
@@ -160,3 +172,28 @@ class ConversationListWidget extends StatelessWidget {
     );
   }
 }
+
+
+// conversationBodyController.conversationMessages.isEmpty
+//                             ? const EmptyItemWidget(
+//                                 itemName: 'رسائل',
+//                                 iconData: FontAwesomeIcons.message,
+//                               )
+
+//  conversationBodyController.conversationMessages.isEmpty
+//                             ? TweenAnimationBuilder(
+//                                 duration: 600.milliseconds,
+//                                 tween: Tween<double>(begin: 0.0, end: 1.0),
+//                                 builder: (BuildContext context, dynamic value,
+//                                     Widget? child) {
+//                                   if (value == 1) {
+//                                     return const EmptyItemWidget(
+//                                       itemName: 'رسائل',
+//                                       iconData: FontAwesomeIcons.message,
+//                                     );
+//                                   }
+//                                   return const Center(
+//                                     child: LoaderWidget(),
+//                                   );
+//                                 },
+//                               )

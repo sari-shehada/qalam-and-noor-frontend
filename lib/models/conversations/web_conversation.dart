@@ -17,6 +17,7 @@ class WebConversation {
   final String fatherName;
   final String lastName;
   final String motherName;
+  final int publicRecordId;
   WebConversation({
     required this.id,
     required this.studentId,
@@ -29,6 +30,7 @@ class WebConversation {
     required this.fatherName,
     required this.lastName,
     required this.motherName,
+    required this.publicRecordId,
   });
 
   WebConversation copyWith({
@@ -43,6 +45,7 @@ class WebConversation {
     String? fatherName,
     String? lastName,
     String? motherName,
+    int? publicRecordId,
   }) {
     return WebConversation(
       id: id ?? this.id,
@@ -56,6 +59,7 @@ class WebConversation {
       fatherName: fatherName ?? this.fatherName,
       lastName: lastName ?? this.lastName,
       motherName: motherName ?? this.motherName,
+      publicRecordId: publicRecordId ?? this.publicRecordId,
     );
   }
 
@@ -72,6 +76,7 @@ class WebConversation {
       'fatherName': fatherName,
       'lastName': lastName,
       'motherName': motherName,
+      'publicRecordId': publicRecordId,
     };
   }
 
@@ -88,6 +93,7 @@ class WebConversation {
       fatherName: map['fatherName'] as String,
       lastName: map['lastName'] as String,
       motherName: map['motherName'] as String,
+      publicRecordId: map['publicRecordId'] as int,
     );
   }
 
@@ -98,7 +104,7 @@ class WebConversation {
 
   @override
   String toString() {
-    return 'WebConversation(id: $id, studentId: $studentId, title: $title, status: $status, orginalIssuer: $orginalIssuer, isReadOther: $isReadOther, isReadParent: $isReadParent, studentName: $studentName, fatherName: $fatherName, lastName: $lastName, motherName: $motherName)';
+    return 'WebConversation(id: $id, studentId: $studentId, title: $title, status: $status, orginalIssuer: $orginalIssuer, isReadOther: $isReadOther, isReadParent: $isReadParent, studentName: $studentName, fatherName: $fatherName, lastName: $lastName, motherName: $motherName, publicRecordId: $publicRecordId)';
   }
 
   @override
@@ -115,7 +121,8 @@ class WebConversation {
         other.studentName == studentName &&
         other.fatherName == fatherName &&
         other.lastName == lastName &&
-        other.motherName == motherName;
+        other.motherName == motherName &&
+        other.publicRecordId == publicRecordId;
   }
 
   @override
@@ -130,6 +137,7 @@ class WebConversation {
         studentName.hashCode ^
         fatherName.hashCode ^
         lastName.hashCode ^
-        motherName.hashCode;
+        motherName.hashCode ^
+        publicRecordId.hashCode;
   }
 }

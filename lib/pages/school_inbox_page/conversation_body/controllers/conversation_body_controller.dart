@@ -53,7 +53,18 @@ class ConversationBodyController extends GetxController {
 
   updateMessages() async {
     refreshMessagesTimer.cancel();
-    conversationMessages.value = await fetchMessages();
+    int tempCurrentConvoId = currentConvoId;
+    List<Message> tempMessages = await fetchMessages();
+    if (Get.find<SelectedConversationController>().currentConversation.value !=
+        null) {
+      if (tempCurrentConvoId ==
+          Get.find<SelectedConversationController>()
+              .currentConversation
+              .value!
+              .id) {
+        conversationMessages.value = tempMessages;
+      }
+    }
     initializeTimer();
   }
 
@@ -81,8 +92,7 @@ class ConversationBodyController extends GetxController {
     if (refreshMessagesTimer.isActive) {
       return;
     }
-    refreshMessagesTimer = Timer.periodic(1.seconds, (timer) {
-      print('Ticked for: $currentConvoId');
+    refreshMessagesTimer = Timer.periodic(500.milliseconds, (timer) {
       updateMessages();
     });
   }

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/pages/school_inbox_page/conversations_menu/views/widgets/conversations_list.dart';
 import 'package:kalam_noor/pages/school_inbox_page/main_page/controllers/conversation_fetching_controller.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
-import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
 
 class ConversationMenu extends StatelessWidget {
   const ConversationMenu({super.key});
@@ -11,34 +10,43 @@ class ConversationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ConversationFetchingController fetchingController = Get.find();
-    return StreamBuilder(
-      stream: fetchingController.conversationListStatus.stream,
-      builder: (context, snapshot) {
-        if (snapshot.data == null) {
-          return const Center(
-            child: LoaderWidget(),
-          );
-        }
-        switch (snapshot.data!) {
-          case ConversationListStatus.isLoading:
-            {
-              return const Center(
-                child: LoaderWidget(),
-              );
-            }
-          case ConversationListStatus.hasConversations:
-            {
-              return const ConversationsList();
-            }
-          case ConversationListStatus.hasError:
-            {
-              return const ErrorLoadingSomethingWidget(
-                somethingName: 'محادثات',
-              );
-            }
-        }
-      },
-    );
+    // return StreamBuilder(
+    //   stream: fetchingController.conversationListStatus.stream,
+    //   builder: (context, snapshot) {
+    //     if (snapshot.data == null) {
+    //       return const Center(
+    //         child: LoaderWidget(),
+    //       );
+    //     }
+    //     switch (snapshot.data!) {
+    //       case ConversationListStatus.isLoading:
+    //         {
+    //           return const Center(
+    //             child: LoaderWidget(),
+    //           );
+    //         }
+    //       case ConversationListStatus.hasConversations:
+    //         {
+    //           return const ConversationsList();
+    //         }
+    //       case ConversationListStatus.hasError:
+    //         {
+    //           return const ErrorLoadingSomethingWidget(
+    //             somethingName: 'محادثات',
+    //           );
+    //         }
+    //     }
+    //   },
+    // );
+    return Obx(() {
+      if (fetchingController.conversationListStatus.value ==
+          ConversationListStatus.isLoading) {
+        return const Center(
+          child: LoaderWidget(),
+        );
+      }
+      return const ConversationsList();
+    });
   }
 }
 
