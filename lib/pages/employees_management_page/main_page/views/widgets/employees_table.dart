@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/models/agendas/employee.dart';
 import 'package:kalam_noor/pages/employees_management_page/main_page/views/widgets/employee_row.dart';
 
@@ -11,14 +12,15 @@ class EmployeesTable extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Get.theme;
     final ColorScheme colorScheme = themeData.colorScheme;
-    final TextTheme textTheme = themeData.textTheme;
     return Scaffold(
       body: SizedBox.expand(
         child: Column(children: [
           Container(
             decoration: BoxDecoration(
               color: colorScheme.primaryContainer,
-              border: Border.all(color: colorScheme.primary),
+              border: Border.all(
+                color: colorScheme.primary,
+              ),
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(15.r),
                 topLeft: Radius.circular(15.r),
@@ -34,12 +36,16 @@ class EmployeesTable extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
                     decoration: BoxDecoration(
                       border: Border(
-                        left: BorderSide(color: colorScheme.primary),
+                        left: BorderSide(
+                          color: colorScheme.primary,
+                        ),
                       ),
                     ),
                     child: Text(
                       'الاسم الثلاثي',
-                      style: textTheme.titleLarge,
+                      style: ProjectFonts.titleLarge().copyWith(
+                        color: colorScheme.primary,
+                      ),
                     ),
                   ),
                 ),
@@ -51,12 +57,16 @@ class EmployeesTable extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
                     decoration: BoxDecoration(
                       border: Border(
-                        left: BorderSide(color: colorScheme.primary),
+                        left: BorderSide(
+                          color: colorScheme.primary,
+                        ),
                       ),
                     ),
                     child: Text(
                       'الاسم الأم',
-                      style: textTheme.titleLarge,
+                      style: ProjectFonts.titleLarge().copyWith(
+                        color: colorScheme.primary,
+                      ),
                     ),
                   ),
                 ),
@@ -68,12 +78,16 @@ class EmployeesTable extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
                     decoration: BoxDecoration(
                       border: Border(
-                        left: BorderSide(color: colorScheme.primary),
+                        left: BorderSide(
+                          color: colorScheme.primary,
+                        ),
                       ),
                     ),
                     child: Text(
                       'الجنس',
-                      style: textTheme.titleLarge,
+                      style: ProjectFonts.titleLarge().copyWith(
+                        color: colorScheme.primary,
+                      ),
                     ),
                   ),
                 ),
@@ -85,12 +99,16 @@ class EmployeesTable extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
                     decoration: BoxDecoration(
                       border: Border(
-                        left: BorderSide(color: colorScheme.primary),
+                        left: BorderSide(
+                          color: colorScheme.primary,
+                        ),
                       ),
                     ),
                     child: Text(
                       'تاريخ الميلاد',
-                      style: textTheme.titleLarge,
+                      style: ProjectFonts.titleLarge().copyWith(
+                        color: colorScheme.primary,
+                      ),
                     ),
                   ),
                 ),
@@ -102,12 +120,16 @@ class EmployeesTable extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
                     decoration: BoxDecoration(
                       border: Border(
-                        left: BorderSide(color: colorScheme.primary),
+                        left: BorderSide(
+                          color: colorScheme.primary,
+                        ),
                       ),
                     ),
                     child: Text(
                       'عدد الأولاد',
-                      style: textTheme.titleLarge,
+                      style: ProjectFonts.titleLarge().copyWith(
+                        color: colorScheme.primary,
+                      ),
                     ),
                   ),
                 ),
@@ -119,7 +141,9 @@ class EmployeesTable extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
                     child: Text(
                       'تاريخ المزاولة',
-                      style: textTheme.titleLarge,
+                      style: ProjectFonts.titleLarge().copyWith(
+                        color: colorScheme.primary,
+                      ),
                     ),
                   ),
                 ),

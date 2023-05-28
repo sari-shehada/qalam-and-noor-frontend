@@ -88,10 +88,27 @@ class ConversationListWidget extends StatelessWidget {
                               fontWeight: FontWeight.normal,
                             ),
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.more_vert),
-                          ),
+                          PopupMenuButton(
+                            onSelected: (item) =>
+                                conversationCommunicationController
+                                    .selectContextMenuItem(item),
+                            padding: EdgeInsets.zero,
+                            // initialValue: choices[_selection],
+                            itemBuilder: (BuildContext context) {
+                              return ConversationBodyContextMenuOptions.values
+                                  .map(
+                                    (e) => PopupMenuItem<
+                                        ConversationBodyContextMenuOptions>(
+                                      value: e,
+                                      child: Text(
+                                        conversationBodyContextMenuOptionsAsString[
+                                            e]!,
+                                      ),
+                                    ),
+                                  )
+                                  .toList();
+                            },
+                          )
                         ],
                       ),
                       Center(

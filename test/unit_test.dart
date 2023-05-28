@@ -4,7 +4,7 @@ import 'package:kalam_noor/models/agendas/father.dart';
 import 'package:kalam_noor/models/agendas/mother.dart';
 import 'package:kalam_noor/models/educational/school_class.dart';
 import 'package:kalam_noor/models/enums.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/student_db_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/students_db_helper.dart';
 import 'package:kalam_noor/models/medical/illness.dart';
 import 'package:kalam_noor/models/medical/medical_record.dart';
 import 'package:kalam_noor/models/medical/taken_vaccine.dart';
@@ -121,7 +121,7 @@ void main() {
       bool result = false;
 
       // print(registrationModel.toString());
-      result = await StudentDBHelper.instance
+      result = await StudentsDBHelper.instance
           .registerNewStudent(registrationInfo: registrationInfo);
 
       expect(result, result);

@@ -3,13 +3,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/controllers/account_controller.dart';
 import 'package:kalam_noor/pages/navigation_page/controllers/navigation_bindings.dart';
-import 'package:kalam_noor/pages/psychological_instructor_pages/dashboard/views/psychological_instructor_page.dart';
-
+import 'package:kalam_noor/pages/psychological_instructor_pages/dashboard/views/psychological_instructor_dashboard.dart';
 import '../../pages/addresses_management/main_page/views/addresses_management_page.dart';
 import '../../pages/dashboard/models/navigation_rail_destination_card.dart';
 import '../../pages/dashboard/views/dashboard_page.dart';
 import '../../pages/employees_management_page/main_page/views/employees_management_page.dart';
 import '../../pages/medicals_management/views/medicals_management_page.dart';
+import '../../pages/psychological_instructor_pages/student_fill_psychological_statuses_page/main_page/views/student_fill_psychological_statuses_page.dart';
 import '../../pages/public_record_page/views/public_record_page.dart';
 import '../../pages/school_classes_management_page/main_page/views/school_classes_management_page.dart';
 import '../../pages/school_inbox_page/main_page/views/school_inbox_page.dart';
@@ -27,7 +27,7 @@ abstract class DestinationsHelper {
     UserRole.psychologicalInstructor: NavigationBindings(
       railDestinations: psychologicalInstructorDestinations,
       hasBottomSection: false,
-      hasMiddleSection: false,
+      hasMiddleSection: true,
     ),
     UserRole.teacher: NavigationBindings(
       railDestinations: teacherDestinations,
@@ -99,7 +99,12 @@ abstract class DestinationsHelper {
     NavigationRailDestinationCard(
       title: 'لوحة التحكم',
       iconData: FontAwesomeIcons.house,
-      destination: const PsychologicalInstructorPage(),
+      destination: const PsychologicalInstructorDashboard(),
+    ),
+    NavigationRailDestinationCard(
+      title: 'حالات الطلاب الجدد',
+      iconData: FontAwesomeIcons.graduationCap,
+      destination: const StudentFillPsychologicalStatusesPage(),
     ),
   ];
 

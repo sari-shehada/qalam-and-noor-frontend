@@ -14,39 +14,46 @@ class CustomNavigationRail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final NavigationPageController dashboardController = Get.find();
+    final NavigationPageController navigationController = Get.find();
     return MouseRegion(
-      onHover: (event) => dashboardController.expandContainer(),
-      onExit: (event) => dashboardController.collapseContainer(),
+      onHover: (event) => navigationController.expandContainer(),
+      onExit: (event) => navigationController.collapseContainer(),
       child: Obx(
         () => AnimatedContainer(
           duration: DashboardControllerConstants.railAnimationDuration,
           curve: Curves.linearToEaseOut,
-          width: dashboardController.railWidth.value,
-          decoration: BoxDecoration(color: const Color(0xFFFFFFFF), boxShadow: [
-            BoxShadow(
-                offset: Offset(-30.w, 0),
-                color: const Color(0xff393939).withOpacity(.05),
-                blurRadius: 60)
-          ]),
+          width: navigationController.railWidth.value,
+          decoration: BoxDecoration(
+            color: const Color(0xFFFFFFFF),
+            boxShadow: [
+              BoxShadow(
+                  offset: Offset(-30.w, 0),
+                  color: const Color(0xff393939).withOpacity(.05),
+                  blurRadius: 60)
+            ],
+          ),
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 45.h, horizontal: 25.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RailHeader(dashboardController: dashboardController),
+                RailHeader(dashboardController: navigationController),
                 AddVerticalSpacing(value: 45.h),
                 const NavigationRailCard(index: 0),
                 AddVerticalSpacing(value: 40.h),
-                dashboardController.hasMiddleSection
+                navigationController.hasMiddleSection
                     ? SizedBox(
                         height: 580.h,
                         child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount:
-                              dashboardController.dashboardDestinations.length -
-                                  2,
+                          itemCount: navigationController.hasBottomSection
+                              ? navigationController
+                                      .dashboardDestinations.length -
+                                  2
+                              : navigationController
+                                      .dashboardDestinations.length -
+                                  1,
                           itemBuilder: (context, index) => NavigationRailCard(
                             index: index + 1,
                           ),
@@ -54,11 +61,12 @@ class CustomNavigationRail extends StatelessWidget {
                       )
                     : const SizedBox.shrink(),
                 const Spacer(),
-                dashboardController.hasBottomSection
+                navigationController.hasBottomSection
                     ? NavigationRailCard(
                         index:
-                            dashboardController.dashboardDestinations.length -
-                                1)
+                            navigationController.dashboardDestinations.length -
+                                1,
+                      )
                     : const SizedBox.shrink()
               ],
             ),
