@@ -5,13 +5,13 @@ import '../../../tools/logic_tools/network_service.dart';
 
 class StudentPsychologicalStatusesDBHelper
     implements CRUDInterface<StudentPsychologicalStatus> {
-  String get _controllerName => 'PsychologicalStatusesMedicalRecordController/';
+  String get _controllerName => 'PsychologicalStatusMedicalRecordController/';
   static StudentPsychologicalStatusesDBHelper get instance =>
       StudentPsychologicalStatusesDBHelper();
 
   @override
   Future<List<StudentPsychologicalStatus>> getAll() async {
-    String url = '${_controllerName}GetPsychologicalStatusesMedicalRecords';
+    String url = '${_controllerName}GetPsychologicalStatusMedicalRecords';
     List<StudentPsychologicalStatus> allStudentPsychologicalStatuses =
         await HttpService.getParsed<List<StudentPsychologicalStatus>, List>(
       url: url,
@@ -29,7 +29,7 @@ class StudentPsychologicalStatusesDBHelper
   @override
   Future<StudentPsychologicalStatus?> getById(int id) async {
     String url =
-        '${_controllerName}GetPsychologicalStatusesMedicalRecordById?id=$id';
+        '${_controllerName}GetPsychologicalStatusMedicalRecordById?id=$id';
     StudentPsychologicalStatus? city = await HttpService.getParsed<
         StudentPsychologicalStatus?, Map<String, dynamic>>(
       url: url,
@@ -46,7 +46,7 @@ class StudentPsychologicalStatusesDBHelper
 
   @override
   Future<bool> insert(StudentPsychologicalStatus object) async {
-    String url = '${_controllerName}InsertPsychologicalStatusesMedicalRecord';
+    String url = '${_controllerName}InsertPsychologicalStatusMedicalRecord';
     int? result =
         await HttpService.post(url: url, serializedBody: object.toJson());
     if (result == null) return false;
@@ -55,7 +55,7 @@ class StudentPsychologicalStatusesDBHelper
 
   @override
   Future<bool> update(StudentPsychologicalStatus object) async {
-    String url = '${_controllerName}UpdatePsychologicalStatusesMedicalRecord';
+    String url = '${_controllerName}UpdatePsychologicalStatusMedicalRecord';
     int? result =
         await HttpService.post(url: url, serializedBody: object.toJson());
     if (result == null) return false;

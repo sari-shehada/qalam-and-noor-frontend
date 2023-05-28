@@ -5,8 +5,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 abstract class HttpService {
-  static const String _baseURL = 'https://qalamandnoor-001-site1.ftempurl.com/';
-  // static const String _baseURL = 'https://localhost:7109/';
+  static const String _baseURL =
+      'https://qalamnoorschool-001-site1.ftempurl.com/';
   static Future<MapperReturnType> getParsed<MapperReturnType, JsonParseType>({
     required String url,
     required MapperReturnType Function(JsonParseType responseData) dataMapper,

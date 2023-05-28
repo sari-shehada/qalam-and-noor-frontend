@@ -1,14 +1,22 @@
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/agendas/student.dart';
+import 'package:kalam_noor/models/enums.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/psychological_statuses_db_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/student_psychological_statuses_db_helper.dart';
 import 'package:kalam_noor/models/medical/psychological_status.dart';
+import 'package:kalam_noor/models/medical/student_psychological_status.dart';
+import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
+import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 
 class AssignStudentPsychologicalInfoController extends GetxController {
+  Rx<CustomButtonStatus> buttonStatus = CustomButtonStatus.enabled.obs;
   AssignStudentPsychologicalInfoController({required this.student});
   Rx<PsychologicalStatusesLoadingStatus> loadingStatus =
       PsychologicalStatusesLoadingStatus.isLoading.obs;
   RxList<PsychologicalStatus> psychologicalStatuses =
       <PsychologicalStatus>[].obs;
+  RxMap<PsychologicalStatus, StudentPsychologicalStatus> addedStatuses =
+      <PsychologicalStatus, StudentPsychologicalStatus>{}.obs;
   final Student student;
 
   @override
@@ -25,6 +33,43 @@ class AssignStudentPsychologicalInfoController extends GetxController {
       loadingStatus.value = PsychologicalStatusesLoadingStatus.hasData;
     } catch (e) {
       loadingStatus.value = PsychologicalStatusesLoadingStatus.hasError;
+    }
+  }
+
+  addOrRemoveStatus(PsychologicalStatus status) {
+    if (addedStatuses.keys.contains(status)) {
+      addedStatuses.remove(status);
+      return;
+    }
+    addedStatuses[status] = StudentPsychologicalStatus(
+      id: -1,
+      medicalRecordId: student.id,
+      psychologicalStatusId: status.id,
+      statusLevel: PsychologicalStatusLevel.medium,
+    );
+  }
+
+  changeStatusLevel(PsychologicalStatus psychologicalStatus, int level) {
+    addedStatuses[psychologicalStatus] =
+        addedStatuses[psychologicalStatus]!.copyWith(
+      statusLevel: PsychologicalStatusLevel.values[level],
+    );
+  }
+
+  Future<void> addPsychologicalStatuses() async {
+    try {
+      if (addedStatuses.isEmpty) {
+        SnackBarService.showErrorSnackBar(
+            title: 'لا يوجد حالات', message: 'لم تقم بإضافة حالات للطالب');
+        return;
+      }
+      buttonStatus.value = CustomButtonStatus.processing;
+      addedStatuses.forEach((key, value) async {
+        await StudentPsychologicalStatusesDBHelper.instance.insert(value);
+      });
+      Get.back(result: true);
+    } finally {
+      buttonStatus.value = CustomButtonStatus.enabled;
     }
   }
 }

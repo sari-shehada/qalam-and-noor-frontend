@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum Religion {
   islam,
   christianity,
@@ -91,3 +93,19 @@ enum PsychologicalStatusLevel {
   high,
   veryHigh,
 }
+
+Map<PsychologicalStatusLevel, String> psychologicalStatusLevelAsString = {
+  PsychologicalStatusLevel.veryLow: 'منخفض جدا',
+  PsychologicalStatusLevel.low: 'منخفض',
+  PsychologicalStatusLevel.medium: 'متوسط',
+  PsychologicalStatusLevel.high: 'عالي',
+  PsychologicalStatusLevel.veryHigh: 'عالي جدا',
+};
+
+Map<PsychologicalStatusLevel, Color> psychologicalStatusLevelAsColor = {
+  PsychologicalStatusLevel.veryLow: const Color(0xFF1E86CF),
+  PsychologicalStatusLevel.low: const Color(0xFF5F72AD),
+  PsychologicalStatusLevel.medium: const Color(0xFF816193),
+  PsychologicalStatusLevel.high: const Color(0xFFAB4971),
+  PsychologicalStatusLevel.veryHigh: const Color(0xFFCE2E50),
+};
