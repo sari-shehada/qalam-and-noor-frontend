@@ -77,7 +77,7 @@ class StudentFillPsychologicalStatusesController extends GetxController {
 
   Future<void> addStudentPsychologicalInfo(Student student) async {
     var result = await Get.to(
-      () => AssignStudentPsychologicalInfoPage(),
+      () => const AssignStudentPsychologicalInfoPage(),
       binding: BindingsBuilder.put(
         () => AssignStudentPsychologicalInfoController(student: student),
       ),
