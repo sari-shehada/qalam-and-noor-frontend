@@ -16,6 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.backButtonEnabled = false,
     this.actionButton,
     this.appBarBoxDecoration,
+    this.padding,
   });
 
   final String title;
@@ -23,6 +24,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool backButtonEnabled;
   final dynamic actionButton;
   final BoxDecoration? appBarBoxDecoration;
+  final EdgeInsets? padding;
   @override
   Widget build(BuildContext context) {
     assert(
@@ -33,10 +35,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return PreferredSize(
       preferredSize: preferredSize,
       child: Container(
-        padding: EdgeInsetsDirectional.only(
-          start: 70.w,
-          end: 60.w,
-        ),
+        padding: padding ??
+            EdgeInsetsDirectional.only(
+              start: 50.w,
+              end: 40.w,
+            ),
         decoration: appBarBoxDecoration,
         alignment: Alignment.center,
         child: Row(

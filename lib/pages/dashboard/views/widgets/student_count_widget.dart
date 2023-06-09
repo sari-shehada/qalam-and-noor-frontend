@@ -19,7 +19,7 @@ class StudentCountWidget extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Positioned(
-            left: -140.w,
+            left: -100.w,
             width: 660.w,
             height: 402.h,
             child: SvgPicture.asset(
@@ -83,39 +83,3 @@ class StudentCountWidget extends StatelessWidget {
     );
   }
 }
-
-// Row(
-//         crossAxisAlignment: CrossAxisAlignment.center,
-//         children: [
-//           Expanded(
-//             child: Column(
-//               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 AddVerticalSpacing(value: 20.h),
-//                 Expanded(
-//                   child: FittedBox(
-//                     child: Text(
-//                       '100',
-//                       style: ProjectFonts.displayMedium(),
-//                     ),
-//                   ),
-//                 ),
-//                 Text(
-//                   'عدد الطلاب الكلي',
-//                   style: ProjectFonts.displaySmall(),
-//                 ),
-//                 AddVerticalSpacing(value: 20.h),
-//               ],
-//             ),
-//           ),
-//           AddHorizontalSpacing(value: 20.w),
-//           SizedBox.square(
-//             dimension: 300.h,
-//             child: SvgPicture.asset(
-//               GlobalAssets.studentsPLayingIllustration,
-//               fit: BoxFit.scaleDown,
-//             ),
-//           ),
-//         ],
-//       ),
