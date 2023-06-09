@@ -43,7 +43,7 @@ abstract class DestinationsHelper {
 
   static List<NavigationRailDestinationCard> secretaryDestinations = [
     NavigationRailDestinationCard(
-      title: 'لوحة التحكم',
+      title: 'الرئيسية',
       iconData: FontAwesomeIcons.house,
       destination: const DashboardPage(),
     ),
@@ -97,7 +97,7 @@ abstract class DestinationsHelper {
   static List<NavigationRailDestinationCard>
       psychologicalInstructorDestinations = [
     NavigationRailDestinationCard(
-      title: 'لوحة التحكم',
+      title: 'الرئيسية',
       iconData: FontAwesomeIcons.house,
       destination: const PsychologicalInstructorDashboard(),
     ),
@@ -110,7 +110,7 @@ abstract class DestinationsHelper {
 
   static List<NavigationRailDestinationCard> teacherDestinations = [
     NavigationRailDestinationCard(
-      title: 'لوحة التحكم',
+      title: 'الرئيسية',
       iconData: FontAwesomeIcons.house,
       destination: Scaffold(
         body: Center(
@@ -127,7 +127,7 @@ abstract class DestinationsHelper {
 
   static List<NavigationRailDestinationCard> otherDestinations = [
     NavigationRailDestinationCard(
-      title: 'لوحة التحكم',
+      title: 'الرئيسية',
       iconData: FontAwesomeIcons.house,
       destination: Scaffold(
         body: Center(
