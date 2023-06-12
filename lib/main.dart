@@ -47,12 +47,6 @@ class WebApp extends StatelessWidget {
 
 
 //TODO:
-//1. Change transition between pages to fade  //Done
-//2. Move add new student (register student) to Manage Students Tab
 //3. Fill up the empty containers in dashboard page
-//4. Add new employee registration page //Done
 //5. Add Exams Management to Classes
-//6. Refactor upper panel size in Dashboard page
-//7. Add Psychological Instructor Page (with a button to fill missing students psy statuses)
 //8. Enable Search by name for employees in EmployeesManagementPage
-//9. Use Tabbar in medicals management page to fill up the space //Done

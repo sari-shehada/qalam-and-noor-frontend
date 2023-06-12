@@ -49,6 +49,18 @@ class SchoolYearsDBHelper implements CRUDInterface<SchoolYear> {
     return result == 1;
   }
 
+  Future<SchoolYear> getCurrentSchoolYear() async {
+    String url = '${_controllerName}GetCurrentSchoolYear';
+    SchoolYear? schoolYear =
+        await HttpService.getParsed<SchoolYear, Map<String, dynamic>>(
+      url: url,
+      dataMapper: (responseData) {
+        return SchoolYear.fromMap(responseData);
+      },
+    );
+    return schoolYear;
+  }
+
   @override
   Future<bool> update(SchoolYear object) async {
     String url = '${_controllerName}UpdateSchoolYear';

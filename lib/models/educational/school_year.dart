@@ -2,34 +2,46 @@
 import 'dart:convert';
 
 class SchoolYear {
-  int id;
-  String details;
+  final int id;
+  final String name;
+  final bool isFinished;
+  final int previousSchoolYearId;
   SchoolYear({
     required this.id,
-    required this.details,
+    required this.name,
+    required this.isFinished,
+    required this.previousSchoolYearId,
   });
 
   SchoolYear copyWith({
     int? id,
-    String? details,
+    String? name,
+    bool? isFinished,
+    int? previousSchoolYearId,
   }) {
     return SchoolYear(
       id: id ?? this.id,
-      details: details ?? this.details,
+      name: name ?? this.name,
+      isFinished: isFinished ?? this.isFinished,
+      previousSchoolYearId: previousSchoolYearId ?? this.previousSchoolYearId,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'details': details,
+      'name': name,
+      'isFinished': isFinished,
+      'previousSchoolYearId': previousSchoolYearId,
     };
   }
 
   factory SchoolYear.fromMap(Map<String, dynamic> map) {
     return SchoolYear(
       id: map['id'] as int,
-      details: map['details'] as String,
+      name: map['name'] as String,
+      isFinished: map['isFinished'] as bool,
+      previousSchoolYearId: map['previousSchoolYearId'] as int,
     );
   }
 
@@ -39,15 +51,25 @@ class SchoolYear {
       SchoolYear.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'SchoolYear(id: $id, details: $details)';
+  String toString() {
+    return 'SchoolYear(id: $id, name: $name, isFinished: $isFinished, previousSchoolYearId: $previousSchoolYearId)';
+  }
 
   @override
   bool operator ==(covariant SchoolYear other) {
     if (identical(this, other)) return true;
 
-    return other.id == id && other.details == details;
+    return other.id == id &&
+        other.name == name &&
+        other.isFinished == isFinished &&
+        other.previousSchoolYearId == previousSchoolYearId;
   }
 
   @override
-  int get hashCode => id.hashCode ^ details.hashCode;
+  int get hashCode {
+    return id.hashCode ^
+        name.hashCode ^
+        isFinished.hashCode ^
+        previousSchoolYearId.hashCode;
+  }
 }

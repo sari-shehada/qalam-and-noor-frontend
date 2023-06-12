@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/current_time_widget.dart';
+import 'package:kalam_noor/pages/dashboard/views/widgets/current_weather_widget.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/student_count_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
@@ -17,7 +18,9 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DashboardController controller = Get.find();
+    DashboardController controller = Get.put(
+      DashboardController(),
+    );
     return CustomScaffold(
       appBar: const CustomAppBar(
         title: 'الصفحة الرئيسية',
@@ -100,9 +103,16 @@ class DashboardPage extends StatelessWidget {
                       ),
                     ),
                     AddVerticalSpacing(value: 20.h),
-                    const Expanded(
+                    Expanded(
                       flex: 2,
-                      child: _DashboardContainer(),
+                      child: Obx(
+                        () => _DashboardContainer(
+                          buildChildWithContainer: true,
+                          child: controller.weatherForecast.value == null
+                              ? null
+                              : const CurrentWeatherWidget(),
+                        ),
+                      ),
                     ),
                     AddVerticalSpacing(value: 20.h),
                     Expanded(
@@ -126,173 +136,6 @@ class DashboardPage extends StatelessWidget {
     );
   }
 }
-
-// Row(
-//             children: [
-//               Expanded(
-//                 flex: 80,
-//                 child: Column(
-//                   children: [
-//                     Expanded(
-//                       flex: 4,
-//                       child: Row(
-//                         children: [
-//                           const Expanded(
-//                             flex: 6,
-//                             child: _DashboardContainer(),
-//                           ),
-//                           AddHorizontalSpacing(value: 30.w),
-//                           const Expanded(
-//                             flex: 5,
-//                             child: _DashboardContainer(),
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-//                     AddVerticalSpacing(value: 20.h),
-//                     const Expanded(
-//                       flex: 1,
-//                       child: _DashboardContainer(),
-//                     ),
-//                     AddVerticalSpacing(value: 20.h),
-//                     Expanded(
-//                       flex: 4,
-//                       child: Row(
-//                         children: [
-//                           const Expanded(
-//                             flex: 3,
-//                             child: _DashboardContainer(),
-//                           ),
-//                           AddHorizontalSpacing(value: 30.w),
-//                           const Expanded(
-//                             flex: 3,
-//                             child: _DashboardContainer(),
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-//                     AddVerticalSpacing(value: 20.h),
-//                   ],
-//                 ),
-//               ),
-//               AddHorizontalSpacing(value: 30.w),
-//               Expanded(
-//                 flex: 30,
-//                 child: Column(
-//                   children: [
-//                     const Expanded(
-//                       flex: 2,
-//                       child: _DashboardContainer(),
-//                     ),
-//                     AddVerticalSpacing(value: 20.h),
-//                     const Expanded(
-//                       flex: 2,
-//                       child: _DashboardContainer(),
-//                     ),
-//                     AddVerticalSpacing(value: 20.h),
-//                     Expanded(
-//                       flex: 6,
-//                       child: _DashboardContainer(
-//                         boxShadow: [],
-//                         backgroundColor: Colors.transparent,
-//                         borderRadius: BorderRadius.only(
-//                           topLeft: Radius.circular(20.r),
-//                           topRight: Radius.circular(20.r),
-//                         ),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           ),
-
-// Column(
-//             children: [
-//               Expanded(
-//                 flex: 45,
-//                 child: Row(
-//                   children: [
-//                     const Expanded(
-//                       flex: 3,
-//                       child: _DashboardContainer(),
-//                     ),
-//                     AddHorizontalSpacing(value: 30.w),
-//                     const Expanded(
-//                       flex: 2,
-//                       child: _DashboardContainer(),
-//                     ),
-//                     AddHorizontalSpacing(value: 30.w),
-//                     Expanded(
-//                       flex: 2,
-//                       child: Column(
-//                         children: [
-//                           const Expanded(
-//                             child: _DashboardContainer(),
-//                           ),
-//                           AddVerticalSpacing(value: 20.h),
-//                           const Expanded(
-//                             child: _DashboardContainer(),
-//                           )
-//                         ],
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//               AddVerticalSpacing(value: 20.h),
-//               Expanded(
-//                 flex: 55,
-//                 child: Row(
-//                   children: [
-//                     Expanded(
-//                       flex: 85,
-//                       child: Column(
-//                         children: [
-//                           const Expanded(
-//                             flex: 2,
-//                             child: _DashboardContainer(),
-//                           ),
-//                           AddVerticalSpacing(value: 20.h),
-//                           Expanded(
-//                             flex: 8,
-//                             child: Row(
-//                               children: [
-//                                 const Expanded(
-//                                   child: _DashboardContainer(),
-//                                 ),
-//                                 AddHorizontalSpacing(value: 30.w),
-//                                 const Expanded(
-//                                   child: _DashboardContainer(),
-//                                 ),
-//                               ],
-//                             ),
-//                           ),
-//                           AddVerticalSpacing(value: 20.h),
-//                         ],
-//                       ),
-//                     ),
-//                     Expanded(
-//                       flex: 35,
-//                       child: ScrollConfiguration(
-//                         behavior: ScrollConfiguration.of(context)
-//                             .copyWith(scrollbars: false),
-//                         child: ListView.builder(
-//                           shrinkWrap: false,
-//                           itemCount: 10,
-//                           itemBuilder: (_, index) {
-//                             return _DashboardContainer(
-//                               margin: EdgeInsets.only(bottom: 30.h),
-//                             );
-//                           },
-//                         ),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           ),
 
 class _DashboardContainer extends StatelessWidget {
   ///Nullable as to be a placeholder

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/statistics_db_helper.dart';
 import 'package:kalam_noor/models/stats_models/psychological_status_student_count.dart';
 
 import '../models/psychological_instructor_dashboard_cards_info.dart';
@@ -16,12 +17,12 @@ class PsychologicalInstructorDashboardController extends GetxController {
   Future<PsychologicalInstructorDashboardCardsInfo> getCardsInfo() async {
     await Future.delayed(3.seconds);
     return PsychologicalInstructorDashboardCardsInfo(
-      psychologicalStatusesToStudentCount:
-          await getPsychologicalStatusesToStudentCount(),
-      malePsychologicalStatusesToStudentCount:
-          await getPsychologicalStatusesToStudentCount(), //TODO:
-      femalePsychologicalStatusesToStudentCount:
-          await getPsychologicalStatusesToStudentCount(), //TODO:
+      psychologicalStatusesToStudentCount: await StatisticsDBHelper
+          .getTopPsychologicalStatusesByAffectedStudents(),
+      malePsychologicalStatusesToStudentCount: await StatisticsDBHelper
+          .getTopPsychologicalStatusesByAffectedMaleStudents(),
+      femalePsychologicalStatusesToStudentCount: await StatisticsDBHelper
+          .getTopPsychologicalStatusesByAffectedFemaleStudents(),
       currentDateAndTime: DateTime.now(),
     );
   }
