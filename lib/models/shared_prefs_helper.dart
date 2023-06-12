@@ -1,3 +1,4 @@
+import 'package:kalam_noor/models/weather_api/weather_forecast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefsHelper {
@@ -37,9 +38,33 @@ class SharedPrefsHelper {
   Future<bool> clearAll() async {
     return await spInstance.clear();
   }
+
+  Future<void> saveWeatherForecast(WeatherForecast weatherForecast) async {
+    await spInstance.setString(
+      SharedPrefsKeys.weatherForecastKey,
+      weatherForecast.toJson(),
+    );
+  }
+
+  Future<WeatherForecast> getStoredWeatherForecast() async {
+    return WeatherForecast.fromJson(
+      spInstance.getString(
+            SharedPrefsKeys.weatherForecastKey,
+          ) ??
+          WeatherForecast(
+            temp: 16.0,
+            weather: WeatherDescription(
+              description: 'غائم جزئيا',
+              code: 803,
+              icon: 'c03d',
+            ),
+          ).toJson(),
+    );
+  }
 }
 
 class SharedPrefsKeys {
   static String get loginStatusKey => 'isLoggedIn';
   static String get employeeIdKey => 'employeeId';
+  static String get weatherForecastKey => 'weatherForecast';
 }

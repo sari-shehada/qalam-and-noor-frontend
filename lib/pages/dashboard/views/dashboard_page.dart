@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/current_time_widget.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/current_weather_widget.dart';
+import 'package:kalam_noor/pages/dashboard/views/widgets/daily_quote.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/student_count_widget.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/teachers_count_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
@@ -71,9 +72,17 @@ class DashboardPage extends StatelessWidget {
                       ),
                     ),
                     AddVerticalSpacing(value: 20.h),
-                    const Expanded(
+                    Expanded(
                       flex: 1,
-                      child: _DashboardContainer(),
+                      child: Obx(
+                        () => _DashboardContainer(
+                          padding: EdgeInsets.symmetric(horizontal: 50.w),
+                          buildChildWithContainer: true,
+                          child: controller.dailyQuote.value == null
+                              ? null
+                              : const DailyQuoteWidget(),
+                        ),
+                      ),
                     ),
                     AddVerticalSpacing(value: 20.h),
                     Expanded(
