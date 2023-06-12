@@ -54,7 +54,7 @@ class Message {
       body: map['body'] as String,
       sender: ConversationParty.values[map['sender'] as int],
       date: DateTime.fromMillisecondsSinceEpoch(
-        int.parse(map['date'] as String),
+        int.parse(map['date'] as String) * 1000,
       ),
       conversationId: map['conversationId'] as int,
     );

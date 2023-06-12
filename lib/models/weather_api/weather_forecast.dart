@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 class WeatherForecast {
-  final double temp;
+  final num temp;
   final WeatherDescription weather;
   WeatherForecast({
     required this.temp,
@@ -10,7 +10,7 @@ class WeatherForecast {
   });
 
   WeatherForecast copyWith({
-    double? temp,
+    num? temp,
     WeatherDescription? weather,
   }) {
     return WeatherForecast(
@@ -28,7 +28,7 @@ class WeatherForecast {
 
   factory WeatherForecast.fromMap(Map<String, dynamic> map) {
     return WeatherForecast(
-      temp: map['temp'] as double,
+      temp: map['temp'] as num,
       weather:
           WeatherDescription.fromMap(map['weather'] as Map<String, dynamic>),
     );

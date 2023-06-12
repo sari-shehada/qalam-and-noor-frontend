@@ -38,7 +38,7 @@ class SchoolYearManagementPage extends StatelessWidget {
                 child: CurrentSchoolYearCard(),
               ),
               Expanded(
-                flex: 6,
+                flex: 7,
                 child: Column(
                   children: [],
                 ),
