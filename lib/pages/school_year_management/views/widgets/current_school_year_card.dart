@@ -31,36 +31,36 @@ class CurrentSchoolYearCard extends StatelessWidget {
           Radius.circular(20.r),
         ),
       ),
-      child: Obx(() {
-        return FutureBuilder<SchoolYear>(
-          future: controller.currentSchoolYear.value,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: LoaderWidget(),
-              );
-            }
-            if (snapshot.hasError) {
-              return ErrorLoadingSomethingWidget(
-                somethingName: 'العام الدراسي الحالي',
-                retryCallback: () => controller.refreshCurrentSchoolYear(),
-              );
-            }
-            if (snapshot.hasData) {
-              return Expanded(
-                child: CurrentSchoolYearCardData(
+      child: Obx(
+        () {
+          return FutureBuilder<SchoolYear>(
+            future: controller.currentSchoolYear.value,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: LoaderWidget(),
+                );
+              }
+              if (snapshot.hasError) {
+                return ErrorLoadingSomethingWidget(
+                  somethingName: 'العام الدراسي الحالي',
+                  retryCallback: () => controller.refreshCurrentSchoolYear(),
+                );
+              }
+              if (snapshot.hasData) {
+                return CurrentSchoolYearCardData(
                   schoolYear: snapshot.data!,
-                ),
-              );
-            } else {
-              return const EmptyItemWidget(
-                itemName: 'عام دراسي حالي',
-                iconData: FontAwesomeIcons.school,
-              );
-            }
-          },
-        );
-      }),
+                );
+              } else {
+                return const EmptyItemWidget(
+                  itemName: 'عام دراسي حالي',
+                  iconData: FontAwesomeIcons.school,
+                );
+              }
+            },
+          );
+        },
+      ),
     );
   }
 }
