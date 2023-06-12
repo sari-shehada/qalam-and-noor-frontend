@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:kalam_noor/controllers/navigation_controller.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/employees_db_helper.dart';
 import 'package:kalam_noor/models/weather_api/weather_api_helper.dart';
 import 'package:kalam_noor/models/weather_api/weather_forecast.dart';
 
@@ -7,6 +8,7 @@ import '../../../models/helpers/database_helpers/students_db_helper.dart';
 
 class DashboardController extends GetxController {
   Rx<int?> studentsCount = Rx<int?>(null);
+  Rx<int?> teachersCount = Rx<int?>(null);
   Rx<DateTime?> serverTime = Rx<DateTime?>(null);
   Rx<WeatherForecast?> weatherForecast = Rx<WeatherForecast?>(null);
   Future<void> registerNewStudent() async {
@@ -23,6 +25,7 @@ class DashboardController extends GetxController {
     loadStudentsCount();
     loadServerTime();
     loadWeatherForecast();
+    loaderTeachersCount();
   }
 
   Future<void> loadStudentsCount() async {
@@ -36,5 +39,11 @@ class DashboardController extends GetxController {
   Future<void> loadWeatherForecast() async {
     weatherForecast.value = await WeatherForecastAPI.getCurrentWeather();
     weatherForecast.refresh();
+  }
+
+  Future<void> loaderTeachersCount() async {
+    await EmployeesDBHelper.instance.getAllTeachers().then(
+          (value) => teachersCount.value = value.length,
+        );
   }
 }

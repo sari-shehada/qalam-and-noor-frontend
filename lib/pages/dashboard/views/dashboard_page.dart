@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/current_time_widget.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/current_weather_widget.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/student_count_widget.dart';
+import 'package:kalam_noor/pages/dashboard/views/widgets/teachers_count_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
@@ -53,9 +54,18 @@ class DashboardPage extends StatelessWidget {
                             ),
                           ),
                           AddHorizontalSpacing(value: 30.w),
-                          const Expanded(
+                          Expanded(
                             flex: 5,
-                            child: _DashboardContainer(),
+                            child: Obx(
+                              () => _DashboardContainer(
+                                buildChildWithContainer: false,
+                                child: controller.teachersCount.value == null
+                                    ? null
+                                    : TeachersCountWidget(
+                                        count: controller.teachersCount.value!,
+                                      ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
