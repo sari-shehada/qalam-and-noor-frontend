@@ -36,9 +36,7 @@ class SettingsPageController extends GetxController {
 
   Future<void> changeLoginInfo() async {
     var result = await Get.dialog(
-      ChangeAccountInfoDialog(
-        employee: employee.value,
-      ),
+      const ChangeAccountInfoDialog(),
     );
     if (result is Employee) {
       employee.value = result;
