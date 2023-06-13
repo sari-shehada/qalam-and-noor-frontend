@@ -12,6 +12,24 @@ class StudentPsychologicalStatusesDBHelper
   @override
   Future<List<StudentPsychologicalStatus>> getAll() async {
     String url = '${_controllerName}GetPsychologicalStatusMedicalRecords';
+    List<StudentPsychologicalStatus> allPsychologicalStatusesMedicalRecords =
+        await HttpService.getParsed<List<StudentPsychologicalStatus>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return StudentPsychologicalStatus.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allPsychologicalStatusesMedicalRecords;
+  }
+
+  Future<List<StudentPsychologicalStatus>> getAllByMedicalRecordId(
+      int id) async {
+    String url =
+        '${_controllerName}GetPsychologicalStatusMedicalRecordsByMedicalRecordId?medicalRecordId=$id';
     List<StudentPsychologicalStatus> allStudentPsychologicalStatuses =
         await HttpService.getParsed<List<StudentPsychologicalStatus>, List>(
       url: url,
@@ -30,17 +48,18 @@ class StudentPsychologicalStatusesDBHelper
   Future<StudentPsychologicalStatus?> getById(int id) async {
     String url =
         '${_controllerName}GetPsychologicalStatusMedicalRecordById?id=$id';
-    StudentPsychologicalStatus? city = await HttpService.getParsed<
-        StudentPsychologicalStatus?, Map<String, dynamic>>(
+    StudentPsychologicalStatus? psychologicalStatusMedicalRecord =
+        await HttpService.getParsed<StudentPsychologicalStatus?,
+            Map<String, dynamic>>(
       url: url,
       dataMapper: (responseData) {
         return StudentPsychologicalStatus.fromMap(responseData);
       },
     );
-    return city;
+    return psychologicalStatusMedicalRecord;
   }
 
-  Future<int> getCitiesCount() async {
+  Future<int> getCountPsychologicalStatusMedicalRecords() async {
     return await getAll().then((value) => value.length);
   }
 

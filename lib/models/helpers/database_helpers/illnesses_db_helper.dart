@@ -1,4 +1,5 @@
 import 'package:kalam_noor/models/medical/illness.dart';
+import 'package:kalam_noor/models/medical/student_illness_info.dart';
 import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 
@@ -21,6 +22,23 @@ class IllnessesDBHelper implements CRUDInterface<Illness> {
       },
     );
     return allIllnesses;
+  }
+
+  Future<List<StudentIllnessInfo>> getAllStudentIllnesses(int studentId) async {
+    String url =
+        '${_controllerName}GetStudentIllnessesByStudentId?studentId=$studentId';
+    List<StudentIllnessInfo> allStudentIllnesses =
+        await HttpService.getParsed<List<StudentIllnessInfo>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return StudentIllnessInfo.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allStudentIllnesses;
   }
 
   @override

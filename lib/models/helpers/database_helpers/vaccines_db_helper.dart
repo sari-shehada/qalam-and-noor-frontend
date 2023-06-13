@@ -1,7 +1,7 @@
+import 'package:kalam_noor/models/medical/student_vaccines_info.dart';
 import 'package:kalam_noor/models/medical/vaccine.dart';
 import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
-
 
 class VaccinesDBHelper implements CRUDInterface<Vaccine> {
   String get _controllerName => 'VaccineController/';
@@ -22,6 +22,24 @@ class VaccinesDBHelper implements CRUDInterface<Vaccine> {
       },
     );
     return allVaccines;
+  }
+
+  Future<List<StudentVaccineInfo>> getAllStudentTakenVaccines(
+      int studentId) async {
+    String url =
+        '${_controllerName}GetStudentTakenVaccinesByStudentId?studentId=$studentId';
+    List<StudentVaccineInfo> allTakenVaccines =
+        await HttpService.getParsed<List<StudentVaccineInfo>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return StudentVaccineInfo.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allTakenVaccines;
   }
 
   @override

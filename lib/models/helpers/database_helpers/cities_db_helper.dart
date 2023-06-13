@@ -24,7 +24,7 @@ class CitiesDBHelper implements CRUDInterface<City> {
 
   @override
   Future<City?> getById(int id) async {
-    String url = '${_controllerName}GetCityById?id=$id';
+    String url = '${_controllerName}GetCitById?id=$id';
     City? city = await HttpService.getParsed<City?, Map<String, dynamic>>(
       url: url,
       dataMapper: (responseData) {

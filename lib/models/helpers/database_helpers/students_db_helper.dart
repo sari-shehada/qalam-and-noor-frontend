@@ -127,6 +127,7 @@ class StudentsDBHelper implements CRUDInterface<Student> {
         joinDate: registrationInfo.personalInfo.joinDate,
         leaveDate: null,
         familyId: -1,
+        isActive: true,
       ),
     );
     return await registerStudent(registrationModel);
