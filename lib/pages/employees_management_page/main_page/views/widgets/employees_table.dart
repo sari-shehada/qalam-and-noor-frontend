@@ -126,7 +126,7 @@ class EmployeesTable extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'عدد الأولاد',
+                      'عدد الأبناء',
                       style: ProjectFonts.titleLarge().copyWith(
                         color: colorScheme.primary,
                       ),
@@ -140,7 +140,7 @@ class EmployeesTable extends StatelessWidget {
                     padding:
                         EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
                     child: Text(
-                      'تاريخ المزاولة',
+                      'تاريخ التوظيف',
                       style: ProjectFonts.titleLarge().copyWith(
                         color: colorScheme.primary,
                       ),
