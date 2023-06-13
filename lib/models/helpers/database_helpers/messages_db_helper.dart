@@ -60,9 +60,10 @@ class MessagesDBHelper implements CRUDInterface<Message> {
   @override
   Future<bool> insert(Message object) async {
     String url = '${_controllerName}InsertMassege';
-    int? result =
-        await HttpService.post(url: url, serializedBody: object.toJson());
-    print(result);
+    int? result = await HttpService.post(
+      url: url,
+      serializedBody: object.toJson(),
+    );
     if (result == null) return false;
     return result == 1;
   }

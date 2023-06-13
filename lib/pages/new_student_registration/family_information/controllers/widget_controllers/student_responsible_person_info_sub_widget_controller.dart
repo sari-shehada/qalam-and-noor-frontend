@@ -17,8 +17,7 @@ class StudentResponsiblePersonInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل الإسم الأول';
         }
         return null;
       });
@@ -26,8 +25,7 @@ class StudentResponsiblePersonInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل اللقب';
         }
         return null;
       });
@@ -35,8 +33,7 @@ class StudentResponsiblePersonInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل علاقته مع الطالب';
         }
         return null;
       });
@@ -45,8 +42,7 @@ class StudentResponsiblePersonInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل مكان الولادة';
         }
         return null;
       });
@@ -54,8 +50,7 @@ class StudentResponsiblePersonInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل رقم الهاتف';
         }
         if (controller.text.length != 10) {
           return 'رقم الهاتف لا يطابق البنية الصحيحة لأرقام الهواتف في سوريا';
@@ -78,7 +73,6 @@ class StudentResponsiblePersonInfoSubWidgetController extends GetxController {
   }
 
   bool validateFields() {
-    //TODO: Add Validation Here
     if (firstNameController.validate() &&
         lastNameController.validate() &&
         relationToStudentController.validate() &&

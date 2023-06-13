@@ -7,6 +7,7 @@ import 'package:kalam_noor/pages/school_classes_management_page/courses_manageme
 import 'package:kalam_noor/pages/school_classes_management_page/courses_management/views/widgets/courses_table.dart';
 import 'package:kalam_noor/tools/ui_tools/labeled_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
+import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
 import '../../../../tools/ui_tools/buttons.dart';
 import '../../../../tools/ui_tools/custom_appbar.dart';
 import '../../../../tools/ui_tools/custom_drop_down_menu.dart';
@@ -102,8 +103,9 @@ class CoursesManagementPage extends StatelessWidget {
               }
               if (snapshot.hasError) {
                 return const Center(
-                  //TODO: Change later
-                  child: Text('Error Loading Courses'),
+                  child: ErrorLoadingSomethingWidget(
+                    somethingName: "المقررات",
+                  ),
                 );
               }
               if (snapshot.hasData) {

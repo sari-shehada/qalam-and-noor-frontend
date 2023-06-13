@@ -12,8 +12,7 @@ class StudentMotherInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل الإسم الأول';
         }
         return null;
       });
@@ -21,8 +20,7 @@ class StudentMotherInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل اللقب';
         }
         return null;
       });
@@ -30,8 +28,7 @@ class StudentMotherInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل إسم الأب';
         }
         return null;
       });
@@ -39,8 +36,7 @@ class StudentMotherInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل إسم الإم';
         }
         return null;
       });
@@ -48,8 +44,7 @@ class StudentMotherInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل المهنة';
         }
         return null;
       });
@@ -57,8 +52,7 @@ class StudentMotherInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل رقم القيد';
         }
         return null;
       });
@@ -66,8 +60,7 @@ class StudentMotherInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل مكان القيد';
         }
         return null;
       });
@@ -75,8 +68,7 @@ class StudentMotherInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل مكان الولادة';
         }
         return null;
       });
@@ -84,8 +76,7 @@ class StudentMotherInfoSubWidgetController extends GetxController {
       controller: TextEditingController(),
       validator: (controller) {
         if (controller.text.isEmpty) {
-          //TODO:
-          return 'الرجاء ملئ حقل ...';
+          return 'الرجاء ملئ حقل رقم الهاتف';
         }
         if (controller.text.length != 10) {
           return 'رقم الهاتف لا يطابق البنية الصحيحة لأرقام الهواتف في سوريا';

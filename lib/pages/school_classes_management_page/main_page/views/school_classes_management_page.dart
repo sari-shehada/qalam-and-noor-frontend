@@ -9,6 +9,7 @@ import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
+import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
 import '../../../../../tools/ui_tools/labeled_widget.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
 import '../../../../../tools/ui_tools/custom_appbar.dart';
@@ -106,7 +107,9 @@ class SchoolClassesManagementPage extends StatelessWidget {
                       if (snapshot.hasError) {
                         //TODO: Change later
                         return const Center(
-                          child: Text('error loading classes'),
+                          child: ErrorLoadingSomethingWidget(
+                            somethingName: "المراحل الدراسية",
+                          ),
                         );
                       }
                       if (snapshot.hasData) {

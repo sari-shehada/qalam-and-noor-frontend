@@ -7,6 +7,7 @@ import 'package:kalam_noor/models/medical/illness.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
 
 import '../../controllers/widget_controllers/student_illnesses_info_sub_widget_controller.dart';
 
@@ -27,11 +28,12 @@ class StudentIllnessesInfoSubWidget extends StatelessWidget {
             if (snapshot.hasError) {
               return Column(
                 children: [
-                  //TODO:
-                  const Text('Error'),
+                  const ErrorLoadingSomethingWidget(
+                    somethingName: "الأمراض",
+                  ),
                   CustomFilledButton(
                     onTap: () => controller.getIllnesses(),
-                    child: 'Retry',
+                    child: 'إعادة المحاولة',
                   ),
                 ],
               );

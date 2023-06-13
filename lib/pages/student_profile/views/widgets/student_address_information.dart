@@ -54,7 +54,9 @@ class AddressInformation extends GetView<StudentProfileController> {
                   if (snapshot.data!.address.details == null ||
                       snapshot.data!.address.details == "" ||
                       snapshot.data!.address.details == "-") {
-                    return Text("لا يوجد تفاصيل للعنوان");
+                    return const Text(
+                      "لا يوجد تفاصيل للعنوان",
+                    );
                   }
                   return Text(
                     snapshot.data!.address.details!,

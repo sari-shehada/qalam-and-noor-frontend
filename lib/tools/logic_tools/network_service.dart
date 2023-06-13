@@ -52,7 +52,7 @@ abstract class HttpService {
     String? serializedBody,
   }) async {
     Uri uriParsedFromURL = Uri.parse(_baseURL + url);
-    print(serializedBody);
+    // print(serializedBody);
     http.Response response = await http.post(
       uriParsedFromURL,
       body: serializedBody,
