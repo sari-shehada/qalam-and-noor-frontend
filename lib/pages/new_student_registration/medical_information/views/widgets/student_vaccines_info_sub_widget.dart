@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/medical/vaccine.dart';
 import 'package:kalam_noor/pages/new_student_registration/medical_information/controllers/widget_controllers/student_vaccines_info_sub_widget_controller.dart';
 import 'package:kalam_noor/tools/logic_tools/datetime_helper.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
+import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
+import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
 
 import '../../../../../configs/fonts.dart';
 import '../../../../../configs/styles.dart';
@@ -26,21 +29,16 @@ class StudentVaccinesInfoSubWidget extends StatelessWidget {
             return const Center(child: LoaderWidget());
           } else {
             if (snapshot.hasError) {
-              return Column(
-                children: [
-                  //TODO:
-                  const Text('Error'),
-                  CustomFilledButton(
-                    onTap: () => controller.getVaccines(),
-                    child: 'Retry',
-                  ),
-                ],
+              return ErrorLoadingSomethingWidget(
+                somethingName: 'لقاحات',
+                retryCallback: () => controller.getVaccines(),
               );
             }
             if (snapshot.hasData) {
               if ((snapshot.data as List).isEmpty) {
                 //TODO:
-                return const Text('No Results Found');
+                return const EmptyItemWidget(
+                    itemName: 'لقاحات', iconData: FontAwesomeIcons.syringe);
               }
               List<Vaccine> vaccines = snapshot.data!;
               return Column(

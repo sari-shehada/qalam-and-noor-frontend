@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
@@ -9,6 +10,7 @@ import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
 
+import '../../../../../tools/widgets/empty_item_widget.dart';
 import '../../controllers/widget_controllers/student_illnesses_info_sub_widget_controller.dart';
 
 class StudentIllnessesInfoSubWidget extends StatelessWidget {
@@ -40,8 +42,10 @@ class StudentIllnessesInfoSubWidget extends StatelessWidget {
             }
             if (snapshot.hasData) {
               if ((snapshot.data as List).isEmpty) {
-                //TODO:
-                return const Text('No Results Found');
+                return const EmptyItemWidget(
+                  itemName: 'أمراض',
+                  iconData: FontAwesomeIcons.virus,
+                );
               }
               List<Illness> illnesses = snapshot.data!;
               return Column(

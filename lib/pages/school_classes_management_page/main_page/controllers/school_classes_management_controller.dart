@@ -63,14 +63,12 @@ class SchoolClassManagementController extends GetxController {
   }
 }
 
-//TODO:
 enum SchoolClassesSortingOption {
   none,
   byNameAsc,
   byNameDesc,
 }
 
-//TODO
 Map<SchoolClassesSortingOption, String> schoolClassesSortingOptionsAsString = {
   SchoolClassesSortingOption.none: 'دون ترتيب',
   SchoolClassesSortingOption.byNameAsc: 'حسب ترتيب المرحلة الدراسية تصاعديا',

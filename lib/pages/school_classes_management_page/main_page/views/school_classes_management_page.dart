@@ -105,7 +105,6 @@ class SchoolClassesManagementPage extends StatelessWidget {
                         );
                       }
                       if (snapshot.hasError) {
-                        //TODO: Change later
                         return const Center(
                           child: ErrorLoadingSomethingWidget(
                             somethingName: "المراحل الدراسية",
