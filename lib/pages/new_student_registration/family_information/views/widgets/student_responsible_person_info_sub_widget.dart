@@ -68,8 +68,8 @@ class StudentResponsiblePersonInfoSubWidget extends StatelessWidget {
           child: Obx(
             () => CalendarDatePicker(
               currentDate: controller.dateOfBirth.value,
-              firstDate: DateTime(2000),
-              initialDate: DateTime.now(),
+              firstDate: DateTime(1970),
+              initialDate: DateTime(1980),
               lastDate: DateTime.now(),
               onDateChanged: (DateTime value) =>
                   controller.changeDateOfBirth(value),

@@ -58,6 +58,9 @@ class SharedPrefsHelper {
               code: 803,
               icon: 'c03d',
             ),
+            wind_spd: 6.18,
+            wind_cdir: 'NE',
+            rh: 20,
           ).toJson(),
     );
   }
