@@ -53,4 +53,27 @@ class SnackBarService {
       snackPosition: SnackPosition.TOP,
     ));
   }
+
+  static void showNeutralSnackBar(
+      {required String title, required String message}) {
+    Get.showSnackbar(GetSnackBar(
+      borderRadius: 15,
+      margin: EdgeInsets.symmetric(
+          horizontal: (Get.mediaQuery.size.width / 4 + 20.w), vertical: 30),
+      icon: Row(
+        children: [
+          AddHorizontalSpacing(value: 20.w),
+          const FaIcon(
+            FontAwesomeIcons.check,
+            color: Colors.white,
+          ),
+        ],
+      ),
+      title: title,
+      message: message,
+      backgroundColor: Colors.blueGrey.shade600,
+      duration: const Duration(seconds: 2),
+      snackPosition: SnackPosition.TOP,
+    ));
+  }
 }
