@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/configs/assets.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/pages/dashboard/controllers/dashboard_controller.dart';
 
@@ -14,8 +15,37 @@ class DailyQuoteWidget extends GetView<DashboardController> {
       fit: StackFit.expand,
       children: [
         Positioned(
-          top: 25.h,
-          right: 40.w,
+          top: -40.h,
+          right: -30.w,
+          height: 200.sp,
+          width: 200.sp,
+          child: Image.asset(
+            GlobalAssets.quotesIcon,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Get.theme.colorScheme.primaryContainer.withOpacity(.5),
+                // Colors.white,
+                Colors.white,
+                Colors.white.withOpacity(0),
+              ],
+              stops: const [
+                0,
+                .85,
+                1,
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+          top: 20.h,
+          right: 100.w,
           child: Text(
             '''"${quote.quote}"''',
             style: ProjectFonts.headlineMedium().copyWith(
@@ -26,7 +56,7 @@ class DailyQuoteWidget extends GetView<DashboardController> {
         ),
         Positioned(
           bottom: 25.h,
-          left: 0,
+          left: 50.w,
           child: Text(
             quote.credit,
             style: ProjectFonts.headlineMedium().copyWith(

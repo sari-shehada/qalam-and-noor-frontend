@@ -8,6 +8,9 @@ class GlobalAssets {
   static String femaleAvatarCircular =
       'assets/icons/female-circular-avatar.png';
 
+  //Icons
+  static String quotesIcon = 'assets/icons/quote.png';
+
   //Illustrations
   static String studentsPLayingIllustration =
       'assets/illustrations/students_playing.svg';

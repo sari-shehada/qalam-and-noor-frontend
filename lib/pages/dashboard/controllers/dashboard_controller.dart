@@ -5,7 +5,7 @@ import 'package:kalam_noor/controllers/navigation_controller.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/employees_db_helper.dart';
 import 'package:kalam_noor/models/weather_api/weather_api_helper.dart';
 import 'package:kalam_noor/models/weather_api/weather_forecast.dart';
-import 'package:kalam_noor/pages/dashboard/views/widgets/daily_quote.dart';
+import 'package:kalam_noor/pages/dashboard/views/widgets/daily_quote_widget.dart';
 
 import '../../../models/helpers/database_helpers/students_db_helper.dart';
 

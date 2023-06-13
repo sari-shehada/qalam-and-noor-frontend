@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/current_time_widget.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/current_weather_widget.dart';
-import 'package:kalam_noor/pages/dashboard/views/widgets/daily_quote.dart';
+import 'package:kalam_noor/pages/dashboard/views/widgets/daily_quote_widget.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/student_count_widget.dart';
 import 'package:kalam_noor/pages/dashboard/views/widgets/teachers_count_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
@@ -76,7 +76,6 @@ class DashboardPage extends StatelessWidget {
                       flex: 1,
                       child: Obx(
                         () => _DashboardContainer(
-                          padding: EdgeInsets.symmetric(horizontal: 50.w),
                           buildChildWithContainer: true,
                           child: controller.dailyQuote.value == null
                               ? null
@@ -136,13 +135,30 @@ class DashboardPage extends StatelessWidget {
                     AddVerticalSpacing(value: 20.h),
                     Expanded(
                       flex: 6,
-                      child: _DashboardContainer(
-                        boxShadow: const [],
-                        backgroundColor: Colors.transparent,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20.r),
-                          topRight: Radius.circular(20.r),
-                        ),
+                      // child: _DashboardContainer(
+                      //   // boxShadow: const [],
+                      //   buildChildWithContainer: true,
+                      //   backgroundColor: Colors.red,
+                      //   borderRadius: BorderRadius.only(
+                      //     topLeft: Radius.circular(20.r),
+                      //     topRight: Radius.circular(20.r),
+                      //   ),
+                      //   child: Text('asd'),
+                      // ),
+                      child: ListView.builder(
+                        itemCount: 6,
+                        itemExtent: 200,
+                        padding: EdgeInsets.only(bottom: 20.h),
+                        itemBuilder: (context, index) {
+                          return _DashboardContainer(
+                            margin: EdgeInsets.symmetric(vertical: 10.h),
+                            // boxShadow: const [],
+                            buildChildWithContainer: true,
+                          );
+                        },
+                        // separatorBuilder: (context, index) {
+                        //   return AddVerticalSpacing(value: 10.h);
+                        // },
                       ),
                     ),
                   ],
@@ -218,34 +234,3 @@ class _DashboardContainer extends StatelessWidget {
     );
   }
 }
-
-// FutureBuilder<int>(
-//                         future: controller.studentCount.value,
-//                         builder: (context, snapshot) {
-//                           if (snapshot.connectionState ==
-//                               ConnectionState.waiting) {
-//                             return ClipRRect(
-//                               borderRadius: BorderRadius.all(
-//                                 Radius.circular(20.r),
-//                               ),
-//                               child: Shimmer.fromColors(
-//                                 baseColor: Get.theme.colorScheme.primary
-//                                     .withOpacity(.03),
-//                                 highlightColor: Get.theme.colorScheme.primary
-//                                     .withOpacity(.2),
-//                                 direction: ShimmerDirection.rtl,
-//                                 child: const _DashboardContainer(
-//                                   width: 588,
-//                                   height: 402,
-//                                 ),
-//                               ),
-//                             );
-//                           }
-//                           return _DashboardContainer(
-//                             width: 588,
-//                             height: 402,
-//                             child:
-//                                 StudentCountWidget(count: snapshot.data ?? 0),
-//                           );
-//                         },
-//                       ),
