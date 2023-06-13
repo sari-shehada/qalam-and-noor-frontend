@@ -40,13 +40,13 @@ class StudentFillPsychologicalStatusesController extends GetxController {
   Future<List<Student>> _getStudents({
     bool withSearch = false,
   }) async {
-    List<Student> temporaryStudents = [];
     if (!withSearch) {
       if (searchFieldController.text.isNotEmpty) {
         searchFieldController.text = '';
-        return await getStudentsList();
       }
+      return await getStudentsList();
     }
+    List<Student> temporaryStudents = [];
     temporaryStudents = await getStudentsList();
     if (searchFieldController.text.isNumericOnly) {
       return temporaryStudents

@@ -12,11 +12,13 @@ class PsychologicalStatusesManagementController extends GetxController {
   Future<RxList<PsychologicalStatus>> getPsychologicalStatusToDisplay() async {
     RxList<PsychologicalStatus> psychologicalStatuses =
         <PsychologicalStatus>[].obs;
-    await PsychologicalStatusesDBHelper.instance.getAll().then((list) {
-      for (PsychologicalStatus psychologicalStatus in list) {
-        psychologicalStatuses.add(psychologicalStatus);
-      }
-    });
+    await PsychologicalStatusesDBHelper.instance.getAll().then(
+      (list) {
+        for (PsychologicalStatus psychologicalStatus in list) {
+          psychologicalStatuses.add(psychologicalStatus);
+        }
+      },
+    );
     switch (currentSortingOption.value) {
       case PsychologicalStatusSortingOption.none:
         return psychologicalStatuses;
@@ -37,8 +39,10 @@ class PsychologicalStatusesManagementController extends GetxController {
     }
   }
 
-  PsychologicalStatusesManagementController() {
+  @override
+  void onInit() {
     psychologicalStatuses = getPsychologicalStatusToDisplay().obs;
+    super.onInit();
   }
 
   void changeSortingOption(PsychologicalStatusSortingOption? sortingOption) {

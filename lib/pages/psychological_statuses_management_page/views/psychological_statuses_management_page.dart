@@ -41,7 +41,8 @@ class PsychologicalStatusesManagementPage extends StatelessWidget {
                     }
                     if (snapshot.hasError) {
                       return const ErrorLoadingSomethingWidget(
-                          somethingName: 'حالات نفسية');
+                        somethingName: 'حالات نفسية',
+                      );
                     }
                     if (snapshot.hasData) {
                       if (snapshot.data!.isEmpty) {
