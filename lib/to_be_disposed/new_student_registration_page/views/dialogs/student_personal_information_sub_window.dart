@@ -34,7 +34,7 @@ class StudentPersonalInformationSubWindow extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       LabeledWidget(
-                        label: 'رقم سجل الطالب',
+                        label: 'رقم السجل العام',
                         child: HintedTextField(
                           hintText: '',
                           controller: controller.publicRecordIdController,
