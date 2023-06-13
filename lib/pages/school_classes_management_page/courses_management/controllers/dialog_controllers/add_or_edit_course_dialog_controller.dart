@@ -28,16 +28,30 @@ class AddOrEditCourseDialogController extends GetxController {
       course = argument;
       isEditMode.value = true;
       courseNameController.text = course.name;
+      isEnriching.value = argument.isEnriching;
       courseTotalGradeController.text = course.totalGrade.toString();
     } else if (argument is int) {
       classId = argument;
     }
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
     getTeachers();
+  }
+
+  Future<void> getCurrentTeacher() async {
+    selectedTeacher.value =
+        await EmployeesDBHelper.instance.getById(course.teacherId);
   }
 
   Future<void> getTeachers() async {
     isProcessing.value = true;
     teachers.value = await EmployeesDBHelper.instance.getAllTeachers();
+    if (isEditMode.value) {
+      await getCurrentTeacher();
+    }
     isProcessing.value = false;
   }
 
@@ -99,7 +113,28 @@ class AddOrEditCourseDialogController extends GetxController {
       if (validateFields() == false) {
         return;
       }
-      course = course.copyWith(name: courseNameController.text);
+      Course newCourse = Course(
+        id: course.id,
+        classId: course.classId,
+        teacherId: selectedTeacher.value!.id,
+        name: courseNameController.text,
+        totalGrade: double.parse(courseTotalGradeController.text),
+        isEnriching: isEnriching.value,
+      );
+      if (course == newCourse) {
+        Get.back(result: false);
+        SnackBarService.showNeutralSnackBar(
+          title: 'لا تعديلات',
+          message: 'ما من تعديلات لحفظها',
+        );
+        return;
+      }
+      course = course.copyWith(
+        name: courseNameController.text,
+        totalGrade: double.parse(courseTotalGradeController.text),
+        teacherId: selectedTeacher.value?.id,
+        isEnriching: isEnriching.value,
+      );
       await CoursesDBHelper.instance.update(course);
       Get.back(result: true);
     } finally {

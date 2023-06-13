@@ -15,7 +15,7 @@ import '../../pages/school_classes_management_page/main_page/views/school_classe
 import '../../pages/school_inbox_page/main_page/views/school_inbox_page.dart';
 import '../../pages/school_year_management/views/school_year_management_page.dart';
 import '../../pages/statistics_page/views/stats_page.dart';
-import '../../pages/student_display_page/views/students_management_page.dart';
+import '../../pages/students_management_page/views/students_management_page.dart';
 
 abstract class DestinationsHelper {
   static Map<UserRole, NavigationBindings> routes = {

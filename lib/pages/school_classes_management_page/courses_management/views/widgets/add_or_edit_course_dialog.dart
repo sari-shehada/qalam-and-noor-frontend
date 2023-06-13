@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/controllers/navigation_controller.dart';
 import 'package:kalam_noor/pages/school_classes_management_page/courses_management/controllers/dialog_controllers/add_or_edit_course_dialog_controller.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import '../../../../../configs/fonts.dart';
@@ -38,14 +39,14 @@ class AddOrEditCourseDialog extends StatelessWidget {
               Obx(() {
                 return Text(
                   controller.isEditMode.value == false
-                      ? 'إضافة مادة'
-                      : 'تعديل معلومات المادة',
+                      ? 'إضافة مقرر'
+                      : 'تعديل معلومات المقرر',
                   style: textTheme.headlineMedium,
                 );
               }),
               AddVerticalSpacing(value: 40.h),
               LabeledWidget(
-                label: 'اسم المادة',
+                label: 'إسم المقرر',
                 child: HintedTextField(
                   hintText: '',
                   controller: controller.courseNameController,
@@ -112,26 +113,25 @@ class AddOrEditCourseDialog extends StatelessWidget {
                       ),
                     ),
                     AddHorizontalSpacing(value: 10.w),
-                    //TODO: add later
                     CustomFilledButton(
                         height: 49.h,
                         width: 120.w,
-                        onTap: () => {},
+                        onTap: () =>
+                            NavigationController.toAddNewEmployeePage(),
                         child: 'إضافة جديد'),
                   ],
                 ),
               ),
               AddVerticalSpacing(value: 30.h),
               LabeledWidget(
-                label: 'نوع المادة',
+                label: 'نوع المقرر',
                 child: Obx(
                   () {
-                    //TODO:change colurs
                     return AnimatedContainer(
                       decoration: BoxDecoration(
                         color: controller.isEnriching.value == true
-                            ? Get.theme.colorScheme.primary
-                            : Colors.pink[300],
+                            ? Get.theme.colorScheme.primaryContainer
+                            : Get.theme.colorScheme.primary,
                         borderRadius: BorderRadius.circular(14.r),
                       ),
                       duration: const Duration(milliseconds: 700),
@@ -154,21 +154,15 @@ class AddOrEditCourseDialog extends StatelessWidget {
                                 children: [
                                   Text(
                                     controller.isEnriching.value == true
-                                        ? 'إثرائية'
-                                        : 'أساسية',
+                                        ? 'إثرائي'
+                                        : 'إلزامي',
                                     style: TextStyle(
                                       fontSize: 22.sp,
-                                      color: Colors.white,
+                                      color:
+                                          controller.isEnriching.value == true
+                                              ? Get.theme.colorScheme.primary
+                                              : Colors.white,
                                     ),
-                                  ),
-                                  AddHorizontalSpacing(value: 30.w),
-                                  Icon(
-                                    //TODO:Change icons later
-                                    controller.isEnriching.value == true
-                                        ? Icons.male
-                                        : Icons.female,
-                                    size: 25.sp,
-                                    color: Colors.white,
                                   ),
                                 ],
                               ),

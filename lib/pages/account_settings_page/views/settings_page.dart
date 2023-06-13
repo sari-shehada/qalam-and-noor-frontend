@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/settings/controllers/settings_page_controller.dart';
-import 'package:kalam_noor/pages/settings/views/widgets/profile_image_widget.dart';
-import 'package:kalam_noor/pages/settings/views/widgets/profile_info_widget.dart';
+import 'package:kalam_noor/pages/account_settings_page/controllers/settings_page_controller.dart';
+import 'package:kalam_noor/pages/account_settings_page/views/widgets/profile_account_information_widget.dart';
+import 'package:kalam_noor/pages/account_settings_page/views/widgets/profile_address_widget.dart';
+import 'package:kalam_noor/pages/account_settings_page/views/widgets/profile_image_widget.dart';
+import 'package:kalam_noor/pages/account_settings_page/views/widgets/profile_info_widget.dart';
+import 'package:kalam_noor/pages/account_settings_page/views/widgets/profile_work_information_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
-
 import '../../../controllers/account_controller.dart';
 
 class SettingsPage extends GetView<SettingsPageController> {
@@ -33,10 +35,12 @@ class SettingsPage extends GetView<SettingsPageController> {
       ),
       body: SizedBox.expand(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               height: 300.h,
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.r),
                 color: themeData.scaffoldBackgroundColor,
                 boxShadow: [
                   BoxShadow(
@@ -61,6 +65,13 @@ class SettingsPage extends GetView<SettingsPageController> {
                 ],
               ),
             ),
+            const Row(
+              children: [
+                AccountInfoWidget(),
+                ProfileAddress(),
+              ],
+            ),
+            const ProfileWorkInfo(),
           ],
         ),
       ),

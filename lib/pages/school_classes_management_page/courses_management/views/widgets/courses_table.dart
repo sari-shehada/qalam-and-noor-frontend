@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/educational/course.dart';
+import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
 import 'course_row.dart';
 
@@ -98,27 +99,32 @@ class CoursesTable extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Column(
-              children: List.generate(
-                courses.length,
-                (index) {
-                  Color rowColor = index % 2 == 0
-                      ? Colors.white
-                      : Get.theme.colorScheme.primaryContainer.withOpacity(.2);
-                  return CourseRow(
-                    course: courses[index],
-                    rowColor: rowColor,
-                  );
-                },
-              )
-                  .animate(
-                    interval: const Duration(milliseconds: 15),
-                  )
-                  .fade(
-                    duration: const Duration(milliseconds: 200),
-                  ),
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                ...List.generate(
+                  courses.length,
+                  (index) {
+                    Color rowColor = index % 2 == 0
+                        ? Colors.white
+                        : Get.theme.colorScheme.primaryContainer
+                            .withOpacity(.2);
+                    return CourseRow(
+                      course: courses[index],
+                      rowColor: rowColor,
+                    );
+                  },
+                )
+                    .animate(
+                      interval: const Duration(milliseconds: 15),
+                    )
+                    .fade(
+                      duration: const Duration(milliseconds: 200),
+                    ),
+                AddVerticalSpacing(value: 110.h),
+              ],
             ),
-          )
+          ),
         ],
       ),
     );

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/pages/settings/controllers/settings_page_controller.dart';
+import 'package:kalam_noor/pages/account_settings_page/controllers/settings_page_controller.dart';
 import 'package:kalam_noor/tools/logic_tools/datetime_helper.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
@@ -21,21 +21,22 @@ class ProfileInfoWidget extends StatelessWidget {
         IconLabelItem(
           iconData: FontAwesomeIcons.cakeCandles,
           label: DateTimeHelper.getDateWithoutTime(
-            controller.employee.dateOfBirth,
+            controller.employee.value.dateOfBirth,
           ),
           toolTip: 'تاريخ الميلاد',
         ),
         AddVerticalSpacing(value: 15.h),
         //TODO:
         IconLabelItem(
-          iconData: controller.employee.isMale ? Icons.male : Icons.female,
-          label: controller.employee.isMale ? 'ذكر' : 'أنثى',
+          iconData:
+              controller.employee.value.isMale ? Icons.male : Icons.female,
+          label: controller.employee.value.isMale ? 'ذكر' : 'أنثى',
           toolTip: 'الجنس',
         ),
         AddVerticalSpacing(value: 15.h),
         IconLabelItem(
           iconData: FontAwesomeIcons.locationDot,
-          label: controller.employee.placeOfBirth,
+          label: controller.employee.value.placeOfBirth,
           toolTip: 'مكان الميلاد',
         ),
       ],

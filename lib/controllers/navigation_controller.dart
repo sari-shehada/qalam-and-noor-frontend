@@ -7,8 +7,8 @@ import 'package:kalam_noor/pages/illnesses_management_page/controllers/illness_m
 import 'package:kalam_noor/pages/illnesses_management_page/views/illnesses_management_page.dart';
 import 'package:kalam_noor/pages/new_student_registration/main_page/controllers/new_student_registration_bindings.dart';
 import 'package:kalam_noor/pages/psychological_statuses_management_page/controllers/psychological_statuses_management_controller.dart';
-import 'package:kalam_noor/pages/settings/controllers/settings_page_controller.dart';
-import 'package:kalam_noor/pages/settings/views/settings_page.dart';
+import 'package:kalam_noor/pages/account_settings_page/controllers/settings_page_controller.dart';
+import 'package:kalam_noor/pages/account_settings_page/views/settings_page.dart';
 import 'package:kalam_noor/pages/vaccines_management_page/views/vaccines_management_page.dart';
 import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 import '../pages/new_student_registration/main_page/views/new_student_registration_page.dart';
@@ -104,7 +104,7 @@ class NavigationController {
       () => const SettingsPage(),
       binding: BindingsBuilder.put(
         () => SettingsPageController(
-          employee: accountController.employee,
+          employee: accountController.employee.obs,
           jobTitle: accountController.jobTitle,
         ),
       ),

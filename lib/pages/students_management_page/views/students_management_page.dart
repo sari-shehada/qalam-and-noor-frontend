@@ -5,9 +5,10 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/controllers/navigation_controller.dart';
 import 'package:kalam_noor/models/agendas/student.dart';
-import 'package:kalam_noor/pages/student_display_page/controllers/students_display_controller.dart';
-import 'package:kalam_noor/pages/student_display_page/views/widgets/students_table.dart';
+import 'package:kalam_noor/pages/students_management_page/controllers/students_display_controller.dart';
+import 'package:kalam_noor/pages/students_management_page/views/widgets/students_table.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
+import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
 import '../../../tools/ui_tools/buttons.dart';
 import '../../../tools/ui_tools/custom_appbar.dart';
 import '../../../tools/ui_tools/custom_drop_down_menu.dart';
@@ -95,9 +96,8 @@ class StudentsManagementPage extends StatelessWidget {
                 );
               }
               if (snapshot.hasError) {
-                //TODO: Change later
-                return const Center(
-                  child: Text('error loading Students'),
+                return const ErrorLoadingSomethingWidget(
+                  somethingName: 'طلاب',
                 );
               }
               if (snapshot.hasData) {
