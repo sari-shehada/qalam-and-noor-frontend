@@ -3,8 +3,8 @@ import 'dart:convert';
 
 class MedicalRecord {
   final int studentId;
-  double studentHight;
-  double studentWeight;
+  num studentHight;
+  num studentWeight;
   MedicalRecord({
     required this.studentId,
     required this.studentHight,
@@ -13,8 +13,8 @@ class MedicalRecord {
 
   MedicalRecord copyWith({
     int? studentId,
-    double? studentHight,
-    double? studentWeight,
+    num? studentHight,
+    num? studentWeight,
   }) {
     return MedicalRecord(
       studentId: studentId ?? this.studentId,
@@ -34,8 +34,8 @@ class MedicalRecord {
   factory MedicalRecord.fromMap(Map<String, dynamic> map) {
     return MedicalRecord(
       studentId: map['studentId'] as int,
-      studentHight: map['studentHight'] as double,
-      studentWeight: map['studentWeight'] as double,
+      studentHight: map['studentHight'] as num,
+      studentWeight: map['studentWeight'] as num,
     );
   }
 
