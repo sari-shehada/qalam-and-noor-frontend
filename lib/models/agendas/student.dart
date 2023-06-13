@@ -21,6 +21,7 @@ class Student {
   final DateTime joinDate;
   final DateTime? leaveDate;
   final int familyId;
+  final bool isActive;
   Student({
     required this.id,
     required this.publicRecordId,
@@ -38,6 +39,7 @@ class Student {
     required this.joinDate,
     this.leaveDate,
     required this.familyId,
+    required this.isActive,
   });
 
   Student copyWith({
@@ -57,6 +59,7 @@ class Student {
     DateTime? joinDate,
     DateTime? leaveDate,
     int? familyId,
+    bool? isActive,
   }) {
     return Student(
       id: id ?? this.id,
@@ -75,6 +78,7 @@ class Student {
       joinDate: joinDate ?? this.joinDate,
       leaveDate: leaveDate ?? this.leaveDate,
       familyId: familyId ?? this.familyId,
+      isActive: isActive ?? this.isActive,
     );
   }
 
@@ -96,6 +100,7 @@ class Student {
       'joinDate': joinDate.toIso8601String(),
       'leaveDate': leaveDate?.toIso8601String(),
       'familyId': familyId,
+      'isActive': isActive,
     };
   }
 
@@ -118,6 +123,7 @@ class Student {
       leaveDate:
           map['leaveDate'] != null ? DateTime.parse(map['leaveDate']) : null,
       familyId: map['familyId'] as int,
+      isActive: map['isActive'] as bool,
     );
   }
 
@@ -128,7 +134,7 @@ class Student {
 
   @override
   String toString() {
-    return 'Student(id: $id, publicRecordId: $publicRecordId, firstName: $firstName, isMale: $isMale, dateOfBirth: $dateOfBirth, placeOfBirth: $placeOfBirth, phoneNumber: $phoneNumber, religion: $religion, whatsappPhoneNumber: $whatsappPhoneNumber, incidentNumber: $incidentNumber, incidentDate: $incidentDate, landLine: $landLine, addressId: $addressId, joinDate: $joinDate, leaveDate: $leaveDate, familyId: $familyId)';
+    return 'Student(id: $id, publicRecordId: $publicRecordId, firstName: $firstName, isMale: $isMale, dateOfBirth: $dateOfBirth, placeOfBirth: $placeOfBirth, phoneNumber: $phoneNumber, religion: $religion, whatsappPhoneNumber: $whatsappPhoneNumber, incidentNumber: $incidentNumber, incidentDate: $incidentDate, landLine: $landLine, addressId: $addressId, joinDate: $joinDate, leaveDate: $leaveDate, familyId: $familyId, isActive: $isActive)';
   }
 
   @override
@@ -150,7 +156,8 @@ class Student {
         other.addressId == addressId &&
         other.joinDate == joinDate &&
         other.leaveDate == leaveDate &&
-        other.familyId == familyId;
+        other.familyId == familyId &&
+        other.isActive == isActive;
   }
 
   @override
@@ -170,6 +177,7 @@ class Student {
         addressId.hashCode ^
         joinDate.hashCode ^
         leaveDate.hashCode ^
-        familyId.hashCode;
+        familyId.hashCode ^
+        isActive.hashCode;
   }
 }
