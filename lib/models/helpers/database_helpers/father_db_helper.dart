@@ -23,9 +23,9 @@ class FatherDBhelper implements CRUDInterface<Father> {
   }
 
   @override
-  Future<Father?> getById(int id) async {
+  Future<Father> getById(int id) async {
     String url = '${_controllerName}GetFatherById?id=$id';
-    Father? father = await HttpService.getParsed<Father?, Map<String, dynamic>>(
+    Father father = await HttpService.getParsed<Father, Map<String, dynamic>>(
       url: url,
       dataMapper: (responseData) {
         return Father.fromMap(responseData);

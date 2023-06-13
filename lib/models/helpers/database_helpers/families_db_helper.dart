@@ -40,9 +40,9 @@ class FamiliesDBHelper implements CRUDInterface<Family> {
   }
 
   @override
-  Future<Family?> getById(int id) async {
+  Future<Family> getById(int id) async {
     String url = '${_controllerName}GetFamilyById?id=$id';
-    Family? family = await HttpService.getParsed<Family?, Map<String, dynamic>>(
+    Family family = await HttpService.getParsed<Family, Map<String, dynamic>>(
       url: url,
       dataMapper: (responseData) {
         return Family.fromMap(responseData);

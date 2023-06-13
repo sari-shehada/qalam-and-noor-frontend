@@ -13,78 +13,45 @@ class PsychologicalStatusesCounter extends GetView<StudentProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: controller.getAllPsychologicalStatuses(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Container(
-            padding: EdgeInsets.all(15.w),
-            height: 80.h,
-            width: 300.w,
-            decoration: BoxDecoration(
-              color: GlobalStyles.miscColors.elementAt(2),
-              borderRadius: BorderRadius.circular(15.r),
+    return InkWell(
+      onTap: () => {
+        if (controller.studentPsychologicalStatus.isEmpty)
+          {
+            SnackBarService.showNeutralSnackBar(
+                title: "الطالب ليس لديه حالات اجتماعية",
+                message: "المرشد النفسي لم يفحص الطالب بعد")
+          }
+        else
+          {
+            Get.dialog(
+              (PsychologicalInfoDialog(
+                list: controller.studentPsychologicalStatus,
+              )),
             ),
-            child: Row(
-              children: [
-                Text(
-                  "عدد الحالات الإجتماعية",
-                  style: ProjectFonts.headlineSmall()
-                      .copyWith(color: Colors.white),
-                ),
-                AddHorizontalSpacing(value: 15.w),
-                Text(
-                  "...",
-                  style: ProjectFonts.headlineSmall()
-                      .copyWith(color: Colors.white),
-                ),
-              ],
-            ),
-          );
-        }
-        return InkWell(
-          onTap: () => {
-            if (snapshot.data!.isEmpty)
-              {
-                SnackBarService.showNeutralSnackBar(
-                    title: "الطالب ليس لديه حالات اجتماعية",
-                    message: "المرشد النفسي لم يفحص الطالب بعد")
-              }
-            else
-              {
-                Get.dialog(
-                  (PsychologicalInfoDialog(
-                    list: snapshot.data!,
-                  )),
-                ),
-              }
-          },
-          child: Container(
-            padding: EdgeInsets.all(15.w),
-            height: 80.h,
-            width: 300.w,
-            decoration: BoxDecoration(
-              color: GlobalStyles.miscColors.elementAt(2),
-              borderRadius: BorderRadius.circular(15.r),
-            ),
-            child: Row(
-              children: [
-                Text(
-                  "عدد الحالات الإجتماعية",
-                  style: ProjectFonts.headlineSmall()
-                      .copyWith(color: Colors.white),
-                ),
-                AddHorizontalSpacing(value: 15.w),
-                Text(
-                  snapshot.data!.length.toString(),
-                  style: ProjectFonts.headlineSmall()
-                      .copyWith(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        );
+          }
       },
+      child: Container(
+        padding: EdgeInsets.all(15.w),
+        height: 80.h,
+        width: 300.w,
+        decoration: BoxDecoration(
+          color: GlobalStyles.miscColors.elementAt(2),
+          borderRadius: BorderRadius.circular(15.r),
+        ),
+        child: Row(
+          children: [
+            Text(
+              "عدد الحالات الإجتماعية",
+              style: ProjectFonts.headlineSmall().copyWith(color: Colors.white),
+            ),
+            AddHorizontalSpacing(value: 15.w),
+            Text(
+              controller.studentPsychologicalStatus.length.toString(),
+              style: ProjectFonts.headlineSmall().copyWith(color: Colors.white),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

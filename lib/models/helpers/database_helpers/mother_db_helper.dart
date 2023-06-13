@@ -23,9 +23,9 @@ class MotherDBHelper implements CRUDInterface<Mother> {
   }
 
   @override
-  Future<Mother?> getById(int id) async {
+  Future<Mother> getById(int id) async {
     String url = '${_controllerName}GetMotherById?id=$id';
-    Mother? mother = await HttpService.getParsed<Mother?, Map<String, dynamic>>(
+    Mother mother = await HttpService.getParsed<Mother, Map<String, dynamic>>(
       url: url,
       dataMapper: (responseData) {
         return Mother.fromMap(responseData);

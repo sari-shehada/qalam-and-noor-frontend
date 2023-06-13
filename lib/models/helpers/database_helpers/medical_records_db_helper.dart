@@ -24,10 +24,10 @@ class MedicalRecordsDBHelper implements CRUDInterface<MedicalRecord> {
   }
 
   @override
-  Future<MedicalRecord?> getById(int id) async {
+  Future<MedicalRecord> getById(int id) async {
     String url = '${_controllerName}GetMedicalRecordById?id=$id';
-    MedicalRecord? medicalRecord =
-        await HttpService.getParsed<MedicalRecord?, Map<String, dynamic>>(
+    MedicalRecord medicalRecord =
+        await HttpService.getParsed<MedicalRecord, Map<String, dynamic>>(
       url: url,
       dataMapper: (responseData) {
         return MedicalRecord.fromMap(responseData);
