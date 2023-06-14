@@ -1,5 +1,5 @@
-import 'package:kalam_noor/models/conversations/message.dart';
-import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
+import '../../conversations/message.dart';
+import '../../../tools/logic_tools/crud_interface.dart';
 
 import '../../../tools/logic_tools/network_service.dart';
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/enums.dart';
-import 'package:kalam_noor/models/medical/psychological_status.dart';
-import 'package:kalam_noor/pages/psychological_instructor/student_fill_psychological_statuses_page/assign_student_psychological_info_page/controllers/assign_student_psychological_info_controller.dart';
-import 'package:kalam_noor/tools/ui_tools/text_fields.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../../models/enums.dart';
+import '../../../../../../models/medical/psychological_status.dart';
+import '../../controllers/assign_student_psychological_info_controller.dart';
+import '../../../../../../tools/ui_tools/text_fields.dart';
+import '../../../../../../tools/ui_tools/ui_tools.dart';
 
 import '../../../../../../configs/fonts.dart';
 

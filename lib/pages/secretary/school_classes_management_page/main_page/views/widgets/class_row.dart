@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/school_classes_management_page/courses_management/controllers/courses_management_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_classes_management_page/courses_management/views/courses_management_page.dart';
-import 'package:kalam_noor/pages/secretary/school_classes_management_page/main_page/controllers/school_classes_management_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_classes_management_page/school_classes_detailes_page/controllers/school_class_details_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_classes_management_page/school_classes_detailes_page/views/school_class_details_page.dart';
+import '../../../courses_management/controllers/courses_management_controller.dart';
+import '../../../courses_management/views/courses_management_page.dart';
+import '../../controllers/school_classes_management_controller.dart';
+import '../../../school_classes_detailes_page/controllers/school_class_details_controller.dart';
+import '../../../school_classes_detailes_page/views/school_class_details_page.dart';
 import '../../../../../../models/educational/school_class.dart';
 
 class SchoolClassRow extends StatelessWidget {

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/models/agendas/student.dart';
-import 'package:kalam_noor/models/enums.dart';
-import 'package:kalam_noor/pages/psychological_instructor/student_fill_psychological_statuses_page/main_page/controllers/student_fill_psychological_statuses_controller.dart';
-import 'package:kalam_noor/tools/logic_tools/datetime_helper.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../../configs/fonts.dart';
+import '../../../../../../models/agendas/student.dart';
+import '../../../../../../models/enums.dart';
+import '../../controllers/student_fill_psychological_statuses_controller.dart';
+import '../../../../../../tools/logic_tools/datetime_helper.dart';
+import '../../../../../../tools/ui_tools/ui_tools.dart';
 
 class StudentFillPsychologicalStatusCard extends StatelessWidget {
   const StudentFillPsychologicalStatusCard({

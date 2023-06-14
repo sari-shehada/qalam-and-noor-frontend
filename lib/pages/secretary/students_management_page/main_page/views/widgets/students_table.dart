@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/student.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/main_page/views/widgets/student_row.dart';
+import '../../../../../../models/agendas/student.dart';
+import 'student_row.dart';
 
 class StudentsTable extends StatelessWidget {
   const StudentsTable({super.key, required this.students});

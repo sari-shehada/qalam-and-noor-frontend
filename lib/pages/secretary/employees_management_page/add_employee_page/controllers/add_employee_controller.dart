@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/employees_db_helper.dart';
-import 'package:kalam_noor/pages/secretary/employees_management_page/add_employee_page/controllers/widget_controllers/employee_registration_form_controller.dart';
-import 'package:kalam_noor/pages/secretary/employees_management_page/add_employee_page/models/employee_registration_section.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
+import '../../../../../models/helpers/database_helpers/employees_db_helper.dart';
+import 'widget_controllers/employee_registration_form_controller.dart';
+import '../models/employee_registration_section.dart';
+import '../../../../../tools/ui_tools/buttons.dart';
 
 class AddEmployeeController extends GetxController {
   Rx<CustomButtonStatus> buttonStatus = CustomButtonStatus.enabled.obs;

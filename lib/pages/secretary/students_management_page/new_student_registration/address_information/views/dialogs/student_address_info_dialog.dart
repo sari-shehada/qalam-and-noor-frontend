@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/models/address/address.dart';
-import 'package:kalam_noor/models/address/area.dart';
-import 'package:kalam_noor/models/address/city.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
+import '../../../../../../../configs/styles.dart';
+import '../../../../../../../models/address/address.dart';
+import '../../../../../../../models/address/area.dart';
+import '../../../../../../../models/address/city.dart';
+import '../../../../../../../tools/ui_tools/buttons.dart';
 
 import '../../../../../../../configs/fonts.dart';
 import '../../../../../../../tools/ui_tools/labeled_widget.dart';

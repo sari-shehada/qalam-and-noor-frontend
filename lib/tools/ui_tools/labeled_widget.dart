@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import 'ui_tools.dart';
 
 class LabeledWidget extends StatelessWidget {
   const LabeledWidget({

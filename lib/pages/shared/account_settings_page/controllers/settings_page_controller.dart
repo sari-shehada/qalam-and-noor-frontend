@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/address/address.dart';
-import 'package:kalam_noor/models/agendas/employee.dart';
-import 'package:kalam_noor/models/agendas/job_title.dart';
+import '../../../../models/address/address.dart';
+import '../../../../models/agendas/employee.dart';
+import '../../../../models/agendas/job_title.dart';
 import '../../../../models/helpers/database_helpers/addresses_db_helper.dart';
 import '../views/dialogs/change_account_info_dialog.dart';
 

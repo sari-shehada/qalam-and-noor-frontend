@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/medical/vaccine.dart';
+import '../../../../../../models/medical/vaccine.dart';
 import '../../controllers/vaccines_management_controller.dart';
 
 class VaccineRow extends StatelessWidget {

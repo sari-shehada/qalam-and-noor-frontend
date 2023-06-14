@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/assets.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/models/educational/current_school_year_insights.dart';
-import 'package:kalam_noor/models/educational/school_year.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../configs/assets.dart';
+import '../../../../../configs/fonts.dart';
+import '../../../../../configs/styles.dart';
+import '../../../../../models/educational/current_school_year_insights.dart';
+import '../../../../../models/educational/school_year.dart';
+import '../../../../../tools/ui_tools/ui_tools.dart';
 
 import '../../../../../tools/ui_tools/loader_widget.dart';
 import '../../../../../tools/widgets/empty_item_widget.dart';

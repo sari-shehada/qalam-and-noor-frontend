@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/conversation_body/views/conversation_body.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/main_page/controllers/conversation_query_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/main_page/controllers/school_inbox_primary_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/conversations_menu/views/conversations_menu.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/main_page/views/widgets/school_inbox_tabbar.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../conversation_body/views/conversation_body.dart';
+import '../controllers/conversation_query_controller.dart';
+import '../controllers/school_inbox_primary_controller.dart';
+import '../../conversations_menu/views/conversations_menu.dart';
+import 'widgets/school_inbox_tabbar.dart';
+import '../../../../../tools/ui_tools/custom_appbar.dart';
+import '../../../../../tools/ui_tools/custom_scaffold.dart';
+import '../../../../../tools/ui_tools/ui_tools.dart';
 
 class SchoolInboxPage extends StatelessWidget {
   const SchoolInboxPage({super.key});

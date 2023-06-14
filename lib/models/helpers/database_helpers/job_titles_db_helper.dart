@@ -1,5 +1,5 @@
-import 'package:kalam_noor/models/agendas/job_title.dart';
-import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
+import '../../agendas/job_title.dart';
+import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 
 class JobTitlesDBHelper implements CRUDInterface<JobTitle> {

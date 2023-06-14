@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/psychological_statuses_db_helper.dart';
-import 'package:kalam_noor/models/medical/psychological_status.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/psychological_statuses_management_subpage/views/dialogs/add_or_edit_psychological_status_dialog.dart';
+import '../../../../../models/helpers/database_helpers/psychological_statuses_db_helper.dart';
+import '../../../../../models/medical/psychological_status.dart';
+import '../views/dialogs/add_or_edit_psychological_status_dialog.dart';
 
 class PsychologicalStatusesManagementController extends GetxController {
   RxInt psychologicalStatusesCount = 0.obs;

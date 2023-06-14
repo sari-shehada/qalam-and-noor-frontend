@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/medical/psychological_status.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/psychological_statuses_management_subpage/controllers/psychological_statuses_management_controller.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/psychological_statuses_management_subpage/views/widgets/psychological_statuses_table.dart';
-import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
-import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
+import '../../../../../models/medical/psychological_status.dart';
+import '../controllers/psychological_statuses_management_controller.dart';
+import 'widgets/psychological_statuses_table.dart';
+import '../../../../../tools/ui_tools/loader_widget.dart';
+import '../../../../../tools/widgets/error_loading_something_widget.dart';
 import '../../../../../tools/ui_tools/labeled_widget.dart';
 import '../../../../../tools/widgets/empty_item_widget.dart';
 

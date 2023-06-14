@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/student.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/students_db_helper.dart';
+import '../../../../../models/agendas/student.dart';
+import '../../../../../models/helpers/database_helpers/students_db_helper.dart';
 
 class StudentsManagementController extends GetxController {
   RxInt studentsCount = 0.obs;

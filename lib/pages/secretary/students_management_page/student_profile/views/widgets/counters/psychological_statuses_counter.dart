@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
+import '../../../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../../../configs/fonts.dart';
 import '../../../../../../../configs/styles.dart';
 import '../../../../../../../tools/ui_tools/ui_tools.dart';

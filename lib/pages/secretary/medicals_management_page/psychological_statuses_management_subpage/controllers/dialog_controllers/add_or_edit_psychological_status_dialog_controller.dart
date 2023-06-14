@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/psychological_statuses_db_helper.dart';
-import 'package:kalam_noor/models/medical/psychological_status.dart';
+import '../../../../../../models/helpers/database_helpers/psychological_statuses_db_helper.dart';
+import '../../../../../../models/medical/psychological_status.dart';
 import '../../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../../tools/ui_tools/buttons.dart';
 

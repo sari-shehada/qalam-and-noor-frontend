@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/vaccines_db_helper.dart';
-import 'package:kalam_noor/models/medical/taken_vaccine.dart';
-import 'package:kalam_noor/models/medical/vaccine.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/vaccines_management_subpage/views/dialogs/add_or_edit_vaccine_dialog.dart';
+import '../../../../../../../models/helpers/database_helpers/vaccines_db_helper.dart';
+import '../../../../../../../models/medical/taken_vaccine.dart';
+import '../../../../../../../models/medical/vaccine.dart';
+import '../../../../../medicals_management_page/vaccines_management_subpage/views/dialogs/add_or_edit_vaccine_dialog.dart';
 
 class StudentVaccinesInfoSubWidgetController extends GetxController {
   late Rx<Future<List<Vaccine>>> vaccines;

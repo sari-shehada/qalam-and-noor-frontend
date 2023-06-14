@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/job_title.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/employee_management/employee_auth_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/employee_management/employee_auth_exceptions.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/employee_management/employee_auth_model.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/employees_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/job_titles_db_helper.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
+import '../models/agendas/job_title.dart';
+import '../models/helpers/database_helpers/employee_management/employee_auth_db_helper.dart';
+import '../models/helpers/database_helpers/employee_management/employee_auth_exceptions.dart';
+import '../models/helpers/database_helpers/employee_management/employee_auth_model.dart';
+import '../models/helpers/database_helpers/employees_db_helper.dart';
+import '../models/helpers/database_helpers/job_titles_db_helper.dart';
+import '../tools/dialogs_services/snack_bar_service.dart';
 
 import '../models/agendas/employee.dart';
 import '../models/shared_prefs_helper.dart';

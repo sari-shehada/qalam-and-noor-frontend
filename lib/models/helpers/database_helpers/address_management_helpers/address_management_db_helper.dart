@@ -1,4 +1,4 @@
-import 'package:kalam_noor/tools/logic_tools/network_service.dart';
+import '../../../../tools/logic_tools/network_service.dart';
 
 import '../../../../pages/secretary/addresses_management_page/main_page/models/city_to_descendent_count.dart';
 import '../../../address/city.dart';

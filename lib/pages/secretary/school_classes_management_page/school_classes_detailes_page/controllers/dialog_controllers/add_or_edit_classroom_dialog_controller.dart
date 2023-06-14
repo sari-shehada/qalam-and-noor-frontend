@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/educational/classroom.dart';
+import '../../../../../../models/educational/classroom.dart';
 import '../../../../../../models/helpers/database_helpers/classrooms_db_helper.dart';
 import '../../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../../tools/ui_tools/buttons.dart';

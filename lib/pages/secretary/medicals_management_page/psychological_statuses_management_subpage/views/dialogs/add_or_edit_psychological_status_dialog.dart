@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/medical/psychological_status.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/psychological_statuses_management_subpage/controllers/dialog_controllers/add_or_edit_psychological_status_dialog_controller.dart';
+import '../../../../../../models/medical/psychological_status.dart';
+import '../../controllers/dialog_controllers/add_or_edit_psychological_status_dialog_controller.dart';
 import '../../../../../../tools/ui_tools/buttons.dart';
 import '../../../../../../tools/ui_tools/labeled_widget.dart';
 import '../../../../../../tools/ui_tools/text_fields.dart';

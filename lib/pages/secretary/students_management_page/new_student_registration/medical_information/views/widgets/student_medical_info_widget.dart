@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/medical_information/controllers/student_medical_info_controller.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../../../configs/fonts.dart';
+import '../../../../../../../configs/styles.dart';
+import '../../controllers/student_medical_info_controller.dart';
+import '../../../../../../../tools/ui_tools/buttons.dart';
+import '../../../../../../../tools/ui_tools/ui_tools.dart';
 
 import '../../../../../../../tools/ui_tools/labeled_widget.dart';
 

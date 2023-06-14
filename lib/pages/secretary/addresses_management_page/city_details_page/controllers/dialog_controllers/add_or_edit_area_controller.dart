@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/area_db_helper.dart';
+import '../../../../../../models/helpers/database_helpers/area_db_helper.dart';
 
 import '../../../../../../models/address/area.dart';
 import '../../../../../../tools/dialogs_services/snack_bar_service.dart';

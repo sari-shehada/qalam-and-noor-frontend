@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/family_information/controllers/dialog_controllers/add_student_family_info_dialog_controller.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/family_information/views/widgets/student_father_info_sub_widget.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/family_information/views/widgets/student_responsible_person_info_sub_widget.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../../../configs/styles.dart';
+import '../../controllers/dialog_controllers/add_student_family_info_dialog_controller.dart';
+import '../widgets/student_father_info_sub_widget.dart';
+import '../widgets/student_responsible_person_info_sub_widget.dart';
+import '../../../../../../../tools/ui_tools/ui_tools.dart';
 
 import '../widgets/student_mother_info_sub_widget.dart';
 

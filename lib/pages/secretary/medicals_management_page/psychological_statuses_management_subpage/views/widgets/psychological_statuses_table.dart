@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/medical/psychological_status.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/psychological_statuses_management_subpage/views/widgets/psychological_status_row.dart';
+import '../../../../../../models/medical/psychological_status.dart';
+import 'psychological_status_row.dart';
 
 class PsychologicalStatusesTable extends StatelessWidget {
   const PsychologicalStatusesTable(

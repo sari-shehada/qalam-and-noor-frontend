@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/main_page/controllers/school_inbox_tab_bar_controller.dart';
+import '../../controllers/school_inbox_tab_bar_controller.dart';
 
 import 'school_inbox_tabbar_item.dart';
 

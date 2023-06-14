@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/students_db_helper.dart';
-import 'package:kalam_noor/pages/psychological_instructor/student_fill_psychological_statuses_page/assign_student_psychological_info_page/controllers/assign_student_psychological_info_controller.dart';
-import 'package:kalam_noor/pages/psychological_instructor/student_fill_psychological_statuses_page/assign_student_psychological_info_page/views/assign_student_psychological_info_page.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
+import '../../../../../models/helpers/database_helpers/students_db_helper.dart';
+import '../../assign_student_psychological_info_page/controllers/assign_student_psychological_info_controller.dart';
+import '../../assign_student_psychological_info_page/views/assign_student_psychological_info_page.dart';
+import '../../../../../tools/dialogs_services/snack_bar_service.dart';
 
 import '../../../../../models/agendas/student.dart';
 

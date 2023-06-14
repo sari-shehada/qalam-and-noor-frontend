@@ -1,4 +1,4 @@
-import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
+import '../../../tools/logic_tools/crud_interface.dart';
 import '../../agendas/responsible_person.dart';
 
 import '../../../tools/logic_tools/network_service.dart';

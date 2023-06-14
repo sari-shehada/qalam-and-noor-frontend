@@ -1,6 +1,6 @@
-import 'package:kalam_noor/models/address/area.dart';
-import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
-import 'package:kalam_noor/tools/logic_tools/network_service.dart';
+import '../../address/area.dart';
+import '../../../tools/logic_tools/crud_interface.dart';
+import '../../../tools/logic_tools/network_service.dart';
 
 class AreasDBHelper implements CRUDInterface<Area> {
   String get _controllerName => 'AreaController/';

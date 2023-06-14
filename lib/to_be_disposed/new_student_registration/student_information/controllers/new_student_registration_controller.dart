@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/enums.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
+import '../../../../models/enums.dart';
+import '../../../../tools/dialogs_services/snack_bar_service.dart';
+import '../../../../tools/ui_tools/buttons.dart';
 
 class NewStudentRegistrationController extends GetxController {
   RxBool isMale = true.obs;

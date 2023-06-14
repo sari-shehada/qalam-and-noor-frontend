@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/medical/vaccine.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/vaccines_management_subpage/views/widgets/vaccines_table.dart';
-import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
-import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
-import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
+import '../../../../../models/medical/vaccine.dart';
+import 'widgets/vaccines_table.dart';
+import '../../../../../tools/ui_tools/loader_widget.dart';
+import '../../../../../tools/widgets/empty_item_widget.dart';
+import '../../../../../tools/widgets/error_loading_something_widget.dart';
 import '../../../../../tools/ui_tools/labeled_widget.dart';
 import '../controllers/vaccines_management_controller.dart';
 

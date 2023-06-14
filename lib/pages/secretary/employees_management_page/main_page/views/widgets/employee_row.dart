@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/employee.dart';
-import 'package:kalam_noor/tools/logic_tools/datetime_helper.dart';
+import '../../../../../../models/agendas/employee.dart';
+import '../../../../../../tools/logic_tools/datetime_helper.dart';
 
 class EmployeeRow extends StatelessWidget {
   const EmployeeRow(

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/school_classes_management_page/main_page/views/dialogs/add_or_edit_school_class_dialog.dart';
+import '../views/dialogs/add_or_edit_school_class_dialog.dart';
 import '../../../../../models/educational/school_class.dart';
 import '../../../../../models/helpers/database_helpers/school_classes_db_helper.dart';
 

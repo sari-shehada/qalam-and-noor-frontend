@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/previous_schools_helpers/previous_schools_db_helper.dart';
-import 'package:kalam_noor/models/previous_schools/previous_schools.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/previous_school_information/controllers/add_student_previous_school_info_widget_controller.dart';
-import 'package:kalam_noor/pages/secretary/previous_schools/views/dialogs/add_or_edit_previous_school_dialog.dart';
+import '../../../../../../../models/helpers/database_helpers/previous_schools_helpers/previous_schools_db_helper.dart';
+import '../../../../../../../models/previous_schools/previous_schools.dart';
+import '../add_student_previous_school_info_widget_controller.dart';
+import '../../../../../previous_schools/views/dialogs/add_or_edit_previous_school_dialog.dart';
 
 import '../../../../../../../tools/dialogs_services/snack_bar_service.dart';
 

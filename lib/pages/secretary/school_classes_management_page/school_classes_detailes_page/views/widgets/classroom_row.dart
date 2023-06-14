@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/educational/classroom.dart';
+import '../../../../../../models/educational/classroom.dart';
 
 import '../../controllers/school_class_details_controller.dart';
 

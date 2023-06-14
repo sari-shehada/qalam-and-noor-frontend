@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/student.dart';
-import 'package:kalam_noor/models/enums.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/psychological_statuses_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/student_psychological_statuses_db_helper.dart';
-import 'package:kalam_noor/models/medical/psychological_status.dart';
-import 'package:kalam_noor/models/medical/student_psychological_status.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
+import '../../../../../models/agendas/student.dart';
+import '../../../../../models/enums.dart';
+import '../../../../../models/helpers/database_helpers/psychological_statuses_db_helper.dart';
+import '../../../../../models/helpers/database_helpers/student_psychological_statuses_db_helper.dart';
+import '../../../../../models/medical/psychological_status.dart';
+import '../../../../../models/medical/student_psychological_status.dart';
+import '../../../../../tools/dialogs_services/snack_bar_service.dart';
+import '../../../../../tools/ui_tools/buttons.dart';
 
 class AssignStudentPsychologicalInfoController extends GetxController {
   Rx<CustomButtonStatus> buttonStatus = CustomButtonStatus.enabled.obs;

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/models/conversations/web_conversation.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/conversations_menu/views/widgets/conversation_card.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/main_page/controllers/conversation_fetching_controller.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../../configs/fonts.dart';
+import '../../../../../../models/conversations/web_conversation.dart';
+import 'conversation_card.dart';
+import '../../../main_page/controllers/conversation_fetching_controller.dart';
+import '../../../../../../tools/ui_tools/ui_tools.dart';
 
 class ConversationsList extends StatelessWidget {
   const ConversationsList({super.key});

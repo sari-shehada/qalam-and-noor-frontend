@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/illnesses_db_helper.dart';
-import 'package:kalam_noor/models/medical/illness.dart';
+import '../../../../../models/helpers/database_helpers/illnesses_db_helper.dart';
+import '../../../../../models/medical/illness.dart';
 import '../views/dialogs/add_or_edit_illness_dialog.dart';
 
 class IllnessesManagementController extends GetxController {

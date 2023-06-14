@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/responsible_person.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/family_information/models/family_info.dart';
+import '../../../../../../models/agendas/responsible_person.dart';
+import '../models/family_info.dart';
 
 import '../views/dialogs/student_family_info_dialog.dart';
 

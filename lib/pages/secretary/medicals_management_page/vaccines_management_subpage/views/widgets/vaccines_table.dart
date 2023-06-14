@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/medical/vaccine.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/vaccines_management_subpage/views/widgets/vaccine_row.dart';
+import '../../../../../../models/medical/vaccine.dart';
+import 'vaccine_row.dart';
 
 class VaccinesTable extends StatelessWidget {
   const VaccinesTable({super.key, required this.vaccines});

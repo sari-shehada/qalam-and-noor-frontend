@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/pages/secretary/dashboard_page/controllers/secretary_dashboard_controller.dart';
-import 'package:kalam_noor/tools/logic_tools/datetime_helper.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../configs/fonts.dart';
+import '../../controllers/secretary_dashboard_controller.dart';
+import '../../../../../tools/logic_tools/datetime_helper.dart';
+import '../../../../../tools/ui_tools/ui_tools.dart';
 import 'package:intl/intl.dart' as intl;
 
 class CurrentTimeWidget extends GetView<SecretaryDashboardController> {

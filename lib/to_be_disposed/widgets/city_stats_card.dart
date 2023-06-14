@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
+import '../../tools/ui_tools/loader_widget.dart';
 
 class CityStatsCard extends StatelessWidget {
   const CityStatsCard({

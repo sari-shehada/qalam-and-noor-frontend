@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/educational/school_class.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/public_records_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/school_classes_db_helper.dart';
-import 'package:kalam_noor/models/public_record.dart';
+import '../../../../models/educational/school_class.dart';
+import '../../../../models/helpers/database_helpers/public_records_db_helper.dart';
+import '../../../../models/helpers/database_helpers/school_classes_db_helper.dart';
+import '../../../../models/public_record.dart';
 
 class PublicRecordController extends GetxController {
   late Rx<Future<List<PublicRecord>>> records;

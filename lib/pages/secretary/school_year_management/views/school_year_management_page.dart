@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/controllers/school_year_management_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/views/widgets/current_school_year_card.dart';
+import '../controllers/school_year_management_controller.dart';
+import 'widgets/current_school_year_card.dart';
 
 import '../../../../tools/ui_tools/custom_appbar.dart';
 

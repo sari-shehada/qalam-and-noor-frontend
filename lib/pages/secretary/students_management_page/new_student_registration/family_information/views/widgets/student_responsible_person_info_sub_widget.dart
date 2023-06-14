@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
-import 'package:kalam_noor/tools/ui_tools/text_fields.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../../../tools/ui_tools/buttons.dart';
+import '../../../../../../../tools/ui_tools/text_fields.dart';
+import '../../../../../../../tools/ui_tools/ui_tools.dart';
 
 import '../../../../../../../tools/ui_tools/labeled_widget.dart';
 import '../../controllers/widget_controllers/student_responsible_person_info_sub_widget_controller.dart';

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/employee.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/employees_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/job_titles_db_helper.dart';
+import '../../../../../models/agendas/employee.dart';
+import '../../../../../models/helpers/database_helpers/employees_db_helper.dart';
+import '../../../../../models/helpers/database_helpers/job_titles_db_helper.dart';
 
 import '../../../../../controllers/navigation_controller.dart';
 import '../../../../../models/agendas/job_title.dart';

@@ -1,5 +1,5 @@
-import 'package:kalam_noor/models/public_record.dart';
-import 'package:kalam_noor/tools/logic_tools/network_service.dart';
+import '../../public_record.dart';
+import '../../../tools/logic_tools/network_service.dart';
 
 class PublicRecordsDBHelper {
   String get _controllerName => 'PublicRecordViewController/';

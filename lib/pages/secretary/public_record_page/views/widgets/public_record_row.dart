@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kalam_noor/models/public_record.dart';
-import 'package:kalam_noor/tools/logic_tools/datetime_helper.dart';
+import '../../../../../models/public_record.dart';
+import '../../../../../tools/logic_tools/datetime_helper.dart';
 
 import '../../../../../configs/fonts.dart';
 

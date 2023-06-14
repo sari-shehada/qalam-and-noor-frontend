@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/psychological_instructor/student_fill_psychological_statuses_page/assign_student_psychological_info_page/controllers/assign_student_psychological_info_controller.dart';
-import 'package:kalam_noor/pages/psychological_instructor/student_fill_psychological_statuses_page/assign_student_psychological_info_page/views/widgets/student_psychological_status_list.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
-import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
-import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
+import '../controllers/assign_student_psychological_info_controller.dart';
+import 'widgets/student_psychological_status_list.dart';
+import '../../../../../tools/ui_tools/custom_appbar.dart';
+import '../../../../../tools/ui_tools/custom_scaffold.dart';
+import '../../../../../tools/ui_tools/loader_widget.dart';
+import '../../../../../tools/widgets/error_loading_something_widget.dart';
 
 class AssignStudentPsychologicalInfoPage
     extends GetView<AssignStudentPsychologicalInfoController> {

@@ -1,4 +1,4 @@
-import 'package:kalam_noor/models/conversations/web_conversation.dart';
+import '../../conversations/web_conversation.dart';
 import '../../../tools/logic_tools/network_service.dart';
 
 class WebConversationDBHelper {

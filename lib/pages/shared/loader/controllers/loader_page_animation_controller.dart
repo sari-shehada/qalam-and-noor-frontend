@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/employee.dart';
+import '../../../../models/agendas/employee.dart';
 
 class LoaderPageAnimationController extends GetxController
     with GetTickerProviderStateMixin {

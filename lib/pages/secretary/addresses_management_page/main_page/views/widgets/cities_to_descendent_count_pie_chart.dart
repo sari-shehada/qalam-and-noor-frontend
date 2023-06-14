@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
+import '../../../../../../configs/fonts.dart';
+import '../../../../../../configs/styles.dart';
+import '../../../../../../tools/ui_tools/loader_widget.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../models/city_to_descendent_count.dart';

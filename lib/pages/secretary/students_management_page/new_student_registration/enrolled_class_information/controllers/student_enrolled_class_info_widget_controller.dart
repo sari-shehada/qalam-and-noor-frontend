@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/educational/school_class.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
+import '../../../../../../models/educational/school_class.dart';
+import '../../../../../../tools/dialogs_services/snack_bar_service.dart';
 
 import '../views/dialogs/add_student_enrolled_class_info_dialog.dart';
 

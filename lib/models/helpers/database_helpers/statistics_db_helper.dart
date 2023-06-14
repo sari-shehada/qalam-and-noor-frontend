@@ -1,4 +1,4 @@
-import 'package:kalam_noor/models/stats_models/psychological_status_student_count.dart';
+import '../../stats_models/psychological_status_student_count.dart';
 import '../../../tools/logic_tools/network_service.dart';
 
 class StatisticsDBHelper {

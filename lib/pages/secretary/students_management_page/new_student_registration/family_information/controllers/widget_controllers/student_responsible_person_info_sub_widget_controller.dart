@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/family_information/controllers/widget_controllers/student_father_info_sub_widget_controller.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/family_information/controllers/widget_controllers/student_mother_info_sub_widget_controller.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/family_information/models/validation_text_field.dart';
+import 'student_father_info_sub_widget_controller.dart';
+import 'student_mother_info_sub_widget_controller.dart';
+import '../../models/validation_text_field.dart';
 
 import '../../../../../../../models/agendas/family.dart';
 import '../../../../../../../models/agendas/father.dart';

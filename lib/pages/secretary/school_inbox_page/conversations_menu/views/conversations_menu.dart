@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/conversations_menu/views/widgets/conversations_list.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/main_page/controllers/conversation_fetching_controller.dart';
-import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
+import 'widgets/conversations_list.dart';
+import '../../main_page/controllers/conversation_fetching_controller.dart';
+import '../../../../../tools/ui_tools/loader_widget.dart';
 
 class ConversationMenu extends StatelessWidget {
   const ConversationMenu({super.key});

@@ -2,11 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../configs/fonts.dart';
+import '../../../../tools/ui_tools/buttons.dart';
+import '../../../../tools/ui_tools/custom_appbar.dart';
+import '../../../../tools/ui_tools/custom_scaffold.dart';
+import '../../../../tools/ui_tools/ui_tools.dart';
 
 import '../../../../controllers/account_controller.dart';
 

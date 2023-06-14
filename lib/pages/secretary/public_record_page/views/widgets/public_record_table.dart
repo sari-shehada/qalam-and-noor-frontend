@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/models/public_record.dart';
-import 'package:kalam_noor/pages/secretary/public_record_page/views/widgets/public_record_row.dart';
+import '../../../../../configs/fonts.dart';
+import '../../../../../models/public_record.dart';
+import 'public_record_row.dart';
 
 class PublicRecordTable extends StatelessWidget {
   const PublicRecordTable({super.key, required this.records});

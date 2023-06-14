@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/vaccines_db_helper.dart';
-import 'package:kalam_noor/models/medical/vaccine.dart';
+import '../../../../../../models/helpers/database_helpers/vaccines_db_helper.dart';
+import '../../../../../../models/medical/vaccine.dart';
 import '../../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../../tools/ui_tools/buttons.dart';
 

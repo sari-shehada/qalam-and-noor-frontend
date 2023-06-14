@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/controllers/navigation_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_classes_management_page/courses_management/controllers/dialog_controllers/add_or_edit_course_dialog_controller.dart';
-import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
+import '../../../../../../controllers/navigation_controller.dart';
+import '../../controllers/dialog_controllers/add_or_edit_course_dialog_controller.dart';
+import '../../../../../../tools/ui_tools/loader_widget.dart';
 import '../../../../../../configs/fonts.dart';
 import '../../../../../../models/agendas/employee.dart';
 import '../../../../../../tools/ui_tools/buttons.dart';

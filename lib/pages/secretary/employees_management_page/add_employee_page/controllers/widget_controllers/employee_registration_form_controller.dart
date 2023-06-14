@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/employee.dart';
-import 'package:kalam_noor/models/agendas/job_title.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/job_titles_db_helper.dart';
-import 'package:kalam_noor/pages/secretary/employees_management_page/add_employee_page/controllers/add_employee_controller.dart';
-import 'package:kalam_noor/pages/secretary/employees_management_page/add_employee_page/models/employee_credentials_generator.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/family_information/models/validation_text_field.dart';
+import '../../../../../../models/agendas/employee.dart';
+import '../../../../../../models/agendas/job_title.dart';
+import '../../../../../../models/helpers/database_helpers/job_titles_db_helper.dart';
+import '../add_employee_controller.dart';
+import '../../models/employee_credentials_generator.dart';
+import '../../../../students_management_page/new_student_registration/family_information/models/validation_text_field.dart';
 
 import '../../../../students_management_page/new_student_registration/address_information/models/student_address_info.dart';
 import '../../../../students_management_page/new_student_registration/address_information/views/dialogs/student_address_info_dialog.dart';

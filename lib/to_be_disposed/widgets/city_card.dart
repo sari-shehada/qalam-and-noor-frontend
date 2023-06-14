@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/addresses_management_page/main_page/controllers/address_management_controller.dart';
+import '../../pages/secretary/addresses_management_page/main_page/controllers/address_management_controller.dart';
 
 import '../../models/address/city.dart';
 import '../../pages/secretary/addresses_management_page/city_details_page/controllers/city_details_controller.dart';

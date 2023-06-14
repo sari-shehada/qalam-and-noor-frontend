@@ -1,8 +1,8 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:kalam_noor/pages/other/main_page/views/not_yet_supported_page.dart';
-import 'package:kalam_noor/pages/shared/navigation_page/controllers/navigation_bindings.dart';
-import 'package:kalam_noor/pages/psychological_instructor/dashboard_page/views/psychological_instructor_dashboard.dart';
-import 'package:kalam_noor/pages/teacher/dashboard_page/views/teacher_dashboard_page.dart';
+import '../../pages/other/main_page/views/not_yet_supported_page.dart';
+import '../../pages/shared/navigation_page/controllers/navigation_bindings.dart';
+import '../../pages/psychological_instructor/dashboard_page/views/psychological_instructor_dashboard.dart';
+import '../../pages/teacher/dashboard_page/views/teacher_dashboard_page.dart';
 import '../../pages/secretary/addresses_management_page/main_page/views/addresses_management_page.dart';
 import '../../pages/shared/navigation_page/models/navigation_rail_destination_card.dart';
 import '../../pages/secretary/dashboard_page/views/secretary_dashboard_page.dart';

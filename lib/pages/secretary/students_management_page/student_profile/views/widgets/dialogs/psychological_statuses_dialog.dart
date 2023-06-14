@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/models/medical/student_psychological_status.dart';
+import '../../../../../../../configs/styles.dart';
+import '../../../../../../../models/medical/student_psychological_status.dart';
 import '../../../../../../../configs/fonts.dart';
 import '../../../../../../../models/enums.dart';
 import '../../../../../../../models/helpers/database_helpers/psychological_statuses_db_helper.dart';

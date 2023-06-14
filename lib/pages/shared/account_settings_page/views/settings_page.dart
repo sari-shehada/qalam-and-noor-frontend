@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/shared/account_settings_page/controllers/settings_page_controller.dart';
-import 'package:kalam_noor/pages/shared/account_settings_page/views/widgets/profile_account_information_widget.dart';
-import 'package:kalam_noor/pages/shared/account_settings_page/views/widgets/profile_address_widget.dart';
-import 'package:kalam_noor/pages/shared/account_settings_page/views/widgets/profile_image_widget.dart';
-import 'package:kalam_noor/pages/shared/account_settings_page/views/widgets/profile_info_widget.dart';
-import 'package:kalam_noor/pages/shared/account_settings_page/views/widgets/profile_work_information_widget.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../controllers/settings_page_controller.dart';
+import 'widgets/profile_account_information_widget.dart';
+import 'widgets/profile_address_widget.dart';
+import 'widgets/profile_image_widget.dart';
+import 'widgets/profile_info_widget.dart';
+import 'widgets/profile_work_information_widget.dart';
+import '../../../../tools/ui_tools/buttons.dart';
+import '../../../../tools/ui_tools/custom_appbar.dart';
+import '../../../../tools/ui_tools/ui_tools.dart';
 import '../../../../controllers/account_controller.dart';
 
 class SettingsPage extends GetView<SettingsPageController> {

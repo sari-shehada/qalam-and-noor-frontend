@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/educational/course.dart';
-import 'package:kalam_noor/pages/secretary/school_classes_management_page/courses_management/controllers/courses_management_controller.dart';
+import '../../../../../../models/educational/course.dart';
+import '../../controllers/courses_management_controller.dart';
 
 class CourseRow extends StatelessWidget {
   const CourseRow({super.key, required this.course, required this.rowColor});

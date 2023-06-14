@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/models/address/city.dart';
+import '../../../../../../configs/fonts.dart';
+import '../../../../../../models/address/city.dart';
 
 import '../../../city_details_page/controllers/city_details_controller.dart';
 import '../../../city_details_page/views/city_details_page.dart';

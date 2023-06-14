@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/educational/school_class.dart';
-import 'package:kalam_noor/pages/secretary/school_classes_management_page/main_page/views/widgets/class_row.dart';
+import '../../../../../../models/educational/school_class.dart';
+import 'class_row.dart';
 
 class SchoolClassesTable extends StatelessWidget {
   const SchoolClassesTable({super.key, required this.schoolClasses});

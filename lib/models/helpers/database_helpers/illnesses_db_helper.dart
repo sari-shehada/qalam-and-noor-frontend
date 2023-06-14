@@ -1,6 +1,6 @@
-import 'package:kalam_noor/models/medical/illness.dart';
-import 'package:kalam_noor/models/medical/student_illness_info.dart';
-import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
+import '../../medical/illness.dart';
+import '../../medical/student_illness_info.dart';
+import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 
 class IllnessesDBHelper implements CRUDInterface<Illness> {

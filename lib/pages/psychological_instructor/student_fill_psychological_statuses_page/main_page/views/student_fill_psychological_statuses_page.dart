@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/models/agendas/student.dart';
-import 'package:kalam_noor/pages/psychological_instructor/student_fill_psychological_statuses_page/main_page/views/widgets/student_fill_psychological_status_card.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
-import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
-import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
-import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
+import '../../../../../configs/fonts.dart';
+import '../../../../../configs/styles.dart';
+import '../../../../../models/agendas/student.dart';
+import 'widgets/student_fill_psychological_status_card.dart';
+import '../../../../../tools/ui_tools/custom_appbar.dart';
+import '../../../../../tools/ui_tools/custom_scaffold.dart';
+import '../../../../../tools/ui_tools/loader_widget.dart';
+import '../../../../../tools/ui_tools/ui_tools.dart';
+import '../../../../../tools/widgets/empty_item_widget.dart';
+import '../../../../../tools/widgets/error_loading_something_widget.dart';
 
 import '../controllers/student_fill_psychological_statuses_controller.dart';
 

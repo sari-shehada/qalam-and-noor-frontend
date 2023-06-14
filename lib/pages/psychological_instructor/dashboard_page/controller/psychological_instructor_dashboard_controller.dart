@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/statistics_db_helper.dart';
-import 'package:kalam_noor/models/stats_models/psychological_status_student_count.dart';
+import '../../../../models/helpers/database_helpers/statistics_db_helper.dart';
+import '../../../../models/stats_models/psychological_status_student_count.dart';
 
 import '../models/psychological_instructor_dashboard_cards_info.dart';
 

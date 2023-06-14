@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
+import '../../../../configs/fonts.dart';
 import '../../../../tools/ui_tools/labeled_widget.dart';
 import '../controllers/login_page_controller.dart';
 import '../../../../tools/ui_tools/text_fields.dart';

@@ -1,5 +1,5 @@
-import 'package:kalam_noor/models/agendas/employee.dart';
-import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
+import '../../agendas/employee.dart';
+import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 import '../../agendas/job_title.dart';
 

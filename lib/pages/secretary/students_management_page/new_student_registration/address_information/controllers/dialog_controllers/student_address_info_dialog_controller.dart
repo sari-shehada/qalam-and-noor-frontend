@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/addresses_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/area_db_helper.dart';
-import 'package:kalam_noor/pages/secretary/addresses_management_page/main_page/views/dialogs/add_or_edit_city_dialog.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/address_information/models/student_address_info.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
+import '../../../../../../../models/helpers/database_helpers/addresses_db_helper.dart';
+import '../../../../../../../models/helpers/database_helpers/area_db_helper.dart';
+import '../../../../../addresses_management_page/main_page/views/dialogs/add_or_edit_city_dialog.dart';
+import '../../models/student_address_info.dart';
+import '../../../../../../../tools/dialogs_services/snack_bar_service.dart';
 
 import '../../../../../../../models/address/address.dart';
 import '../../../../../../../models/address/area.dart';

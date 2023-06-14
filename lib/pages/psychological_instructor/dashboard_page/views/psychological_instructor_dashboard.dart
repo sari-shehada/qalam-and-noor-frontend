@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/psychological_instructor/dashboard_page/controller/psychological_instructor_dashboard_controller.dart';
-import 'package:kalam_noor/pages/psychological_instructor/dashboard_page/views/widgets/psychological_statuses_pie_chart_widget.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
-import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
+import '../controller/psychological_instructor_dashboard_controller.dart';
+import 'widgets/psychological_statuses_pie_chart_widget.dart';
+import '../../../../tools/ui_tools/custom_appbar.dart';
+import '../../../../tools/ui_tools/custom_scaffold.dart';
+import '../../../../tools/ui_tools/ui_tools.dart';
+import '../../../../tools/widgets/error_loading_something_widget.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../tools/widgets/employee_dashboard_profile_widget.dart';

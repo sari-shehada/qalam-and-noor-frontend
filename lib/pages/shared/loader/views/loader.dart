@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/shared/loader/controllers/loader_page_animation_controller.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../controllers/loader_page_animation_controller.dart';
+import '../../../../tools/ui_tools/ui_tools.dart';
 import '../../../../configs/assets.dart';
 import '../controllers/loader_controller.dart';
 

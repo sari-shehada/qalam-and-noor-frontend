@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/conversations/web_conversation.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/web_conversation_db_helper.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/conversation_body/models/conversation_query.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/main_page/controllers/conversation_query_controller.dart';
+import '../../../../../models/conversations/web_conversation.dart';
+import '../../../../../models/helpers/database_helpers/web_conversation_db_helper.dart';
+import '../../conversation_body/models/conversation_query.dart';
+import 'conversation_query_controller.dart';
 
 import '../../../../../models/enums.dart';
 

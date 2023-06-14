@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/models/previous_schools/previous_schools.dart';
+import '../../../../../configs/fonts.dart';
+import '../../../../../models/previous_schools/previous_schools.dart';
 
 import '../../../../../tools/ui_tools/buttons.dart';
 import '../../../../../tools/ui_tools/labeled_widget.dart';

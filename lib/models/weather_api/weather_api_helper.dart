@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:kalam_noor/models/shared_prefs_helper.dart';
-import 'package:kalam_noor/models/weather_api/weather_forecast.dart';
+import '../shared_prefs_helper.dart';
+import 'weather_forecast.dart';
 import 'package:http/http.dart' as http;
 
 class WeatherForecastAPI {

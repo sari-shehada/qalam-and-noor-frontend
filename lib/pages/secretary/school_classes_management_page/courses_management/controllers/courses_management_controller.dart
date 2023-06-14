@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/educational/course.dart';
-import 'package:kalam_noor/pages/secretary/school_classes_management_page/courses_management/views/widgets/add_or_edit_course_dialog.dart';
+import '../../../../../models/educational/course.dart';
+import '../views/widgets/add_or_edit_course_dialog.dart';
 import '../../../../../models/educational/school_class.dart';
 import '../../../../../models/helpers/database_helpers/courses_db_helper.dart';
 

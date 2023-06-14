@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:kalam_noor/configs/assets.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/configs/styles.dart';
+import '../../../../../configs/assets.dart';
+import '../../../../../configs/fonts.dart';
+import '../../../../../configs/styles.dart';
 
 class TeachersCountWidget extends StatelessWidget {
   const TeachersCountWidget({super.key, required this.count});

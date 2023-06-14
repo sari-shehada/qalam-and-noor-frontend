@@ -1,6 +1,6 @@
-import 'package:kalam_noor/models/medical/student_vaccines_info.dart';
-import 'package:kalam_noor/models/medical/vaccine.dart';
-import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
+import '../../medical/student_vaccines_info.dart';
+import '../../medical/vaccine.dart';
+import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 
 class VaccinesDBHelper implements CRUDInterface<Vaccine> {

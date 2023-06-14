@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/medical/student_vaccines_info.dart';
-import 'package:kalam_noor/tools/logic_tools/datetime_helper.dart';
+import '../../../../../../../models/medical/student_vaccines_info.dart';
+import '../../../../../../../tools/logic_tools/datetime_helper.dart';
 
 import '../../../../../../../configs/fonts.dart';
 import '../../../../../../../tools/ui_tools/ui_tools.dart';

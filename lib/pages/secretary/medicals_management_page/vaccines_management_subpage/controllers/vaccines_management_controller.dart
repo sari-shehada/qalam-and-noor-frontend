@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/vaccines_db_helper.dart';
-import 'package:kalam_noor/models/medical/vaccine.dart';
+import '../../../../../models/helpers/database_helpers/vaccines_db_helper.dart';
+import '../../../../../models/medical/vaccine.dart';
 import '../views/dialogs/add_or_edit_vaccine_dialog.dart';
 
 class VaccinesManagementController extends GetxController {

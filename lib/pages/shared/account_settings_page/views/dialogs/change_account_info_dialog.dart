@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/pages/shared/account_settings_page/controllers/dialog_controllers/account_information_dialog_controller.dart';
-import 'package:kalam_noor/pages/shared/account_settings_page/controllers/settings_page_controller.dart';
+import '../../../../../configs/fonts.dart';
+import '../../controllers/dialog_controllers/account_information_dialog_controller.dart';
+import '../../controllers/settings_page_controller.dart';
 import '../../../../../tools/ui_tools/buttons.dart';
 import '../../../../../tools/ui_tools/labeled_widget.dart';
 import '../../../../../tools/ui_tools/text_fields.dart';

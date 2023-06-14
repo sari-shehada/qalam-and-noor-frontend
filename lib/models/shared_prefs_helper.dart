@@ -1,4 +1,4 @@
-import 'package:kalam_noor/models/weather_api/weather_forecast.dart';
+import 'weather_api/weather_forecast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefsHelper {

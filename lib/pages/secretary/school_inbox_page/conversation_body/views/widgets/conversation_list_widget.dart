@@ -3,16 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/models/enums.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/conversation_body/controllers/selected_conversation_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/conversation_body/views/widgets/chat_bubble.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
-import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
-import 'package:kalam_noor/tools/ui_tools/text_fields.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
-import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
-import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
+import '../../../../../../configs/fonts.dart';
+import '../../../../../../models/enums.dart';
+import '../../controllers/selected_conversation_controller.dart';
+import 'chat_bubble.dart';
+import '../../../../../../tools/ui_tools/buttons.dart';
+import '../../../../../../tools/ui_tools/loader_widget.dart';
+import '../../../../../../tools/ui_tools/text_fields.dart';
+import '../../../../../../tools/ui_tools/ui_tools.dart';
+import '../../../../../../tools/widgets/empty_item_widget.dart';
+import '../../../../../../tools/widgets/error_loading_something_widget.dart';
 
 import '../../controllers/conversation_body_controller.dart';
 import '../../controllers/conversation_communication_controller.dart';

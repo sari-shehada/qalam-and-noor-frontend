@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/models/educational/school_class.dart';
-import 'package:kalam_noor/models/public_record.dart';
-import 'package:kalam_noor/pages/secretary/public_record_page/controllers/public_record_controller.dart';
-import 'package:kalam_noor/pages/secretary/public_record_page/views/widgets/public_record_table.dart';
-import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
+import '../../../../configs/fonts.dart';
+import '../../../../models/educational/school_class.dart';
+import '../../../../models/public_record.dart';
+import '../controllers/public_record_controller.dart';
+import 'widgets/public_record_table.dart';
+import '../../../../tools/widgets/error_loading_something_widget.dart';
 
 import '../../../../tools/ui_tools/custom_appbar.dart';
 import '../../../../tools/ui_tools/custom_drop_down_menu.dart';

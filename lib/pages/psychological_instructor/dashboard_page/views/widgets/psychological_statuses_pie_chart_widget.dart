@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/models/stats_models/psychological_status_student_count.dart';
+import '../../../../../configs/fonts.dart';
+import '../../../../../configs/styles.dart';
+import '../../../../../models/stats_models/psychological_status_student_count.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class PsychologicalStatusesPieChartWidget extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/controllers/account_controller.dart';
-import 'package:kalam_noor/models/agendas/employee.dart';
-import 'package:kalam_noor/pages/shared/loader/controllers/loader_page_animation_controller.dart';
+import '../../../../controllers/account_controller.dart';
+import '../../../../models/agendas/employee.dart';
+import 'loader_page_animation_controller.dart';
 
 import '../../../../controllers/navigation_controller.dart';
 import '../../../../models/shared_prefs_helper.dart';

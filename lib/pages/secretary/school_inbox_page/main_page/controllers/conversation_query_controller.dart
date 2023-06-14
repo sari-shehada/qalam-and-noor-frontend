@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/enums.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/conversation_body/models/conversation_query.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/main_page/controllers/school_inbox_tab_bar_controller.dart';
+import '../../../../../models/enums.dart';
+import '../../conversation_body/models/conversation_query.dart';
+import 'school_inbox_tab_bar_controller.dart';
 
 class ConversationQueryController extends GetxController {
   TextEditingController searchFieldController = TextEditingController();

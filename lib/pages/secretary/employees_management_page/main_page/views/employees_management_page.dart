@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/models/agendas/employee.dart';
-import 'package:kalam_noor/models/agendas/job_title.dart';
-import 'package:kalam_noor/pages/secretary/employees_management_page/main_page/views/widgets/employees_table.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
-import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
+import '../../../../../configs/fonts.dart';
+import '../../../../../models/agendas/employee.dart';
+import '../../../../../models/agendas/job_title.dart';
+import 'widgets/employees_table.dart';
+import '../../../../../tools/ui_tools/custom_scaffold.dart';
+import '../../../../../tools/widgets/error_loading_something_widget.dart';
 
 import '../../../../../tools/ui_tools/buttons.dart';
 import '../../../../../tools/ui_tools/custom_appbar.dart';

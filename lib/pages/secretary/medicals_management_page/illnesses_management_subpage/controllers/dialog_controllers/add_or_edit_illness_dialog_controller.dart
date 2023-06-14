@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/illnesses_db_helper.dart';
-import 'package:kalam_noor/models/medical/illness.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
+import '../../../../../../models/helpers/database_helpers/illnesses_db_helper.dart';
+import '../../../../../../models/medical/illness.dart';
+import '../../../../../../tools/ui_tools/buttons.dart';
 import '../../../../../../tools/dialogs_services/snack_bar_service.dart';
 
 class AddOrEditIllnessController extends GetxController {

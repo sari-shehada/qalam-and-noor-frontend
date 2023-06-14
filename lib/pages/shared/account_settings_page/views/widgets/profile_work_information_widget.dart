@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/shared/account_settings_page/views/widgets/profile_info_widget.dart';
+import 'profile_info_widget.dart';
 import '../../../../../configs/fonts.dart';
 import '../../../../../tools/logic_tools/datetime_helper.dart';
 import '../../../../../tools/ui_tools/ui_tools.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/student_profile/controllers/student_profile_controller.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/student_profile/views/widgets/dialogs/vaccines_information_dialog.dart';
+import '../../../controllers/student_profile_controller.dart';
+import '../dialogs/vaccines_information_dialog.dart';
 
 import '../../../../../../../configs/fonts.dart';
 import '../../../../../../../configs/styles.dart';

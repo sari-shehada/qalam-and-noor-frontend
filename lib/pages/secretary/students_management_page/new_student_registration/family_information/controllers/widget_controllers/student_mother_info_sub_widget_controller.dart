@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/family_information/models/validation_text_field.dart';
+import '../../models/validation_text_field.dart';
 
 import '../../../../../../../models/agendas/mother.dart';
 import '../../../../../../../models/enums.dart';

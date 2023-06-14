@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/conversations/message.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/messages_db_helper.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/conversation_body/controllers/selected_conversation_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/main_page/controllers/conversation_fetching_controller.dart';
+import '../../../../../models/conversations/message.dart';
+import '../../../../../models/helpers/database_helpers/messages_db_helper.dart';
+import 'selected_conversation_controller.dart';
+import '../../main_page/controllers/conversation_fetching_controller.dart';
 
 class ConversationBodyController extends GetxController {
   late int currentConvoId;

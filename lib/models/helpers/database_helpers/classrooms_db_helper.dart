@@ -1,5 +1,5 @@
-import 'package:kalam_noor/models/educational/classroom.dart';
-import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
+import '../../educational/classroom.dart';
+import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 
 class ClassroomDBHelper implements CRUDInterface<Classroom> {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/controllers/account_controller.dart';
+import '../../../../controllers/account_controller.dart';
 
 import '../../../../controllers/navigation_controller.dart';
 import '../../../../models/shared_prefs_helper.dart';

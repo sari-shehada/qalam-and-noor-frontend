@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/previous_schools_helpers/previous_schools_db_helper.dart';
-import 'package:kalam_noor/models/previous_schools/previous_schools.dart';
+import '../../../../../models/helpers/database_helpers/previous_schools_helpers/previous_schools_db_helper.dart';
+import '../../../../../models/previous_schools/previous_schools.dart';
 
 import '../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../tools/ui_tools/buttons.dart';

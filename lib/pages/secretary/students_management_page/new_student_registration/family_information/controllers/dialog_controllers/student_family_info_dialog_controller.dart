@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/family.dart';
-import 'package:kalam_noor/models/agendas/father.dart';
-import 'package:kalam_noor/models/agendas/mother.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/father_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/mother_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/families_db_helper.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/family_information/models/family_info.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
+import '../../../../../../../models/agendas/family.dart';
+import '../../../../../../../models/agendas/father.dart';
+import '../../../../../../../models/agendas/mother.dart';
+import '../../../../../../../models/helpers/database_helpers/father_db_helper.dart';
+import '../../../../../../../models/helpers/database_helpers/mother_db_helper.dart';
+import '../../../../../../../models/helpers/database_helpers/families_db_helper.dart';
+import '../../models/family_info.dart';
+import '../../../../../../../tools/dialogs_services/snack_bar_service.dart';
 
 import '../../../../../../../tools/ui_tools/buttons.dart';
 import '../../views/dialogs/add_student_family_info_dialog.dart';

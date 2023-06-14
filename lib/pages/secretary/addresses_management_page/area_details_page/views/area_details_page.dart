@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
+import '../../../../../tools/widgets/error_loading_something_widget.dart';
 import '../../../../../models/address/address.dart';
 import '../../../../../tools/ui_tools/custom_drop_down_menu.dart';
 import '../../../../../tools/ui_tools/loader_widget.dart';

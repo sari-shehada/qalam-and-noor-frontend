@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/agendas/employee.dart';
-import 'package:kalam_noor/models/educational/course.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/courses_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/employees_db_helper.dart';
+import '../../../../../../models/agendas/employee.dart';
+import '../../../../../../models/educational/course.dart';
+import '../../../../../../models/helpers/database_helpers/courses_db_helper.dart';
+import '../../../../../../models/helpers/database_helpers/employees_db_helper.dart';
 import '../../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../../tools/ui_tools/buttons.dart';
 

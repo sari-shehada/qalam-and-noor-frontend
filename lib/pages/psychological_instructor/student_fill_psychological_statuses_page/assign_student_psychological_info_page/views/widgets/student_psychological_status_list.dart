@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/pages/psychological_instructor/student_fill_psychological_statuses_page/assign_student_psychological_info_page/controllers/assign_student_psychological_info_controller.dart';
-import 'package:kalam_noor/pages/psychological_instructor/student_fill_psychological_statuses_page/assign_student_psychological_info_page/views/widgets/student_psychological_status_card.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../../configs/fonts.dart';
+import '../../controllers/assign_student_psychological_info_controller.dart';
+import 'student_psychological_status_card.dart';
+import '../../../../../../tools/ui_tools/ui_tools.dart';
 
 class StudentPsychologicalStatusList
     extends GetView<AssignStudentPsychologicalInfoController> {

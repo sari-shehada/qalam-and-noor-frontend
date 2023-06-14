@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/models/agendas/employee.dart';
-import 'package:kalam_noor/pages/secretary/employees_management_page/main_page/views/widgets/employee_row.dart';
+import '../../../../../../configs/fonts.dart';
+import '../../../../../../models/agendas/employee.dart';
+import 'employee_row.dart';
 
 class EmployeesTable extends StatelessWidget {
   const EmployeesTable({super.key, required this.employees});

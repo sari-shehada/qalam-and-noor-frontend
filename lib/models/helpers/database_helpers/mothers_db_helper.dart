@@ -1,5 +1,5 @@
-import 'package:kalam_noor/models/agendas/mother.dart';
-import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
+import '../../agendas/mother.dart';
+import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 
 class MothersDBHelper implements CRUDInterface<Mother> {

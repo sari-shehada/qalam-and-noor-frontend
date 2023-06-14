@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/main_page/controllers/conversation_fetching_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/main_page/controllers/conversation_query_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/main_page/controllers/school_inbox_tab_bar_controller.dart';
+import 'conversation_fetching_controller.dart';
+import 'conversation_query_controller.dart';
+import 'school_inbox_tab_bar_controller.dart';
 
 import '../../conversation_body/controllers/conversation_body_controller.dart';
 import '../../conversation_body/controllers/conversation_communication_controller.dart';

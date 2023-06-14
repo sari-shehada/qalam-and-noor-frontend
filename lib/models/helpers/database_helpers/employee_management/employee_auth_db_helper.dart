@@ -1,4 +1,4 @@
-import 'package:kalam_noor/models/helpers/database_helpers/employee_management/employee_auth_model.dart';
+import 'employee_auth_model.dart';
 
 import '../../../../tools/logic_tools/network_service.dart';
 import 'employee_auth_exceptions.dart';

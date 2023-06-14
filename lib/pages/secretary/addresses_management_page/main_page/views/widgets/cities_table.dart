@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/addresses_management_page/main_page/views/widgets/city_row.dart';
+import 'city_row.dart';
 
 import '../../../../../../models/address/city.dart';
 

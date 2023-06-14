@@ -1,4 +1,4 @@
-import 'package:kalam_noor/models/agendas/family.dart';
+import '../../agendas/family.dart';
 
 import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/family_information/models/validation_text_field.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/personal_information/models/student_personal_info.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
+import '../../family_information/models/validation_text_field.dart';
+import '../models/student_personal_info.dart';
+import '../../../../../../tools/dialogs_services/snack_bar_service.dart';
 
 import '../../../../../../models/enums.dart';
 import '../../../../../../tools/ui_tools/buttons.dart';

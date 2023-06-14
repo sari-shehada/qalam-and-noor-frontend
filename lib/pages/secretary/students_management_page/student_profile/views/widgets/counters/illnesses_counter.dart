@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/students_management_page/student_profile/controllers/student_profile_controller.dart';
+import '../../../controllers/student_profile_controller.dart';
 import '../../../../../../../configs/fonts.dart';
 import '../../../../../../../configs/styles.dart';
 import '../../../../../../../tools/ui_tools/ui_tools.dart';

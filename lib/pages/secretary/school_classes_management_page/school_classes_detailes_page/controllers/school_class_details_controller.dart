@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/educational/classroom.dart';
-import 'package:kalam_noor/models/educational/school_class.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/classrooms_db_helper.dart';
-import 'package:kalam_noor/pages/secretary/school_classes_management_page/main_page/controllers/school_classes_management_controller.dart';
+import '../../../../../models/educational/classroom.dart';
+import '../../../../../models/educational/school_class.dart';
+import '../../../../../models/helpers/database_helpers/classrooms_db_helper.dart';
+import '../../main_page/controllers/school_classes_management_controller.dart';
 import '../views/widgets/add_or_edit_classroom_dialog.dart';
 
 class SchoolClassDetailsController extends GetxController {

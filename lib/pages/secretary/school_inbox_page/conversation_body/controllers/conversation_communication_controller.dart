@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/conversations/conversation.dart';
-import 'package:kalam_noor/models/conversations/message.dart';
-import 'package:kalam_noor/models/conversations/web_conversation.dart';
-import 'package:kalam_noor/models/enums.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/conversations_db_helper.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/messages_db_helper.dart';
-import 'package:kalam_noor/pages/secretary/school_inbox_page/conversation_body/controllers/selected_conversation_controller.dart';
-import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
+import '../../../../../models/conversations/conversation.dart';
+import '../../../../../models/conversations/message.dart';
+import '../../../../../models/conversations/web_conversation.dart';
+import '../../../../../models/enums.dart';
+import '../../../../../models/helpers/database_helpers/conversations_db_helper.dart';
+import '../../../../../models/helpers/database_helpers/messages_db_helper.dart';
+import 'selected_conversation_controller.dart';
+import '../../../../../tools/dialogs_services/snack_bar_service.dart';
+import '../../../../../tools/ui_tools/buttons.dart';
 
 class ConversationCommunicationController extends GetxController {
   late int currentConvoId;

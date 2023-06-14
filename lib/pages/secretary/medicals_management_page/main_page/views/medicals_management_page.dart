@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/illnesses_management_subpage/views/illnesses_management_page.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/main_page/views/widgets/medicals_management_tabbar_item.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/psychological_statuses_management_subpage/views/psychological_statuses_management_page.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/vaccines_management_subpage/views/vaccines_management_page.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../illnesses_management_subpage/views/illnesses_management_page.dart';
+import 'widgets/medicals_management_tabbar_item.dart';
+import '../../psychological_statuses_management_subpage/views/psychological_statuses_management_page.dart';
+import '../../vaccines_management_subpage/views/vaccines_management_page.dart';
+import '../../../../../tools/ui_tools/custom_appbar.dart';
+import '../../../../../tools/ui_tools/ui_tools.dart';
 
 import '../../../../../tools/ui_tools/buttons.dart';
 import '../controllers/medicals_management_controller.dart';

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/models/agendas/job_title.dart';
-import 'package:kalam_noor/pages/secretary/employees_management_page/add_employee_page/controllers/add_employee_controller.dart';
-import 'package:kalam_noor/pages/secretary/employees_management_page/add_employee_page/controllers/widget_controllers/employee_registration_form_controller.dart';
-import 'package:kalam_noor/tools/logic_tools/datetime_helper.dart';
-import 'package:kalam_noor/tools/ui_tools/labeled_widget.dart';
-import 'package:kalam_noor/tools/ui_tools/text_fields.dart';
-import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
+import '../../../../../../configs/fonts.dart';
+import '../../../../../../models/agendas/job_title.dart';
+import '../../controllers/add_employee_controller.dart';
+import '../../controllers/widget_controllers/employee_registration_form_controller.dart';
+import '../../../../../../tools/logic_tools/datetime_helper.dart';
+import '../../../../../../tools/ui_tools/labeled_widget.dart';
+import '../../../../../../tools/ui_tools/text_fields.dart';
+import '../../../../../../tools/ui_tools/ui_tools.dart';
 
 import '../../../../../../tools/ui_tools/buttons.dart';
 

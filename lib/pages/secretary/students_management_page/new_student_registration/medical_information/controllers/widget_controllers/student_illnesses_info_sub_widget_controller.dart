@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/helpers/database_helpers/illnesses_db_helper.dart';
-import 'package:kalam_noor/models/medical/illness.dart';
-import 'package:kalam_noor/pages/secretary/medicals_management_page/illnesses_management_subpage/views/dialogs/add_or_edit_illness_dialog.dart';
+import '../../../../../../../models/helpers/database_helpers/illnesses_db_helper.dart';
+import '../../../../../../../models/medical/illness.dart';
+import '../../../../../medicals_management_page/illnesses_management_subpage/views/dialogs/add_or_edit_illness_dialog.dart';
 
 class StudentIllnessesInfoSubWidgetController extends GetxController {
   late Rx<Future<List<Illness>>> illnesses;

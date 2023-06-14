@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/address/area.dart';
-import 'package:kalam_noor/pages/secretary/addresses_management_page/area_details_page/controllers/area_details_controller.dart';
-import 'package:kalam_noor/pages/secretary/addresses_management_page/area_details_page/views/area_details_page.dart';
+import '../../../../../../models/address/area.dart';
+import '../../../area_details_page/controllers/area_details_controller.dart';
+import '../../../area_details_page/views/area_details_page.dart';
 
 import '../../../city_details_page/controllers/city_details_controller.dart';
 

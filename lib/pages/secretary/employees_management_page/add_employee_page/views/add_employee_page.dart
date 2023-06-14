@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/pages/secretary/employees_management_page/add_employee_page/controllers/add_employee_controller.dart';
-import 'package:kalam_noor/pages/secretary/employees_management_page/add_employee_page/views/widgets/employee_registration_form.dart';
-import 'package:kalam_noor/pages/secretary/employees_management_page/add_employee_page/views/widgets/employee_section_title_widget.dart';
-import 'package:kalam_noor/tools/ui_tools/buttons.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
-import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
+import '../../../../../configs/styles.dart';
+import '../controllers/add_employee_controller.dart';
+import 'widgets/employee_registration_form.dart';
+import 'widgets/employee_section_title_widget.dart';
+import '../../../../../tools/ui_tools/buttons.dart';
+import '../../../../../tools/ui_tools/custom_appbar.dart';
+import '../../../../../tools/ui_tools/custom_scaffold.dart';
 
 class AddEmployeePage extends StatelessWidget {
   const AddEmployeePage({super.key});
