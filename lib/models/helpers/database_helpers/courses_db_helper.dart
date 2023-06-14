@@ -22,6 +22,22 @@ class CoursesDBHelper implements CRUDInterface<Course> {
     return allCourses;
   }
 
+  Future<List<Course>> getAllTeacherCourses(int teacherId) async {
+    String url = '${_controllerName}GetCoursesByTeacherId?teacherId=$teacherId';
+    List<Course> allTeacherCourses =
+        await HttpService.getParsed<List<Course>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return Course.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allTeacherCourses;
+  }
+
   @override
   Future<Course?> getById(int id) async {
     String url = '${_controllerName}GetCourseById?id=$id';

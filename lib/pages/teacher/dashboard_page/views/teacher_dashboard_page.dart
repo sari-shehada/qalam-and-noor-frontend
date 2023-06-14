@@ -1,6 +1,10 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/teacher/dashboard_page/views/widgets/course_info_table.dart';
+import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
+import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
 import '../../../../configs/fonts.dart';
 import '../../../../tools/ui_tools/custom_appbar.dart';
 import '../../../../tools/ui_tools/custom_scaffold.dart';
@@ -21,14 +25,42 @@ class TeacherDashboardPage extends StatelessWidget {
         iconData: FontAwesomeIcons.house,
         actionButton: EmployeeDashboardProfileWidget(),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Text(
-              'صفحة المدرس',
-              style: ProjectFonts.headlineMedium(),
-            ),
-          ],
+      body: SizedBox.expand(
+        child: Padding(
+          padding: EdgeInsetsDirectional.only(
+            top: 50.h,
+            start: 40.w,
+            end: 40.w,
+          ),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Text(
+                  'المقررات الحالية',
+                  style: ProjectFonts.headlineMedium(),
+                ),
+              ),
+              Expanded(
+                flex: 7,
+                child: FutureBuilder(
+                  future: controller.getAllTeacherCourses(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: LoaderWidget(),
+                      );
+                    }
+                    if (snapshot.data!.isEmpty) {
+                      return const EmptyItemWidget(
+                          itemName: 'مقررات', iconData: FontAwesomeIcons.book);
+                    }
+                    return CourseInfoTable(coursesInfo: snapshot.data!);
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

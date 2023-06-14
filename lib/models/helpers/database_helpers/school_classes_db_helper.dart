@@ -25,10 +25,10 @@ class SchoolClassesDBHelper implements CRUDInterface<SchoolClass> {
   }
 
   @override
-  Future<SchoolClass?> getById(int id) async {
+  Future<SchoolClass> getById(int id) async {
     String url = '${_controllerName}GetClassById?id=$id';
-    SchoolClass? schoolClass =
-        await HttpService.getParsed<SchoolClass?, Map<String, dynamic>>(
+    SchoolClass schoolClass =
+        await HttpService.getParsed<SchoolClass, Map<String, dynamic>>(
       url: url,
       dataMapper: (responseData) {
         return SchoolClass.fromMap(responseData);
