@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/secretary/dashboard_page/views/widgets/dashboard_button_shortcuts_widget.dart';
+import 'package:kalam_noor/pages/secretary/dashboard_page/views/widgets/mobile_app_qr_links_widget.dart';
 import 'package:kalam_noor/pages/secretary/dashboard_page/views/widgets/useful_links_list_widget.dart';
 import 'widgets/current_time_widget.dart';
 import 'widgets/current_weather_widget.dart';
@@ -13,7 +15,6 @@ import '../../../../tools/ui_tools/custom_scaffold.dart';
 import '../../../../tools/ui_tools/ui_tools.dart';
 import '../../../../tools/widgets/employee_dashboard_profile_widget.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../controllers/secretary_dashboard_controller.dart';
 
 class SecretaryDashboardPage extends StatelessWidget {
@@ -90,13 +91,20 @@ class SecretaryDashboardPage extends StatelessWidget {
                       child: Row(
                         children: [
                           const Expanded(
-                            flex: 3,
-                            child: _DashboardContainer(),
+                            flex: 5,
+                            child: _DashboardContainer(
+                              buildChildWithContainer: true,
+                              child: MobileAppLinksWidget(
+                                  androidLink: '', iosLink: ''),
+                            ),
                           ),
                           AddHorizontalSpacing(value: 30.w),
                           const Expanded(
                             flex: 3,
-                            child: _DashboardContainer(),
+                            child: _DashboardContainer(
+                              buildChildWithContainer: true,
+                              child: DashboardButtonShortcutsWidget(),
+                            ),
                           ),
                         ],
                       ),
