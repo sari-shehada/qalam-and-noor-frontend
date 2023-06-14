@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -159,55 +156,6 @@ class UsefulLink {
     required this.link,
     required this.iconData,
   });
-
-  UsefulLink copyWith({
-    String? linkName,
-    String? link,
-    IconData? iconData,
-  }) {
-    return UsefulLink(
-      linkName: linkName ?? this.linkName,
-      link: link ?? this.link,
-      iconData: iconData ?? this.iconData,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'linkName': linkName,
-      'link': link,
-      'iconData': iconData.codePoint,
-    };
-  }
-
-  factory UsefulLink.fromMap(Map<String, dynamic> map) {
-    return UsefulLink(
-      linkName: map['linkName'] as String,
-      link: map['link'] as String,
-      iconData: IconData(map['iconData'] as int, fontFamily: 'MaterialIcons'),
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory UsefulLink.fromJson(String source) =>
-      UsefulLink.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  @override
-  String toString() =>
-      'UsefulLinks(linkName: $linkName, link: $link, iconData: $iconData)';
-
-  @override
-  bool operator ==(covariant UsefulLink other) {
-    if (identical(this, other)) return true;
-
-    return other.linkName == linkName &&
-        other.link == link &&
-        other.iconData == iconData;
-  }
-
-  @override
-  int get hashCode => linkName.hashCode ^ link.hashCode ^ iconData.hashCode;
 }
 
 List<UsefulLink> usefulLinksList = [
