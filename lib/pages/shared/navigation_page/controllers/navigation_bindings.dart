@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../../../secretary/dashboard_page/models/navigation_rail_destination_card.dart';
+import '../models/navigation_rail_destination_card.dart';
 import 'navigation_page_controller.dart';
 
 class NavigationBindings extends Bindings {

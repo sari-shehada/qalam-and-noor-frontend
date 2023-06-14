@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/pages/secretary/dashboard_page/controllers/dashboard_controller.dart';
+import 'package:kalam_noor/pages/secretary/dashboard_page/controllers/secretary_dashboard_controller.dart';
 import 'package:kalam_noor/tools/logic_tools/datetime_helper.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import 'package:intl/intl.dart' as intl;
 
-class CurrentTimeWidget extends GetView<DashboardController> {
+class CurrentTimeWidget extends GetView<SecretaryDashboardController> {
   const CurrentTimeWidget({super.key});
 
   @override

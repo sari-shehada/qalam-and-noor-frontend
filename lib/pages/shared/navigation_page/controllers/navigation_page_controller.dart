@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../secretary/dashboard_page/models/navigation_rail_destination_card.dart';
+import '../models/navigation_rail_destination_card.dart';
 
 class NavigationPageController extends GetxController
     with GetTickerProviderStateMixin {

@@ -13,15 +13,15 @@ import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import 'package:kalam_noor/tools/widgets/employee_dashboard_profile_widget.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../controllers/dashboard_controller.dart';
+import '../controllers/secretary_dashboard_controller.dart';
 
-class DashboardPage extends StatelessWidget {
-  const DashboardPage({super.key});
+class SecretaryDashboardPage extends StatelessWidget {
+  const SecretaryDashboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    DashboardController controller = Get.put(
-      DashboardController(),
+    SecretaryDashboardController controller = Get.put(
+      SecretaryDashboardController(),
     );
     return CustomScaffold(
       appBar: const CustomAppBar(

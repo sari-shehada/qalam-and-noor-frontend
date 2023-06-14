@@ -4,8 +4,8 @@ import 'package:kalam_noor/pages/shared/navigation_page/controllers/navigation_b
 import 'package:kalam_noor/pages/psychological_instructor/dashboard_page/views/psychological_instructor_dashboard.dart';
 import 'package:kalam_noor/pages/teacher/dashboard_page/views/teacher_dashboard_page.dart';
 import '../../pages/secretary/addresses_management_page/main_page/views/addresses_management_page.dart';
-import '../../pages/secretary/dashboard_page/models/navigation_rail_destination_card.dart';
-import '../../pages/secretary/dashboard_page/views/dashboard_page.dart';
+import '../../pages/shared/navigation_page/models/navigation_rail_destination_card.dart';
+import '../../pages/secretary/dashboard_page/views/secretary_dashboard_page.dart';
 import '../../pages/secretary/employees_management_page/main_page/views/employees_management_page.dart';
 import '../../pages/secretary/medicals_management_page/main_page/views/medicals_management_page.dart';
 import '../../pages/psychological_instructor/student_fill_psychological_statuses_page/main_page/views/student_fill_psychological_statuses_page.dart';
@@ -44,7 +44,7 @@ abstract class DestinationsHelper {
     NavigationRailDestinationCard(
       title: 'الرئيسية',
       iconData: FontAwesomeIcons.house,
-      destination: const DashboardPage(),
+      destination: const SecretaryDashboardPage(),
     ),
     NavigationRailDestinationCard(
       title: 'إدارة العام الدراسي',

@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 
 import '../../../../../configs/fonts.dart';
 import '../../../../../tools/ui_tools/ui_tools.dart';
-import '../../controllers/dashboard_controller.dart';
+import '../../controllers/secretary_dashboard_controller.dart';
 
-class CurrentWeatherWidget extends GetView<DashboardController> {
+class CurrentWeatherWidget extends GetView<SecretaryDashboardController> {
   const CurrentWeatherWidget({super.key});
 
   @override

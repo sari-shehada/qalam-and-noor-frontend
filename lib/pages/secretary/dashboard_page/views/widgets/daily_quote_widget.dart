@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/assets.dart';
 import 'package:kalam_noor/configs/fonts.dart';
-import 'package:kalam_noor/pages/secretary/dashboard_page/controllers/dashboard_controller.dart';
+import 'package:kalam_noor/pages/secretary/dashboard_page/controllers/secretary_dashboard_controller.dart';
 
-class DailyQuoteWidget extends GetView<DashboardController> {
+class DailyQuoteWidget extends GetView<SecretaryDashboardController> {
   const DailyQuoteWidget({super.key});
 
   @override

@@ -9,7 +9,7 @@ import 'package:kalam_noor/pages/secretary/dashboard_page/views/widgets/daily_qu
 
 import '../../../../models/helpers/database_helpers/students_db_helper.dart';
 
-class DashboardController extends GetxController {
+class SecretaryDashboardController extends GetxController {
   Rx<int?> studentsCount = Rx<int?>(null);
   Rx<int?> teachersCount = Rx<int?>(null);
   Rx<DateTime?> serverTime = Rx<DateTime?>(null);
