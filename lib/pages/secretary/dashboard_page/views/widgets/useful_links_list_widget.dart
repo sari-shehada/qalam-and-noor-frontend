@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
+import 'package:kalam_noor/controllers/url_helper.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:kalam_noor/pages/secretary/dashboard_page/controllers/secretary_dashboard_controller.dart';
@@ -25,20 +26,33 @@ class UsefulLinksListWidget extends GetView<SecretaryDashboardController> {
         ),
         AddVerticalSpacing(value: 15.h),
         Expanded(
-          child: ListView.builder(
-            itemCount: 6,
-            itemExtent: 150,
-            padding: EdgeInsets.only(bottom: 20.h),
-            itemBuilder: (context, index) {
-              return _DashboardContainer(
-                margin: EdgeInsets.symmetric(vertical: 10.h),
-                // boxShadow: const [],
-                buildChildWithContainer: true,
+          child: Obx(
+            () {
+              return ScrollConfiguration(
+                behavior: ScrollConfiguration.of(context).copyWith(
+                  scrollbars: false,
+                ),
+                child: ListView.separated(
+                  itemCount: controller.usefulLinks.isEmpty
+                      ? 4
+                      : controller.usefulLinks.length,
+                  padding: EdgeInsets.only(bottom: 25.h, top: 20.h),
+                  itemBuilder: (context, index) {
+                    return _DashboardContainer(
+                      buildChildWithContainer: true,
+                      child: controller.usefulLinks.isEmpty
+                          ? null
+                          : UsefulLinkWidget(
+                              link: controller.usefulLinks[index],
+                            ),
+                    );
+                  },
+                  separatorBuilder: (context, index) => AddVerticalSpacing(
+                    value: 20.h,
+                  ),
+                ),
               );
             },
-            // separatorBuilder: (context, index) {
-            //   return AddVerticalSpacing(value: 10.h);
-            // },
           ),
         ),
       ],
@@ -46,32 +60,60 @@ class UsefulLinksListWidget extends GetView<SecretaryDashboardController> {
   }
 }
 
+class UsefulLinkWidget extends StatelessWidget {
+  const UsefulLinkWidget({
+    super.key,
+    required this.link,
+  });
+  final UsefulLink link;
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      borderRadius: BorderRadius.all(
+        Radius.circular(20.r),
+      ),
+      child: InkWell(
+        onTap: () => URLHelper.navigateToLink(link.link),
+        hoverColor: Get.theme.colorScheme.primaryContainer.withOpacity(.35),
+        borderRadius: BorderRadius.all(
+          Radius.circular(20.r),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FaIcon(
+              link.iconData,
+              size: 35.sp,
+              color: Get.theme.colorScheme.primary,
+            ),
+            AddVerticalSpacing(value: 30.h),
+            Text(
+              link.linkName,
+              style: ProjectFonts.titleLarge(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _DashboardContainer extends StatelessWidget {
   ///Nullable as to be a placeholder
   final Widget? child;
-  final EdgeInsets? margin;
-  final EdgeInsets? padding;
-  final BorderRadius? borderRadius;
-  final Color? backgroundColor;
-  final List<BoxShadow>? boxShadow;
   final bool buildChildWithContainer;
   const _DashboardContainer({
     this.child,
-    this.margin,
-    this.padding,
-    this.borderRadius,
-    this.backgroundColor,
-    this.boxShadow,
     this.buildChildWithContainer = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: borderRadius ??
-          BorderRadius.all(
-            Radius.circular(20.r),
-          ),
+      borderRadius: BorderRadius.all(
+        Radius.circular(20.r),
+      ),
       child: child == null
           ? Shimmer.fromColors(
               baseColor: Colors.white.withOpacity(1),
@@ -87,22 +129,21 @@ class _DashboardContainer extends StatelessWidget {
 
   Widget _buildChild() {
     return Container(
-      margin: margin,
-      padding: padding,
+      height: 140.h,
+      width: double.infinity,
+      // padding: padding,
       decoration: BoxDecoration(
-        color: backgroundColor ?? Colors.white,
-        boxShadow: boxShadow ??
-            [
-              BoxShadow(
-                color: const Color(0xFF393939).withOpacity(.06),
-                blurRadius: 60,
-                offset: const Offset(0, 30),
-              ),
-            ],
-        borderRadius: borderRadius ??
-            BorderRadius.all(
-              Radius.circular(20.r),
-            ),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF393939).withOpacity(.06),
+            blurRadius: 60,
+            offset: const Offset(0, 30),
+          ),
+        ],
+        borderRadius: BorderRadius.all(
+          Radius.circular(20.r),
+        ),
       ),
       child: child,
     );
@@ -176,7 +217,7 @@ List<UsefulLink> usefulLinksList = [
     iconData: FontAwesomeIcons.globe,
   ),
   UsefulLink(
-    linkName: 'صفجة وزارة التربية',
+    linkName: 'صفحة وزارة التربية',
     link: 'https://www.facebook.com/Wazara.Altarbea.Official/',
     iconData: FontAwesomeIcons.facebook,
   ),

@@ -136,16 +136,6 @@ class SecretaryDashboardPage extends StatelessWidget {
                     AddVerticalSpacing(value: 20.h),
                     const Expanded(
                       flex: 6,
-                      // child: _DashboardContainer(
-                      //   // boxShadow: const [],
-                      //   buildChildWithContainer: true,
-                      //   backgroundColor: Colors.red,
-                      //   borderRadius: BorderRadius.only(
-                      //     topLeft: Radius.circular(20.r),
-                      //     topRight: Radius.circular(20.r),
-                      //   ),
-                      //   child: Text('asd'),
-                      // ),
                       child: UsefulLinksListWidget(),
                     ),
                   ],
