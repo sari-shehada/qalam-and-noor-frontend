@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/secretary/dashboard_page/views/widgets/useful_links_list_widget.dart';
 import 'widgets/current_time_widget.dart';
 import 'widgets/current_weather_widget.dart';
 import 'widgets/daily_quote_widget.dart';
@@ -133,7 +134,7 @@ class SecretaryDashboardPage extends StatelessWidget {
                       ),
                     ),
                     AddVerticalSpacing(value: 20.h),
-                    Expanded(
+                    const Expanded(
                       flex: 6,
                       // child: _DashboardContainer(
                       //   // boxShadow: const [],
@@ -145,21 +146,7 @@ class SecretaryDashboardPage extends StatelessWidget {
                       //   ),
                       //   child: Text('asd'),
                       // ),
-                      child: ListView.builder(
-                        itemCount: 6,
-                        itemExtent: 200,
-                        padding: EdgeInsets.only(bottom: 20.h),
-                        itemBuilder: (context, index) {
-                          return _DashboardContainer(
-                            margin: EdgeInsets.symmetric(vertical: 10.h),
-                            // boxShadow: const [],
-                            buildChildWithContainer: true,
-                          );
-                        },
-                        // separatorBuilder: (context, index) {
-                        //   return AddVerticalSpacing(value: 10.h);
-                        // },
-                      ),
+                      child: UsefulLinksListWidget(),
                     ),
                   ],
                 ),

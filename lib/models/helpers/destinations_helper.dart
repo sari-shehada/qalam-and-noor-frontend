@@ -12,7 +12,7 @@ import '../../pages/psychological_instructor/student_fill_psychological_statuses
 import '../../pages/secretary/public_record_page/views/public_record_page.dart';
 import '../../pages/secretary/school_classes_management_page/main_page/views/school_classes_management_page.dart';
 import '../../pages/secretary/school_inbox_page/main_page/views/school_inbox_page.dart';
-import '../../pages/secretary/school_year_management/views/school_year_management_page.dart';
+import '../../pages/secretary/school_year_management/main_page/views/school_year_management_page.dart';
 import '../../pages/secretary/statistics_page/views/stats_page.dart';
 import '../../pages/secretary/students_management_page/main_page/views/students_management_page.dart';
 

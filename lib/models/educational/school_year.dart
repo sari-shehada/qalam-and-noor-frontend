@@ -5,7 +5,7 @@ class SchoolYear {
   final int id;
   final String name;
   final bool isFinished;
-  final int previousSchoolYearId;
+  final int? previousSchoolYearId;
   SchoolYear({
     required this.id,
     required this.name,
@@ -41,7 +41,9 @@ class SchoolYear {
       id: map['id'] as int,
       name: map['name'] as String,
       isFinished: map['isFinished'] as bool,
-      previousSchoolYearId: map['previousSchoolYearId'] as int,
+      previousSchoolYearId: map['previousSchoolYearId'] != null
+          ? map['previousSchoolYearId'] as int
+          : null,
     );
   }
 

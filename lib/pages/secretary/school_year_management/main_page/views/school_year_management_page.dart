@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/main_page/views/widgets/previous_school_years_widget.dart';
 import '../controllers/school_year_management_controller.dart';
 import 'widgets/current_school_year_card.dart';
 
-import '../../../../tools/ui_tools/custom_appbar.dart';
+import '../../../../../tools/ui_tools/custom_appbar.dart';
 
 class SchoolYearManagementPage extends StatelessWidget {
   const SchoolYearManagementPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(
+    SchoolYearManagementController controller = Get.put(
       SchoolYearManagementController(),
     );
     return Scaffold(
@@ -21,7 +22,7 @@ class SchoolYearManagementPage extends StatelessWidget {
         iconData: FontAwesomeIcons.school,
         actionButton: CustomAppBarActionButton(
           label: 'بدء عام دراسي جديد',
-          onTap: () {},
+          onTap: () => controller.startNewSchoolYear(),
         ),
       ),
       body: SizedBox.expand(
@@ -39,9 +40,7 @@ class SchoolYearManagementPage extends StatelessWidget {
               ),
               Expanded(
                 flex: 7,
-                child: Column(
-                  children: [],
-                ),
+                child: PreviousSchoolYearsWidget(),
               )
             ],
           ),

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../educational/school_year.dart';
 import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
@@ -41,12 +43,21 @@ class SchoolYearsDBHelper implements CRUDInterface<SchoolYear> {
   }
 
   @override
-  Future<bool> insert(SchoolYear object) async {
+  Future<SchoolYear> insert(SchoolYear object) async {
     String url = '${_controllerName}InsertSchoolYear';
-    int? result =
-        await HttpService.post(url: url, serializedBody: object.toJson());
-    if (result == null) return false;
-    return result == 1;
+    String? result = await HttpService.rawPost(
+      url: url,
+      serializedBody: object.toJson(),
+    );
+    if (result == null) throw Exception('Couldn\'t add school year');
+    Map<String, dynamic> formattedResult = jsonDecode(result);
+    int id = formattedResult['schoolYearId'] as int;
+    if (id == 0) {
+      throw PreviousSchoolYearNotFinishedException();
+    }
+    return object.copyWith(
+      id: id,
+    );
   }
 
   Future<SchoolYear> getCurrentSchoolYear() async {
@@ -69,4 +80,11 @@ class SchoolYearsDBHelper implements CRUDInterface<SchoolYear> {
     if (result == null) return false;
     return result == 1;
   }
+}
+
+class PreviousSchoolYearNotFinishedException implements Exception {
+  PreviousSchoolYearNotFinishedException({
+    this.message = 'يرجى انهاء العام الدراسي السابق قبل بدء عام جديد',
+  });
+  final String message;
 }

@@ -8,6 +8,7 @@ import '../../../../models/weather_api/weather_forecast.dart';
 import '../views/widgets/daily_quote_widget.dart';
 
 import '../../../../models/helpers/database_helpers/students_db_helper.dart';
+import '../views/widgets/useful_links_list_widget.dart';
 
 class SecretaryDashboardController extends GetxController {
   Rx<int?> studentsCount = Rx<int?>(null);
@@ -15,6 +16,7 @@ class SecretaryDashboardController extends GetxController {
   Rx<DateTime?> serverTime = Rx<DateTime?>(null);
   Rx<WeatherForecast?> weatherForecast = Rx<WeatherForecast?>(null);
   Rx<DailyQuote?> dailyQuote = Rx<DailyQuote?>(null);
+  RxList<UsefulLink> usefulLinks = <UsefulLink>[].obs;
   Future<void> registerNewStudent() async {
     NavigationController.toAddNewStudentPage();
   }
@@ -31,6 +33,7 @@ class SecretaryDashboardController extends GetxController {
     loadWeatherForecast();
     loadTeachersCount();
     loadDailyQuote();
+    loadUsefulLinks();
   }
 
   Future<void> loadStudentsCount() async {
@@ -56,5 +59,10 @@ class SecretaryDashboardController extends GetxController {
     await Future.delayed(2.seconds);
     Random random = Random();
     dailyQuote.value = dailyQuotes[random.nextInt(dailyQuotes.length)];
+  }
+
+  Future<void> loadUsefulLinks() async {
+    await Future.delayed(2.seconds);
+    usefulLinks.value = usefulLinksList;
   }
 }
