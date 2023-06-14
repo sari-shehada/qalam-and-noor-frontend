@@ -1,3 +1,5 @@
+import 'package:kalam_noor/models/agendas/student.dart';
+
 import '../../agendas/family.dart';
 
 import '../../../tools/logic_tools/crud_interface.dart';
@@ -71,5 +73,29 @@ class FamiliesDBHelper implements CRUDInterface<Family> {
         await HttpService.post(url: url, serializedBody: object.toJson());
     if (result == null) return false;
     return result == 1;
+  }
+
+  Future<List<Student>> getStudentSiblingsByFamilyId(
+      {required int familyId, int? currentStudentId}) async {
+    String url = 'StudentController/GetStudentsByFamilyId?familyId=$familyId';
+    List<Student> allFamilies =
+        await HttpService.getParsed<List<Student>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData
+            .map(
+              (e) {
+                return Student.fromMap(e);
+              },
+            )
+            .where(
+              (element) => currentStudentId == null
+                  ? true
+                  : currentStudentId != currentStudentId,
+            )
+            .toList();
+      },
+    );
+    return allFamilies;
   }
 }

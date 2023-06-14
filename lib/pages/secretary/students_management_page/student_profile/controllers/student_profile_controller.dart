@@ -75,9 +75,9 @@ class StudentProfileController extends GetxController {
 
   //Class Members
   final Rx<Student> student;
-
   //Late Class Members
-  late Family familyInfo;
+  late List<Student> studentSiblings;
+  late Family _familyInfo;
   late Father father;
   late Mother mother;
   late StudentAddressInfo studentAddressInfo;
@@ -85,20 +85,30 @@ class StudentProfileController extends GetxController {
   late List<StudentPsychologicalStatus> studentPsychologicalStatus;
   late List<StudentIllnessInfo> studentIllnessInfo;
   late List<StudentVaccineInfo> studentVaccineInfo;
-
   //Observables
   RxBool isLoading = true.obs;
+  final RxInt loaderPercentage = 0.obs;
 
   Future<void> getAllStudentInfo() async {
     isLoading.value = true;
     //TODO:
-    familyInfo = await getFamilyInfo();
+    studentSiblings = await getStudentSiblings();
+    loaderPercentage.value++;
+
+    _familyInfo = await getFamilyInfo();
+    loaderPercentage.value++;
     father = await getFatherInfo();
+    loaderPercentage.value++;
     mother = await getMotherInfo();
+    loaderPercentage.value++;
     studentAddressInfo = await getStudentAddressInfo();
+    loaderPercentage.value++;
     medicalRecord = await getMedicalRecord();
+    loaderPercentage.value++;
     studentPsychologicalStatus = await getStudentPsychologicalStatuses();
+    loaderPercentage.value++;
     studentIllnessInfo = await getStudentIllnesses();
+    loaderPercentage.value++;
     studentVaccineInfo = await getStudentTakenVaccines();
     isLoading.value = false;
   }
@@ -109,11 +119,11 @@ class StudentProfileController extends GetxController {
   }
 
   Future<Father> getFatherInfo() async {
-    return await FatherDBhelper.instance.getById(familyInfo.fatherId);
+    return await FatherDBhelper.instance.getById(_familyInfo.fatherId);
   }
 
   Future<Mother> getMotherInfo() async {
-    return await MotherDBHelper.instance.getById(familyInfo.motherId);
+    return await MotherDBHelper.instance.getById(_familyInfo.motherId);
   }
 
   Future<StudentAddressInfo> getStudentAddressInfo() async {
@@ -142,6 +152,11 @@ class StudentProfileController extends GetxController {
   Future<List<StudentVaccineInfo>> getStudentTakenVaccines() async {
     return VaccinesDBHelper.instance
         .getAllStudentTakenVaccines(student.value.id);
+  }
+
+  Future<List<Student>> getStudentSiblings() async {
+    return FamiliesDBHelper.instance.getStudentSiblingsByFamilyId(
+        familyId: student.value.familyId, currentStudentId: student.value.id);
   }
   //#endregion
 }
