@@ -1,10 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
-import 'package:test/test.dart';
 import '../../../../../configs/fonts.dart';
 import '../../../../../models/helpers/database_helpers/students_db_helper.dart';
 import '../../../../shared/account_settings_page/views/widgets/profile_info_widget.dart';
@@ -105,10 +106,24 @@ class StudentProfile extends GetView<StudentProfileController> {
                   padding: EdgeInsets.all(20.w),
                   child: Column(
                     children: [
-                      Text(
-                        "البيانات الاساسية",
-                        style: ProjectFonts.headlineSmall().copyWith(
-                          fontWeight: FontWeight.bold,
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              GlobalStyles.globalBorderRadius,
+                            ),
+                          ),
+                        ),
+                        padding: EdgeInsets.all(10.w),
+                        child: Center(
+                          child: Text(
+                            "البيانات الاساسية",
+                            style: ProjectFonts.headlineSmall().copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                       Expanded(
@@ -124,15 +139,28 @@ class StudentProfile extends GetView<StudentProfileController> {
                           ],
                         ),
                       ),
-                      //TODO:
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.h),
                         child: const Divider(),
                       ),
-                      Text(
-                        "بيانات العائلة",
-                        style: ProjectFonts.headlineSmall().copyWith(
-                          fontWeight: FontWeight.bold,
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              GlobalStyles.globalBorderRadius,
+                            ),
+                          ),
+                        ),
+                        padding: EdgeInsets.all(10.w),
+                        child: Center(
+                          child: Text(
+                            "بيانات العائلة",
+                            style: ProjectFonts.headlineSmall().copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                       Expanded(
@@ -233,25 +261,94 @@ class StudentProfile extends GetView<StudentProfileController> {
                                 //TODO: Make Items Clickable
                                 children: [
                                   SizedBox(
-                                    height: 200.h,
-                                    child: ListView.separated(
-                                      shrinkWrap: true,
-                                      separatorBuilder: (context, index) =>
-                                          SizedBox(height: 10.h),
-                                      itemCount:
-                                          controller.studentSiblings.length +
-                                              200,
-                                      itemBuilder: (context, index) {
-                                        return ListTile(
-                                          title: Text(controller
-                                              .student.value.firstName),
+                                    height: 195.h,
+                                    child: Builder(builder: (context) {
+                                      if (controller.studentSiblings.isEmpty) {
+                                        return Column(
+                                          children: [
+                                            const Spacer(),
+                                            Text(
+                                                'ليس لدى "${controller.student.value.firstName}" أي أخوة'),
+                                            const Spacer(),
+                                          ],
                                         );
-                                        return Text(
-                                          controller
-                                              .studentSiblings[index].firstName,
-                                        );
-                                      },
-                                    ),
+                                      }
+                                      return ListView.separated(
+                                        padding: EdgeInsets.only(top: 15.h),
+                                        separatorBuilder: (context, index) =>
+                                            SizedBox(height: 5.h),
+                                        itemCount:
+                                            controller.studentSiblings.length,
+                                        itemBuilder: (context, index) {
+                                          return Tooltip(
+                                            message:
+                                                'تحميل صفحة الطالب "${controller.studentSiblings[index].firstName}"',
+                                            child: InkWell(
+                                              onTap: () {
+                                                log("Called On Tap");
+                                                Get.off(
+                                                  () => const StudentProfile(),
+                                                  binding: BindingsBuilder(
+                                                    () {
+                                                      Get.put(
+                                                        StudentProfileController(
+                                                          student: controller
+                                                              .studentSiblings[
+                                                                  index]
+                                                              .obs,
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                );
+                                              },
+                                              child: Container(
+                                                padding: EdgeInsets.symmetric(
+                                                  horizontal: 10.w,
+                                                ),
+                                                height: 50.h,
+                                                clipBehavior: Clip.hardEdge,
+                                                decoration: BoxDecoration(
+                                                  color: Theme.of(context)
+                                                      .scaffoldBackgroundColor,
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(GlobalStyles
+                                                        .globalBorderRadius),
+                                                  ),
+                                                ),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                        '${controller.studentSiblings[index].firstName} ${controller.father.lastName}'),
+                                                    Icon(
+                                                      controller
+                                                              .studentSiblings[
+                                                                  index]
+                                                              .isMale
+                                                          ? Icons.male
+                                                          : Icons.female,
+                                                      color: controller
+                                                              .studentSiblings[
+                                                                  index]
+                                                              .isMale
+                                                          ? Theme.of(context)
+                                                              .colorScheme
+                                                              .primary
+                                                          : Colors.pink[300],
+                                                      size: 27.sp,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    }),
                                   ),
                                 ],
                               ),
@@ -259,10 +356,37 @@ class StudentProfile extends GetView<StudentProfileController> {
                           ],
                         ),
                       ),
+                      //TODO:
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.h),
+                        child: const Divider(),
+                      ),
                       Expanded(
-                          child: Container(
-                        color: Colors.amber,
-                      )),
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.primary,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(
+                                    GlobalStyles.globalBorderRadius,
+                                  ),
+                                ),
+                              ),
+                              padding: EdgeInsets.all(10.w),
+                              child: Center(
+                                child: Text(
+                                  'البيانات الصحية',
+                                  style: ProjectFonts.headlineSmall().copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -293,6 +417,9 @@ class StudentProfile extends GetView<StudentProfileController> {
       children: [
         Obx(
           () {
+            if (controller.isLoading.value) {
+              return const SizedBox.shrink();
+            }
             if (controller.student.value.isActive) {
               return SizedBox(
                 width: 200.w,

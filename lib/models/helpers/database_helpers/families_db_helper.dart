@@ -82,6 +82,7 @@ class FamiliesDBHelper implements CRUDInterface<Family> {
         await HttpService.getParsed<List<Student>, List>(
       url: url,
       dataMapper: (parsedData) {
+        print(parsedData);
         return parsedData
             .map(
               (e) {
@@ -89,9 +90,8 @@ class FamiliesDBHelper implements CRUDInterface<Family> {
               },
             )
             .where(
-              (element) => currentStudentId == null
-                  ? true
-                  : currentStudentId != currentStudentId,
+              (element) =>
+                  (currentStudentId == null || element.id != currentStudentId),
             )
             .toList();
       },
