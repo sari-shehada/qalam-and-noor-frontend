@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../tools/ui_tools/buttons.dart';
 import '../../../tools/ui_tools/ui_tools.dart';
-import '../../../pages/navigation_page/views/widgets/cross_switcher.dart';
+import '../../../pages/shared/navigation_page/views/widgets/cross_switcher.dart';
 import '../controllers/logic_controller.dart';
 import '../controllers/ui_controller.dart';
 

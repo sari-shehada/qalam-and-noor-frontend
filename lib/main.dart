@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'pages/loader/views/loader.dart';
+import 'pages/shared/loader/views/loader.dart';
 
 import 'configs/project_themes.dart';
 import 'models/shared_prefs_helper.dart';
-import 'pages/loader/controllers/loader_bindings.dart';
+import 'pages/shared/loader/controllers/loader_bindings.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

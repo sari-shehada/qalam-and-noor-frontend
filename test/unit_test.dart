@@ -8,10 +8,10 @@ import 'package:kalam_noor/models/helpers/database_helpers/students_db_helper.da
 import 'package:kalam_noor/models/medical/illness.dart';
 import 'package:kalam_noor/models/medical/medical_record.dart';
 import 'package:kalam_noor/models/medical/taken_vaccine.dart';
-import 'package:kalam_noor/pages/new_student_registration/family_information/models/family_info.dart';
-import 'package:kalam_noor/pages/new_student_registration/medical_information/models/medical_info.dart';
-import 'package:kalam_noor/pages/new_student_registration/personal_information/models/student_personal_info.dart';
-import 'package:kalam_noor/pages/new_student_registration/personal_information/models/student_registration_info.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/family_information/models/family_info.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/medical_information/models/medical_info.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/personal_information/models/student_personal_info.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/personal_information/models/student_registration_info.dart';
 import 'package:test/test.dart';
 
 void main() {

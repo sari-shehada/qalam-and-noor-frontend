@@ -1,21 +1,20 @@
-import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
-import 'package:kalam_noor/controllers/account_controller.dart';
-import 'package:kalam_noor/pages/navigation_page/controllers/navigation_bindings.dart';
-import 'package:kalam_noor/pages/psychological_instructor_pages/dashboard/views/psychological_instructor_dashboard.dart';
-import '../../pages/addresses_management/main_page/views/addresses_management_page.dart';
-import '../../pages/dashboard/models/navigation_rail_destination_card.dart';
-import '../../pages/dashboard/views/dashboard_page.dart';
-import '../../pages/employees_management_page/main_page/views/employees_management_page.dart';
-import '../../pages/medicals_management/views/medicals_management_page.dart';
-import '../../pages/psychological_instructor_pages/student_fill_psychological_statuses_page/main_page/views/student_fill_psychological_statuses_page.dart';
-import '../../pages/public_record_page/views/public_record_page.dart';
-import '../../pages/school_classes_management_page/main_page/views/school_classes_management_page.dart';
-import '../../pages/school_inbox_page/main_page/views/school_inbox_page.dart';
-import '../../pages/school_year_management/views/school_year_management_page.dart';
-import '../../pages/statistics_page/views/stats_page.dart';
-import '../../pages/students_management_page/views/students_management_page.dart';
+import 'package:kalam_noor/pages/other/main_page/views/not_yet_supported_page.dart';
+import 'package:kalam_noor/pages/shared/navigation_page/controllers/navigation_bindings.dart';
+import 'package:kalam_noor/pages/psychological_instructor/dashboard_page/views/psychological_instructor_dashboard.dart';
+import 'package:kalam_noor/pages/teacher/dashboard_page/views/teacher_dashboard_page.dart';
+import '../../pages/secretary/addresses_management_page/main_page/views/addresses_management_page.dart';
+import '../../pages/secretary/dashboard_page/models/navigation_rail_destination_card.dart';
+import '../../pages/secretary/dashboard_page/views/dashboard_page.dart';
+import '../../pages/secretary/employees_management_page/main_page/views/employees_management_page.dart';
+import '../../pages/secretary/medicals_management_page/main_page/views/medicals_management_page.dart';
+import '../../pages/psychological_instructor/student_fill_psychological_statuses_page/main_page/views/student_fill_psychological_statuses_page.dart';
+import '../../pages/secretary/public_record_page/views/public_record_page.dart';
+import '../../pages/secretary/school_classes_management_page/main_page/views/school_classes_management_page.dart';
+import '../../pages/secretary/school_inbox_page/main_page/views/school_inbox_page.dart';
+import '../../pages/secretary/school_year_management/views/school_year_management_page.dart';
+import '../../pages/secretary/statistics_page/views/stats_page.dart';
+import '../../pages/secretary/students_management_page/main_page/views/students_management_page.dart';
 
 abstract class DestinationsHelper {
   static Map<UserRole, NavigationBindings> routes = {
@@ -112,16 +111,7 @@ abstract class DestinationsHelper {
     NavigationRailDestinationCard(
       title: 'الرئيسية',
       iconData: FontAwesomeIcons.house,
-      destination: Scaffold(
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              Get.find<AccountController>().logout();
-            },
-            child: const Text('logout'),
-          ),
-        ),
-      ),
+      destination: const TeacherDashboardPage(),
     ),
   ];
 
@@ -129,21 +119,7 @@ abstract class DestinationsHelper {
     NavigationRailDestinationCard(
       title: 'الرئيسية',
       iconData: FontAwesomeIcons.house,
-      destination: Scaffold(
-        body: Center(
-          child: Column(
-            children: [
-              const Text('Not Supported'),
-              ElevatedButton(
-                onPressed: () {
-                  Get.find<AccountController>().logout();
-                },
-                child: const Text('logout'),
-              ),
-            ],
-          ),
-        ),
-      ),
+      destination: const NotYetSupportedPage(),
     ),
   ];
 

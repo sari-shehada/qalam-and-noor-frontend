@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:kalam_noor/models/agendas/student.dart';
-import 'package:kalam_noor/pages/new_student_registration/personal_information/models/student_registration_info.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/new_student_registration/personal_information/models/student_registration_info.dart';
 import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 import '../../student_registration_model.dart';
