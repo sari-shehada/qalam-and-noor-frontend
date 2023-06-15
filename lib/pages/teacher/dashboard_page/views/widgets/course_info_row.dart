@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/teacher/dashboard_page/views/course_students_marks_page.dart';
 
 class CourseInfoRow extends StatelessWidget {
   const CourseInfoRow(
@@ -20,72 +21,77 @@ class CourseInfoRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Get.theme;
     final TextTheme textTheme = themeData.textTheme;
-    return SizedBox(
-      height: 70.h,
-      child: Container(
-        color: rowColor,
-        child: Material(
-          color: Colors.transparent,
-          child: SizedBox(
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    width: double.infinity,
-                    padding:
-                        EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      courseName,
-                      style: textTheme.titleMedium!.copyWith(
-                          fontWeight: FontWeight.normal, fontSize: 22.sp),
+    return InkWell(
+      onTap: () {
+        Get.to(CourseStudentsMarks());
+      },
+      child: SizedBox(
+        height: 70.h,
+        child: Container(
+          color: rowColor,
+          child: Material(
+            color: Colors.transparent,
+            child: SizedBox(
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15.h, horizontal: 20.w),
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        courseName,
+                        style: textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.normal, fontSize: 22.sp),
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    width: double.infinity,
-                    padding:
-                        EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      className,
-                      style: textTheme.titleMedium!.copyWith(
-                          fontWeight: FontWeight.normal, fontSize: 22.sp),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15.h, horizontal: 20.w),
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        className,
+                        style: textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.normal, fontSize: 22.sp),
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    width: double.infinity,
-                    padding:
-                        EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      isEnriching ? 'إثرائي' : 'إلزامي',
-                      style: textTheme.titleMedium!.copyWith(
-                          fontWeight: FontWeight.normal, fontSize: 22.sp),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15.h, horizontal: 20.w),
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        isEnriching ? 'إثرائي' : 'إلزامي',
+                        style: textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.normal, fontSize: 22.sp),
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    width: double.infinity,
-                    padding:
-                        EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      totalMark.toString(),
-                      style: textTheme.titleMedium!.copyWith(
-                          fontWeight: FontWeight.normal, fontSize: 22.sp),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15.h, horizontal: 20.w),
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        totalMark.toString(),
+                        style: textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.normal, fontSize: 22.sp),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
