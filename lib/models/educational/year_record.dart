@@ -1,18 +1,21 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import '../enums.dart';
+
 class YearRecord {
   int id;
   int classId;
   int? schoolYearClassroomId;
   int studentId;
-  bool didPass;
+  //enum
+  StudentStatusEnum status;
   YearRecord({
     required this.id,
     required this.classId,
-    required this.schoolYearClassroomId,
+    this.schoolYearClassroomId,
     required this.studentId,
-    required this.didPass,
+    required this.status,
   });
 
   YearRecord copyWith({
@@ -20,7 +23,7 @@ class YearRecord {
     int? classId,
     int? schoolYearClassroomId,
     int? studentId,
-    bool? didPass,
+    StudentStatusEnum? status,
   }) {
     return YearRecord(
       id: id ?? this.id,
@@ -28,7 +31,7 @@ class YearRecord {
       schoolYearClassroomId:
           schoolYearClassroomId ?? this.schoolYearClassroomId,
       studentId: studentId ?? this.studentId,
-      didPass: didPass ?? this.didPass,
+      status: status ?? this.status,
     );
   }
 
@@ -38,7 +41,7 @@ class YearRecord {
       'classId': classId,
       'schoolYearClassroomId': schoolYearClassroomId,
       'studentId': studentId,
-      'didPass': didPass,
+      'status': status.index,
     };
   }
 
@@ -50,7 +53,7 @@ class YearRecord {
           ? map['schoolYearClassroomId'] as int
           : null,
       studentId: map['studentId'] as int,
-      didPass: map['didPass'] as bool,
+      status: StudentStatusEnum.values[map['status'] as int],
     );
   }
 
@@ -61,7 +64,7 @@ class YearRecord {
 
   @override
   String toString() {
-    return 'YearRecord(id: $id, classId: $classId, schoolYearClassroomId: $schoolYearClassroomId, studentId: $studentId, didPass: $didPass)';
+    return 'YearRecord(id: $id, classId: $classId, schoolYearClassroomId: $schoolYearClassroomId, studentId: $studentId, status: $status)';
   }
 
   @override
@@ -72,7 +75,7 @@ class YearRecord {
         other.classId == classId &&
         other.schoolYearClassroomId == schoolYearClassroomId &&
         other.studentId == studentId &&
-        other.didPass == didPass;
+        other.status == status;
   }
 
   @override
@@ -81,6 +84,6 @@ class YearRecord {
         classId.hashCode ^
         schoolYearClassroomId.hashCode ^
         studentId.hashCode ^
-        didPass.hashCode;
+        status.hashCode;
   }
 }

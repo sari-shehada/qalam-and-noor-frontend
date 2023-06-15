@@ -40,49 +40,7 @@ class StudentProfile extends GetView<StudentProfileController> {
       body: Obx(
         () {
           if (controller.isLoading.value) {
-            return SizedBox.expand(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const LoaderWidget(),
-                  AddVerticalSpacing(value: 40.h),
-                  Text(
-                    'جاري تحميل الصفحة الشخصية للطالب "${controller.student.value.firstName}"',
-                    style: ProjectFonts.titleLarge(),
-                  ),
-                  AddVerticalSpacing(value: 40.h),
-                  Obx(
-                    () {
-                      return Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Container(
-                            height: 40,
-                            width: 300,
-                            clipBehavior: Clip.hardEdge,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(20.r),
-                              ),
-                            ),
-                            child: LinearProgressIndicator(
-                              value: controller.loaderPercentage / 10,
-                              backgroundColor: Colors.grey,
-                            ),
-                          ),
-                          Text(
-                            'الخطوة ${controller.loaderPercentage} من 9',
-                            style: ProjectFonts.bodyLarge().copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  )
-                ],
-              ),
-            );
+            return _StudentProfileLoadingWidget(controller: controller);
           }
           return Row(
             children: [
@@ -262,7 +220,7 @@ class StudentProfile extends GetView<StudentProfileController> {
                                 //TODO: Make Items Clickable
                                 children: [
                                   SizedBox(
-                                    height: 195.h,
+                                    height: 190.h,
                                     child: Builder(builder: (context) {
                                       if (controller.studentSiblings.isEmpty) {
                                         return Column(
@@ -360,29 +318,29 @@ class StudentProfile extends GetView<StudentProfileController> {
                           ],
                         ),
                       ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              GlobalStyles.globalBorderRadius,
+                            ),
+                          ),
+                        ),
+                        padding: EdgeInsets.all(10.w),
+                        child: Center(
+                          child: Text(
+                            'البيانات الصحية',
+                            style: ProjectFonts.headlineSmall().copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
                       Expanded(
                         child: Column(
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).colorScheme.primary,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(
-                                    GlobalStyles.globalBorderRadius,
-                                  ),
-                                ),
-                              ),
-                              padding: EdgeInsets.all(10.w),
-                              child: Center(
-                                child: Text(
-                                  'البيانات الصحية',
-                                  style: ProjectFonts.headlineSmall().copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
                             const Spacer(),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -426,21 +384,107 @@ class StudentProfile extends GetView<StudentProfileController> {
                 ),
               ),
               Expanded(
+                child: Container(
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(GlobalStyles.globalBorderRadius),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color(0xFF393939).withOpacity(.06),
+                        blurRadius: 60,
+                        offset: const Offset(0, 30),
+                      ),
+                    ],
+                  ),
+                  margin: EdgeInsets.only(
+                    top: 10.h,
+                    bottom: 10.h,
+                    left: 10.w,
+                    right: 10.w,
+                  ),
+                  padding: EdgeInsets.all(20.w),
                   child: Column(
-                children: [
-                  Expanded(
-                    child: Container(
-                      color: Colors.brown,
-                    ),
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              GlobalStyles.globalBorderRadius,
+                            ),
+                          ),
+                        ),
+                        padding: EdgeInsets.all(10.w),
+                        child: Center(
+                          child: Text(
+                            "السجلات السنوية",
+                            style: ProjectFonts.headlineSmall().copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          color: Colors.brown,
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              GlobalStyles.globalBorderRadius,
+                            ),
+                          ),
+                        ),
+                        padding: EdgeInsets.all(10.w),
+                        child: Center(
+                          child: Text(
+                            "السجلات السنوية",
+                            style: ProjectFonts.headlineSmall().copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Builder(
+                          builder: (context) {
+                            if (controller.studentYearRecords.isEmpty) {
+                              return Column(
+                                children: const [
+                                  Icon(Icons.text_snippet),
+                                  Text('السجلات السنوية'),
+                                ],
+                              );
+                            }
+                            return ListView.separated(
+                              itemCount: controller.studentYearRecords.length,
+                              itemBuilder: (context, index) {
+                                return Text(controller
+                                    .studentYearRecords[index].yearRecord.status
+                                    .toString());
+                              },
+                              separatorBuilder: (context, index) {
+                                return SizedBox(
+                                  height: 10.h,
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      color: Colors.green,
-                    ),
-                  ),
-                ],
-              )),
+                ),
+              ),
             ],
           );
         },
@@ -617,6 +661,62 @@ class StudentProfile extends GetView<StudentProfileController> {
                   )),
             );
           }),
+        ],
+      ),
+    );
+  }
+}
+
+class _StudentProfileLoadingWidget extends StatelessWidget {
+  const _StudentProfileLoadingWidget({
+    super.key,
+    required this.controller,
+  });
+
+  final StudentProfileController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox.expand(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const LoaderWidget(),
+          AddVerticalSpacing(value: 40.h),
+          Text(
+            'جاري تحميل الصفحة الشخصية للطالب "${controller.student.value.firstName}"',
+            style: ProjectFonts.titleLarge(),
+          ),
+          AddVerticalSpacing(value: 40.h),
+          Obx(
+            () {
+              return Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    height: 40,
+                    width: 300,
+                    clipBehavior: Clip.hardEdge,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20.r),
+                      ),
+                    ),
+                    child: LinearProgressIndicator(
+                      value: controller.loaderPercentage / 10,
+                      backgroundColor: Colors.grey,
+                    ),
+                  ),
+                  Text(
+                    'الخطوة ${controller.loaderPercentage} من 10',
+                    style: ProjectFonts.bodyLarge().copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              );
+            },
+          )
         ],
       ),
     );

@@ -4,6 +4,7 @@ import '../../agendas/student.dart';
 import '../../../pages/secretary/students_management_page/new_student_registration/personal_information/models/student_registration_info.dart';
 import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
+import '../../educational/student_year_records.dart';
 import '../../student_registration_model.dart';
 
 class StudentsDBHelper implements CRUDInterface<Student> {
@@ -131,5 +132,23 @@ class StudentsDBHelper implements CRUDInterface<Student> {
       ),
     );
     return await registerStudent(registrationModel);
+  }
+
+  Future<List<StudentYearRecords>> getStudentYearRecordsByStudentId(
+      {required int studentId}) async {
+    String url =
+        '${_controllerName}GetStudentYearRecordsByStudentId?studentId=$studentId';
+    List<StudentYearRecords> studentSchoolYearRecords =
+        await HttpService.getParsed<List<StudentYearRecords>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return StudentYearRecords.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return studentSchoolYearRecords;
   }
 }

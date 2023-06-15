@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/students_db_helper.dart';
 import '../../../../../models/address/area.dart';
 import '../../../../../models/address/city.dart';
 import '../../../../../models/agendas/family.dart';
 import '../../../../../models/agendas/mother.dart';
 import '../../../../../models/agendas/student.dart';
+import '../../../../../models/educational/student_year_records.dart';
 import '../../../../../models/helpers/database_helpers/area_db_helper.dart';
 import '../../../../../models/helpers/database_helpers/cities_db_helper.dart';
 import '../../../../../models/helpers/database_helpers/families_db_helper.dart';
@@ -85,6 +87,7 @@ class StudentProfileController extends GetxController {
   late List<StudentPsychologicalStatus> studentPsychologicalStatus;
   late List<StudentIllnessInfo> studentIllnessInfo;
   late List<StudentVaccineInfo> studentVaccineInfo;
+  late List<StudentYearRecords> studentYearRecords;
   //Observables
   RxBool isLoading = true.obs;
   final RxInt loaderPercentage = 0.obs;
@@ -110,6 +113,8 @@ class StudentProfileController extends GetxController {
     studentIllnessInfo = await getStudentIllnesses();
     loaderPercentage.value++;
     studentVaccineInfo = await getStudentTakenVaccines();
+    loaderPercentage.value++;
+    studentYearRecords = await getStudentYearRecordsByStudentId();
     isLoading.value = false;
   }
 
@@ -157,6 +162,11 @@ class StudentProfileController extends GetxController {
   Future<List<Student>> getStudentSiblings() async {
     return FamiliesDBHelper.instance.getStudentSiblingsByFamilyId(
         familyId: student.value.familyId, currentStudentId: student.value.id);
+  }
+
+  Future<List<StudentYearRecords>> getStudentYearRecordsByStudentId() async {
+    return StudentsDBHelper.instance
+        .getStudentYearRecordsByStudentId(studentId: student.value.id);
   }
   //#endregion
 }

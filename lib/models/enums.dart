@@ -109,3 +109,10 @@ Map<PsychologicalStatusLevel, Color> psychologicalStatusLevelAsColor = {
   PsychologicalStatusLevel.high: const Color(0xFFAB4971),
   PsychologicalStatusLevel.veryHigh: const Color(0xFFCE2E50),
 };
+
+enum StudentStatusEnum {
+  new_,
+  fail,
+  pass,
+  notDefined,
+}
