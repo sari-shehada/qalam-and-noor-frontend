@@ -40,39 +40,13 @@ class StudentMainInfo extends GetView<StudentProfileController> {
         ),
         AddVerticalSpacing(value: 13.h),
         _SingleLineDetailWithIcon(
-          icon: FontAwesomeIcons.whatsapp,
+          icon: FontAwesomeIcons.squareWhatsapp,
           detailText: controller.student.value.whatsappPhoneNumber,
           toolTipText: 'رقم المحمول',
+          iconSize: 40,
         ),
         const Spacer(),
       ],
-    );
-  }
-
-  Container _buildGenderContainer(ColorScheme colorScheme,
-      {required bool isMale}) {
-    return Container(
-      height: 50.h,
-      width: 140.w,
-      padding: EdgeInsets.only(left: 10.w, bottom: 5.h, right: 5.w, top: 5.h),
-      decoration: BoxDecoration(
-        color: isMale ? colorScheme.primary : Colors.pink[300],
-        borderRadius: BorderRadius.circular(15.r),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Icon(
-            isMale ? Icons.male : Icons.female,
-            color: Colors.white,
-            size: 32.sp,
-          ),
-          Text(
-            isMale ? 'ذكر' : 'انثى',
-            style: ProjectFonts.headlineSmall().copyWith(color: Colors.white),
-          ),
-        ],
-      ),
     );
   }
 }

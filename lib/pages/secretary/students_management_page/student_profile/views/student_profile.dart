@@ -5,6 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/styles.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/student_profile/views/widgets/counters/illnesses_counter.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/student_profile/views/widgets/counters/psychological_statuses_counter.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/student_profile/views/widgets/counters/vaccines_counter.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/student_profile/views/widgets/student_medical_information.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import '../../../../../configs/fonts.dart';
 import '../../../../../models/helpers/database_helpers/students_db_helper.dart';
@@ -27,13 +31,14 @@ class StudentProfile extends GetView<StudentProfileController> {
     final ThemeData themeData = Get.theme;
     final ColorScheme colorScheme = themeData.colorScheme;
     return Scaffold(
-        appBar: CustomAppBar(
-          title: controller.student.value.firstName,
-          iconData: FontAwesomeIcons.child,
-          backButtonEnabled: true,
-          actionButton: _buildActionButton(colorScheme),
-        ),
-        body: Obx(() {
+      appBar: CustomAppBar(
+        title: controller.student.value.firstName,
+        iconData: FontAwesomeIcons.child,
+        backButtonEnabled: true,
+        actionButton: _buildActionButton(colorScheme),
+      ),
+      body: Obx(
+        () {
           if (controller.isLoading.value) {
             return SizedBox.expand(
               child: Column(
@@ -138,10 +143,6 @@ class StudentProfile extends GetView<StudentProfileController> {
                                 flex: 2, child: StudentAddressInformation()),
                           ],
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.h),
-                        child: const Divider(),
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -323,7 +324,10 @@ class StudentProfile extends GetView<StudentProfileController> {
                                                           .spaceBetween,
                                                   children: [
                                                     Text(
-                                                        '${controller.studentSiblings[index].firstName} ${controller.father.lastName}'),
+                                                      '${controller.studentSiblings[index].firstName} ${controller.father.lastName}',
+                                                      style: ProjectFonts
+                                                          .bodyLarge(),
+                                                    ),
                                                     Icon(
                                                       controller
                                                               .studentSiblings[
@@ -356,11 +360,6 @@ class StudentProfile extends GetView<StudentProfileController> {
                           ],
                         ),
                       ),
-                      //TODO:
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.h),
-                        child: const Divider(),
-                      ),
                       Expanded(
                         child: Column(
                           children: [
@@ -384,6 +383,41 @@ class StudentProfile extends GetView<StudentProfileController> {
                                 ),
                               ),
                             ),
+                            const Spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                const IllnessesCounter(),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 20.h),
+                                  child: Container(
+                                    width: 1,
+                                    height: 150.h,
+                                    color: Colors.grey[400],
+                                  ),
+                                ),
+                                const PsychologicalStatusesCounter(),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 20.h),
+                                  child: Container(
+                                    width: 1,
+                                    height: 150.h,
+                                    color: Colors.grey[400],
+                                  ),
+                                ),
+                                const VaccinesCounter(),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 20.h),
+                                  child: Container(
+                                    width: 1,
+                                    height: 150.h,
+                                    color: Colors.grey[400],
+                                  ),
+                                ),
+                                const StudentMedicalRecordInfo(),
+                              ],
+                            ),
+                            const Spacer(),
                           ],
                         ),
                       ),
@@ -409,7 +443,9 @@ class StudentProfile extends GetView<StudentProfileController> {
               )),
             ],
           );
-        }));
+        },
+      ),
+    );
   }
 
   Row _buildActionButton(ColorScheme colorScheme) {
