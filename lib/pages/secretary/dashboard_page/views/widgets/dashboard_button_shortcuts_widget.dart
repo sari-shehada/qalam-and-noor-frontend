@@ -49,7 +49,7 @@ class DashboardButtonShortcutsWidget extends StatelessWidget {
                     curve:
                         _DashboardButtonShortcutsWidgetConstants.animationCurve,
                     padding: EdgeInsetsDirectional.only(
-                      end: 40.w,
+                      end: 55.w,
                       top: controller.currentSelectedButton.value ==
                               DashboardButtonShortcutsWidgetSelectedButton
                                   .student
@@ -127,7 +127,7 @@ class DashboardButtonShortcutsWidget extends StatelessWidget {
                     curve:
                         _DashboardButtonShortcutsWidgetConstants.animationCurve,
                     padding: EdgeInsetsDirectional.only(
-                      start: 40.w,
+                      start: 55.w,
                       bottom: controller.currentSelectedButton.value ==
                               DashboardButtonShortcutsWidgetSelectedButton
                                   .employee
