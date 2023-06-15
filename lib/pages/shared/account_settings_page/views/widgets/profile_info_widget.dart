@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../../../../../configs/fonts.dart';
+import '../../../../../configs/styles.dart';
 import '../../controllers/settings_page_controller.dart';
 import '../../../../../tools/logic_tools/datetime_helper.dart';
 import '../../../../../tools/ui_tools/ui_tools.dart';
@@ -13,33 +14,50 @@ class ProfileInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SettingsPageController controller = Get.find();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IconLabelItem(
-          iconData: FontAwesomeIcons.cakeCandles,
-          label: DateTimeHelper.getDateWithoutTime(
-            controller.employee.value.dateOfBirth,
+    return Container(
+      padding: EdgeInsets.all(30.w),
+      margin: EdgeInsets.all(20.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(GlobalStyles.globalBorderRadius),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF393939).withOpacity(.06),
+            blurRadius: 60,
+            offset: const Offset(0, 30),
           ),
-          toolTip: 'تاريخ الميلاد',
-        ),
-        AddVerticalSpacing(value: 15.h),
-        //TODO:
-        IconLabelItem(
-          iconData:
-              controller.employee.value.isMale ? Icons.male : Icons.female,
-          label: controller.employee.value.isMale ? 'ذكر' : 'أنثى',
-          toolTip: 'الجنس',
-        ),
-        AddVerticalSpacing(value: 15.h),
-        IconLabelItem(
-          iconData: FontAwesomeIcons.locationDot,
-          label: controller.employee.value.placeOfBirth,
-          toolTip: 'مكان الميلاد',
-        ),
-      ],
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          IconLabelItem(
+            iconData: FontAwesomeIcons.cakeCandles,
+            label: DateTimeHelper.getDateWithoutTime(
+              controller.employee.value.dateOfBirth,
+            ),
+            toolTip: 'تاريخ الميلاد',
+          ),
+          IconLabelItem(
+            iconData:
+                controller.employee.value.isMale ? Icons.male : Icons.female,
+            label: controller.employee.value.isMale ? 'ذكر' : 'أنثى',
+            toolTip: 'الجنس',
+          ),
+          IconLabelItem(
+            iconData: FontAwesomeIcons.locationDot,
+            label: controller.employee.value.placeOfBirth,
+            toolTip: 'مكان الميلاد',
+          ),
+          IconLabelItem(
+            iconData: FontAwesomeIcons.children,
+            label: controller.employee.value.numberOfChildren.toString(),
+            toolTip: 'عدد الأطفال',
+          ),
+        ],
+      ),
     );
   }
 }
