@@ -8,4 +8,16 @@ class CurrentSchoolYearInsights {
     required this.classRoomsCount,
     required this.classesCount,
   });
+
+  CurrentSchoolYearInsights copyWith({
+    int? studentsCount,
+    int? classRoomsCount,
+    int? classesCount,
+  }) {
+    return CurrentSchoolYearInsights(
+      studentsCount: studentsCount ?? this.studentsCount,
+      classRoomsCount: classRoomsCount ?? this.classRoomsCount,
+      classesCount: classesCount ?? this.classesCount,
+    );
+  }
 }

@@ -4,22 +4,22 @@ import 'dart:convert';
 class SchoolYearClassroom {
   int id;
   int schoolYearId;
-  int classroomId;
+  int classRoomId;
   SchoolYearClassroom({
     required this.id,
     required this.schoolYearId,
-    required this.classroomId,
+    required this.classRoomId,
   });
 
   SchoolYearClassroom copyWith({
     int? id,
     int? schoolYearId,
-    int? classroomId,
+    int? classRoomId,
   }) {
     return SchoolYearClassroom(
       id: id ?? this.id,
       schoolYearId: schoolYearId ?? this.schoolYearId,
-      classroomId: classroomId ?? this.classroomId,
+      classRoomId: classRoomId ?? this.classRoomId,
     );
   }
 
@@ -27,7 +27,7 @@ class SchoolYearClassroom {
     return <String, dynamic>{
       'id': id,
       'schoolYearId': schoolYearId,
-      'classroomId': classroomId,
+      'classRoomId': classRoomId,
     };
   }
 
@@ -35,7 +35,7 @@ class SchoolYearClassroom {
     return SchoolYearClassroom(
       id: map['id'] as int,
       schoolYearId: map['schoolYearId'] as int,
-      classroomId: map['classroomId'] as int,
+      classRoomId: map['classRoomId'] as int,
     );
   }
 
@@ -46,7 +46,7 @@ class SchoolYearClassroom {
 
   @override
   String toString() =>
-      'SchoolYearClassroom(id: $id, schoolYearId: $schoolYearId, classroomId: $classroomId)';
+      'SchoolYearClassroom(id: $id, schoolYearId: $schoolYearId, classRoomId: $classRoomId)';
 
   @override
   bool operator ==(covariant SchoolYearClassroom other) {
@@ -54,10 +54,10 @@ class SchoolYearClassroom {
 
     return other.id == id &&
         other.schoolYearId == schoolYearId &&
-        other.classroomId == classroomId;
+        other.classRoomId == classRoomId;
   }
 
   @override
   int get hashCode =>
-      id.hashCode ^ schoolYearId.hashCode ^ classroomId.hashCode;
+      id.hashCode ^ schoolYearId.hashCode ^ classRoomId.hashCode;
 }

@@ -45,11 +45,7 @@ class CurrentSchoolYearCard extends GetView<SchoolYearManagementController> {
               }
               return CurrentSchoolYearCardData(
                 schoolYear: controller.currentSchoolYear.value,
-                insights: CurrentSchoolYearInsights(
-                  studentsCount: 15,
-                  classRoomsCount: 13,
-                  classesCount: 10,
-                ),
+                insights: controller.currentSchoolYearInsights.value,
               );
             } catch (e) {
               return ErrorLoadingSomethingWidget(

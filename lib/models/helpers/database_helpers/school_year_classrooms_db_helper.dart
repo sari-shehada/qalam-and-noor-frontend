@@ -30,6 +30,23 @@ class SchoolYearClassroomsDBHelper
     return allSchoolYearClassrooms;
   }
 
+  Future<List<SchoolYearClassroom>> getAllBySchoolYearId(int id) async {
+    String url =
+        '${_controllerName}GetClassRoomSchoolYearsBySchoolYearId?schoolYearId=$id';
+    List<SchoolYearClassroom> schoolYearClassroom =
+        await HttpService.getParsed<List<SchoolYearClassroom>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return SchoolYearClassroom.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return schoolYearClassroom;
+  }
+
   Future<bool> openClassroomsInSchoolYear(List<Classroom> classrooms) async {
     String url = '${_controllerName}OpenClassRoomsInSchoolYear';
     String result = await HttpService.rawPost(

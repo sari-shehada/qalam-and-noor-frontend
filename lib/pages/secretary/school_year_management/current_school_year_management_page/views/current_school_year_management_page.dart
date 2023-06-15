@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/controllers/current_school_year_management_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/open_new_classrooms_dialog/dialogs/open_new_classrooms_dialog.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
@@ -66,9 +64,8 @@ class CurrentSchoolYearManagementPage
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               CustomFilledButton(
-                                onTap: () => Get.dialog(
-                                  const OpenNewClassroomsDialog(),
-                                ),
+                                onTap: () =>
+                                    controller.manageClassroomsInSchoolYear(),
                                 child: 'فتح شعب جديدة ضمن العام الدراسي',
                               ),
                               CustomFilledButton(
