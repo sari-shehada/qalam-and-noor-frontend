@@ -23,6 +23,41 @@ class ClassroomDBHelper implements CRUDInterface<Classroom> {
     return allClassrooms;
   }
 
+  Future<List<Classroom>> getAllAvailableClassroomsByClassId(
+      int classId) async {
+    String url =
+        '${_controllerName}GetAvailableClassRoomsByClassId?classId=$classId';
+    List<Classroom> allClassrooms =
+        await HttpService.getParsed<List<Classroom>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return Classroom.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allClassrooms;
+  }
+
+  Future<List<Classroom>> getAlreadyOpenClassroomsByClassId(int classId) async {
+    String url =
+        '${_controllerName}GetAlreadyOpenClassRoomsByClassId?classId=$classId';
+    List<Classroom> allClassrooms =
+        await HttpService.getParsed<List<Classroom>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return Classroom.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allClassrooms;
+  }
+
   Future<List<Classroom>> getAllClassroomsByClassId(int classId) async {
     String url = '${_controllerName}GetClassRoomsByClassId?classId=$classId';
     List<Classroom> allClassrooms =

@@ -1,10 +1,15 @@
+import 'dart:convert';
+
+import 'package:kalam_noor/models/item_or.dart';
+
+import '../../educational/classroom.dart';
 import '../../educational/school_year_classroom.dart';
 import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 
 class SchoolYearClassroomsDBHelper
     implements CRUDInterface<SchoolYearClassroom> {
-  String get _controllerName => 'SchoolYearClassroomController/';
+  String get _controllerName => 'ClassRoomSchoolYearController/';
   static SchoolYearClassroomsDBHelper get instance =>
       SchoolYearClassroomsDBHelper();
 
@@ -23,6 +28,50 @@ class SchoolYearClassroomsDBHelper
       },
     );
     return allSchoolYearClassrooms;
+  }
+
+  Future<bool> openClassroomsInSchoolYear(List<Classroom> classrooms) async {
+    String url = '${_controllerName}OpenClassRoomsInSchoolYear';
+    String result = await HttpService.rawPost(
+      url: url,
+      serializedBody: jsonEncode(
+        classrooms.map((e) => e.id).toList(),
+      ),
+    );
+    bool formattedResult = jsonDecode(result) as bool;
+    if (formattedResult == false) {
+      throw OpenClassRoomFailException();
+    }
+    return formattedResult;
+  }
+
+  Future<bool> closeClassroomsInSchoolYear(List<Classroom> classrooms) async {
+    for (Classroom element in classrooms) {
+      String url =
+          '${_controllerName}CloseClassRoomInSchoolYearByClassRoomId?classRoomId=${element.id}';
+      ItemOr<String> formattedResult =
+          await HttpService.getParsed<ItemOr<String>, Map<String, dynamic>>(
+        url: url,
+        dataMapper: (responseData) {
+          return ItemOr<String>.fromMap(responseData);
+        },
+      );
+      // return schoolYearClassroom;
+      // String result = await HttpService.rawPost(
+      //   url: url,
+      //   serializedBody: jsonEncode(
+      //     classrooms.map((e) => e.id).toList(),
+      //   ),
+      // );
+      // ItemOr<String> formattedResult = jsonEncode(result) as ItemOr<String>;
+      if (formattedResult.success == false) {
+        throw CloseClassRoomFailException(
+          message:
+              'فشلت عملية إغلاق الشعبة ذات الاسم: \"${element.name}\" وذلك بسبب وجود طلاب مسجلين فيها',
+        );
+      }
+    }
+    return true;
   }
 
   @override
@@ -59,4 +108,18 @@ class SchoolYearClassroomsDBHelper
     if (result == null) return false;
     return result == 1;
   }
+}
+
+class OpenClassRoomFailException implements Exception {
+  OpenClassRoomFailException({
+    this.message = 'بعض الشعب لم يتم فتحها، يرجى مراجعة القائمة الجديدة',
+  });
+  final String message;
+}
+
+class CloseClassRoomFailException implements Exception {
+  CloseClassRoomFailException({
+    required this.message,
+  });
+  final String message;
 }
