@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:kalam_noor/main.dart';
+
 import '../../agendas/student.dart';
 import '../../../pages/secretary/students_management_page/new_student_registration/personal_information/models/student_registration_info.dart';
 import '../../../tools/logic_tools/crud_interface.dart';
@@ -26,6 +28,59 @@ class StudentsDBHelper implements CRUDInterface<Student> {
       },
     );
     return allStudents;
+  }
+
+  Future<List<NewStudentRegistrationModel>> getAllSuccessfulStudentsByClassId(
+      int classId) async {
+    String url =
+        '${_controllerName}GetSuccessfulStudentsByClassId?classId=$classId';
+    List<NewStudentRegistrationModel> successfulStudents =
+        await HttpService.getParsed<List<NewStudentRegistrationModel>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return NewStudentRegistrationModel.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return successfulStudents;
+  }
+
+  Future<List<NewStudentRegistrationModel>> getAllFailingStudentsByClassId(
+      int classId) async {
+    String url =
+        '${_controllerName}GetFailingStudentsByClassId?classId=$classId';
+    List<NewStudentRegistrationModel> failingStudents =
+        await HttpService.getParsed<List<NewStudentRegistrationModel>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return NewStudentRegistrationModel.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return failingStudents;
+  }
+
+  Future<List<NewStudentRegistrationModel>> getAllNewStudentsByClassId(
+      int classId) async {
+    String url = '${_controllerName}GetNewStudentsByClassId?classId=$classId';
+    List<NewStudentRegistrationModel> newStudents =
+        await HttpService.getParsed<List<NewStudentRegistrationModel>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return NewStudentRegistrationModel.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return newStudents;
   }
 
   Future<int> getStudentsCount() async {
