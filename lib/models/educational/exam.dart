@@ -4,29 +4,33 @@ import 'dart:convert';
 import 'package:kalam_noor/models/enums.dart';
 
 class Exam {
-  int id;
-  int classId;
-  int percentage;
+  final int id;
+  final int classId;
+  final int percentage;
   //enum
-  final ExamType examType;
+  final ExamType type;
+  final int sequence;
   Exam({
     required this.id,
     required this.classId,
     required this.percentage,
-    required this.examType,
+    required this.type,
+    required this.sequence,
   });
 
   Exam copyWith({
     int? id,
     int? classId,
     int? percentage,
-    ExamType? examType,
+    ExamType? type,
+    int? sequence,
   }) {
     return Exam(
       id: id ?? this.id,
       classId: classId ?? this.classId,
       percentage: percentage ?? this.percentage,
-      examType: examType ?? this.examType,
+      type: type ?? this.type,
+      sequence: sequence ?? this.sequence,
     );
   }
 
@@ -35,7 +39,8 @@ class Exam {
       'id': id,
       'classId': classId,
       'percentage': percentage,
-      'examType': examType.index,
+      'type': type.index,
+      'sequence': sequence,
     };
   }
 
@@ -44,7 +49,8 @@ class Exam {
       id: map['id'] as int,
       classId: map['classId'] as int,
       percentage: map['percentage'] as int,
-      examType: ExamType.values[map['examType'] as int],
+      type: ExamType.values[map['type'] as int],
+      sequence: map['sequence'] as int,
     );
   }
 
@@ -55,7 +61,7 @@ class Exam {
 
   @override
   String toString() {
-    return 'Exam(id: $id, classId: $classId, percentage: $percentage, examType: $examType)';
+    return 'Exam(id: $id, classId: $classId, percentage: $percentage, type: $type, sequence: $sequence)';
   }
 
   @override
@@ -65,7 +71,8 @@ class Exam {
     return other.id == id &&
         other.classId == classId &&
         other.percentage == percentage &&
-        other.examType == examType;
+        other.type == type &&
+        other.sequence == sequence;
   }
 
   @override
@@ -73,6 +80,7 @@ class Exam {
     return id.hashCode ^
         classId.hashCode ^
         percentage.hashCode ^
-        examType.hashCode;
+        type.hashCode ^
+        sequence.hashCode;
   }
 }

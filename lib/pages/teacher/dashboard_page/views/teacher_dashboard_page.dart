@@ -44,7 +44,8 @@ class TeacherDashboardPage extends StatelessWidget {
               Expanded(
                 flex: 7,
                 child: FutureBuilder(
-                  future: controller.getAllTeacherCourses(),
+                  future: controller
+                      .getAllTeacherCourses(), //TODO: add to an object later
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
@@ -53,12 +54,14 @@ class TeacherDashboardPage extends StatelessWidget {
                     }
                     if (snapshot.data!.isEmpty) {
                       return const EmptyItemWidget(
-                          itemName: 'مقررات', iconData: FontAwesomeIcons.book);
+                        itemName: 'مقررات',
+                        iconData: FontAwesomeIcons.book,
+                      );
                     }
                     return CourseInfoTable(coursesInfo: snapshot.data!);
                   },
                 ),
-              )
+              ),
             ],
           ),
         ),

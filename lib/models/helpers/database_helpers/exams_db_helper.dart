@@ -22,6 +22,21 @@ class ExamsDBHelper implements CRUDInterface<Exam> {
     return allExams;
   }
 
+  Future<List<Exam>> getExamsByClassId(int id) async {
+    String url = '${_controllerName}GetExamsByClassId?classId=$id';
+    List<Exam> allExams = await HttpService.getParsed<List<Exam>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return Exam.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allExams;
+  }
+
   @override
   Future<Exam?> getById(int id) async {
     String url = '${_controllerName}GetExamById?id=$id';

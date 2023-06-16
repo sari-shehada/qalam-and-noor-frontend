@@ -62,11 +62,10 @@ class AddOrEditCourseDialogController extends GetxController {
     selectedTeacher.value = teacher;
   }
 
-//TODO:fix later
   bool validateFields() {
     if (courseNameController.text.isEmpty) {
       SnackBarService.showErrorSnackBar(
-          title: 'اسم مادة فارغ', message: 'الرجاء ملء حقل اسم المادة');
+          title: 'اسم مقرر فارغ', message: 'الرجاء ملء حقل اسم المقرر');
       return false;
     } else if (courseTotalGradeController.text.isEmpty) {
       SnackBarService.showErrorSnackBar(
@@ -75,7 +74,7 @@ class AddOrEditCourseDialogController extends GetxController {
       return false;
     } else if (selectedTeacher.value == null) {
       SnackBarService.showErrorSnackBar(
-          title: "لم يتم اختيار مدرس المادة",
+          title: "لم يتم اختيار مدرس المقرر",
           message: "الرجاء اختيار مدرس المقرر");
     }
     return true;
@@ -106,7 +105,6 @@ class AddOrEditCourseDialogController extends GetxController {
     isEnriching.value = !isEnriching.value;
   }
 
-//TODO:fix later
   Future<void> updateCourseInfo() async {
     try {
       buttonStatus.value = CustomButtonStatus.processing;

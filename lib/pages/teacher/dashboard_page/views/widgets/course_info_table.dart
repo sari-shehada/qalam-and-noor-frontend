@@ -42,7 +42,7 @@ class CourseInfoTable extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'الاسم المقرر',
+                      'اسم المقرر',
                       style: ProjectFonts.titleLarge().copyWith(
                         color: colorScheme.primary,
                       ),
@@ -126,10 +126,8 @@ class CourseInfoTable extends StatelessWidget {
                     : Get.theme.colorScheme.primaryContainer.withOpacity(.2);
                 return CourseInfoRow(
                   rowColor: rowColor,
-                  className: coursesInfo[index].schoolClass.name,
-                  courseName: coursesInfo[index].course.name,
-                  totalMark: coursesInfo[index].course.totalGrade,
-                  isEnriching: coursesInfo[index].course.isEnriching,
+                  course: coursesInfo[index].course,
+                  schoolClass: coursesInfo[index].schoolClass,
                 );
               },
             ),
