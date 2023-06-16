@@ -7,7 +7,7 @@ import 'package:kalam_noor/models/agendas/student.dart';
 import '../../../../../../../../tools/ui_tools/loader_widget.dart';
 import '../../../../../../../../tools/widgets/empty_item_widget.dart';
 import '../../../../../../../../tools/widgets/error_loading_something_widget.dart';
-import '../../school_year_succeeding_students_registration_sub_page/views/widgets/old_student_selection_card.dart';
+import '../../succeeding_students_selection/views/widgets/old_student_selection_card.dart';
 import '../controllers/school_year_failing_students_registration_sub_page_controller.dart';
 
 class SchoolYearFailingStudentsRegistrationSubPage

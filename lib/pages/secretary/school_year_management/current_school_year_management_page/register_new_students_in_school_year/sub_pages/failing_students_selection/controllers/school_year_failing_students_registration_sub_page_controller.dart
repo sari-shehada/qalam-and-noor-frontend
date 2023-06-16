@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/students_db_helper.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/main_page/controllers/register_new_students_in_school_year_tab_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/class_selection_sub_page/controllers/class_selection_sub_page_controller.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/class_selection/controllers/class_selection_sub_page_controller.dart';
 import '../../../../../../../../models/agendas/student.dart';
 
-class SchoolYearSucceedingStudentsRegistrationSubPageController
+class SchoolYearFailingStudentsRegistrationSubPageController
     extends GetxController {
-  SchoolYearSucceedingStudentsRegistrationSubPageController();
+  SchoolYearFailingStudentsRegistrationSubPageController();
   late Rx<Future<List<Student>>> students;
   late RxList<Student?> selectedStudents = <Student>[].obs;
 
@@ -32,9 +32,7 @@ class SchoolYearSucceedingStudentsRegistrationSubPageController
     if (classId == null) {
       return [];
     }
-
-    return StudentsDBHelper.instance.getAllSuccessfulStudentsByClassId(classId);
-    // return StudentsDBHelper.instance.getAll();
+    return StudentsDBHelper.instance.getAllFailingStudentsByClassId(classId);
   }
 
   reloadStudents() {

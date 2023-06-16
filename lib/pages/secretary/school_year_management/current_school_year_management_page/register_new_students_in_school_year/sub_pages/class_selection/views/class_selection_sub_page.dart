@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/educational/school_class.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/class_selection_sub_page/views/widgets/school_class_selection_card.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/class_selection/views/widgets/school_class_selection_card.dart';
 
 import '../../../../../../../../tools/ui_tools/loader_widget.dart';
 import '../../../../../../../../tools/widgets/empty_item_widget.dart';

@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/models/educational/classroom.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/classroom_selection_sub_page/controllers/classroom_selection_sub_page_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/classroom_selection_sub_page/views/widgets/classroom_selection_card.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/new_students_selection/models/school_year_student_registration_model.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/new_students_selection/views/widgets/new_student_selection_card.dart';
 
 import '../../../../../../../../tools/ui_tools/loader_widget.dart';
 import '../../../../../../../../tools/widgets/empty_item_widget.dart';
 import '../../../../../../../../tools/widgets/error_loading_something_widget.dart';
+import '../controllers/school_year_new_students_registration_sub_page_controller.dart';
 
-class ClassroomSelectionPage
-    extends GetView<ClassroomSelectionSubPageController> {
-  const ClassroomSelectionPage({super.key});
+class SchoolYearNewStudentsRegistrationSubPage
+    extends GetView<SchoolYearNewStudentsRegistrationSubPageController> {
+  const SchoolYearNewStudentsRegistrationSubPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
       child: Obx(
-        () => FutureBuilder<List<Classroom>>(
-          future: controller.classrooms.value,
+        () => FutureBuilder<List<SchoolYearNewStudentRegistrationModel>>(
+          future: controller.students.value,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
@@ -28,27 +28,28 @@ class ClassroomSelectionPage
             }
             if (snapshot.hasError) {
               return ErrorLoadingSomethingWidget(
-                somethingName: 'الشعب',
-                retryCallback: () => controller.reloadClassrooms(),
+                somethingName: 'طلاب جدد للمرحلة الدراسية المختارة',
+                retryCallback: () => controller.reloadStudents(),
               );
             }
             if (snapshot.hasData) {
               if (snapshot.data!.isEmpty) {
                 return const EmptyItemWidget(
-                  itemName: 'شعب ضمن المرحلة الدراسية المختارة',
+                  itemName: 'طلاب جدد للمرحلة الدراسية المختارة',
                   iconData: FontAwesomeIcons.locationArrow, //TODO:
                 );
               } else {
-                List<Classroom> classrooms = snapshot.data as List<Classroom>;
+                List<SchoolYearNewStudentRegistrationModel> students = snapshot
+                    .data as List<SchoolYearNewStudentRegistrationModel>;
                 return ListView.separated(
-                  itemCount: classrooms.length,
+                  itemCount: students.length,
                   itemBuilder: (context, index) {
                     List<Color> backgroundColors = [
                       Get.theme.scaffoldBackgroundColor.withOpacity(.7),
                       Colors.white,
                     ];
-                    return ClassroomSelectionCard(
-                      classroom: classrooms[index],
+                    return NewStudentSelectionCard(
+                      student: students[index],
                       backgroundColor: backgroundColors[index % 2],
                     );
                   },
@@ -61,7 +62,7 @@ class ClassroomSelectionPage
               }
             } else {
               return const EmptyItemWidget(
-                itemName: 'شعب ضمن المرحلة الدراسية المختارة',
+                itemName: 'طلاب جدد للمرحلة الدراسية المختارة',
                 iconData: FontAwesomeIcons.locationArrow, //TODO:
               );
             }

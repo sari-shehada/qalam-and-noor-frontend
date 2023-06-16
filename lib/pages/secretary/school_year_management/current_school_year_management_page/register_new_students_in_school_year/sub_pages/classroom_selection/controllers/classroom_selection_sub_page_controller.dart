@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/models/educational/classroom.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/classrooms_db_helper.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/main_page/controllers/register_new_students_in_school_year_tab_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/class_selection_sub_page/controllers/class_selection_sub_page_controller.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/class_selection/controllers/class_selection_sub_page_controller.dart';
 
 class ClassroomSelectionSubPageController extends GetxController {
   ClassroomSelectionSubPageController();

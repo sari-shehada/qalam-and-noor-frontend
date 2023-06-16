@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/school_year_new_students_registration_sub_page/models/school_year_student_registration_model.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/school_year_new_students_registration_sub_page/controllers/school_year_new_students_registration_sub_page_controller.dart';
+import 'package:kalam_noor/models/educational/classroom.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/classroom_selection/controllers/classroom_selection_sub_page_controller.dart';
 
 import '../../../../../../../../../configs/fonts.dart';
 
-class NewStudentSelectionCard
-    extends GetView<SchoolYearNewStudentsRegistrationSubPageController> {
-  const NewStudentSelectionCard({
+class ClassroomSelectionCard
+    extends GetView<ClassroomSelectionSubPageController> {
+  const ClassroomSelectionCard({
     super.key,
-    required this.student,
+    required this.classroom,
     required this.backgroundColor,
   });
 
-  final SchoolYearNewStudentRegistrationModel student;
+  final Classroom classroom;
   final Color backgroundColor;
-
   @override
   Widget build(BuildContext context) {
     return Obx(
       () {
-        bool isSelected = controller.selectedStudents.contains(student);
+        bool isSelected = controller.selectedClassroom.value == classroom;
         return AnimatedContainer(
           curve: Curves.fastLinearToSlowEaseIn,
           decoration: BoxDecoration(
@@ -33,7 +32,7 @@ class NewStudentSelectionCard
           child: Material(
             color: Colors.transparent,
             child: InkWell(
-              onTap: () => controller.toggleStudent(student),
+              onTap: () => controller.selectClassroom(classroom),
               child: AnimatedPadding(
                 duration: 500.milliseconds,
                 curve: Curves.fastLinearToSlowEaseIn,
@@ -46,7 +45,7 @@ class NewStudentSelectionCard
                 child: Row(
                   children: [
                     Text(
-                      student.student.firstName,
+                      classroom.name,
                       style: ProjectFonts.titleMedium().copyWith(
                         color: isSelected
                             ? Get.theme.colorScheme.primary
