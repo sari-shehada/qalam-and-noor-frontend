@@ -127,6 +127,10 @@ class Student {
     );
   }
 
+  int getAge() {
+    return (DateTime.now().difference(dateOfBirth).inDays / 365).round();
+  }
+
   String toJson() => json.encode(toMap());
 
   factory Student.fromJson(String source) =>

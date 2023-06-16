@@ -33,8 +33,8 @@ class SchoolYearSucceedingStudentsRegistrationSubPageController
       return [];
     }
 
-    return StudentsDBHelper.instance.getAllSuccessfulStudentsByClassId(classId);
-    // return StudentsDBHelper.instance.getAll();
+    // return StudentsDBHelper.instance.getAllSuccessfulStudentsByClassId(classId);
+    return StudentsDBHelper.instance.getAll();
   }
 
   reloadStudents() {

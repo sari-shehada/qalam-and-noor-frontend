@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import '../../../../../../../../../configs/fonts.dart';
 import '../../../../../../../../../models/agendas/student.dart';
 
@@ -24,7 +25,9 @@ class OldStudentSelectionCard extends StatelessWidget {
       curve: Curves.fastLinearToSlowEaseIn,
       decoration: BoxDecoration(
         color: isSelected
-            ? Get.theme.colorScheme.primaryContainer
+            ? student.isMale
+                ? Get.theme.colorScheme.primaryContainer
+                : Colors.pink.shade50
             : backgroundColor,
       ),
       duration: 500.milliseconds,
@@ -43,22 +46,74 @@ class OldStudentSelectionCard extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Text(
-                  student.firstName,
-                  style: ProjectFonts.titleMedium().copyWith(
-                    color: isSelected
-                        ? Get.theme.colorScheme.primary
-                        : Get.theme.colorScheme.onSurfaceVariant,
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    student.publicRecordId.toString(),
+                    style: ProjectFonts.titleMedium().copyWith(
+                      color: foregroundColor,
+                    ),
                   ),
                 ),
-                const Spacer(),
-                AnimatedOpacity(
-                  curve: Curves.fastLinearToSlowEaseIn,
-                  opacity: isSelected ? 1 : 0,
-                  duration: 300.milliseconds,
-                  child: Icon(
-                    Icons.check,
-                    color: Get.theme.colorScheme.primary,
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    student.firstName,
+                    style: ProjectFonts.titleMedium().copyWith(
+                      color: foregroundColor,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    children: [
+                      Icon(
+                        student.isMale ? Icons.male : Icons.female,
+                        color: foregroundColor,
+                      ),
+                      AddHorizontalSpacing(value: 20.w),
+                      Text(
+                        student.isMale ? 'ذكر' : 'أنثى',
+                        style: ProjectFonts.titleMedium().copyWith(
+                          color: foregroundColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    children: [
+                      Text(
+                        student.getAge().toString(),
+                        style: ProjectFonts.titleMedium().copyWith(
+                          color: foregroundColor,
+                        ),
+                      ),
+                      AddHorizontalSpacing(value: 20.w),
+                      Text(
+                        'سنوات',
+                        style: ProjectFonts.titleMedium().copyWith(
+                          color: foregroundColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: AnimatedOpacity(
+                    curve: Curves.fastLinearToSlowEaseIn,
+                    opacity: isSelected ? 1 : 0,
+                    duration: 300.milliseconds,
+                    child: Icon(
+                      Icons.check,
+                      color: student.isMale
+                          ? Get.theme.colorScheme.primary
+                          : Colors.pink.shade300,
+                    ),
                   ),
                 ),
               ],
@@ -68,4 +123,10 @@ class OldStudentSelectionCard extends StatelessWidget {
       ),
     );
   }
+
+  Color get foregroundColor => isSelected
+      ? student.isMale
+          ? Get.theme.colorScheme.primary
+          : Colors.pink.shade300
+      : Get.theme.colorScheme.onSurfaceVariant;
 }
