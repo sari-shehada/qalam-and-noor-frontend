@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/educational/current_school_year_insights.dart';
 import 'package:kalam_noor/models/educational/school_year.dart';
+import 'package:kalam_noor/models/educational/semester.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/semesters_db_helper.dart';
 
 import '../../open_new_classrooms_dialog/dialogs/open_new_classrooms_dialog.dart';
 
@@ -12,6 +14,29 @@ class CurrentSchoolYearManagementController extends GetxController {
 
   SchoolYear schoolYear;
   Rx<CurrentSchoolYearInsights> schoolYearInsights;
+  late Rx<Future<List<Semester>>> semestersInSchoolYear;
+
+  @override
+  onInit() {
+    semestersInSchoolYear = getSemestersInSchoolYear().obs;
+    super.onInit();
+  }
+
+  Future<List<Semester>> getSemestersInSchoolYear() async {
+    List<Semester> semesters = await SemestersDBHelper.instance.getAll();
+    //TODO: Change to a real sorting
+    semesters = semesters
+        .where((element) => element.schoolYearId == schoolYear.id)
+        .toList();
+    semesters.sort(
+      (a, b) => a.id.compareTo(b.id),
+    );
+    return semesters;
+  }
+
+  refreshSemestersInSchoolYear() {
+    semestersInSchoolYear.value = getSemestersInSchoolYear();
+  }
 
   Future<void> manageClassroomsInSchoolYear() async {
     var result = await Get.dialog(

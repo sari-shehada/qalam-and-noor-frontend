@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/open_new_classrooms_dialog/dialog_controllers/classrooms_selection_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/open_new_classrooms_dialog/dialog_controllers/open_new_classrooms_dialog_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/open_new_classrooms_dialog/dialogs/dialog_widgets/classes_selection_list_widget.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/open_new_classrooms_dialog/dialog_controllers/classrooms_selection_controller.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/open_new_classrooms_dialog/dialog_controllers/open_new_classrooms_dialog_controller.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/open_new_classrooms_dialog/dialogs/dialog_widgets/classes_selection_list_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
-import '../../../../../tools/ui_tools/buttons.dart';
+import '../../../../../../tools/ui_tools/buttons.dart';
 import 'dialog_widgets/classrooms_selection_list_widget.dart';
 
 class OpenNewClassroomsDialog extends StatelessWidget {

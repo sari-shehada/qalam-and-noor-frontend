@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/open_new_classrooms_dialog/dialog_controllers/open_new_classrooms_dialog_controller.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/open_new_classrooms_dialog/dialog_controllers/open_new_classrooms_dialog_controller.dart';
 
-import '../../../../../models/educational/classroom.dart';
-import '../../../../../models/helpers/database_helpers/classrooms_db_helper.dart';
+import '../../../../../../models/educational/classroom.dart';
+import '../../../../../../models/helpers/database_helpers/classrooms_db_helper.dart';
 
 class ClassroomsSelectionController extends GetxController {
   Rx<OpenNewClassroomsLoadingStatus> classroomsLoadingStatus =

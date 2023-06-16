@@ -1,4 +1,4 @@
-import 'package:kalam_noor/models/educational/Semester_year_record.dart';
+import 'package:kalam_noor/models/educational/semester_year_record.dart';
 import 'package:kalam_noor/tools/logic_tools/crud_interface.dart';
 
 import '../../../tools/logic_tools/network_service.dart';

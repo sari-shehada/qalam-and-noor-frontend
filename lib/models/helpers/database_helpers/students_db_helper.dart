@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:kalam_noor/main.dart';
-
+import '../../../pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/main_page/models/school_year_student_registeration_model.dart';
 import '../../agendas/student.dart';
 import '../../../pages/secretary/students_management_page/new_student_registration/personal_information/models/student_registration_info.dart';
 import '../../../tools/logic_tools/crud_interface.dart';
@@ -30,17 +29,16 @@ class StudentsDBHelper implements CRUDInterface<Student> {
     return allStudents;
   }
 
-  Future<List<NewStudentRegistrationModel>> getAllSuccessfulStudentsByClassId(
-      int classId) async {
+  Future<List<Student>> getAllSuccessfulStudentsByClassId(int classId) async {
     String url =
         '${_controllerName}GetSuccessfulStudentsByClassId?classId=$classId';
-    List<NewStudentRegistrationModel> successfulStudents =
-        await HttpService.getParsed<List<NewStudentRegistrationModel>, List>(
+    List<Student> successfulStudents =
+        await HttpService.getParsed<List<Student>, List>(
       url: url,
       dataMapper: (parsedData) {
         return parsedData.map(
           (e) {
-            return NewStudentRegistrationModel.fromMap(e);
+            return Student.fromMap(e);
           },
         ).toList();
       },
@@ -48,17 +46,16 @@ class StudentsDBHelper implements CRUDInterface<Student> {
     return successfulStudents;
   }
 
-  Future<List<NewStudentRegistrationModel>> getAllFailingStudentsByClassId(
-      int classId) async {
+  Future<List<Student>> getAllFailingStudentsByClassId(int classId) async {
     String url =
         '${_controllerName}GetFailingStudentsByClassId?classId=$classId';
-    List<NewStudentRegistrationModel> failingStudents =
-        await HttpService.getParsed<List<NewStudentRegistrationModel>, List>(
+    List<Student> failingStudents =
+        await HttpService.getParsed<List<Student>, List>(
       url: url,
       dataMapper: (parsedData) {
         return parsedData.map(
           (e) {
-            return NewStudentRegistrationModel.fromMap(e);
+            return Student.fromMap(e);
           },
         ).toList();
       },
@@ -66,16 +63,16 @@ class StudentsDBHelper implements CRUDInterface<Student> {
     return failingStudents;
   }
 
-  Future<List<NewStudentRegistrationModel>> getAllNewStudentsByClassId(
-      int classId) async {
+  Future<List<SchoolYearNewStudentRegistrationModel>>
+      getAllNewStudentsByClassId(int classId) async {
     String url = '${_controllerName}GetNewStudentsByClassId?classId=$classId';
-    List<NewStudentRegistrationModel> newStudents =
-        await HttpService.getParsed<List<NewStudentRegistrationModel>, List>(
+    List<SchoolYearNewStudentRegistrationModel> newStudents = await HttpService
+        .getParsed<List<SchoolYearNewStudentRegistrationModel>, List>(
       url: url,
       dataMapper: (parsedData) {
         return parsedData.map(
           (e) {
-            return NewStudentRegistrationModel.fromMap(e);
+            return SchoolYearNewStudentRegistrationModel.fromMap(e);
           },
         ).toList();
       },

@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/educational/classroom.dart';
 
-import '../../../../../../configs/fonts.dart';
-import '../../../../../../tools/ui_tools/loader_widget.dart';
-import '../../../../../../tools/ui_tools/ui_tools.dart';
+import '../../../../../../../configs/fonts.dart';
+import '../../../../../../../tools/ui_tools/loader_widget.dart';
+import '../../../../../../../tools/ui_tools/ui_tools.dart';
 import '../../dialog_controllers/classrooms_selection_controller.dart';
 import '../../dialog_controllers/open_new_classrooms_dialog_controller.dart';
 

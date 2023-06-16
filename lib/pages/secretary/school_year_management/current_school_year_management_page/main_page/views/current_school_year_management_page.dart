@@ -4,7 +4,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/controllers/current_school_year_management_controller.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/main_page/controllers/current_school_year_management_controller.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/main_page/views/widgets/semesters_in_school_year_widget.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/main_page/views/register_new_students_in_school_year_dialog.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_appbar.dart';
 import 'package:kalam_noor/tools/ui_tools/custom_scaffold.dart';
@@ -25,9 +27,14 @@ class CurrentSchoolYearManagementPage
       ),
       body: SizedBox.expand(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          padding: EdgeInsets.symmetric(horizontal: 30.w),
           child: Column(
             children: [
+              const Expanded(
+                flex: 2,
+                child: SemestersInSchoolYearWidget(),
+              ),
+              AddVerticalSpacing(value: 15.h),
               Expanded(
                 flex: 3,
                 child: Container(
@@ -81,9 +88,14 @@ class CurrentSchoolYearManagementPage
                   ),
                 ),
               ),
-              Expanded(
+              CustomFilledButton(
+                onTap: () =>
+                    Get.dialog(const RegisterNewStudentsInSchoolYearDialog()),
+                child: 'reg new students',
+              ),
+              const Expanded(
                 flex: 6,
-                child: const SizedBox(),
+                child: SizedBox(),
               )
             ],
           ),

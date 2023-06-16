@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../configs/fonts.dart';
-import '../../../../../../models/educational/school_class.dart';
+import '../../../../../../../configs/fonts.dart';
+import '../../../../../../../models/educational/school_class.dart';
 import '../../dialog_controllers/open_new_classrooms_dialog_controller.dart';
 
 class SchoolClassCard extends GetView<OpenNewClassroomsDialogController> {

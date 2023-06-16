@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/models/educational/school_class.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/school_classes_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/school_year_classrooms_db_helper.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/open_new_classrooms_dialog/dialog_controllers/classrooms_selection_controller.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/open_new_classrooms_dialog/dialog_controllers/classrooms_selection_controller.dart';
 import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 
