@@ -1,15 +1,14 @@
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/students_db_helper.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/main_page/controllers/register_new_students_in_school_year_tab_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/school_year_new_students_registration_sub_page/models/school_year_student_registration_model.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/class_selection_sub_page/controllers/class_selection_sub_page_controller.dart';
+import '../../../../../../../../models/agendas/student.dart';
 
-class SchoolYearNewStudentsRegistrationSubPageController
+class SchoolYearSucceedingStudentsRegistrationSubPageController
     extends GetxController {
-  SchoolYearNewStudentsRegistrationSubPageController();
-  late Rx<Future<List<SchoolYearNewStudentRegistrationModel>>> students;
-  late RxList<SchoolYearNewStudentRegistrationModel?> selectedStudents =
-      <SchoolYearNewStudentRegistrationModel>[].obs;
+  SchoolYearSucceedingStudentsRegistrationSubPageController();
+  late Rx<Future<List<Student>>> students;
+  late RxList<Student?> selectedStudents = <Student>[].obs;
 
   @override
   void onInit() {
@@ -27,20 +26,22 @@ class SchoolYearNewStudentsRegistrationSubPageController
     super.onInit();
   }
 
-  Future<List<SchoolYearNewStudentRegistrationModel>> getStudents() async {
+  Future<List<Student>> getStudents() async {
     int? classId =
         Get.find<ClassSelectionSubPageController>().selectedClass.value?.id;
     if (classId == null) {
       return [];
     }
-    return StudentsDBHelper.instance.getAllNewStudentsByClassId(classId);
+
+    return StudentsDBHelper.instance.getAllSuccessfulStudentsByClassId(classId);
+    // return StudentsDBHelper.instance.getAll();
   }
 
   reloadStudents() {
     students.value = getStudents();
   }
 
-  toggleStudent(SchoolYearNewStudentRegistrationModel student) {
+  toggleStudent(Student student) {
     if (selectedStudents.contains(student)) {
       selectedStudents.remove(student);
       return;

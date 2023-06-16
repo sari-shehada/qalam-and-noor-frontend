@@ -46,6 +46,5 @@ class WebApp extends StatelessWidget {
 }
 
 //TODO:
-//3. Fill up the empty containers in dashboard page
 //5. Add Exams Management to Classes
 //8. Enable Search by name for employees in EmployeesManagementPage

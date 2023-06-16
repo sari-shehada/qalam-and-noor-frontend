@@ -4,7 +4,9 @@ import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 
 import '../../sub_pages/class_selection_sub_page/controllers/class_selection_sub_page_controller.dart';
 import '../../sub_pages/classroom_selection_sub_page/controllers/classroom_selection_sub_page_controller.dart';
+import '../../sub_pages/school_year_succeeding_students_registration_sub_page/controllers/school_year_succeeding_students_registration_sub_page_controller.dart';
 import '../../sub_pages/school_year_new_students_registration_sub_page/controllers/school_year_new_students_registration_sub_page_controller.dart';
+import '../../sub_pages/school_year_failing_students_registration_sub_page/controllers/school_year_failing_students_registration_sub_page_controller.dart';
 
 class RegisterNewStudentsInSchoolYearDialogPrimaryController
     extends GetxController {
@@ -13,6 +15,10 @@ class RegisterNewStudentsInSchoolYearDialogPrimaryController
   late ClassroomSelectionSubPageController classroomSelectionController;
   late SchoolYearNewStudentsRegistrationSubPageController
       schoolYearNewStudentsRegistrationSubPageController;
+  late SchoolYearSucceedingStudentsRegistrationSubPageController
+      schoolYearSucceedingStudentsRegistrationSubPageController;
+  late SchoolYearFailingStudentsRegistrationSubPageController
+      schoolYearFailingStudentsRegistrationSubPageController;
 
   Rx<CustomButtonStatus> buttonStatus = CustomButtonStatus.enabled.obs;
 
@@ -29,6 +35,12 @@ class RegisterNewStudentsInSchoolYearDialogPrimaryController
     );
     schoolYearNewStudentsRegistrationSubPageController = Get.put(
       SchoolYearNewStudentsRegistrationSubPageController(),
+    );
+    schoolYearSucceedingStudentsRegistrationSubPageController = Get.put(
+      SchoolYearSucceedingStudentsRegistrationSubPageController(),
+    );
+    schoolYearFailingStudentsRegistrationSubPageController = Get.put(
+      SchoolYearFailingStudentsRegistrationSubPageController(),
     );
     super.onInit();
   }

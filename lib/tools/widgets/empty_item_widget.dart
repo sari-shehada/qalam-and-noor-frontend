@@ -10,11 +10,13 @@ class EmptyItemWidget extends StatelessWidget {
     required this.itemName,
     required this.iconData,
     this.padding,
+    this.spacing,
   });
 
   final String itemName;
   final IconData iconData;
   final EdgeInsetsGeometry? padding;
+  final double? spacing;
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +36,11 @@ class EmptyItemWidget extends StatelessWidget {
             color: themeData.colorScheme.outline,
           ),
           AddVerticalSpacing(
-            value: 130.h,
+            value: spacing ?? 130.h,
           ),
           Text(
             "لم يتم العثور على $itemName",
+            textAlign: TextAlign.center,
             style: textTheme.headlineLarge!.copyWith(
               color: themeData.colorScheme.outline,
             ),

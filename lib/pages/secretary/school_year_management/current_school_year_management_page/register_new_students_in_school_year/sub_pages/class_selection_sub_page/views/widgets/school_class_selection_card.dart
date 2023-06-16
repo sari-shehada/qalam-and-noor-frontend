@@ -10,11 +10,12 @@ class SchoolClassSelectionCard
     extends GetView<ClassSelectionSubPageController> {
   const SchoolClassSelectionCard({
     super.key,
+    required this.backgroundColor,
     required this.schoolClass,
   });
 
   final SchoolClass schoolClass;
-
+  final Color backgroundColor;
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -25,7 +26,7 @@ class SchoolClassSelectionCard
           decoration: BoxDecoration(
             color: isSelected
                 ? Get.theme.colorScheme.primaryContainer
-                : Get.theme.colorScheme.primaryContainer.withOpacity(0),
+                : backgroundColor,
           ),
           duration: 500.milliseconds,
           child: Material(

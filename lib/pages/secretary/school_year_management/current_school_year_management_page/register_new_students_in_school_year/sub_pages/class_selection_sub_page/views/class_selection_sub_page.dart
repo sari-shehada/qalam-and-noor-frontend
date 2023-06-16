@@ -44,8 +44,13 @@ class ClassSelectionPage extends GetView<ClassSelectionSubPageController> {
                   // padding: EdgeInsets.symmetric(vertical: 10.h),
                   itemCount: schoolClasses.length,
                   itemBuilder: (context, index) {
+                    List<Color> backgroundColors = [
+                      Get.theme.scaffoldBackgroundColor.withOpacity(.7),
+                      Colors.white,
+                    ];
                     return SchoolClassSelectionCard(
                       schoolClass: schoolClasses[index],
+                      backgroundColor: backgroundColors[index % 2],
                     );
                   },
                   separatorBuilder: (context, index) => Divider(

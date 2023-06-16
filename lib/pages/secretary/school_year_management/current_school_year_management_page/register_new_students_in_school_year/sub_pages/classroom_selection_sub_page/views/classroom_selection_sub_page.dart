@@ -43,8 +43,13 @@ class ClassroomSelectionPage
                 return ListView.separated(
                   itemCount: classrooms.length,
                   itemBuilder: (context, index) {
+                    List<Color> backgroundColors = [
+                      Get.theme.scaffoldBackgroundColor.withOpacity(.7),
+                      Colors.white,
+                    ];
                     return ClassroomSelectionCard(
                       classroom: classrooms[index],
+                      backgroundColor: backgroundColors[index % 2],
                     );
                   },
                   separatorBuilder: (context, index) => Divider(

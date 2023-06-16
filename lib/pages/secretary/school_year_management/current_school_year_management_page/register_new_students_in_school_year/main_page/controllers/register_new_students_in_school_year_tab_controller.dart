@@ -8,12 +8,27 @@ class RegisterNewStudentsInSchoolYearTabController extends GetxController
     with GetTickerProviderStateMixin {
   late TabController tabController;
   RxInt currentPage = 0.obs;
-  List<String> sections = [
-    'اختيار الصف',
-    'اختيار الشعبة',
-    'تسجيل الطلاب الجدد',
-    'تسجيل الطلاب الناجحين الى الصف',
-    'تسجيل الطلاب الراسبين في الصف',
+  List<SchoolYearStudentRegistrationSectionInfo> sections = [
+    SchoolYearStudentRegistrationSectionInfo(
+      title: 'اختيار الصف',
+      helperMessage: 'قم باختيار الصف من القائمة ادناه',
+    ),
+    SchoolYearStudentRegistrationSectionInfo(
+      title: 'اختيار الشعبة',
+      helperMessage: 'قم باختيار الشعبة المراد تسجيل الطلاب فيها',
+    ),
+    SchoolYearStudentRegistrationSectionInfo(
+      title: 'تسجيل الطلاب الجدد',
+      helperMessage: 'قم باختيار الطلاب المراد تسجيلهم من القائمة ادناه',
+    ),
+    SchoolYearStudentRegistrationSectionInfo(
+      title: 'تسجيل الطلاب الناجحين الى الصف',
+      helperMessage: 'قم باختيار الطلاب المراد تسجيلهم من القائمة ادناه',
+    ),
+    SchoolYearStudentRegistrationSectionInfo(
+      title: 'تسجيل الطلاب الراسبين في الصف',
+      helperMessage: 'قم باختيار الطلاب المراد تسجيلهم من القائمة ادناه',
+    ),
   ];
 
   @override
@@ -56,4 +71,13 @@ class RegisterNewStudentsInSchoolYearTabController extends GetxController
       tabController.animateTo(++currentPage.value);
     }
   }
+}
+
+class SchoolYearStudentRegistrationSectionInfo {
+  SchoolYearStudentRegistrationSectionInfo({
+    required this.title,
+    required this.helperMessage,
+  });
+  final String title;
+  final String helperMessage;
 }

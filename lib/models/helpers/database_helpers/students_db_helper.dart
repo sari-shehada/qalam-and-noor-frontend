@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../../pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/main_page/models/school_year_student_registeration_model.dart';
+import '../../../pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/school_year_new_students_registration_sub_page/models/school_year_student_registration_model.dart';
 import '../../agendas/student.dart';
 import '../../../pages/secretary/students_management_page/new_student_registration/personal_information/models/student_registration_info.dart';
 import '../../../tools/logic_tools/crud_interface.dart';

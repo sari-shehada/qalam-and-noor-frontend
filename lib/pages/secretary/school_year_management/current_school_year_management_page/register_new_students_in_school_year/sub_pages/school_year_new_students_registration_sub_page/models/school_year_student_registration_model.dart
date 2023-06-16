@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import '../../../../../../../models/agendas/student.dart';
-import '../../../../../../../models/educational/year_record.dart';
+import '../../../../../../../../models/agendas/student.dart';
+import '../../../../../../../../models/educational/year_record.dart';
 
 class SchoolYearNewStudentRegistrationModel {
   final Student student;

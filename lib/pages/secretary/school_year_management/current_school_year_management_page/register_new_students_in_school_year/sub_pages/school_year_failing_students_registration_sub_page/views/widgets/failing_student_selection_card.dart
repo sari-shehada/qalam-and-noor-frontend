@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/main_page/models/school_year_student_registeration_model.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/school_year_new_students_registration_sub_page/controllers/school_year_new_students_registration_sub_page_controller.dart';
-
 import '../../../../../../../../../configs/fonts.dart';
+import '../../../../../../../../../models/agendas/student.dart';
+import '../../controllers/school_year_failing_students_registration_sub_page_controller.dart';
 
-class NewStudentSelectionCard
-    extends GetView<SchoolYearNewStudentsRegistrationSubPageController> {
-  const NewStudentSelectionCard({
+class FailingStudentSelectionCard
+    extends GetView<SchoolYearFailingStudentsRegistrationSubPageController> {
+  const FailingStudentSelectionCard({
     super.key,
     required this.student,
   });
 
-  final SchoolYearNewStudentRegistrationModel student;
+  final Student student;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,7 @@ class NewStudentSelectionCard
                 child: Row(
                   children: [
                     Text(
-                      student.student.firstName,
+                      student.firstName,
                       style: ProjectFonts.titleMedium().copyWith(
                         color: isSelected
                             ? Get.theme.colorScheme.primary

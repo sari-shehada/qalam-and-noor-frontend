@@ -28,7 +28,7 @@ class RegisterNewStudentsInSchoolYearTabViewRightWidget
               .map<Widget>(
                 (e) => Obx(
                   () => RegisterStudentsInSchoolYearSectionTitleWidget(
-                    title: e,
+                    title: e.title,
                     isSelected: controller.currentPage.value ==
                         controller.sections.indexOf(e),
                   ),

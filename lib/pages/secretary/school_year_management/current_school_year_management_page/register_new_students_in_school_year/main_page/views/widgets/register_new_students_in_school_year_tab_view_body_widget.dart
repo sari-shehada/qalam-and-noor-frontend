@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/main_page/views/widgets/section_header_helper_widget.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/classroom_selection_sub_page/views/classroom_selection_sub_page.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/school_year_new_students_registration_sub_page/views/school_year_new_students_registration_sub_page.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/school_year_failing_students_registration_sub_page/views/school_year_failing_students_registration_sub_page.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/register_new_students_in_school_year/sub_pages/school_year_succeeding_students_registration_sub_page/views/school_year_succeeding_students_registration_sub_page.dart';
 
 import '../../../sub_pages/class_selection_sub_page/views/class_selection_sub_page.dart';
 import '../../controllers/register_new_students_in_school_year_tab_controller.dart';
@@ -25,28 +28,12 @@ class RegisterNewStudentsInSchoolYearTabViewBodyWidget
               ClassSelectionPage(),
               ClassroomSelectionPage(),
               SchoolYearNewStudentsRegistrationSubPage(),
-              Center(
-                child: Text('4'),
-              ),
-              Center(
-                child: Text('5'),
-              ),
+              SchoolYearSucceedingStudentsRegistrationSubPage(),
+              SchoolYearFailingStudentsRegistrationSubPage(),
             ],
           ),
         ),
-        Container(
-          height: 75.h,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(0, 45.h),
-                blurRadius: 30,
-                color: Get.theme.colorScheme.shadow.withOpacity(.05),
-              ),
-            ],
-          ),
-        ),
+        const SectionHeaderHelperWidget(),
       ],
     );
   }
