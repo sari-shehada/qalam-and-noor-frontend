@@ -25,6 +25,15 @@ class SchoolYearNewStudentsEnrollmentSubPageController extends GetxController {
         }
       },
     );
+    //Watch out
+    Get.find<ClassroomSelectionSubPageController>()
+        .selectedClassroom
+        .stream
+        .listen(
+      (event) {
+        selectedStudents.clear();
+      },
+    );
     super.onInit();
   }
 
