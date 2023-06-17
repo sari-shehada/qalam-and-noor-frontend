@@ -4,7 +4,9 @@ import 'package:kalam_noor/models/educational/school_year.dart';
 import 'package:kalam_noor/models/educational/semester.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/semesters_db_helper.dart';
 
+import '../../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../open_new_classrooms_dialog/dialogs/open_new_classrooms_dialog.dart';
+import '../../school_year_students_enrollment/shared/views/school_year_students_enrollment_dialog.dart';
 
 class CurrentSchoolYearManagementController extends GetxController {
   CurrentSchoolYearManagementController({
@@ -15,6 +17,7 @@ class CurrentSchoolYearManagementController extends GetxController {
   SchoolYear schoolYear;
   Rx<CurrentSchoolYearInsights> schoolYearInsights;
   late Rx<Future<List<Semester>>> semestersInSchoolYear;
+  Rx<Semester?> currentSemesterInSchoolYear = Rx<Semester?>(null);
 
   @override
   onInit() {
@@ -31,6 +34,7 @@ class CurrentSchoolYearManagementController extends GetxController {
     semesters.sort(
       (a, b) => a.id.compareTo(b.id),
     );
+    currentSemesterInSchoolYear.value = semesters.last;
     return semesters;
   }
 
@@ -64,6 +68,18 @@ class CurrentSchoolYearManagementController extends GetxController {
         );
       },
     );
+  }
+
+  Future<void> enrollNewStudentsToSchoolYear() async {
+    var result = await Get.dialog(
+      const SchoolYearStudentsEnrollmentDialog(),
+    );
+    if (result is int) {
+      SnackBarService.showSuccessSnackBar(
+        title: 'تمت العملية بنجاح',
+        message: 'تم تسجيل $result طالب بنجاح',
+      );
+    }
   }
 
   Future<int> getClassroomsCount() async {

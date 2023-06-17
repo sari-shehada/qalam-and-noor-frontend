@@ -21,7 +21,7 @@ class SchoolYearStudentsEnrollmentTabViewWidget
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 75.h),
+          padding: EdgeInsets.only(top: 150.h),
           child: TabBarView(
             controller: controller.tabController,
             children: const [

@@ -1,11 +1,14 @@
 import 'dart:convert';
 
+import '../../../pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/shared/models/old_students_enrollment_dto.dart';
 import '../../../pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/sub_pages/new_students_selection/models/new_student_enrollment_model.dart';
+import '../../../pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/sub_pages/new_students_selection/models/new_students_enrollment_dto.dart';
 import '../../agendas/student.dart';
 import '../../../pages/secretary/students_management_page/new_student_registration/personal_information/models/student_registration_info.dart';
 import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 import '../../educational/student_year_records.dart';
+import '../../item_or.dart';
 import '../../student_registration_model.dart';
 
 class StudentsDBHelper implements CRUDInterface<Student> {
@@ -202,5 +205,27 @@ class StudentsDBHelper implements CRUDInterface<Student> {
       },
     );
     return studentSchoolYearRecords;
+  }
+
+  Future<ItemOr<String>> enrollNewStudentsToSchoolYear(
+      NewStudentsEnrollmentDTO dto) async {
+    String url = '${_controllerName}RegistrationNewStudentInSchoolYear';
+    String result =
+        await HttpService.rawPost(url: url, serializedBody: dto.toJson());
+    ItemOr<String> parsedResponse = ItemOr.fromMap(jsonDecode(
+      result,
+    ) as Map<String, dynamic>);
+    return parsedResponse;
+  }
+
+  Future<ItemOr<String>> enrollOldStudentsToSchoolYear(
+      OldStudentsEnrollmentDTO dto) async {
+    String url = '${_controllerName}RegistrationOldStudentInSchoolYear';
+    String result =
+        await HttpService.rawPost(url: url, serializedBody: dto.toJson());
+    ItemOr<String> parsedResponse = ItemOr.fromMap(jsonDecode(
+      result,
+    ) as Map<String, dynamic>);
+    return parsedResponse;
   }
 }
