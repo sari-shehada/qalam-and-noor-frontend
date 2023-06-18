@@ -23,6 +23,7 @@ class SchoolYearStudentsEnrollmentTabViewWidget
         Padding(
           padding: EdgeInsets.only(top: 150.h),
           child: TabBarView(
+            physics: const NeverScrollableScrollPhysics(),
             controller: controller.tabController,
             children: const [
               SchoolClassSelectionPage(),

@@ -1,12 +1,15 @@
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/agendas/student.dart';
 import 'package:kalam_noor/models/educational/current_school_year_insights.dart';
 import 'package:kalam_noor/models/educational/school_year.dart';
 import 'package:kalam_noor/models/educational/semester.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/semesters_db_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/students_db_helper.dart';
 
 import '../../../../../../tools/dialogs_services/snack_bar_service.dart';
 import '../../open_new_classrooms_dialog/dialogs/open_new_classrooms_dialog.dart';
 import '../../school_year_students_enrollment/shared/views/school_year_students_enrollment_dialog.dart';
+import '../views/widgets/student_count_in_school_year_widget.dart';
 
 class CurrentSchoolYearManagementController extends GetxController {
   CurrentSchoolYearManagementController({
@@ -18,10 +21,12 @@ class CurrentSchoolYearManagementController extends GetxController {
   Rx<CurrentSchoolYearInsights> schoolYearInsights;
   late Rx<Future<List<Semester>>> semestersInSchoolYear;
   Rx<Semester?> currentSemesterInSchoolYear = Rx<Semester?>(null);
+  late Rx<Future<SchoolYearStudentCountStats>> studentsCount;
 
   @override
   onInit() {
     semestersInSchoolYear = getSemestersInSchoolYear().obs;
+    studentsCount = getStudentsCount().obs;
     super.onInit();
   }
 
@@ -38,8 +43,28 @@ class CurrentSchoolYearManagementController extends GetxController {
     return semesters;
   }
 
+  Future<SchoolYearStudentCountStats> getStudentsCount() async {
+    List<Student> studentsInSchoolYear =
+        await StudentsDBHelper.instance.getStudentsInCurrentSchoolYear();
+    int allCount = studentsInSchoolYear.length;
+    studentsInSchoolYear = studentsInSchoolYear
+        .where((element) => element.isMale == true)
+        .toList();
+    int malesCount = studentsInSchoolYear.length;
+    int femalesCount = allCount - malesCount;
+    return SchoolYearStudentCountStats(
+      totalCount: allCount,
+      males: malesCount,
+      females: femalesCount,
+    );
+  }
+
   refreshSemestersInSchoolYear() {
     semestersInSchoolYear.value = getSemestersInSchoolYear();
+  }
+
+  refreshStudentsCount() {
+    studentsCount.value = getStudentsCount();
   }
 
   Future<void> manageClassroomsInSchoolYear() async {

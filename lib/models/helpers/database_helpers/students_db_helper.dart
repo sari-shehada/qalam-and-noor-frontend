@@ -32,6 +32,26 @@ class StudentsDBHelper implements CRUDInterface<Student> {
     return allStudents;
   }
 
+  Future<List<Student>> getStudentsInCurrentSchoolYear() async {
+    String url = '${_controllerName}GetStudentsInCurrentSchoolYear';
+    List<Student> allStudents =
+        await HttpService.getParsed<List<Student>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return Student.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allStudents;
+  }
+
+  Future<int> getStudentCountInCurrentSchoolYear() async {
+    return getStudentsInCurrentSchoolYear().then((value) => value.length);
+  }
+
   Future<List<Student>> getAllSuccessfulStudentsByClassId(int classId) async {
     String url =
         '${_controllerName}GetSuccessfulStudentsByClassId?classId=$classId';

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/models/educational/current_school_year_insights.dart';
 import 'package:kalam_noor/models/educational/school_year_classroom.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/school_year_classrooms_db_helper.dart';
+import 'package:kalam_noor/models/helpers/database_helpers/students_db_helper.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/main_page/controllers/current_school_year_management_controller.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/main_page/views/current_school_year_management_page.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/main_page/views/dialogs/start_new_school_year_dialog.dart';
@@ -30,11 +31,12 @@ class SchoolYearManagementController extends GetxController {
         await SchoolYearClassroomsDBHelper.instance
             .getAllBySchoolYearId(currentSchoolYear.value.id);
     //TODO: add getting classes count
-    //TODO: add getting students in it
+    final int studentsCount =
+        await StudentsDBHelper.instance.getStudentCountInCurrentSchoolYear();
     return CurrentSchoolYearInsights(
-      studentsCount: 15,
+      studentsCount: studentsCount,
       classRoomsCount: classroomsInCurrentSchoolYear.length,
-      classesCount: 1,
+      classesCount: 2,
     );
   }
 

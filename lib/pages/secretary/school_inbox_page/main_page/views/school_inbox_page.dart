@@ -16,13 +16,19 @@ class SchoolInboxPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(SchoolInboxPrimaryController());
+    Get.put(
+      SchoolInboxPrimaryController(),
+    );
     return CustomScaffold(
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: 'بريد المدرسة',
         iconData: FontAwesomeIcons.inbox,
-        appBarBoxDecoration: BoxDecoration(
+        appBarBoxDecoration: const BoxDecoration(
           color: Colors.white,
+        ),
+        actionButton: CustomAppBarActionButton(
+          label: 'بدء محادثة جديدة',
+          onTap: () {},
         ),
       ),
       body: Container(

@@ -156,7 +156,7 @@ class CurrentSchoolYearCardData
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         CurrentSchoolYearInsightMiniCard(
-                          description: 'طالب',
+                          description: 'طلاب',
                           count: insights.studentsCount,
                           color: GlobalStyles.miscColors[0],
                         ),

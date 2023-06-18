@@ -10,6 +10,7 @@ class LabeledWidget extends StatelessWidget {
     required this.child,
     this.labelTextStyle,
     this.mainAxisSize = MainAxisSize.max,
+    this.textAlignment,
   });
 
   final String label;
@@ -17,13 +18,14 @@ class LabeledWidget extends StatelessWidget {
   final Widget child;
   final TextStyle? labelTextStyle;
   final MainAxisSize mainAxisSize;
+  final Alignment? textAlignment;
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: mainAxisSize,
       children: [
         Align(
-          alignment: Alignment.centerRight,
+          alignment: textAlignment ?? Alignment.centerRight,
           child: Text(
             label,
             style: labelTextStyle ??
