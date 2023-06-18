@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/pages/teacher/dashboard_page/views/widgets/course_info_table.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import 'package:kalam_noor/tools/widgets/empty_item_widget.dart';
+import 'package:kalam_noor/tools/widgets/error_loading_something_widget.dart';
 import '../../../../configs/fonts.dart';
 import '../../../../tools/ui_tools/custom_appbar.dart';
 import '../../../../tools/ui_tools/custom_scaffold.dart';
@@ -16,8 +17,8 @@ class TeacherDashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TeacherDashboardControllerController controller = Get.put(
-      TeacherDashboardControllerController(),
+    TeacherDashboardController controller = Get.put(
+      TeacherDashboardController(),
     );
     return CustomScaffold(
       appBar: const CustomAppBar(
@@ -33,6 +34,7 @@ class TeacherDashboardPage extends StatelessWidget {
             end: 40.w,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 flex: 1,
@@ -42,14 +44,19 @@ class TeacherDashboardPage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 7,
+                flex: 11,
                 child: FutureBuilder(
-                  future: controller
-                      .getAllTeacherCourses(), //TODO: add to an object later
+                  future: controller.teacherCourses.value,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
                         child: LoaderWidget(),
+                      );
+                    }
+                    if (snapshot.hasError) {
+                      return ErrorLoadingSomethingWidget(
+                        somethingName: 'مقرراتك الدراسية',
+                        retryCallback: controller.refreshTeacherCourses(),
                       );
                     }
                     if (snapshot.data!.isEmpty) {
@@ -58,7 +65,9 @@ class TeacherDashboardPage extends StatelessWidget {
                         iconData: FontAwesomeIcons.book,
                       );
                     }
-                    return CourseInfoTable(coursesInfo: snapshot.data!);
+                    return CourseInfoTable(
+                      coursesInfo: snapshot.data!,
+                    );
                   },
                 ),
               ),

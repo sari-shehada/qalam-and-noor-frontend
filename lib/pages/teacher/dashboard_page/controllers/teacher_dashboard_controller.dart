@@ -7,17 +7,21 @@ import 'package:kalam_noor/models/educational/school_class.dart';
 import 'package:kalam_noor/pages/teacher/dashboard_page/models/teacher_course_info.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/courses_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/school_classes_db_helper.dart';
+import 'package:kalam_noor/pages/teacher/dashboard_page/views/dialogs/classroom_and_exam_selection_dialog.dart';
+import 'package:kalam_noor/pages/teacher/fill_students_marks_page/views/fill_students_marks_page.dart';
 
-class TeacherDashboardControllerController extends GetxController {
-  TeacherDashboardControllerController();
+class TeacherDashboardController extends GetxController {
+  TeacherDashboardController();
 
   late Employee teacher;
   late JobTitle jobTitle;
+  late Rx<Future<List<TeacherCourseInfo>>> teacherCourses;
 
   @override
   void onInit() {
     teacher = Get.find<AccountController>().employee;
     jobTitle = Get.find<AccountController>().jobTitle;
+    teacherCourses = getAllTeacherCourses().obs;
     super.onInit();
   }
 
@@ -33,5 +37,27 @@ class TeacherDashboardControllerController extends GetxController {
       );
     }
     return teacherCourseInfo;
+  }
+
+  Future<void> assignGradesInCourse({
+    required SchoolClass schoolClass,
+    required Course course,
+  }) async {
+    var result = await Get.dialog(
+      ClassroomAndExamSelectionDialog(
+        schoolClass: schoolClass,
+        course: course,
+      ),
+    );
+    if (result is Bindings) {
+      Get.to(
+        () => const FillStudentsMarksPage(),
+        binding: result,
+      );
+    }
+  }
+
+  refreshTeacherCourses() {
+    teacherCourses.value = getAllTeacherCourses();
   }
 }

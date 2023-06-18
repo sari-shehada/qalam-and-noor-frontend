@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/models/educational/course.dart';
 import 'package:kalam_noor/models/educational/school_class.dart';
-import 'package:kalam_noor/pages/teacher/dashboard_page/views/dialogs/classroom_and_exam_selection_dialog.dart';
+import 'package:kalam_noor/pages/teacher/dashboard_page/controllers/teacher_dashboard_controller.dart';
 
-class CourseInfoRow extends StatelessWidget {
+class CourseInfoRow extends GetView<TeacherDashboardController> {
   const CourseInfoRow(
       {super.key,
       required this.rowColor,
@@ -95,14 +95,10 @@ class CourseInfoRow extends StatelessWidget {
                       horizontal: 15.w,
                     ),
                     child: OutlinedButton(
-                      onPressed: () {
-                        Get.dialog(
-                          ClassroomAndExamSelectionDialog(
-                            courseTotalGrade: course.totalGrade,
-                            schoolClass: schoolClass,
-                          ),
-                        );
-                      },
+                      onPressed: () => controller.assignGradesInCourse(
+                        schoolClass: schoolClass,
+                        course: course,
+                      ),
                       style: ButtonStyle(
                         padding: MaterialStatePropertyAll(
                           EdgeInsets.symmetric(
