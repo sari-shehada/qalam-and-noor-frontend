@@ -29,7 +29,7 @@ class CourseInfoTable extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Container(
                     width: double.infinity,
                     padding:
@@ -50,7 +50,7 @@ class CourseInfoTable extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Container(
                     width: double.infinity,
                     padding:
@@ -71,7 +71,7 @@ class CourseInfoTable extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Container(
                     width: double.infinity,
                     padding:
@@ -92,7 +92,7 @@ class CourseInfoTable extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Container(
                     width: double.infinity,
                     padding:
@@ -106,6 +106,20 @@ class CourseInfoTable extends StatelessWidget {
                     ),
                     child: Text(
                       'العلامة الكاملة',
+                      style: ProjectFonts.titleLarge().copyWith(
+                        color: colorScheme.primary,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                    child: Text(
+                      "الإجرائات",
                       style: ProjectFonts.titleLarge().copyWith(
                         color: colorScheme.primary,
                       ),

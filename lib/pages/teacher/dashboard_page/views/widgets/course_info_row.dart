@@ -19,83 +19,110 @@ class CourseInfoRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Get.theme;
     final TextTheme textTheme = themeData.textTheme;
-    return InkWell(
-      onTap: () {
-        Get.dialog(
-          ClassroomAndExamSelectionDialog(
-            schoolClass: schoolClass,
-          ),
-        );
-      },
-      child: SizedBox(
-        height: 70.h,
-        child: Container(
-          color: rowColor,
-          child: Material(
-            color: Colors.transparent,
-            child: SizedBox(
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(
-                          vertical: 15.h, horizontal: 20.w),
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        course.name,
-                        style: textTheme.titleMedium!.copyWith(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 22.sp,
+    return SizedBox(
+      height: 70.h,
+      child: Container(
+        color: rowColor,
+        child: Material(
+          color: Colors.transparent,
+          child: SizedBox(
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      course.name,
+                      style: textTheme.titleMedium!.copyWith(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 22.sp,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      schoolClass.name,
+                      style: textTheme.titleMedium!.copyWith(
+                          fontWeight: FontWeight.normal, fontSize: 22.sp),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      course.isEnriching ? 'إثرائي' : 'إلزامي',
+                      style: textTheme.titleMedium!.copyWith(
+                          fontWeight: FontWeight.normal, fontSize: 22.sp),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      course.totalGrade.toString(),
+                      style: textTheme.titleMedium!.copyWith(
+                          fontWeight: FontWeight.normal, fontSize: 22.sp),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15.w,
+                    ),
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Get.dialog(
+                          ClassroomAndExamSelectionDialog(
+                            courseTotalGrade: course.totalGrade,
+                            schoolClass: schoolClass,
+                          ),
+                        );
+                      },
+                      style: ButtonStyle(
+                        padding: MaterialStatePropertyAll(
+                          EdgeInsets.symmetric(
+                            vertical: 20.h,
+                            horizontal: 25.w,
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(
-                          vertical: 15.h, horizontal: 20.w),
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        schoolClass.name,
-                        style: textTheme.titleMedium!.copyWith(
-                            fontWeight: FontWeight.normal, fontSize: 22.sp),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text("تسجيل علامات المقرر"),
+                          Spacer(),
+                          Icon(Icons.edit),
+                        ],
                       ),
                     ),
                   ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(
-                          vertical: 15.h, horizontal: 20.w),
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        course.isEnriching ? 'إثرائي' : 'إلزامي',
-                        style: textTheme.titleMedium!.copyWith(
-                            fontWeight: FontWeight.normal, fontSize: 22.sp),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.symmetric(
-                          vertical: 15.h, horizontal: 20.w),
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        course.totalGrade.toString(),
-                        style: textTheme.titleMedium!.copyWith(
-                            fontWeight: FontWeight.normal, fontSize: 22.sp),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
