@@ -6,7 +6,7 @@ class Course {
   int classId;
   int teacherId;
   String name;
-  double totalGrade;
+  num totalGrade;
   bool isEnriching;
   Course({
     required this.id,
@@ -22,7 +22,7 @@ class Course {
     int? classId,
     int? teacherId,
     String? name,
-    double? totalGrade,
+    num? totalGrade,
     bool? isEnriching,
   }) {
     return Course(
@@ -52,7 +52,7 @@ class Course {
       classId: map['classId'] as int,
       teacherId: map['teacherId'] as int,
       name: map['name'] as String,
-      totalGrade: map['totalGrade'] as double,
+      totalGrade: map['totalGrade'] as num,
       isEnriching: map['isEnriching'] as bool,
     );
   }

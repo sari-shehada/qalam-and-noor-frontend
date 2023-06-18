@@ -6,13 +6,13 @@ class SemesterExam {
   int examId;
   double obtainedGrade;
   int courseId;
-  int semesterId;
+  int semesterYearRecordId;
   SemesterExam({
     required this.id,
     required this.examId,
     required this.obtainedGrade,
     required this.courseId,
-    required this.semesterId,
+    required this.semesterYearRecordId,
   });
 
   SemesterExam copyWith({
@@ -20,14 +20,14 @@ class SemesterExam {
     int? examId,
     double? obtainedGrade,
     int? courseId,
-    int? semesterId,
+    int? semesterYearRecordId,
   }) {
     return SemesterExam(
       id: id ?? this.id,
       examId: examId ?? this.examId,
       obtainedGrade: obtainedGrade ?? this.obtainedGrade,
       courseId: courseId ?? this.courseId,
-      semesterId: semesterId ?? this.semesterId,
+      semesterYearRecordId: semesterYearRecordId ?? this.semesterYearRecordId,
     );
   }
 
@@ -37,7 +37,7 @@ class SemesterExam {
       'examId': examId,
       'obtainedGrade': obtainedGrade,
       'courseId': courseId,
-      'semesterId': semesterId,
+      'semesterYearRecordId': semesterYearRecordId,
     };
   }
 
@@ -47,7 +47,7 @@ class SemesterExam {
       examId: map['examId'] as int,
       obtainedGrade: map['obtainedGrade'] as double,
       courseId: map['courseId'] as int,
-      semesterId: map['semesterId'] as int,
+      semesterYearRecordId: map['semesterYearRecordId'] as int,
     );
   }
 
@@ -58,7 +58,7 @@ class SemesterExam {
 
   @override
   String toString() {
-    return 'SemesterExam(id: $id, examId: $examId, obtainedGrade: $obtainedGrade, courseId: $courseId, semesterId: $semesterId)';
+    return 'SemesterExam(id: $id, examId: $examId, obtainedGrade: $obtainedGrade, courseId: $courseId, semesterYearRecordId: $semesterYearRecordId)';
   }
 
   @override
@@ -69,7 +69,7 @@ class SemesterExam {
         other.examId == examId &&
         other.obtainedGrade == obtainedGrade &&
         other.courseId == courseId &&
-        other.semesterId == semesterId;
+        other.semesterYearRecordId == semesterYearRecordId;
   }
 
   @override
@@ -78,6 +78,6 @@ class SemesterExam {
         examId.hashCode ^
         obtainedGrade.hashCode ^
         courseId.hashCode ^
-        semesterId.hashCode;
+        semesterYearRecordId.hashCode;
   }
 }
