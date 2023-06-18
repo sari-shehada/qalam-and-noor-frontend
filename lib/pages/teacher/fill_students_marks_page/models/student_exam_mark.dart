@@ -19,6 +19,8 @@ class StudentExamMark {
     required this.father,
   });
 
+  String get fullName =>
+      '${student.firstName} ${father.firstName} ${father.lastName}';
   StudentExamMark copyWith({
     Student? student,
     YearRecord? yearRecord,

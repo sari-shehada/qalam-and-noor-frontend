@@ -9,6 +9,7 @@ import 'package:kalam_noor/models/helpers/database_helpers/courses_db_helper.dar
 import 'package:kalam_noor/models/helpers/database_helpers/school_classes_db_helper.dart';
 import 'package:kalam_noor/pages/teacher/dashboard_page/views/dialogs/classroom_and_exam_selection_dialog.dart';
 import 'package:kalam_noor/pages/teacher/fill_students_marks_page/views/fill_students_marks_page.dart';
+import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 
 class TeacherDashboardController extends GetxController {
   TeacherDashboardController();
@@ -43,17 +44,24 @@ class TeacherDashboardController extends GetxController {
     required SchoolClass schoolClass,
     required Course course,
   }) async {
-    var result = await Get.dialog(
+    var dialogResult = await Get.dialog(
       ClassroomAndExamSelectionDialog(
         schoolClass: schoolClass,
         course: course,
       ),
     );
-    if (result is Bindings) {
-      Get.to(
+    if (dialogResult is Bindings) {
+      var result = await Get.to(
         () => const FillStudentsMarksPage(),
-        binding: result,
+        binding: dialogResult,
       );
+      if (result == true) {
+        SnackBarService.showSuccessSnackBar(
+          title: 'تمت العملية بنجاح',
+          message:
+              'تمت بنجاح عملية اضافة العلامات الى المقرر ${course.name} للصف ${schoolClass.name}!',
+        );
+      }
     }
   }
 

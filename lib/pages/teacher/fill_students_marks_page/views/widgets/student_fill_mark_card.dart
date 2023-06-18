@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/models/agendas/student.dart';
 
 import '../../../../../configs/fonts.dart';
-import '../../../../../models/agendas/student.dart';
 import '../../../../../tools/ui_tools/text_fields.dart';
 import '../../../../../tools/ui_tools/ui_tools.dart';
+import '../../models/student_exam_mark_editing_model.dart';
 
 class StudentFillMarkCard extends StatelessWidget {
   const StudentFillMarkCard({
     super.key,
-    required this.student,
+    required this.studentMark,
     required this.backgroundColor,
   });
-  final Student student;
+  final StudentExamMarkEditingModel studentMark;
   final Color backgroundColor;
   @override
   Widget build(BuildContext context) {
-    TextEditingController markController = TextEditingController();
+    final Student student = studentMark.studentExamMark.student;
     Rx<bool> isHovered = false.obs;
     return Container(
       height: 90.h,
@@ -40,7 +41,7 @@ class StudentFillMarkCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: 80.w,
+                    width: 100.w,
                     child: Text(
                       student.publicRecordId.toString(),
                       style: ProjectFonts.titleLarge().copyWith(
@@ -50,7 +51,7 @@ class StudentFillMarkCard extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      student.firstName,
+                      '${student.firstName} ${studentMark.studentExamMark.father.firstName} ${studentMark.studentExamMark.father.lastName}',
                       style: ProjectFonts.titleLarge().copyWith(
                         fontWeight: FontWeight.normal,
                         color: Get.theme.colorScheme.onSurfaceVariant,
@@ -84,9 +85,13 @@ class StudentFillMarkCard extends StatelessWidget {
                     child: Row(
                       children: [
                         Expanded(
-                          child: HintedTextField(inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
-                          ], hintText: "العلامة", controller: markController),
+                          child: HintedTextField(
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
+                            hintText: "العلامة",
+                            controller: studentMark.editingController,
+                          ),
                         ),
                       ],
                     ),

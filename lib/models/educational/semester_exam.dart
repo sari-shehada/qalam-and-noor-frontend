@@ -4,30 +4,30 @@ import 'dart:convert';
 class SemesterExam {
   int id;
   int examId;
-  double obtainedGrade;
+  num obtainedGrade;
   int courseId;
-  int semesterYearRecordId;
+  int semesterYearecordId;
   SemesterExam({
     required this.id,
     required this.examId,
     required this.obtainedGrade,
     required this.courseId,
-    required this.semesterYearRecordId,
+    required this.semesterYearecordId,
   });
 
   SemesterExam copyWith({
     int? id,
     int? examId,
-    double? obtainedGrade,
+    num? obtainedGrade,
     int? courseId,
-    int? semesterYearRecordId,
+    int? semesterYearecordId,
   }) {
     return SemesterExam(
       id: id ?? this.id,
       examId: examId ?? this.examId,
       obtainedGrade: obtainedGrade ?? this.obtainedGrade,
       courseId: courseId ?? this.courseId,
-      semesterYearRecordId: semesterYearRecordId ?? this.semesterYearRecordId,
+      semesterYearecordId: semesterYearecordId ?? this.semesterYearecordId,
     );
   }
 
@@ -37,7 +37,7 @@ class SemesterExam {
       'examId': examId,
       'obtainedGrade': obtainedGrade,
       'courseId': courseId,
-      'semesterYearRecordId': semesterYearRecordId,
+      'semesterYearecordId': semesterYearecordId,
     };
   }
 
@@ -45,9 +45,9 @@ class SemesterExam {
     return SemesterExam(
       id: map['id'] as int,
       examId: map['examId'] as int,
-      obtainedGrade: map['obtainedGrade'] as double,
+      obtainedGrade: map['obtainedGrade'] as num,
       courseId: map['courseId'] as int,
-      semesterYearRecordId: map['semesterYearRecordId'] as int,
+      semesterYearecordId: map['semesterYearecordId'] as int,
     );
   }
 
@@ -58,7 +58,7 @@ class SemesterExam {
 
   @override
   String toString() {
-    return 'SemesterExam(id: $id, examId: $examId, obtainedGrade: $obtainedGrade, courseId: $courseId, semesterYearRecordId: $semesterYearRecordId)';
+    return 'SemesterExam(id: $id, examId: $examId, obtainedGrade: $obtainedGrade, courseId: $courseId, semesterYearecordId: $semesterYearecordId)';
   }
 
   @override
@@ -69,7 +69,7 @@ class SemesterExam {
         other.examId == examId &&
         other.obtainedGrade == obtainedGrade &&
         other.courseId == courseId &&
-        other.semesterYearRecordId == semesterYearRecordId;
+        other.semesterYearecordId == semesterYearecordId;
   }
 
   @override
@@ -78,6 +78,6 @@ class SemesterExam {
         examId.hashCode ^
         obtainedGrade.hashCode ^
         courseId.hashCode ^
-        semesterYearRecordId.hashCode;
+        semesterYearecordId.hashCode;
   }
 }

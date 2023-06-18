@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:kalam_noor/pages/teacher/fill_students_marks_page/models/student_exam_mark.dart';
+import 'package:kalam_noor/pages/teacher/fill_students_marks_page/models/student_exam_mark_insertion.dart';
+
 import '../../../pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/shared/models/old_students_enrollment_dto.dart';
 import '../../../pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/sub_pages/new_students_selection/models/new_student_enrollment_model.dart';
 import '../../../pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/sub_pages/new_students_selection/models/new_students_enrollment_dto.dart';
@@ -84,6 +87,27 @@ class StudentsDBHelper implements CRUDInterface<Student> {
       },
     );
     return failingStudents;
+  }
+
+  Future<List<StudentExamMark>> getStudentsExamMarks({
+    required int examId,
+    required int courseId,
+    required int clasRoomId,
+  }) async {
+    String url =
+        '${_controllerName}GetStudentExamMarks?examId=$examId&courseId=$courseId&clasRoomId=$clasRoomId';
+    List<StudentExamMark> studentsMarks =
+        await HttpService.getParsed<List<StudentExamMark>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return StudentExamMark.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return studentsMarks;
   }
 
   Future<List<NewStudentEnrollmentModel>> getAllNewStudentsByClassId(
@@ -250,6 +274,18 @@ class StudentsDBHelper implements CRUDInterface<Student> {
     String url = '${_controllerName}RegistrationNewStudentInSchoolYear';
     String result =
         await HttpService.rawPost(url: url, serializedBody: dto.toJson());
+    ItemOr<String> parsedResponse = ItemOr.fromMap(jsonDecode(
+      result,
+    ) as Map<String, dynamic>);
+    return parsedResponse;
+  }
+
+  Future<ItemOr<String>> addNewMarksToStudentExams({
+    required StudentExamMarkInsertion studentExamMarkInsertion,
+  }) async {
+    String url = '${_controllerName}InsertStudentsMark';
+    String result = await HttpService.rawPost(
+        url: url, serializedBody: studentExamMarkInsertion.toJson());
     ItemOr<String> parsedResponse = ItemOr.fromMap(jsonDecode(
       result,
     ) as Map<String, dynamic>);
