@@ -159,6 +159,24 @@ class StudentsDBHelper implements CRUDInterface<Student> {
     return result == 1;
   }
 
+  Future<List<Student>> getActiveStudentsInSchoolYearByClassroomId(
+      int id) async {
+    String url =
+        '${_controllerName}getActiveStudentsInSchoolYearByClassroomId?clasRoomId=$id';
+    List<Student> allStudents =
+        await HttpService.getParsed<List<Student>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return Student.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allStudents;
+  }
+
   Future<bool> registerStudent(
       StudentRegistrationModel registrationModel) async {
     String url = '${_controllerName}RegisterStudent';
