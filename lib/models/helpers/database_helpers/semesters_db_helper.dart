@@ -1,5 +1,6 @@
 import 'package:kalam_noor/models/educational/semester.dart';
 
+import '../../../pages/secretary/school_year_management/current_school_year_management_page/end_current_seemster_dialog/models/end_semester_request_result_model.dart';
 import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 
@@ -35,6 +36,18 @@ class SemestersDBHelper implements CRUDInterface<Semester> {
       },
     );
     return schoolYear;
+  }
+
+  Future<EndSemesterRequestResultModel> finishCurrentSemester() async {
+    String url = '${_controllerName}FinishedCurrentSemester';
+    EndSemesterRequestResultModel semester = await HttpService.getParsed<
+        EndSemesterRequestResultModel, Map<String, dynamic>>(
+      url: url,
+      dataMapper: (responseData) {
+        return EndSemesterRequestResultModel.fromMap(responseData);
+      },
+    );
+    return semester;
   }
 
   @override
