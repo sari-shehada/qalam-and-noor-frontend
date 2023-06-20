@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:kalam_noor/pages/teacher/fill_students_marks_page/models/student_exam_mark.dart';
 import 'package:kalam_noor/pages/teacher/fill_students_marks_page/models/student_exam_mark_insertion.dart';
 
@@ -7,6 +6,7 @@ import '../../../pages/secretary/school_year_management/current_school_year_mana
 import '../../../pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/sub_pages/new_students_selection/models/new_student_enrollment_model.dart';
 import '../../../pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/sub_pages/new_students_selection/models/new_students_enrollment_dto.dart';
 import '../../../pages/secretary/students_management_page/student_profile/models/student_profile_model.dart';
+import '../../../pages/secretary/students_management_page/student_score_page/models/student_scores.dart';
 import '../../agendas/student.dart';
 import '../../../pages/secretary/students_management_page/new_student_registration/personal_information/models/student_registration_info.dart';
 import '../../../tools/logic_tools/crud_interface.dart';
@@ -314,5 +314,28 @@ class StudentsDBHelper implements CRUDInterface<Student> {
       },
     );
     return student;
+  }
+
+  Future<List<StudentScores>> getStudentScores({
+    required int studentId,
+    required int schoolYearId,
+    required int semesterId,
+  }) async {
+    String url =
+        '${_controllerName}GetStudentScoresBySchoolYearIdAndSemesterIdAndStudentId?semesterId=$semesterId&schoolYearId=$schoolYearId&studentId=$studentId';
+
+    List<StudentScores> semesters =
+        await HttpService.getParsed<List<StudentScores>, List>(
+      url: url,
+      dataMapper: (responseData) {
+        return responseData
+            .map(
+              (e) => StudentScores.fromMap(e as Map<String, dynamic>),
+            )
+            .toList();
+      },
+    );
+
+    return semesters;
   }
 }

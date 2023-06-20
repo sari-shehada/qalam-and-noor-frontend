@@ -8,6 +8,8 @@ import 'package:kalam_noor/pages/secretary/students_management_page/student_prof
 import 'package:kalam_noor/pages/secretary/students_management_page/student_profile/views/widgets/counters/psychological_statuses_counter.dart';
 import 'package:kalam_noor/pages/secretary/students_management_page/student_profile/views/widgets/counters/vaccines_counter.dart';
 import 'package:kalam_noor/pages/secretary/students_management_page/student_profile/views/widgets/student_medical_information.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/student_score_page/controllers/student_score_controller.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/student_score_page/views/student_score_page.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 import '../../../../../configs/fonts.dart';
 import '../../../../../models/helpers/database_helpers/students_db_helper.dart';
@@ -498,12 +500,32 @@ class StudentProfile extends GetView<StudentProfileController> {
                             return ListView.separated(
                               itemCount: controller.studentYearRecords.length,
                               itemBuilder: (context, index) {
-                                return Text(
-                                  controller
-                                          .studentYearRecords[index].isFinished
-                                      ? "منتهي"
-                                      : "غير منتهي",
-                                  style: ProjectFonts.bodySmall(),
+                                return InkWell(
+                                  onTap: () {
+                                    Get.to(
+                                      () => const StudentScorePage(),
+                                      binding: BindingsBuilder(
+                                        () {
+                                          Get.put(StudentScoreController(
+                                            student: controller.student.value,
+                                            schoolYear: controller
+                                                .studentYearRecords[index],
+                                          ));
+                                        },
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    height: 200,
+                                    color: Colors.red,
+                                    child: Text(
+                                      controller.studentYearRecords[index]
+                                              .isFinished
+                                          ? "منتهي"
+                                          : "غير منتهي",
+                                      style: ProjectFonts.bodySmall(),
+                                    ),
+                                  ),
                                 );
                               },
                               separatorBuilder: (context, index) {
