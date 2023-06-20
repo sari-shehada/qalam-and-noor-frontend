@@ -40,7 +40,7 @@ class SemestersDBHelper implements CRUDInterface<Semester> {
 
   Future<List<Semester>> getSemestersInSchoolYear(int schoolYearId) async {
     String url =
-        '${_controllerName}GetSemestersBySchoolYearId?GetSemestersBySchoolYearId=$schoolYearId';
+        '${_controllerName}GetSemestersBySchoolYearId?schoolYearId=$schoolYearId';
     List<Semester> semesters =
         await HttpService.getParsed<List<Semester>, List>(
       url: url,
