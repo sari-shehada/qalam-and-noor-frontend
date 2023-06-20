@@ -1,5 +1,5 @@
+import '../../../pages/secretary/students_management_page/student_profile/models/student_illness_info.dart';
 import '../../medical/illness.dart';
-import '../../medical/student_illness_info.dart';
 import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
 

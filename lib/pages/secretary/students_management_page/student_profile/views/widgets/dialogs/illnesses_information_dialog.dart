@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../../../models/medical/student_illness_info.dart';
 import '../../../../../../../configs/fonts.dart';
 import '../../../../../../../tools/ui_tools/ui_tools.dart';
+import '../../../models/student_illness_info.dart';
 
 class IllnessesInfoDialog extends StatelessWidget {
   const IllnessesInfoDialog({super.key, required this.list});

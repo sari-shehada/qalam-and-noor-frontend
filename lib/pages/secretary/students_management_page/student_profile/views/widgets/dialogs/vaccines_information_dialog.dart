@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../../../models/medical/student_vaccines_info.dart';
 import '../../../../../../../tools/logic_tools/datetime_helper.dart';
 
 import '../../../../../../../configs/fonts.dart';
 import '../../../../../../../tools/ui_tools/ui_tools.dart';
+import '../../../models/student_vaccines_info.dart';
 
 class VaccinesInfoDialog extends StatelessWidget {
   const VaccinesInfoDialog({super.key, required this.list});

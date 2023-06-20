@@ -1,4 +1,4 @@
-import '../../medical/student_vaccines_info.dart';
+import '../../../pages/secretary/students_management_page/student_profile/models/student_vaccines_info.dart';
 import '../../medical/vaccine.dart';
 import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';

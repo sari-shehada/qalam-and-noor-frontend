@@ -15,14 +15,14 @@ import '../../../../../models/helpers/database_helpers/medical_records_db_helper
 import '../../../../../models/helpers/database_helpers/mother_db_helper.dart';
 import '../../../../../models/helpers/database_helpers/vaccines_db_helper.dart';
 import '../../../../../models/medical/medical_record.dart';
-import '../../../../../models/medical/student_illness_info.dart';
-import '../../../../../models/medical/student_vaccines_info.dart';
 import '../../new_student_registration/address_information/models/student_address_info.dart';
 import '../../../../../models/address/address.dart';
 import '../../../../../models/agendas/father.dart';
 import '../../../../../models/helpers/database_helpers/addresses_db_helper.dart';
 import '../../../../../models/helpers/database_helpers/student_psychological_statuses_db_helper.dart';
 import '../../../../../models/medical/student_psychological_status.dart';
+import '../models/student_illness_info.dart';
+import '../models/student_vaccines_info.dart';
 
 // class StudentProfileController extends GetxController {
 //   StudentProfileController({

@@ -6,6 +6,7 @@ import 'package:kalam_noor/pages/teacher/fill_students_marks_page/models/student
 import '../../../pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/shared/models/old_students_enrollment_dto.dart';
 import '../../../pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/sub_pages/new_students_selection/models/new_student_enrollment_model.dart';
 import '../../../pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/sub_pages/new_students_selection/models/new_students_enrollment_dto.dart';
+import '../../../pages/secretary/students_management_page/student_profile/models/student_profile_model.dart';
 import '../../agendas/student.dart';
 import '../../../pages/secretary/students_management_page/new_student_registration/personal_information/models/student_registration_info.dart';
 import '../../../tools/logic_tools/crud_interface.dart';
@@ -301,5 +302,17 @@ class StudentsDBHelper implements CRUDInterface<Student> {
       result,
     ) as Map<String, dynamic>);
     return parsedResponse;
+  }
+
+  Future<StudentProfileInfo?> getStudentProfile(int id) async {
+    String url = '${_controllerName}GetStudentProfileByStudentId?studentId=$id';
+    StudentProfileInfo? student =
+        await HttpService.getParsed<StudentProfileInfo?, Map<String, dynamic>>(
+      url: url,
+      dataMapper: (responseData) {
+        return StudentProfileInfo.fromMap(responseData);
+      },
+    );
+    return student;
   }
 }

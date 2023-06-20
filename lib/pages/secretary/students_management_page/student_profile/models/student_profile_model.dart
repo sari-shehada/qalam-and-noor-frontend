@@ -13,11 +13,11 @@ import 'package:kalam_noor/models/agendas/student.dart';
 import 'package:kalam_noor/models/educational/classroom.dart';
 import 'package:kalam_noor/models/educational/school_class.dart';
 import 'package:kalam_noor/models/educational/school_year.dart';
-import 'package:kalam_noor/models/medical/student_vaccines_info.dart';
 import 'package:kalam_noor/models/previous_schools/previous_schools.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/student_profile/models/student_illness_info.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/student_profile/models/student_vaccines_info.dart';
 
-import '../../../../../models/medical/student_illness_info.dart';
-import '../../../../../models/medical/student_psychological_status_info.dart';
+import 'student_psychological_status_info.dart';
 
 class StudentProfileInfo {
   final Student student;
