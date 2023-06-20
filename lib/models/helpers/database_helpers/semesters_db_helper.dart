@@ -28,14 +28,31 @@ class SemestersDBHelper implements CRUDInterface<Semester> {
   @override
   Future<Semester> getById(int id) async {
     String url = '${_controllerName}GetSemesterById?id=$id';
-    Semester schoolYear =
+    Semester semester =
         await HttpService.getParsed<Semester, Map<String, dynamic>>(
       url: url,
       dataMapper: (responseData) {
         return Semester.fromMap(responseData);
       },
     );
-    return schoolYear;
+    return semester;
+  }
+
+  Future<List<Semester>> getSemestersInSchoolYear(int schoolYearId) async {
+    String url =
+        '${_controllerName}GetSemestersBySchoolYearId?GetSemestersBySchoolYearId=$schoolYearId';
+    List<Semester> semesters =
+        await HttpService.getParsed<List<Semester>, List>(
+      url: url,
+      dataMapper: (responseData) {
+        return responseData
+            .map(
+              (e) => Semester.fromMap(e as Map<String, dynamic>),
+            )
+            .toList();
+      },
+    );
+    return semesters;
   }
 
   Future<EndSemesterRequestResultModel> finishCurrentSemester() async {
