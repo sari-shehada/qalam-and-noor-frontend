@@ -19,7 +19,7 @@ class IllnessesCounter extends GetView<StudentProfileController> {
       }
       return InkWell(
         onTap: () async {
-          if (controller.studentIllnessInfo.isEmpty) {
+          if (controller.studentIllnessesInfo.isEmpty) {
             SnackBarService.showNeutralSnackBar(
                 title: 'لا يعاني الطالب من امراض',
                 message: 'الطالب في حالة صحية تامة');
@@ -27,7 +27,7 @@ class IllnessesCounter extends GetView<StudentProfileController> {
           }
           await Get.dialog(
             IllnessesInfoDialog(
-              list: controller.studentIllnessInfo,
+              list: controller.studentIllnessesInfo,
             ),
           );
         },
@@ -56,7 +56,7 @@ class IllnessesCounter extends GetView<StudentProfileController> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  controller.studentIllnessInfo.length.toString(),
+                  controller.studentIllnessesInfo.length.toString(),
                   style: ProjectFonts.headlineSmall().copyWith(
                     fontSize: 40.sp,
                     color: colorOfChoice,

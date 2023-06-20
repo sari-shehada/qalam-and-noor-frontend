@@ -15,14 +15,14 @@ class VaccinesCounter extends GetView<StudentProfileController> {
     final Color colorOfChoice = Theme.of(context).colorScheme.primary;
     return InkWell(
       onTap: () async {
-        if (controller.studentVaccineInfo.isEmpty) {
+        if (controller.studentVaccinesInfo.isEmpty) {
           SnackBarService.showNeutralSnackBar(
               title: 'الطالب لم يأخذ آي لقاح بعد',
               message: 'على الطالب أخذ اللقاحات المطلوبة');
           return;
         }
         await Get.dialog(VaccinesInfoDialog(
-          list: controller.studentVaccineInfo,
+          list: controller.studentVaccinesInfo,
         ));
       },
       child: SizedBox(
@@ -50,7 +50,7 @@ class VaccinesCounter extends GetView<StudentProfileController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                controller.studentVaccineInfo.length.toString(),
+                controller.studentVaccinesInfo.length.toString(),
                 style: ProjectFonts.headlineSmall().copyWith(
                   fontSize: 40.sp,
                   color: colorOfChoice,

@@ -15,7 +15,7 @@ class PsychologicalStatusesCounter extends GetView<StudentProfileController> {
 
     return InkWell(
       onTap: () async {
-        if (controller.studentPsychologicalStatus.isEmpty) {
+        if (controller.studentPsychologicalStatuses.isEmpty) {
           SnackBarService.showNeutralSnackBar(
               title: "الطالب ليس لديه حالات اجتماعية",
               message: "المرشد النفسي لم يفحص الطالب بعد");
@@ -23,7 +23,7 @@ class PsychologicalStatusesCounter extends GetView<StudentProfileController> {
         }
         await Get.dialog(
           PsychologicalInfoDialog(
-            list: controller.studentPsychologicalStatus,
+            list: controller.studentPsychologicalStatuses,
           ),
         );
       },
@@ -52,7 +52,7 @@ class PsychologicalStatusesCounter extends GetView<StudentProfileController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                controller.studentPsychologicalStatus.length.toString(),
+                controller.studentPsychologicalStatuses.length.toString(),
                 style: ProjectFonts.headlineSmall().copyWith(
                   fontSize: 40.sp,
                   color: colorOfChoice,

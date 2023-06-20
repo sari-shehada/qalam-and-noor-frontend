@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -14,7 +13,6 @@ import '../../../../../configs/fonts.dart';
 import '../../../../../models/helpers/database_helpers/students_db_helper.dart';
 import '../../../../shared/account_settings_page/views/widgets/profile_info_widget.dart';
 import '../controllers/student_profile_controller.dart';
-
 import 'widgets/student_address_information.dart';
 import 'widgets/student_info_tab.dart';
 import 'widgets/student_main_information.dart';
@@ -420,7 +418,7 @@ class StudentProfile extends GetView<StudentProfileController> {
                         padding: EdgeInsets.all(10.w),
                         child: Center(
                           child: Text(
-                            "السجلات السنوية",
+                            "السجل السنوي الحالي",
                             style: ProjectFonts.headlineSmall().copyWith(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
@@ -429,9 +427,41 @@ class StudentProfile extends GetView<StudentProfileController> {
                         ),
                       ),
                       Expanded(
-                        child: Container(
-                          color: Colors.brown,
-                        ),
+                        child: controller.currentClassInfo == null
+                            ? Column(
+                                children: [
+                                  AddVerticalSpacing(value: 20.h),
+                                  Text(
+                                    "الطالب غير مسجل في سنة دراسية حاليا",
+                                    style: ProjectFonts.headlineMedium(),
+                                  ),
+                                  AddVerticalSpacing(value: 50.h),
+                                  FaIcon(
+                                    FontAwesomeIcons.school,
+                                    color: colorScheme.primary,
+                                    size: 50.sp,
+                                  ),
+                                ],
+                              )
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  IconLabelItem(
+                                    iconData: Icons.class_,
+                                    label:
+                                        "الصف: ${controller.currentClassInfo!.schoolClass.name}",
+                                    toolTip: "الصف حالي للطالب",
+                                  ),
+                                  IconLabelItem(
+                                    iconData: Icons.school,
+                                    label:
+                                        "الشعبة: ${controller.currentClassInfo!.classroom.name}",
+                                    toolTip: "الشعبة الحالية للطالب",
+                                  ),
+                                ],
+                              ),
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -458,8 +488,8 @@ class StudentProfile extends GetView<StudentProfileController> {
                         child: Builder(
                           builder: (context) {
                             if (controller.studentYearRecords.isEmpty) {
-                              return Column(
-                                children: const [
+                              return const Column(
+                                children: [
                                   Icon(Icons.text_snippet),
                                   Text('السجلات السنوية'),
                                 ],
@@ -468,9 +498,13 @@ class StudentProfile extends GetView<StudentProfileController> {
                             return ListView.separated(
                               itemCount: controller.studentYearRecords.length,
                               itemBuilder: (context, index) {
-                                return Text(controller
-                                    .studentYearRecords[index].yearRecord.status
-                                    .toString());
+                                return Text(
+                                  controller
+                                          .studentYearRecords[index].isFinished
+                                      ? "منتهي"
+                                      : "غير منتهي",
+                                  style: ProjectFonts.bodySmall(),
+                                );
                               },
                               separatorBuilder: (context, index) {
                                 return SizedBox(
@@ -684,39 +718,11 @@ class _StudentProfileLoadingWidget extends StatelessWidget {
           const LoaderWidget(),
           AddVerticalSpacing(value: 40.h),
           Text(
-            'جاري تحميل الصفحة الشخصية للطالب "${controller.student.value.firstName}"',
+            controller.student.value.isMale
+                ? 'جاري تحميل الصفحة الشخصية للطالب "${controller.student.value.firstName}"'
+                : 'جاري تحميل الصفحة الشخصية للطالبة "${controller.student.value.firstName}"',
             style: ProjectFonts.titleLarge(),
           ),
-          AddVerticalSpacing(value: 40.h),
-          Obx(
-            () {
-              return Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    height: 40,
-                    width: 300,
-                    clipBehavior: Clip.hardEdge,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(20.r),
-                      ),
-                    ),
-                    child: LinearProgressIndicator(
-                      value: controller.loaderPercentage / 10,
-                      backgroundColor: Colors.grey,
-                    ),
-                  ),
-                  Text(
-                    'الخطوة ${controller.loaderPercentage} من 10',
-                    style: ProjectFonts.bodyLarge().copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              );
-            },
-          )
         ],
       ),
     );

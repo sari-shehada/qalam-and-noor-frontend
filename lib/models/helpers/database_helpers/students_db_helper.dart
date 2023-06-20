@@ -304,10 +304,10 @@ class StudentsDBHelper implements CRUDInterface<Student> {
     return parsedResponse;
   }
 
-  Future<StudentProfileInfo?> getStudentProfile(int id) async {
+  Future<StudentProfileInfo> getStudentProfile(int id) async {
     String url = '${_controllerName}GetStudentProfileByStudentId?studentId=$id';
     StudentProfileInfo? student =
-        await HttpService.getParsed<StudentProfileInfo?, Map<String, dynamic>>(
+        await HttpService.getParsed<StudentProfileInfo, Map<String, dynamic>>(
       url: url,
       dataMapper: (responseData) {
         return StudentProfileInfo.fromMap(responseData);

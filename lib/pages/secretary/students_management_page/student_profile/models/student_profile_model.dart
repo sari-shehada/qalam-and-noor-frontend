@@ -33,7 +33,7 @@ class StudentProfileInfo {
   final List<StudentVaccineInfo> vaccines;
   final List<PsychologicalStatusInfo> psychologicalStatuses;
   final SchoolClass? currentClass;
-  final Classroom? currentClassroom;
+  final Classroom? currentClaasRoom;
   final List<SchoolYear> studentSchoolYears;
   StudentProfileInfo({
     required this.student,
@@ -49,7 +49,7 @@ class StudentProfileInfo {
     required this.vaccines,
     required this.psychologicalStatuses,
     this.currentClass,
-    this.currentClassroom,
+    this.currentClaasRoom,
     required this.studentSchoolYears,
   });
 
@@ -67,7 +67,7 @@ class StudentProfileInfo {
     List<StudentVaccineInfo>? vaccines,
     List<PsychologicalStatusInfo>? psychologicalStatuses,
     SchoolClass? currentClass,
-    Classroom? currentClassroom,
+    Classroom? currentClaasRoom,
     List<SchoolYear>? studentSchoolYears,
   }) {
     return StudentProfileInfo(
@@ -85,7 +85,7 @@ class StudentProfileInfo {
       psychologicalStatuses:
           psychologicalStatuses ?? this.psychologicalStatuses,
       currentClass: currentClass ?? this.currentClass,
-      currentClassroom: currentClassroom ?? this.currentClassroom,
+      currentClaasRoom: currentClaasRoom ?? this.currentClaasRoom,
       studentSchoolYears: studentSchoolYears ?? this.studentSchoolYears,
     );
   }
@@ -106,7 +106,7 @@ class StudentProfileInfo {
       'psychologicalStatuses':
           psychologicalStatuses.map((x) => x.toMap()).toList(),
       'currentClass': currentClass?.toMap(),
-      'currentClassroom': currentClassroom?.toMap(),
+      'currentClaasRoom': currentClaasRoom?.toMap(),
       'studentSchoolYears': studentSchoolYears.map((x) => x.toMap()).toList(),
     };
   }
@@ -151,8 +151,8 @@ class StudentProfileInfo {
       currentClass: map['currentClass'] != null
           ? SchoolClass.fromMap(map['currentClass'] as Map<String, dynamic>)
           : null,
-      currentClassroom: map['currentClassroom'] != null
-          ? Classroom.fromMap(map['currentClassroom'] as Map<String, dynamic>)
+      currentClaasRoom: map['currentClaasRoom'] != null
+          ? Classroom.fromMap(map['currentClaasRoom'] as Map<String, dynamic>)
           : null,
       studentSchoolYears: List<SchoolYear>.from(
         (map['studentSchoolYears'] as List).map<SchoolYear>(
@@ -169,7 +169,7 @@ class StudentProfileInfo {
 
   @override
   String toString() {
-    return 'StudentProfileInfo(student: $student, father: $father, mother: $mother, responsiblePerson: $responsiblePerson, sibling: $sibling, previousSchools: $previousSchools, address: $address, area: $area, city: $city, illnesses: $illnesses, vaccines: $vaccines, psychologicalStatuses: $psychologicalStatuses, currentClass: $currentClass, currentClassroom: $currentClassroom, studentSchoolYears: $studentSchoolYears)';
+    return 'StudentProfileInfo(student: $student, father: $father, mother: $mother, responsiblePerson: $responsiblePerson, sibling: $sibling, previousSchools: $previousSchools, address: $address, area: $area, city: $city, illnesses: $illnesses, vaccines: $vaccines, psychologicalStatuses: $psychologicalStatuses, currentClass: $currentClass, currentClassroom: $currentClaasRoom, studentSchoolYears: $studentSchoolYears)';
   }
 
   @override
@@ -189,7 +189,7 @@ class StudentProfileInfo {
         listEquals(other.vaccines, vaccines) &&
         listEquals(other.psychologicalStatuses, psychologicalStatuses) &&
         other.currentClass == currentClass &&
-        other.currentClassroom == currentClassroom &&
+        other.currentClaasRoom == currentClaasRoom &&
         listEquals(other.studentSchoolYears, studentSchoolYears);
   }
 
@@ -208,7 +208,7 @@ class StudentProfileInfo {
         vaccines.hashCode ^
         psychologicalStatuses.hashCode ^
         currentClass.hashCode ^
-        currentClassroom.hashCode ^
+        currentClaasRoom.hashCode ^
         studentSchoolYears.hashCode;
   }
 }
