@@ -85,8 +85,9 @@ class AddOrEditCourseDialogController extends GetxController {
     }
     if (courseTotalGradeController.text.isEmpty) {
       SnackBarService.showErrorSnackBar(
-          title: 'حقل العلامة الكاملة فارغ',
-          message: 'الرجاء ملء حقل العلامة الكاملة');
+        title: 'حقل الدرجة الكاملة فارغ',
+        message: 'الرجاء ملء حقل الدرجة الكاملة',
+      );
       return false;
     }
     if (selectedTeacher.value == null) {
@@ -95,7 +96,10 @@ class AddOrEditCourseDialogController extends GetxController {
           message: "الرجاء اختيار مدرس المقرر");
     }
     if (requiredGradeToPass.value == 0) {
-      //TODO:
+      SnackBarService.showErrorSnackBar(
+        title: "لم يتم تحديد الدرجة اللازمة للنجاح في المقرر",
+        message: "الرجاء تحديد الدرجة اللازمة للنجاح",
+      );
       return false;
     }
 

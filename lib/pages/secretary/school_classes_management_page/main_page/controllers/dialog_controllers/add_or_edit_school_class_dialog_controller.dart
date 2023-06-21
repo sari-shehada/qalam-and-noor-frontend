@@ -9,12 +9,16 @@ class AddOrEditSchoolClassDialogController extends GetxController {
   RxBool isEditMode = false.obs;
   SchoolClass? schoolClass;
   final TextEditingController schoolClassController = TextEditingController();
+  final TextEditingController yearDropCourseCountController =
+      TextEditingController();
   Rx<CustomButtonStatus> buttonStatus = (CustomButtonStatus.enabled).obs;
 
   AddOrEditSchoolClassDialogController({this.schoolClass}) {
     if (schoolClass != null) {
       isEditMode.value = true;
       schoolClassController.text = schoolClass!.name;
+      yearDropCourseCountController.text =
+          schoolClass!.yearDropCourseCount.toString();
     }
   }
 
@@ -23,6 +27,13 @@ class AddOrEditSchoolClassDialogController extends GetxController {
       SnackBarService.showErrorSnackBar(
           title: 'اسم مرحلة فارغ',
           message: 'الرجاء ملء حقل اسم المرحلة الدراسية');
+      return false;
+    }
+    if (yearDropCourseCountController.text.isEmpty) {
+      SnackBarService.showErrorSnackBar(
+          title:
+              "لم يتم تحديد عدد المقررات الراسبة اللازمة للرسوب في المرحلة الدراسية",
+          message: 'الرجاء ملء حقل عدد المقررات الراسبة اللازمة للرسوب');
       return false;
     }
     return true;
@@ -38,7 +49,7 @@ class AddOrEditSchoolClassDialogController extends GetxController {
       SchoolClass schoolClass = SchoolClass(
         id: -1,
         name: schoolClassController.text,
-        yearDropCourseCount: 2, //TODO:
+        yearDropCourseCount: int.parse(yearDropCourseCountController.text),
       );
       await SchoolClassesDBHelper.instance.insert(schoolClass);
       Get.back(result: true);
@@ -56,7 +67,7 @@ class AddOrEditSchoolClassDialogController extends GetxController {
       }
       schoolClass = schoolClass!.copyWith(
         name: schoolClassController.text,
-        yearDropCourseCount: 2, //TODO:
+        yearDropCourseCount: int.parse(yearDropCourseCountController.text),
       );
       await SchoolClassesDBHelper.instance.update(schoolClass!);
       Get.back(result: true);

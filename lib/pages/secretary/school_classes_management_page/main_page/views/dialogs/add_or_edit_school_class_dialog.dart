@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../../models/educational/school_class.dart';
@@ -48,7 +49,17 @@ class AddOrEditSchoolClassDialog extends StatelessWidget {
                   controller: controller.schoolClassController,
                 ),
               ),
-              AddVerticalSpacing(value: 30.h),
+              AddVerticalSpacing(value: 40.h),
+              LabeledWidget(
+                label:
+                    'عدد المقررات الراسبة اللازمة للرسوب في المرحلة الدراسية',
+                child: HintedTextField(
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  hintText: '',
+                  controller: controller.yearDropCourseCountController,
+                ),
+              ),
+              AddVerticalSpacing(value: 50.h),
               Row(
                 children: [
                   Expanded(
