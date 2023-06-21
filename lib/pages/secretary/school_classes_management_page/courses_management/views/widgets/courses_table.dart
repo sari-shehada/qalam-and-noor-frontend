@@ -47,7 +47,7 @@ class CoursesTable extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 3,
                   child: Container(
                     width: double.infinity,
                     padding:
@@ -65,7 +65,25 @@ class CoursesTable extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 3,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        left: BorderSide(color: colorScheme.primary),
+                      ),
+                    ),
+                    child: Text(
+                      'الدرجة المطلوبة للنجاح',
+                      style: textTheme.titleLarge,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
                   child: Container(
                     width: double.infinity,
                     padding:
@@ -83,7 +101,25 @@ class CoursesTable extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 3,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        left: BorderSide(color: colorScheme.primary),
+                      ),
+                    ),
+                    child: Text(
+                      'كفيل بترسيب الطالب؟',
+                      style: textTheme.titleLarge,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
                   child: Container(
                     width: double.infinity,
                     padding:

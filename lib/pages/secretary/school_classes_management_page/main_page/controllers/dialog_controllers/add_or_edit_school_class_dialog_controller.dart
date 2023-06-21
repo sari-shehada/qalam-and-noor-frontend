@@ -35,8 +35,11 @@ class AddOrEditSchoolClassDialogController extends GetxController {
         return;
       }
       //TODO:previous Class Id
-      SchoolClass schoolClass =
-          SchoolClass(id: -1, name: schoolClassController.text);
+      SchoolClass schoolClass = SchoolClass(
+        id: -1,
+        name: schoolClassController.text,
+        yearDropCourseCount: 2, //TODO:
+      );
       await SchoolClassesDBHelper.instance.insert(schoolClass);
       Get.back(result: true);
     } finally {
@@ -51,7 +54,10 @@ class AddOrEditSchoolClassDialogController extends GetxController {
       if (validateFields() == false) {
         return;
       }
-      schoolClass = schoolClass!.copyWith(name: schoolClassController.text);
+      schoolClass = schoolClass!.copyWith(
+        name: schoolClassController.text,
+        yearDropCourseCount: 2, //TODO:
+      );
       await SchoolClassesDBHelper.instance.update(schoolClass!);
       Get.back(result: true);
     } finally {

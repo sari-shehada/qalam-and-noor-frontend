@@ -8,6 +8,7 @@ class YearRecord {
   int classId;
   int? schoolYearClassroomId;
   int studentId;
+  int yearGrade;
   //enum
   StudentStatusEnum status;
   YearRecord({
@@ -15,6 +16,7 @@ class YearRecord {
     required this.classId,
     this.schoolYearClassroomId,
     required this.studentId,
+    required this.yearGrade,
     required this.status,
   });
 
@@ -23,6 +25,7 @@ class YearRecord {
     int? classId,
     int? schoolYearClassroomId,
     int? studentId,
+    int? yearGrade,
     StudentStatusEnum? status,
   }) {
     return YearRecord(
@@ -31,6 +34,7 @@ class YearRecord {
       schoolYearClassroomId:
           schoolYearClassroomId ?? this.schoolYearClassroomId,
       studentId: studentId ?? this.studentId,
+      yearGrade: yearGrade ?? this.yearGrade,
       status: status ?? this.status,
     );
   }
@@ -41,6 +45,7 @@ class YearRecord {
       'classId': classId,
       'schoolYearClassroomId': schoolYearClassroomId,
       'studentId': studentId,
+      'yearGrade': yearGrade,
       'status': status.index,
     };
   }
@@ -53,6 +58,7 @@ class YearRecord {
           ? map['schoolYearClassroomId'] as int
           : null,
       studentId: map['studentId'] as int,
+      yearGrade: map['yearGrade'] as int,
       status: StudentStatusEnum.values[map['status'] as int],
     );
   }
@@ -64,7 +70,7 @@ class YearRecord {
 
   @override
   String toString() {
-    return 'YearRecord(id: $id, classId: $classId, schoolYearClassroomId: $schoolYearClassroomId, studentId: $studentId, status: $status)';
+    return 'YearRecord(id: $id, classId: $classId, schoolYearClassroomId: $schoolYearClassroomId, studentId: $studentId, yearGrade: $yearGrade, status: $status)';
   }
 
   @override
@@ -75,6 +81,7 @@ class YearRecord {
         other.classId == classId &&
         other.schoolYearClassroomId == schoolYearClassroomId &&
         other.studentId == studentId &&
+        other.yearGrade == yearGrade &&
         other.status == status;
   }
 
@@ -84,6 +91,7 @@ class YearRecord {
         classId.hashCode ^
         schoolYearClassroomId.hashCode ^
         studentId.hashCode ^
+        yearGrade.hashCode ^
         status.hashCode;
   }
 }

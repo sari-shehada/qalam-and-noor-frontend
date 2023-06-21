@@ -8,6 +8,9 @@ class Course {
   String name;
   num totalGrade;
   bool isEnriching;
+  num requiredGradeToPass;
+  bool requiredToPass;
+
   Course({
     required this.id,
     required this.classId,
@@ -15,6 +18,8 @@ class Course {
     required this.name,
     required this.totalGrade,
     required this.isEnriching,
+    required this.requiredGradeToPass,
+    required this.requiredToPass,
   });
 
   Course copyWith({
@@ -24,6 +29,8 @@ class Course {
     String? name,
     num? totalGrade,
     bool? isEnriching,
+    num? requiredGradeToPass,
+    bool? requiredToPass,
   }) {
     return Course(
       id: id ?? this.id,
@@ -32,6 +39,8 @@ class Course {
       name: name ?? this.name,
       totalGrade: totalGrade ?? this.totalGrade,
       isEnriching: isEnriching ?? this.isEnriching,
+      requiredGradeToPass: requiredGradeToPass ?? this.requiredGradeToPass,
+      requiredToPass: requiredToPass ?? this.requiredToPass,
     );
   }
 
@@ -43,6 +52,8 @@ class Course {
       'name': name,
       'totalGrade': totalGrade,
       'isEnriching': isEnriching,
+      'requiredGradeToPass': requiredGradeToPass,
+      'requiredToPass': requiredToPass,
     };
   }
 
@@ -54,6 +65,8 @@ class Course {
       name: map['name'] as String,
       totalGrade: map['totalGrade'] as num,
       isEnriching: map['isEnriching'] as bool,
+      requiredGradeToPass: map['requiredGradeToPass'] as num,
+      requiredToPass: map['requiredToPass'] as bool,
     );
   }
 
@@ -64,7 +77,7 @@ class Course {
 
   @override
   String toString() {
-    return 'Course(id: $id, classId: $classId, teacherId: $teacherId, name: $name, totalGrade: $totalGrade, isEnriching: $isEnriching)';
+    return 'Course(id: $id, classId: $classId, teacherId: $teacherId, name: $name, totalGrade: $totalGrade, isEnriching: $isEnriching, requiredGradeToPass: $requiredGradeToPass, requiredToPass: $requiredToPass)';
   }
 
   @override
@@ -76,7 +89,9 @@ class Course {
         other.teacherId == teacherId &&
         other.name == name &&
         other.totalGrade == totalGrade &&
-        other.isEnriching == isEnriching;
+        other.isEnriching == isEnriching &&
+        other.requiredGradeToPass == requiredGradeToPass &&
+        other.requiredToPass == requiredToPass;
   }
 
   @override
@@ -86,6 +101,8 @@ class Course {
         teacherId.hashCode ^
         name.hashCode ^
         totalGrade.hashCode ^
-        isEnriching.hashCode;
+        isEnriching.hashCode ^
+        requiredGradeToPass.hashCode ^
+        requiredToPass.hashCode;
   }
 }

@@ -5,21 +5,25 @@ class SchoolClass {
   final int id;
   final String name;
   final int? previousClassId;
+  final int yearDropCourseCount;
   SchoolClass({
     required this.id,
     required this.name,
     this.previousClassId,
+    required this.yearDropCourseCount,
   });
 
   SchoolClass copyWith({
     int? id,
     String? name,
     int? previousClassId,
+    int? yearDropCourseCount,
   }) {
     return SchoolClass(
       id: id ?? this.id,
       name: name ?? this.name,
       previousClassId: previousClassId ?? this.previousClassId,
+      yearDropCourseCount: yearDropCourseCount ?? this.yearDropCourseCount,
     );
   }
 
@@ -28,6 +32,7 @@ class SchoolClass {
       'id': id,
       'name': name,
       'previousClassId': previousClassId,
+      'yearDropCourseCount': yearDropCourseCount,
     };
   }
 
@@ -37,6 +42,7 @@ class SchoolClass {
       name: map['name'] as String,
       previousClassId:
           map['previousClassId'] != null ? map['previousClassId'] as int : null,
+      yearDropCourseCount: map['yearDropCourseCount'] as int,
     );
   }
 
@@ -46,8 +52,9 @@ class SchoolClass {
       SchoolClass.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() =>
-      'Class(id: $id, name: $name, previousClassId: $previousClassId)';
+  String toString() {
+    return 'SchoolClass(id: $id, name: $name, previousClassId: $previousClassId, yearDropCourseCount: $yearDropCourseCount)';
+  }
 
   @override
   bool operator ==(covariant SchoolClass other) {
@@ -55,9 +62,15 @@ class SchoolClass {
 
     return other.id == id &&
         other.name == name &&
-        other.previousClassId == previousClassId;
+        other.previousClassId == previousClassId &&
+        other.yearDropCourseCount == yearDropCourseCount;
   }
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ previousClassId.hashCode;
+  int get hashCode {
+    return id.hashCode ^
+        name.hashCode ^
+        previousClassId.hashCode ^
+        yearDropCourseCount.hashCode;
+  }
 }

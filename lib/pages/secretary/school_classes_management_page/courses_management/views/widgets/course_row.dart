@@ -38,7 +38,7 @@ class CourseRow extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 1,
+                flex: 3,
                 child: Container(
                   height: double.infinity,
                   width: double.infinity,
@@ -54,7 +54,23 @@ class CourseRow extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 1,
+                flex: 3,
+                child: Container(
+                  height: double.infinity,
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
+                  child: Text(
+                    course.requiredGradeToPass.toString(),
+                    style: textTheme.titleLarge!.copyWith(
+                        color: Get.theme.colorScheme.onSurface,
+                        fontWeight: FontWeight.normal),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
                 child: Container(
                   height: double.infinity,
                   width: double.infinity,
@@ -69,7 +85,25 @@ class CourseRow extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 1,
+                flex: 3,
+                child: Container(
+                  height: double.infinity,
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
+                  child: Text(
+                    course.requiredToPass ? 'نعم' : 'لا',
+                    style: textTheme.titleLarge!.copyWith(
+                        color: course.requiredToPass
+                            ? Get.theme.colorScheme.error
+                            : null,
+                        fontWeight: FontWeight.normal),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
                 child: Container(
                   height: double.infinity,
                   width: double.infinity,

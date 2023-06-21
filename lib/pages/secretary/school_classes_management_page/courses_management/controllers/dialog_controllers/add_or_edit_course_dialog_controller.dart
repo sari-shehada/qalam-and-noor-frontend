@@ -17,8 +17,11 @@ class AddOrEditCourseDialogController extends GetxController {
   late final int classId;
 
   RxBool isEnriching = true.obs;
+  RxBool requiredToPass = false.obs;
   late Course course;
   RxBool isProcessing = true.obs;
+  RxInt requiredGradeToPassMaxValue = 0.obs;
+  RxInt requiredGradeToPass = 0.obs;
   Rx<Employee?> selectedTeacher = Rx<Employee?>(null);
 
   AddOrEditCourseDialogController({
@@ -29,6 +32,9 @@ class AddOrEditCourseDialogController extends GetxController {
       isEditMode.value = true;
       courseNameController.text = course.name;
       isEnriching.value = argument.isEnriching;
+      requiredGradeToPass.value = argument.requiredGradeToPass.toInt();
+      requiredToPass.value = argument.requiredToPass;
+      requiredGradeToPassMaxValue.value = argument.totalGrade.toInt();
       courseTotalGradeController.text = course.totalGrade.toString();
     } else if (argument is int) {
       classId = argument;
@@ -37,6 +43,15 @@ class AddOrEditCourseDialogController extends GetxController {
 
   @override
   void onInit() {
+    courseTotalGradeController.addListener(
+      () {
+        int tempCourseTotalGrade = int.parse(courseTotalGradeController.text);
+        if (tempCourseTotalGrade < requiredGradeToPass.value) {
+          requiredGradeToPass.value = 0;
+        }
+        requiredGradeToPassMaxValue.value = tempCourseTotalGrade;
+      },
+    );
     super.onInit();
     getTeachers();
   }
@@ -67,16 +82,23 @@ class AddOrEditCourseDialogController extends GetxController {
       SnackBarService.showErrorSnackBar(
           title: 'اسم مقرر فارغ', message: 'الرجاء ملء حقل اسم المقرر');
       return false;
-    } else if (courseTotalGradeController.text.isEmpty) {
+    }
+    if (courseTotalGradeController.text.isEmpty) {
       SnackBarService.showErrorSnackBar(
           title: 'حقل العلامة الكاملة فارغ',
           message: 'الرجاء ملء حقل العلامة الكاملة');
       return false;
-    } else if (selectedTeacher.value == null) {
+    }
+    if (selectedTeacher.value == null) {
       SnackBarService.showErrorSnackBar(
           title: "لم يتم اختيار مدرس المقرر",
           message: "الرجاء اختيار مدرس المقرر");
     }
+    if (requiredGradeToPass.value == 0) {
+      //TODO:
+      return false;
+    }
+
     return true;
   }
 
@@ -88,12 +110,15 @@ class AddOrEditCourseDialogController extends GetxController {
       }
 
       Course course = Course(
-          id: -1,
-          classId: classId,
-          teacherId: selectedTeacher.value!.id,
-          name: courseNameController.text,
-          totalGrade: double.parse(courseTotalGradeController.text),
-          isEnriching: isEnriching.value);
+        id: -1,
+        classId: classId,
+        teacherId: selectedTeacher.value!.id,
+        name: courseNameController.text,
+        totalGrade: double.parse(courseTotalGradeController.text),
+        isEnriching: isEnriching.value,
+        requiredGradeToPass: requiredGradeToPass.value,
+        requiredToPass: requiredToPass.value,
+      );
       await CoursesDBHelper.instance.insert(course);
       Get.back(result: true);
     } finally {
@@ -105,10 +130,14 @@ class AddOrEditCourseDialogController extends GetxController {
     isEnriching.value = !isEnriching.value;
   }
 
+  void toggleRequiredToPass() {
+    requiredToPass.value = !requiredToPass.value;
+  }
+
   Future<void> updateCourseInfo() async {
     try {
       buttonStatus.value = CustomButtonStatus.processing;
-      if (validateFields() == false) {
+      if (!validateFields()) {
         return;
       }
       Course newCourse = Course(
@@ -118,6 +147,8 @@ class AddOrEditCourseDialogController extends GetxController {
         name: courseNameController.text,
         totalGrade: double.parse(courseTotalGradeController.text),
         isEnriching: isEnriching.value,
+        requiredGradeToPass: requiredGradeToPass.value,
+        requiredToPass: requiredToPass.value,
       );
       if (course == newCourse) {
         Get.back(result: false);
@@ -127,13 +158,7 @@ class AddOrEditCourseDialogController extends GetxController {
         );
         return;
       }
-      course = course.copyWith(
-        name: courseNameController.text,
-        totalGrade: double.parse(courseTotalGradeController.text),
-        teacherId: selectedTeacher.value?.id,
-        isEnriching: isEnriching.value,
-      );
-      await CoursesDBHelper.instance.update(course);
+      await CoursesDBHelper.instance.update(newCourse);
       Get.back(result: true);
     } finally {
       buttonStatus.value = CustomButtonStatus.enabled;
