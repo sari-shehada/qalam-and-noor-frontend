@@ -41,15 +41,19 @@ class PsychologicalInfoDialog extends StatelessWidget {
                   itemCount: list.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      width: 300.w,
-                      height: 105.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.sp),
-                        border:
-                            Border.all(color: colorScheme.primary, width: 2.w),
-                      ),
+                      padding: EdgeInsets.only(bottom: 10.h),
                       margin: EdgeInsets.only(bottom: 15.h),
-                      padding: EdgeInsets.all(5.w),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.r),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0, 20.h),
+                            blurRadius: 12,
+                            color: colorScheme.primary.withOpacity(.09),
+                          )
+                        ],
+                      ),
                       child: Column(
                         children: [
                           Text(

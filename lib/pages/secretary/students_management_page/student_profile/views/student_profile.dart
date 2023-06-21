@@ -516,14 +516,45 @@ class StudentProfile extends GetView<StudentProfileController> {
                                     );
                                   },
                                   child: Container(
-                                    height: 200,
-                                    color: Colors.red,
-                                    child: Text(
-                                      controller.studentYearRecords[index]
+                                    margin: EdgeInsets.symmetric(
+                                      vertical: 15.h,
+                                      horizontal: 60.w,
+                                    ),
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 10.w,
+                                    ),
+                                    height: 60.h,
+                                    clipBehavior: Clip.hardEdge,
+                                    decoration: BoxDecoration(
+                                      color: controller
+                                              .studentYearRecords[index]
                                               .isFinished
-                                          ? "منتهي"
-                                          : "غير منتهي",
-                                      style: ProjectFonts.bodySmall(),
+                                          ? colorScheme.background
+                                          : colorScheme.primary,
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(
+                                            GlobalStyles.globalBorderRadius),
+                                      ),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text(
+                                          "السنة الدراسية: ${controller.studentYearRecords[index].name}",
+                                          style: ProjectFonts.headlineSmall()
+                                              .copyWith(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        FaIcon(
+                                          controller.studentYearRecords[index]
+                                                  .isFinished
+                                              ? FontAwesomeIcons.circleCheck
+                                              : FontAwesomeIcons.exclamation,
+                                          color: Colors.white,
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 );

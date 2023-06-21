@@ -6,7 +6,7 @@ import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
 import 'package:kalam_noor/models/enums.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
-
+import 'package:collection/collection.dart';
 import '../../../../../tools/ui_tools/custom_appbar.dart';
 import '../controllers/student_score_controller.dart';
 import 'dart:math' as math;
@@ -333,29 +333,30 @@ class StudentScorePage extends GetView<StudentScoreController> {
                                             child: Row(
                                               children: [
                                                 Expanded(
-                                                    child: Container(
-                                                  height: 60.h,
-                                                  decoration: BoxDecoration(
-                                                    color: Theme.of(context)
-                                                        .colorScheme
-                                                        .primary
-                                                        .withOpacity(.8),
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                      bottomRight:
-                                                          Radius.circular(
-                                                        index ==
-                                                                (controller
-                                                                        .currentSemesterStudentScores
-                                                                        .length -
-                                                                    1)
-                                                            ? GlobalStyles
-                                                                .globalBorderRadius
-                                                            : 0,
+                                                  child: Container(
+                                                    height: 60.h,
+                                                    decoration: BoxDecoration(
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .primary
+                                                          .withOpacity(.8),
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                          index ==
+                                                                  (controller
+                                                                          .currentSemesterStudentScores
+                                                                          .length -
+                                                                      1)
+                                                              ? GlobalStyles
+                                                                  .globalBorderRadius
+                                                              : 0,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                )),
+                                                ),
                                                 ...List.generate(
                                                   ExamType.values.length,
                                                   (enumVal) => Expanded(
@@ -373,16 +374,28 @@ class StudentScorePage extends GetView<StudentScoreController> {
                                                   ),
                                                 ),
                                                 Expanded(
-                                                  child: Container(
-                                                      color: Colors.red),
+                                                  child: Center(
+                                                    child: Text(
+                                                      controller
+                                                          .currentSemesterStudentScores[
+                                                              index]
+                                                          .totalGrade
+                                                          .toString(),
+                                                    ),
+                                                  ),
                                                 ),
                                                 Expanded(
-                                                  child: Container(
-                                                      color: Colors.amber),
+                                                  child: Center(
+                                                    child: Text(
+                                                        "${(controller.currentSemesterStudentScores[index].grades.values.sum / controller.currentSemesterStudentScores[index].totalGrade) * 100}%"),
+                                                  ),
                                                 ),
                                                 Expanded(
-                                                  child: Container(
-                                                      color: Colors.pink),
+                                                  child: Center(
+                                                    child: Text(
+                                                      "${controller.currentSemesterStudentScores[index].grades.values.sum}",
+                                                    ),
+                                                  ),
                                                 ),
                                               ],
                                             ),
