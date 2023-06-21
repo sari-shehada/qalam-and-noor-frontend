@@ -215,9 +215,8 @@ class StudentScorePage extends GetView<StudentScoreController> {
                                                       .withOpacity(.8),
                                                   child: Center(
                                                     child: Text(
-                                                      getExamNameFromExamTypeEnum(
-                                                        ExamType.values[index],
-                                                      ),
+                                                      examTypeAsString[ExamType
+                                                          .values[index]]!,
                                                       style: ProjectFonts
                                                               .titleMedium()
                                                           .copyWith(
@@ -327,105 +326,148 @@ class StudentScorePage extends GetView<StudentScoreController> {
                                     return SizedBox(
                                       width: double.infinity,
                                       height: 60.h,
-                                      child: Row(
+                                      child: Column(
                                         children: [
-                                          Expanded(
-                                            child: Row(
-                                              children: [
-                                                Expanded(
-                                                  child: Container(
-                                                    height: 60.h,
-                                                    decoration: BoxDecoration(
-                                                      color: Theme.of(context)
-                                                          .colorScheme
-                                                          .primary
-                                                          .withOpacity(.8),
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                          index ==
-                                                                  (controller
-                                                                          .currentSemesterStudentScores
-                                                                          .length -
-                                                                      1)
-                                                              ? GlobalStyles
-                                                                  .globalBorderRadius
-                                                              : 0,
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: Container(
+                                                        height: 59.h,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Theme.of(
+                                                                  context)
+                                                              .colorScheme
+                                                              .primary
+                                                              .withOpacity(.8),
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                              index ==
+                                                                      (controller
+                                                                              .currentSemesterStudentScores
+                                                                              .length -
+                                                                          1)
+                                                                  ? GlobalStyles
+                                                                      .globalBorderRadius
+                                                                  : 0,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            controller
+                                                                .currentSemesterStudentScores[
+                                                                    index]
+                                                                .courseName,
+                                                            style: ProjectFonts
+                                                                    .titleSmall()
+                                                                .copyWith(
+                                                                    color: Colors
+                                                                        .white),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ),
-                                                ...List.generate(
-                                                  ExamType.values.length,
-                                                  (enumVal) => Expanded(
-                                                    child: Center(
-                                                      child: Text(
-                                                        controller
-                                                            .currentSemesterStudentScores[
-                                                                index]
-                                                            .grades[
-                                                                ExamType.values[
+                                                    ...List.generate(
+                                                      ExamType.values.length,
+                                                      (enumVal) => Expanded(
+                                                        child: Center(
+                                                          child: Text(
+                                                            controller
+                                                                .currentSemesterStudentScores[
+                                                                    index]
+                                                                .grades[ExamType
+                                                                        .values[
                                                                     enumVal]]
-                                                            .toString(),
+                                                                .toString(),
+                                                          ),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: Text(
-                                                      controller
-                                                          .currentSemesterStudentScores[
-                                                              index]
-                                                          .totalGrade
-                                                          .toString(),
+                                                    Expanded(
+                                                      child: Center(
+                                                        child: Text(
+                                                          controller
+                                                              .currentSemesterStudentScores[
+                                                                  index]
+                                                              .totalGrade
+                                                              .toString(),
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: Text(
-                                                        "${(controller.currentSemesterStudentScores[index].grades.values.sum / controller.currentSemesterStudentScores[index].totalGrade) * 100}%"),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: Text(
-                                                      "${controller.currentSemesterStudentScores[index].grades.values.sum}",
+                                                    Expanded(
+                                                      child: Center(
+                                                        child: Text(
+                                                            "${(controller.currentSemesterStudentScores[index].grades.values.sum / controller.currentSemesterStudentScores[index].totalGrade) * 100}%"),
+                                                      ),
                                                     ),
-                                                  ),
+                                                    Expanded(
+                                                      child: Center(
+                                                        child: Text(
+                                                          "${controller.currentSemesterStudentScores[index].grades.values.sum}",
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
+                                          Divider(height: 1.h),
                                         ],
                                       ),
                                     );
                                   },
                                 ),
                                 SizedBox(
-                                  height: 100.h,
+                                  height: 60.h,
                                   child: Row(
                                     children: [
-                                      Expanded(
+                                      const Expanded(
                                         flex: 7,
                                         child: SizedBox(),
                                       ),
                                       Expanded(
                                         child: Container(
-                                          color: Colors.green,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              bottomRight: Radius.circular(
+                                                GlobalStyles.globalBorderRadius,
+                                              ),
+                                            ),
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary
+                                                .withOpacity(.8),
+                                          ),
                                         ),
                                       ),
                                       Expanded(
                                         child: Container(
-                                          color: Colors.pink,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary
+                                              .withOpacity(.8),
                                         ),
                                       ),
                                       Expanded(
                                         child: Container(
-                                          color: Colors.orange,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(
+                                                GlobalStyles.globalBorderRadius,
+                                              ),
+                                            ),
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary
+                                                .withOpacity(.8),
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -439,7 +481,6 @@ class StudentScorePage extends GetView<StudentScoreController> {
                     ),
                   );
                 }
-
                 return Container(
                   color: Theme.of(context).colorScheme.primary,
                   child: SizedBox.expand(
@@ -520,24 +561,5 @@ class StudentScorePage extends GetView<StudentScoreController> {
         ),
       ),
     );
-  }
-
-  String getExamNameFromExamTypeEnum(ExamType value) {
-    switch (value) {
-      case ExamType.verbal:
-        return 'شفهي';
-      case ExamType.homework:
-        return 'الوظائف';
-      case ExamType.activity:
-        return 'النشاطات';
-      case ExamType.firstExam:
-        return 'الامتحان الاول';
-      case ExamType.secondExam:
-        return 'الامتحان الثاني';
-      case ExamType.finalExam:
-        return 'الامتحان النهائي';
-      default:
-        return '';
-    }
   }
 }
