@@ -3,12 +3,12 @@ import 'package:kalam_noor/models/educational/current_school_year_insights.dart'
 import 'package:kalam_noor/models/educational/school_year_classroom.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/school_year_classrooms_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/students_db_helper.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/main_page/controllers/current_school_year_management_controller.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/main_page/views/current_school_year_management_page.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/main_page/views/dialogs/start_new_school_year_dialog.dart';
 import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 import '../../../../../models/educational/school_year.dart';
 import '../../../../../models/helpers/database_helpers/school_years_db_helper.dart';
+import '../../current_school_year_management_page/main_page/controllers/current_school_year_bindings.dart';
 
 class SchoolYearManagementController extends GetxController {
   final Rx<bool> isLoading = true.obs;
@@ -86,11 +86,8 @@ class SchoolYearManagementController extends GetxController {
   void manageCurrentSchoolYear() {
     Get.to(
       () => const CurrentSchoolYearManagementPage(),
-      binding: BindingsBuilder.put(
-        () => CurrentSchoolYearManagementController(
-          schoolYear: currentSchoolYear.value,
-          schoolYearInsights: currentSchoolYearInsights,
-        ),
+      binding: CurrentSchoolYearBindings(
+        currentSchoolYear: currentSchoolYear.value,
       ),
     );
   }

@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/models/agendas/student.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/students_db_helper.dart';
 import 'package:kalam_noor/models/item_or.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/main_page/controllers/current_school_year_management_controller.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/main_page/controllers/widget_controllers/school_year_semesters_controller.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/shared/controllers/school_year_students_enrollment_dialog_tab_controller.dart';
 import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/school_year_students_enrollment/sub_pages/new_students_selection/models/new_students_enrollment_dto.dart';
 import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
@@ -72,10 +72,8 @@ class SchoolYearStudentsEnrollmentDialogPrimaryController
       return;
     }
     try {
-      final int semesterId = Get.find<CurrentSchoolYearManagementController>()
-          .currentSemesterInSchoolYear
-          .value!
-          .id;
+      final int semesterId =
+          Get.find<SchoolYearSemestersController>().currentSemester.value!.id;
       final schoolClassId = classSelectionController.selectedClass.value!.id;
       final classroomId =
           classroomSelectionController.selectedClassroom.value!.id;

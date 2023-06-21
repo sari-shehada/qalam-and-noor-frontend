@@ -1,112 +1,106 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/models/educational/semester.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/main_page/controllers/current_school_year_management_controller.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
-import 'package:shimmer/shimmer.dart';
 
-import '../../../../../../../configs/styles.dart';
-import '../../../../../../../tools/widgets/empty_item_widget.dart';
-
-class SemestersInSchoolYearWidget
-    extends GetView<CurrentSchoolYearManagementController> {
-  const SemestersInSchoolYearWidget({super.key});
-  BoxDecoration get containerDecoration => BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(
-          GlobalStyles.globalBorderRadius,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0xFF393939).withOpacity(.06),
-            blurRadius: 60,
-            offset: const Offset(0, 30),
-          ),
-        ],
-      );
-  EdgeInsets get containerPadding => EdgeInsets.only(
-        top: 20.h,
-      );
-  @override
-  Widget build(BuildContext context) {
-    return Obx(
-      () => FutureBuilder<List<Semester>>(
-        future: controller.semestersInSchoolYear.value,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Shimmer.fromColors(
-              baseColor: Colors.white.withOpacity(1),
-              highlightColor: Get.theme.scaffoldBackgroundColor,
-              direction: ShimmerDirection.rtl,
-              child: Container(
-                decoration: containerDecoration,
-                height: double.infinity,
-                width: double.infinity,
-              ),
-            );
-          }
-          if (snapshot.hasError) {
-            return Container(
-              padding: containerPadding,
-              decoration: containerDecoration,
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'حدث خطأ اثناء تحميل الفصول الدراسية في العام الدراسي',
-                    style: ProjectFonts.titleMedium(),
-                  ),
-                  AddVerticalSpacing(value: 35.h),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    child: CustomFilledButton(
-                      onTap: () => controller.refreshSemestersInSchoolYear(),
-                      child: 'إعادة المحاولة',
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-          if (snapshot.hasData) {
-            if (snapshot.data!.isEmpty) {
-              return Container(
-                padding: containerPadding,
-                decoration: containerDecoration,
-                child: const EmptyItemWidget(
-                  itemName: 'فصول',
-                  iconData: FontAwesomeIcons.locationArrow, //TODO:
-                ),
-              );
-            } else {
-              return Container(
-                padding: containerPadding,
-                decoration: containerDecoration,
-                child: _SemestersDisplayContainer(
-                  semesters: snapshot.data as List<Semester>,
-                ),
-              );
-            }
-          } else {
-            return Container(
-              padding: containerPadding,
-              decoration: containerDecoration,
-              child: const EmptyItemWidget(
-                itemName: 'فصول',
-                iconData: FontAwesomeIcons.locationArrow, //TODO:
-              ),
-            );
-          }
-        },
-      ),
-    );
-  }
-}
+// class SemestersInSchoolYearWidget
+//     extends GetView<CurrentSchoolYearManagementController> {
+//   const SemestersInSchoolYearWidget({super.key});
+//   BoxDecoration get containerDecoration => BoxDecoration(
+//         color: Colors.white,
+//         borderRadius: BorderRadius.circular(
+//           GlobalStyles.globalBorderRadius,
+//         ),
+//         boxShadow: [
+//           BoxShadow(
+//             color: const Color(0xFF393939).withOpacity(.06),
+//             blurRadius: 60,
+//             offset: const Offset(0, 30),
+//           ),
+//         ],
+//       );
+//   EdgeInsets get containerPadding => EdgeInsets.only(
+//         top: 20.h,
+//       );
+//   @override
+//   Widget build(BuildContext context) {
+//     return Obx(
+//       () => FutureBuilder<List<Semester>>(
+//         future: controller.semestersInSchoolYear.value,
+//         builder: (context, snapshot) {
+//           if (snapshot.connectionState == ConnectionState.waiting) {
+//             return Shimmer.fromColors(
+//               baseColor: Colors.white.withOpacity(1),
+//               highlightColor: Get.theme.scaffoldBackgroundColor,
+//               direction: ShimmerDirection.rtl,
+//               child: Container(
+//                 decoration: containerDecoration,
+//                 height: double.infinity,
+//                 width: double.infinity,
+//               ),
+//             );
+//           }
+//           if (snapshot.hasError) {
+//             return Container(
+//               padding: containerPadding,
+//               decoration: containerDecoration,
+//               alignment: Alignment.center,
+//               child: Column(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   Text(
+//                     'حدث خطأ اثناء تحميل الفصول الدراسية في العام الدراسي',
+//                     style: ProjectFonts.titleMedium(),
+//                   ),
+//                   AddVerticalSpacing(value: 35.h),
+//                   SizedBox(
+//                     width: MediaQuery.of(context).size.width / 2,
+//                     child: CustomFilledButton(
+//                       onTap: () => controller.refreshSemestersInSchoolYear(),
+//                       child: 'إعادة المحاولة',
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             );
+//           }
+//           if (snapshot.hasData) {
+//             if (snapshot.data!.isEmpty) {
+//               return Container(
+//                 padding: containerPadding,
+//                 decoration: containerDecoration,
+//                 child: const EmptyItemWidget(
+//                   itemName: 'فصول',
+//                   iconData: FontAwesomeIcons.locationArrow, //TODO:
+//                 ),
+//               );
+//             } else {
+//               return Container(
+//                 padding: containerPadding,
+//                 decoration: containerDecoration,
+//                 child: _SemestersDisplayContainer(
+//                   semesters: snapshot.data as List<Semester>,
+//                 ),
+//               );
+//             }
+//           } else {
+//             return Container(
+//               padding: containerPadding,
+//               decoration: containerDecoration,
+//               child: const EmptyItemWidget(
+//                 itemName: 'فصول',
+//                 iconData: FontAwesomeIcons.locationArrow, //TODO:
+//               ),
+//             );
+//           }
+//         },
+//       ),
+//     );
+//   }
+// }
 
 class _SemestersDisplayContainer extends StatelessWidget {
   const _SemestersDisplayContainer({required this.semesters});

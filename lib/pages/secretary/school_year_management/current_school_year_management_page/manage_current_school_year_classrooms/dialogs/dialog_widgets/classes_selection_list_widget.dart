@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/open_new_classrooms_dialog/dialogs/dialog_widgets/school_class_card.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/manage_current_school_year_classrooms/dialogs/dialog_widgets/school_class_card.dart';
 import 'package:kalam_noor/tools/ui_tools/loader_widget.dart';
 
-import '../../dialog_controllers/open_new_classrooms_dialog_controller.dart';
+import '../../dialog_controllers/manage_current_school_year_classrooms_dialog_controller.dart';
 
 class ClassesSelectionList extends GetView<OpenNewClassroomsDialogController> {
   const ClassesSelectionList({super.key});

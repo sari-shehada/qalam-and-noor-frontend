@@ -116,3 +116,9 @@ enum StudentStatusEnum {
   pass,
   notDefined,
 }
+
+enum GeneralLoadingStatus {
+  isLoading,
+  hasData,
+  hasError,
+}

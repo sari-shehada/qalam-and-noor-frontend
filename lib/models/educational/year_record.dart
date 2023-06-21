@@ -8,7 +8,7 @@ class YearRecord {
   int classId;
   int? schoolYearClassroomId;
   int studentId;
-  int yearGrade;
+  int? yearGrade;
   //enum
   StudentStatusEnum status;
   YearRecord({
@@ -58,7 +58,7 @@ class YearRecord {
           ? map['schoolYearClassroomId'] as int
           : null,
       studentId: map['studentId'] as int,
-      yearGrade: map['yearGrade'] as int,
+      yearGrade: map['yearGrade'] != null ? map['yearGrade'] as int : null,
       status: StudentStatusEnum.values[map['status'] as int],
     );
   }

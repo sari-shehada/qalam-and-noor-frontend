@@ -3,16 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:kalam_noor/configs/fonts.dart';
 import 'package:kalam_noor/configs/styles.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/open_new_classrooms_dialog/dialog_controllers/classrooms_selection_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/open_new_classrooms_dialog/dialog_controllers/open_new_classrooms_dialog_controller.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/open_new_classrooms_dialog/dialogs/dialog_widgets/classes_selection_list_widget.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/manage_current_school_year_classrooms/dialog_controllers/classrooms_selection_controller.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/manage_current_school_year_classrooms/dialog_controllers/manage_current_school_year_classrooms_dialog_controller.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/manage_current_school_year_classrooms/dialogs/dialog_widgets/classes_selection_list_widget.dart';
 import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 
 import '../../../../../../tools/ui_tools/buttons.dart';
 import 'dialog_widgets/classrooms_selection_list_widget.dart';
 
-class OpenNewClassroomsDialog extends StatelessWidget {
-  const OpenNewClassroomsDialog({super.key});
+class ManageCurrentSchoolYearClassroomsDialog extends StatelessWidget {
+  const ManageCurrentSchoolYearClassroomsDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class OpenNewClassroomsDialog extends StatelessWidget {
                       ),
                       AddHorizontalSpacing(value: 20.w),
                       Text(
-                        'فتح شعب جديدة ضمن العام الدراسي',
+                        'إدارة الشعب ضمن العام الدراسي',
                         style: ProjectFonts.titleLarge(),
                       ),
                     ],

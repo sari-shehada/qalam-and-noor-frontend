@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../educational/classroom.dart';
 import '../../../tools/logic_tools/crud_interface.dart';
 import '../../../tools/logic_tools/network_service.dart';
@@ -89,6 +91,15 @@ class ClassroomDBHelper implements CRUDInterface<Classroom> {
 
   Future<int> getClassroomsCount() async {
     return await getAll().then((value) => value.length);
+  }
+
+  Future<int> getCurrentSchoolYearClassroomsCount() async {
+    String url = '${_controllerName}GetClassRoomsCountInCurrentSchoolYear';
+    var response = await HttpService.getUnparsed(
+      url,
+    );
+    int count = jsonDecode(response.body) as int;
+    return count;
   }
 
   @override

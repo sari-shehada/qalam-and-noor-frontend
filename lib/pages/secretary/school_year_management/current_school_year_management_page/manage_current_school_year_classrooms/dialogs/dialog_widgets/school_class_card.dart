@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../../../../../configs/fonts.dart';
 import '../../../../../../../models/educational/school_class.dart';
-import '../../dialog_controllers/open_new_classrooms_dialog_controller.dart';
+import '../../dialog_controllers/manage_current_school_year_classrooms_dialog_controller.dart';
 
 class SchoolClassCard extends GetView<OpenNewClassroomsDialogController> {
   const SchoolClassCard({

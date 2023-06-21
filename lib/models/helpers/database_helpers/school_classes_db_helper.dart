@@ -54,4 +54,20 @@ class SchoolClassesDBHelper implements CRUDInterface<SchoolClass> {
     if (result == null) return false;
     return result == 1;
   }
+
+  Future<List<SchoolClass>> getCurrentSchoolYearClasses() async {
+    String url = '${_controllerName}GetOpentClassesinCurrentSchoolYear';
+    List<SchoolClass> allClasses =
+        await HttpService.getParsed<List<SchoolClass>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return SchoolClass.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allClasses;
+  }
 }

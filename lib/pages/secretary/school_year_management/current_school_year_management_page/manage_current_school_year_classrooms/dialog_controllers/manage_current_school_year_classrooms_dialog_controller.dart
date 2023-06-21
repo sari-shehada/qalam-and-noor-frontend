@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:kalam_noor/models/educational/school_class.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/school_classes_db_helper.dart';
 import 'package:kalam_noor/models/helpers/database_helpers/school_year_classrooms_db_helper.dart';
-import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/open_new_classrooms_dialog/dialog_controllers/classrooms_selection_controller.dart';
+import 'package:kalam_noor/pages/secretary/school_year_management/current_school_year_management_page/manage_current_school_year_classrooms/dialog_controllers/classrooms_selection_controller.dart';
 import 'package:kalam_noor/tools/dialogs_services/snack_bar_service.dart';
 import 'package:kalam_noor/tools/ui_tools/buttons.dart';
 
@@ -42,11 +42,7 @@ class OpenNewClassroomsDialogController extends GetxController {
           Get.find<ClassroomsSelectionController>().toBeOpenedClassrooms);
       await SchoolYearClassroomsDBHelper.instance.closeClassroomsInSchoolYear(
           Get.find<ClassroomsSelectionController>().toBeClosedClassrooms);
-      Get.back();
-      SnackBarService.showSuccessSnackBar(
-        title: 'تمت العمليات',
-        message: 'تم تنفيذ الإجرائات بنجاح',
-      );
+      Get.back(result: true);
     } on OpenClassRoomFailException catch (e) {
       SnackBarService.showErrorSnackBar(
         title: 'فشل فتح بعض الشعب',

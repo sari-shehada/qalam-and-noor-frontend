@@ -7,7 +7,7 @@ import '../../../../../../../configs/fonts.dart';
 import '../../../../../../../tools/ui_tools/loader_widget.dart';
 import '../../../../../../../tools/ui_tools/ui_tools.dart';
 import '../../dialog_controllers/classrooms_selection_controller.dart';
-import '../../dialog_controllers/open_new_classrooms_dialog_controller.dart';
+import '../../dialog_controllers/manage_current_school_year_classrooms_dialog_controller.dart';
 
 class ClassroomsSelectionList extends GetView<ClassroomsSelectionController> {
   const ClassroomsSelectionList({
@@ -288,7 +288,7 @@ class AlreadyOpenClassroomCard extends GetView<ClassroomsSelectionController> {
                       '${classroom.maxCapacity} طالب',
                       style: ProjectFonts.titleMedium().copyWith(
                         color: isSelected
-                            ? Get.theme.colorScheme.primary
+                            ? Get.theme.colorScheme.error
                             : Get.theme.colorScheme.onSurfaceVariant,
                       ),
                     ),

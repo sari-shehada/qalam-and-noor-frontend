@@ -17,4 +17,6 @@ class GlobalAssets {
   static String currentSchoolYearIllustration =
       'assets/illustrations/current_school_year.svg';
   static String teachersIllustration = 'assets/illustrations/teachers.svg';
+  static String semesterIllustration =
+      'assets/illustrations/current_semester.svg';
 }
