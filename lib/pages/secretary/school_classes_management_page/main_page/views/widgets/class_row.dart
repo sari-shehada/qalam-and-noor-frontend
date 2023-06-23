@@ -27,7 +27,7 @@ class SchoolClassRow extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                flex: 85,
+                flex: 10,
                 child: Container(
                   width: double.infinity,
                   padding:
@@ -41,7 +41,21 @@ class SchoolClassRow extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 15,
+                flex: 30,
+                child: Container(
+                  width: double.infinity,
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    schoolClass.yearDropCourseCount.toString(),
+                    style: textTheme.titleMedium!
+                        .copyWith(fontWeight: FontWeight.normal),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 10,
                 child: Container(
                   height: double.infinity,
                   width: double.infinity,

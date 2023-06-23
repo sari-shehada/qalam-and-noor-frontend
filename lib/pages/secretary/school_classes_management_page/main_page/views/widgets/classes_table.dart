@@ -29,7 +29,7 @@ class SchoolClassesTable extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    flex: 85,
+                    flex: 10,
                     child: Container(
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(
@@ -46,7 +46,24 @@ class SchoolClassesTable extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    flex: 15,
+                    flex: 30,
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 20.h, horizontal: 20.w),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          left: BorderSide(color: colorScheme.primary),
+                        ),
+                      ),
+                      child: Text(
+                        'عدد المقررات اللازمة للرسوب',
+                        style: textTheme.titleLarge,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 10,
                     child: Container(
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(

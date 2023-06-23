@@ -102,10 +102,8 @@ class CoursesManagementPage extends StatelessWidget {
                 );
               }
               if (snapshot.hasError) {
-                return const Center(
-                  child: ErrorLoadingSomethingWidget(
-                    somethingName: "المقررات",
-                  ),
+                return const ErrorLoadingSomethingWidget(
+                  somethingName: "المقررات",
                 );
               }
               if (snapshot.hasData) {

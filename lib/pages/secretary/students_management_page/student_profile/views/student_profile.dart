@@ -435,13 +435,15 @@ class StudentProfile extends GetView<StudentProfileController> {
                                   AddVerticalSpacing(value: 20.h),
                                   Text(
                                     "الطالب غير مسجل في سنة دراسية حاليا",
-                                    style: ProjectFonts.headlineMedium(),
+                                    style:
+                                        ProjectFonts.headlineMedium().copyWith(
+                                      color: Colors.grey,
+                                    ),
                                   ),
                                   AddVerticalSpacing(value: 50.h),
                                   FaIcon(
-                                    FontAwesomeIcons.school,
-                                    color: colorScheme.primary,
-                                    size: 50.sp,
+                                    FontAwesomeIcons.clipboard,
+                                    size: 60.sp,
                                   ),
                                 ],
                               )
@@ -490,10 +492,21 @@ class StudentProfile extends GetView<StudentProfileController> {
                         child: Builder(
                           builder: (context) {
                             if (controller.studentYearRecords.isEmpty) {
-                              return const Column(
+                              return Column(
                                 children: [
-                                  Icon(Icons.text_snippet),
-                                  Text('السجلات السنوية'),
+                                  AddVerticalSpacing(value: 30.h),
+                                  Text(
+                                    "الطالب جديد ولم يتم تسجيله في سنة دراسية سابقا",
+                                    style:
+                                        ProjectFonts.headlineMedium().copyWith(
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  AddVerticalSpacing(value: 30.h),
+                                  FaIcon(
+                                    FontAwesomeIcons.clipboard,
+                                    size: 60.sp,
+                                  ),
                                 ],
                               );
                             }
@@ -506,11 +519,16 @@ class StudentProfile extends GetView<StudentProfileController> {
                                       () => const StudentScorePage(),
                                       binding: BindingsBuilder(
                                         () {
-                                          Get.put(StudentScoreController(
-                                            student: controller.student.value,
-                                            schoolYear: controller
-                                                .studentYearRecords[index],
-                                          ));
+                                          Get.put(
+                                            StudentScoreController(
+                                                student:
+                                                    controller.student.value,
+                                                schoolYear: controller
+                                                    .studentYearRecords[index],
+                                                schoolClass: controller
+                                                    .currentClassInfo!
+                                                    .schoolClass),
+                                          );
                                         },
                                       ),
                                     );
@@ -536,25 +554,14 @@ class StudentProfile extends GetView<StudentProfileController> {
                                             GlobalStyles.globalBorderRadius),
                                       ),
                                     ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Text(
-                                          "السنة الدراسية: ${controller.studentYearRecords[index].name}",
-                                          style: ProjectFonts.headlineSmall()
-                                              .copyWith(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        FaIcon(
-                                          controller.studentYearRecords[index]
-                                                  .isFinished
-                                              ? FontAwesomeIcons.circleCheck
-                                              : FontAwesomeIcons.exclamation,
+                                    child: Center(
+                                      child: Text(
+                                        "السنة الدراسية: ${controller.studentYearRecords[index].name}",
+                                        style: ProjectFonts.headlineSmall()
+                                            .copyWith(
                                           color: Colors.white,
                                         ),
-                                      ],
+                                      ),
                                     ),
                                   ),
                                 );
@@ -622,40 +629,40 @@ class StudentProfile extends GetView<StudentProfileController> {
               width: 300.w,
               height: 70.h,
               child: CustomFilledButton(
-                  backgroundColor: colorScheme.primary,
-                  onTap: () {
-                    controller.student.value = controller.student.value
-                        .copyWith(
-                            isActive: !controller.student.value.isActive,
-                            leaveDate: null);
+                backgroundColor: colorScheme.primary,
+                onTap: () {
+                  controller.student.value = controller.student.value.copyWith(
+                      isActive: !controller.student.value.isActive,
+                      leaveDate: null);
 
-                    StudentsDBHelper.instance.update(controller.student.value);
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            "إعادة التسجيل في المدرسة",
-                            style: ProjectFonts.displaySmall().copyWith(
-                                color: colorScheme.onPrimary, fontSize: 16.sp),
-                          ),
-                          AddVerticalSpacing(value: 10.h),
-                          Text(
-                            "${DateTimeHelper.getDateWithoutTime(controller.student.value.leaveDate!)} : تاريخ ترك المدرسة",
-                            style: ProjectFonts.displaySmall().copyWith(
-                                color: colorScheme.onPrimary, fontSize: 16.sp),
-                          ),
-                        ],
-                      ),
-                      AddHorizontalSpacing(value: 15.w),
-                      Icon(
-                        FontAwesomeIcons.doorOpen,
-                        color: colorScheme.onPrimary,
-                      ),
-                    ],
-                  )),
+                  StudentsDBHelper.instance.update(controller.student.value);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          "إعادة التسجيل في المدرسة",
+                          style: ProjectFonts.displaySmall().copyWith(
+                              color: colorScheme.onPrimary, fontSize: 16.sp),
+                        ),
+                        AddVerticalSpacing(value: 10.h),
+                        Text(
+                          "${DateTimeHelper.getDateWithoutTime(controller.student.value.leaveDate!)} : تاريخ ترك المدرسة",
+                          style: ProjectFonts.displaySmall().copyWith(
+                              color: colorScheme.onPrimary, fontSize: 16.sp),
+                        ),
+                      ],
+                    ),
+                    AddHorizontalSpacing(value: 15.w),
+                    Icon(
+                      FontAwesomeIcons.doorOpen,
+                      color: colorScheme.onPrimary,
+                    ),
+                  ],
+                ),
+              ),
             );
           },
         ),
