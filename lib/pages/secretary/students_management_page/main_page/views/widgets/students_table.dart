@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../../models/agendas/student.dart';
+import '../../../models/student_info.dart';
 import 'student_row.dart';
 
 class StudentsTable extends StatelessWidget {
   const StudentsTable({super.key, required this.students});
-  final List<Student> students;
+  final List<FullStudentInfo> students;
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Get.theme;
@@ -27,7 +27,24 @@ class StudentsTable extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  flex: 9,
+                  flex: 15,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        left: BorderSide(color: colorScheme.primary),
+                      ),
+                    ),
+                    child: Text(
+                      'رقم السجل العام',
+                      style: textTheme.titleLarge,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 40,
                   child: Container(
                     width: double.infinity,
                     padding:
@@ -44,14 +61,35 @@ class StudentsTable extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 20,
                   child: Container(
                     width: double.infinity,
                     padding:
-                        EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
+                        EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        left: BorderSide(color: colorScheme.primary),
+                      ),
+                    ),
                     child: Text(
-                      'الاجراءات',
-                      textAlign: TextAlign.center,
+                      'الجنس',
+                      style: textTheme.titleLarge,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 25,
+                  child: Container(
+                    width: double.infinity,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        left: BorderSide(color: colorScheme.primary),
+                      ),
+                    ),
+                    child: Text(
+                      'تاريخ الانضمام',
                       style: textTheme.titleLarge,
                     ),
                   ),
@@ -68,7 +106,10 @@ class StudentsTable extends StatelessWidget {
                 Color rowColor = index % 2 == 0
                     ? Colors.white
                     : Get.theme.colorScheme.primaryContainer.withOpacity(.2);
-                return StudentRow(student: students[index], rowColor: rowColor);
+                return StudentRow(
+                  student: students[index],
+                  rowColor: rowColor,
+                );
               },
             ),
           ),

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import '../../../../../../models/agendas/student.dart';
+import 'package:kalam_noor/tools/logic_tools/datetime_helper.dart';
+import '../../../models/student_info.dart';
 import '../../../student_profile/controllers/student_profile_controller.dart';
 import '../../../student_profile/views/student_profile.dart';
 
 class StudentRow extends StatelessWidget {
   const StudentRow({super.key, required this.student, required this.rowColor});
-  final Student student;
+  final FullStudentInfo student;
   final Color rowColor;
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class StudentRow extends StatelessWidget {
                   () {
                     Get.put(
                       StudentProfileController(
-                        student: student.obs,
+                        student: student.student.obs,
                       ),
                     );
                   },
@@ -39,14 +41,56 @@ class StudentRow extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    flex: 9,
+                    flex: 15,
                     child: Container(
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(
                           vertical: 15.h, horizontal: 20.w),
                       alignment: Alignment.centerRight,
                       child: Text(
-                        student.firstName,
+                        student.student.publicRecordId.toString(),
+                        style: textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.normal, fontSize: 22.sp),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 40,
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15.h, horizontal: 20.w),
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        "${student.student.firstName} ${student.father.firstName} ${student.father.lastName}",
+                        style: textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.normal, fontSize: 22.sp),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 20,
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15.h, horizontal: 20.w),
+                      alignment: Alignment.centerRight,
+                      child: student.student.isMale
+                          ? const FaIcon(Icons.male, color: Colors.blue)
+                          : FaIcon(Icons.female, color: Colors.pink[300]),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 25,
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15.h, horizontal: 20.w),
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        DateTimeHelper.getDateWithoutTime(
+                          student.student.joinDate,
+                        ),
                         style: textTheme.titleMedium!.copyWith(
                             fontWeight: FontWeight.normal, fontSize: 22.sp),
                       ),

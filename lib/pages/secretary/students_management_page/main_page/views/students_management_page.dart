@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/models/student_info.dart';
 import '../../../../../configs/fonts.dart';
 import '../../../../../controllers/navigation_controller.dart';
-import '../../../../../models/agendas/student.dart';
 import '../controllers/students_display_controller.dart';
 import 'widgets/students_table.dart';
 import '../../../../../tools/ui_tools/custom_scaffold.dart';
@@ -87,7 +87,7 @@ class StudentsManagementPage extends StatelessWidget {
         ),
         spacing: 35.h,
         child: Obx(() {
-          return FutureBuilder<RxList<Student>>(
+          return FutureBuilder<List<FullStudentInfo>>(
             future: studentsDisplayController.students.value,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
@@ -104,10 +104,11 @@ class StudentsManagementPage extends StatelessWidget {
                 if (snapshot.data!.isEmpty) {
                   return const EmptyItemWidget(
                     itemName: 'طلاب',
-                    iconData: FontAwesomeIcons.syringe,
+                    iconData: FontAwesomeIcons.graduationCap,
                   );
                 } else {
-                  RxList<Student> students = snapshot.data as RxList<Student>;
+                  List<FullStudentInfo> students =
+                      snapshot.data as List<FullStudentInfo>;
                   return Expanded(
                     child: StudentsTable(students: students),
                   );
