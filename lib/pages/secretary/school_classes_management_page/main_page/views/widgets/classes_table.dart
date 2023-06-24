@@ -29,7 +29,7 @@ class SchoolClassesTable extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    flex: 10,
+                    flex: 22,
                     child: Container(
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(
@@ -46,7 +46,7 @@ class SchoolClassesTable extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    flex: 30,
+                    flex: 20,
                     child: Container(
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(
@@ -57,13 +57,13 @@ class SchoolClassesTable extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        'عدد المقررات اللازمة للرسوب',
+                        'عدد المقررات الكفيلة بترسيب الطالب',
                         style: textTheme.titleLarge,
                       ),
                     ),
                   ),
                   Expanded(
-                    flex: 10,
+                    flex: 8,
                     child: Container(
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(

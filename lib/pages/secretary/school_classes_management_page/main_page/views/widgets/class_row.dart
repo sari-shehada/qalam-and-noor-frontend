@@ -27,7 +27,7 @@ class SchoolClassRow extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                flex: 10,
+                flex: 22,
                 child: Container(
                   width: double.infinity,
                   padding:
@@ -41,7 +41,7 @@ class SchoolClassRow extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 30,
+                flex: 20,
                 child: Container(
                   width: double.infinity,
                   padding:
@@ -55,7 +55,7 @@ class SchoolClassRow extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 10,
+                flex: 8,
                 child: Container(
                   height: double.infinity,
                   width: double.infinity,
