@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:kalam_noor/pages/secretary/students_management_page/models/student_info.dart';
 import 'package:kalam_noor/pages/teacher/fill_students_marks_page/models/student_exam_mark.dart';
 import 'package:kalam_noor/pages/teacher/fill_students_marks_page/models/student_exam_mark_insertion.dart';
 
@@ -50,6 +51,22 @@ class StudentsDBHelper implements CRUDInterface<Student> {
       },
     );
     return allStudents;
+  }
+
+  Future<List<FullStudentInfo>> getFullStudentsInfo() async {
+    String url = '${_controllerName}GetFullStudentsInfo';
+    List<FullStudentInfo> allStudentsInfo =
+        await HttpService.getParsed<List<FullStudentInfo>, List>(
+      url: url,
+      dataMapper: (parsedData) {
+        return parsedData.map(
+          (e) {
+            return FullStudentInfo.fromMap(e);
+          },
+        ).toList();
+      },
+    );
+    return allStudentsInfo;
   }
 
   Future<int> getStudentCountInCurrentSchoolYear() async {
