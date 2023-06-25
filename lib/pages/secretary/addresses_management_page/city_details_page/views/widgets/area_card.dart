@@ -49,38 +49,25 @@ class AreaCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: Row(children: [
-                  AddHorizontalSpacing(value: 15.w),
-                  Text(
-                    area.name,
-                    style: TextStyle(
-                      fontSize: 22.sp,
-                    ),
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: () => Get.to(
-                      const AreaDetailsPage(),
-                      binding: BindingsBuilder(
-                        () {
-                          Get.put(AreaDetailsController(area: area));
-                        },
+                child: Row(
+                  children: [
+                    AddHorizontalSpacing(value: 15.w),
+                    Text(
+                      area.name,
+                      style: TextStyle(
+                        fontSize: 22.sp,
                       ),
                     ),
-                    icon: Icon(
-                      Icons.remove_red_eye,
-                      color: Get.theme.colorScheme.primary.withOpacity(.7),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: () => controller.updateAreaInfo(area),
+                      icon: Icon(
+                        Icons.edit,
+                        color: Get.theme.colorScheme.primary.withOpacity(.7),
+                      ),
                     ),
-                  ),
-                  AddHorizontalSpacing(value: 10.w),
-                  IconButton(
-                    onPressed: () => controller.updateAreaInfo(area),
-                    icon: Icon(
-                      Icons.edit,
-                      color: Get.theme.colorScheme.primary.withOpacity(.7),
-                    ),
-                  ),
-                ]),
+                  ],
+                ),
               ),
             ),
           ),
