@@ -152,6 +152,7 @@ class StudentScorePage extends GetView<StudentScoreController> {
                                         Expanded(
                                           flex: 1,
                                           child: Stack(
+                                            clipBehavior: Clip.hardEdge,
                                             alignment: Alignment.center,
                                             children: [
                                               SizedBox.expand(
@@ -171,12 +172,22 @@ class StudentScorePage extends GetView<StudentScoreController> {
                                                   ),
                                                 ),
                                               ),
-                                              Transform.rotate(
-                                                angle: -(math.pi / 5.5),
-                                                child: Container(
-                                                  color: Colors.white,
-                                                  height: 1,
-                                                  width: 400.w,
+                                              Positioned(
+                                                //angle: -(math.pi / 5.75),
+                                                // width: 400.w,
+                                                width: 400.w,
+                                                child: Transform.rotate(
+                                                  angle: controller
+                                                          .semesters[controller
+                                                              .selectedIndex
+                                                              .value]
+                                                          .isDone
+                                                      ? -(math.pi / 5.75)
+                                                      : -(math.pi / 6.85),
+                                                  child: Container(
+                                                    color: Colors.white,
+                                                    height: 1,
+                                                  ),
                                                 ),
                                               ),
                                               Positioned(
@@ -210,7 +221,12 @@ class StudentScorePage extends GetView<StudentScoreController> {
                                           ),
                                         ),
                                         Expanded(
-                                          flex: 9,
+                                          flex: controller
+                                                  .semesters[controller
+                                                      .selectedIndex.value]
+                                                  .isDone
+                                              ? 9
+                                              : 7,
                                           child: Row(
                                             children: [
                                               ...List.generate(
@@ -293,6 +309,19 @@ class StudentScorePage extends GetView<StudentScoreController> {
                                                         .colorScheme
                                                         .primary
                                                         .withOpacity(.8),
+                                                    borderRadius: controller
+                                                            .semesters[controller
+                                                                .selectedIndex
+                                                                .value]
+                                                            .isDone
+                                                        ? null
+                                                        : BorderRadius.only(
+                                                            topLeft:
+                                                                Radius.circular(
+                                                              GlobalStyles
+                                                                  .globalBorderRadius,
+                                                            ),
+                                                          ),
                                                   ),
                                                   child: Center(
                                                     child: Text(
@@ -494,7 +523,10 @@ class StudentScorePage extends GetView<StudentScoreController> {
                                                 ),
                                               ],
                                             ),
-                                            Divider(height: 1.h),
+                                            Divider(
+                                              height: 1.h,
+                                              indent: 15.w,
+                                            ),
                                           ],
                                         ),
                                       );

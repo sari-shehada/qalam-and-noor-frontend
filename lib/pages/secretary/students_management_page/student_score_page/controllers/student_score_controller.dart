@@ -11,11 +11,10 @@ class StudentScoreController extends GetxController {
   final Student student;
   final SchoolYear schoolYear;
   final SchoolClass schoolClass;
-  StudentScoreController({
-    required this.student,
-    required this.schoolYear,
-    required this.schoolClass
-  }) {
+  StudentScoreController(
+      {required this.student,
+      required this.schoolYear,
+      required this.schoolClass}) {
     loadData();
   }
 
@@ -30,6 +29,7 @@ class StudentScoreController extends GetxController {
   Future<List<Semester>> getSemesters() async {
     semesters = await SemestersDBHelper.instance
         .getSemestersInSchoolYear(schoolYear.id);
+
     return semesters;
   }
 
