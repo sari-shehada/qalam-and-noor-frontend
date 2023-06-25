@@ -164,9 +164,10 @@ class StudentsDBHelper implements CRUDInterface<Student> {
     return student;
   }
 
-  Future<FinalStudentScore> getFinalScore(int studentId) async {
+  Future<FinalStudentScore> getFinalScore(
+      int studentId, int schoolYearId) async {
     String url =
-        '${_controllerName}GetFinalStudentScoreByStudentIdInCurrentSchoolYear?studentId=$studentId';
+        '${_controllerName}GetFinalStudentScoreByStudentIdAndSchoolYearId?studentId=$studentId&schoolyearId=$schoolYearId';
     FinalStudentScore studentScore =
         await HttpService.getParsed<FinalStudentScore, Map<String, dynamic>>(
       url: url,
@@ -352,6 +353,9 @@ class StudentsDBHelper implements CRUDInterface<Student> {
     required int schoolYearId,
     required int semesterId,
   }) async {
+    print(studentId);
+    print(schoolYearId);
+    print(semesterId);
     String url =
         '${_controllerName}GetStudentSemesterScoreScoresBySchoolYearIdAndSemesterIdAndStudentId?semesterId=$semesterId&schoolYearId=$schoolYearId&studentId=$studentId';
 
