@@ -13,7 +13,7 @@ class PsychologicalStatusIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.hardEdge,
-      height: 25.h,
+      height: 12.h,
       width: 220.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.w),
@@ -31,7 +31,7 @@ class PsychologicalStatusIndicator extends StatelessWidget {
           ),
           Text(
             "${value * 100}%",
-            style: TextStyle(fontSize: 12.sp, color: Colors.white),
+            style: TextStyle(fontSize: 10.sp, color: Colors.white),
           ),
         ],
       ),

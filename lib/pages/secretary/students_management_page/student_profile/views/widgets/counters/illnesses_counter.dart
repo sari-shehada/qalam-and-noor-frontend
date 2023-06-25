@@ -13,30 +13,31 @@ class IllnessesCounter extends GetView<StudentProfileController> {
   Widget build(BuildContext context) {
     // final Color colorOfChoice = GlobalStyles.getMiscColor(2);
     final Color colorOfChoice = Theme.of(context).colorScheme.primary;
-    return Obx(() {
-      if (controller.isLoading.value) {
-        return const SizedBox.shrink();
-      }
-      return InkWell(
-        onTap: () async {
-          if (controller.studentIllnessesInfo.isEmpty) {
-            SnackBarService.showNeutralSnackBar(
-                title: 'لا يعاني الطالب من امراض',
-                message: 'الطالب في حالة صحية تامة');
-            return;
-          }
-          await Get.dialog(
-            IllnessesInfoDialog(
-              list: controller.studentIllnessesInfo,
-            ),
-          );
-        },
-        child: SizedBox(
-          width: 200.w,
-          height: 200.w,
-          child: Container(
-            clipBehavior: Clip.hardEdge,
-            decoration: BoxDecoration(
+    return Obx(
+      () {
+        if (controller.isLoading.value) {
+          return const SizedBox.shrink();
+        }
+        return InkWell(
+          onTap: () async {
+            if (controller.studentIllnessesInfo.isEmpty) {
+              SnackBarService.showNeutralSnackBar(
+                  title: 'لا يعاني الطالب من امراض',
+                  message: 'الطالب في حالة صحية تامة');
+              return;
+            }
+            await Get.dialog(
+              IllnessesInfoDialog(
+                list: controller.studentIllnessesInfo,
+              ),
+            );
+          },
+          child: SizedBox(
+            width: 200.w,
+            height: 200.w,
+            child: Container(
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.white,
                 border: Border.all(
@@ -50,31 +51,33 @@ class IllnessesCounter extends GetView<StudentProfileController> {
                     offset: const Offset(1, 0),
                     blurRadius: 4,
                     spreadRadius: 2,
-                  )
-                ]),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  controller.studentIllnessesInfo.length.toString(),
-                  style: ProjectFonts.headlineSmall().copyWith(
-                    fontSize: 40.sp,
-                    color: colorOfChoice,
                   ),
-                ),
-                Text(
-                  "مرض",
-                  textAlign: TextAlign.center,
-                  style: ProjectFonts.headlineSmall().copyWith(
-                    fontSize: 30.sp,
-                    color: Colors.grey[700],
+                ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    controller.studentIllnessesInfo.length.toString(),
+                    style: ProjectFonts.headlineSmall().copyWith(
+                      fontSize: 40.sp,
+                      color: colorOfChoice,
+                    ),
                   ),
-                ),
-              ],
+                  Text(
+                    "مرض",
+                    textAlign: TextAlign.center,
+                    style: ProjectFonts.headlineSmall().copyWith(
+                      fontSize: 30.sp,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../../../../../../../tools/logic_tools/datetime_helper.dart';
-
 import '../../../../../../../configs/fonts.dart';
 import '../../../../../../../tools/ui_tools/ui_tools.dart';
 import '../../../models/student_vaccines_info.dart';
@@ -27,27 +27,36 @@ class VaccinesInfoDialog extends StatelessWidget {
               start: 30.w, end: 30.w, top: 20.h, bottom: 25.h),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                "اللقاحات المأخوذة",
-                style: ProjectFonts.headlineMedium(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "اللقاحات المأخوذة",
+                    style: ProjectFonts.headlineMedium(),
+                  ),
+                  AddHorizontalSpacing(value: 30.w),
+                  FaIcon(
+                    FontAwesomeIcons.syringe,
+                    color: colorScheme.primary,
+                  ),
+                ],
               ),
-              AddVerticalSpacing(value: 15.h),
+              AddVerticalSpacing(value: 30.h),
               SizedBox(
                 height: 350.h,
-                width: 300.w,
+                width: 400.w,
                 child: ListView.builder(
                   itemCount: list.length,
                   itemBuilder: (context, index) {
-                    if (list.isEmpty) {
-                      return Text(
-                        "الطالب لم يأخذ أي لقاح سابقا",
-                        style: ProjectFonts.bodyMedium(),
-                      );
-                    }
                     return Container(
                       padding: EdgeInsets.only(bottom: 10.h),
-                      margin: EdgeInsets.only(bottom: 15.h),
+                      margin: EdgeInsets.only(
+                        bottom: 15.h,
+                        left: 10.w,
+                        right: 10.w,
+                      ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.r),
                         color: Colors.white,
