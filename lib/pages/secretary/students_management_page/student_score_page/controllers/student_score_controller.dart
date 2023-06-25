@@ -59,8 +59,8 @@ class StudentScoreController extends GetxController {
 
   Future<FinalStudentScore> getFinalScore() async {
     isLoadingFinalScore.value = true;
-    finalStudentScore =
-        await StudentsDBHelper.instance.getFinalScore(student.id);
+    finalStudentScore = await StudentsDBHelper.instance
+        .getFinalScore(student.id, schoolYear.id);
     isLoadingFinalScore.value = false;
     return finalStudentScore;
   }

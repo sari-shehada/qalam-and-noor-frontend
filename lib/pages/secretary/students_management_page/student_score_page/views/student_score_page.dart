@@ -214,6 +214,8 @@ class StudentScorePage extends GetView<StudentScoreController> {
                       child: Column(
                         children: [
                           ListView.builder(
+                            itemCount: controller
+                                .finalStudentScore.totalStudentMarks.length,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
                               return Container(
