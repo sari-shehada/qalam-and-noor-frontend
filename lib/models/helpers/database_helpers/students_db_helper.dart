@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:kalam_noor/pages/secretary/students_management_page/models/student_info.dart';
+import 'package:kalam_noor/pages/secretary/students_management_page/student_score_page/models/final_student_score.dart';
 import 'package:kalam_noor/pages/teacher/fill_students_marks_page/models/student_exam_mark.dart';
 import 'package:kalam_noor/pages/teacher/fill_students_marks_page/models/student_exam_mark_insertion.dart';
 
@@ -161,6 +162,19 @@ class StudentsDBHelper implements CRUDInterface<Student> {
       },
     );
     return student;
+  }
+
+  Future<FinalStudentScore> getFinalScore(int studentId) async {
+    String url =
+        '${_controllerName}GetFinalStudentScoreByStudentIdInCurrentSchoolYear?studentId=$studentId';
+    FinalStudentScore studentScore =
+        await HttpService.getParsed<FinalStudentScore, Map<String, dynamic>>(
+      url: url,
+      dataMapper: (responseData) {
+        return FinalStudentScore.fromMap(responseData);
+      },
+    );
+    return studentScore;
   }
 
   Future<int> getFathersCount() async {
