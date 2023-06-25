@@ -28,38 +28,119 @@ class StudentScorePage extends GetView<StudentScoreController> {
             Expanded(
               child: Obx(
                 () {
-                  if (controller.isLoadingSemesters.value) {
+                  if (controller.isLoadingSemesters.value ||
+                      controller.isLoadingFinalScore.value) {
                     return const SizedBox.shrink();
                   }
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: controller.semesters.length,
-                    itemBuilder: (context, index) {
-                      return Obx(
+                  return Row(
+                    children: [
+                      ListView.builder(
+                        shrinkWrap: true,
+                        padding: EdgeInsets.zero,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.semesters.length,
+                        itemBuilder: (context, index) {
+                          return Obx(
+                            () {
+                              bool isSelected =
+                                  controller.selectedIndex.value == index;
+                              return Padding(
+                                padding:
+                                    EdgeInsets.only(right: 60.w, bottom: 0),
+                                child: InkWell(
+                                  onTap: () async {
+                                    await controller.getStudentScores(
+                                        semesterId:
+                                            controller.semesters[index].id);
+                                    controller.selectedIndex.value = index;
+                                    controller.isOnFinalStudentScore.value =
+                                        false;
+                                  },
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(
+                                      GlobalStyles.globalBorderRadius,
+                                    ),
+                                    topRight: Radius.circular(
+                                      GlobalStyles.globalBorderRadius,
+                                    ),
+                                  ),
+                                  child: Container(
+                                    clipBehavior: Clip.hardEdge,
+                                    decoration: BoxDecoration(
+                                      color: isSelected
+                                          ? Theme.of(context)
+                                              .colorScheme
+                                              .primary
+                                          : Theme.of(context)
+                                              .scaffoldBackgroundColor,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 1,
+                                          blurRadius: 3,
+                                          offset: const Offset(0, 1),
+                                        ),
+                                      ],
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(
+                                          GlobalStyles.globalBorderRadius,
+                                        ),
+                                        topRight: Radius.circular(
+                                          GlobalStyles.globalBorderRadius,
+                                        ),
+                                      ),
+                                    ),
+                                    height: double.infinity,
+                                    width: 200.w,
+                                    child: Center(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            controller.semesters[index].name,
+                                            style: ProjectFonts.titleLarge()
+                                                .copyWith(
+                                              color: isSelected
+                                                  ? Colors.white
+                                                  : null,
+                                            ),
+                                          ),
+                                          Text(
+                                            controller.schoolYear.name,
+                                            style: ProjectFonts.titleLarge()
+                                                .copyWith(
+                                              color: isSelected
+                                                  ? Colors.white
+                                                  : null,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                      Obx(
                         () {
-                          bool isSelected =
-                              controller.selectedIndex.value == index;
+                          RxBool isHere = controller.isOnFinalStudentScore;
                           return Padding(
-                            padding: EdgeInsets.only(right: 60.w, bottom: 0),
+                            padding: EdgeInsets.only(
+                              right: 60.w,
+                            ),
                             child: InkWell(
-                              onTap: () async {
-                                await controller.getStudentScores(
-                                    semesterId: controller.semesters[index].id);
-                                controller.selectedIndex.value = index;
+                              onTap: () {
+                                controller.isOnFinalStudentScore.value = true;
+                                controller.selectedIndex.value = -1;
                               },
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(
-                                  GlobalStyles.globalBorderRadius,
-                                ),
-                                topRight: Radius.circular(
-                                  GlobalStyles.globalBorderRadius,
-                                ),
-                              ),
                               child: Container(
                                 clipBehavior: Clip.hardEdge,
                                 decoration: BoxDecoration(
-                                  color: isSelected
+                                  color: isHere.value
                                       ? Theme.of(context).colorScheme.primary
                                       : Theme.of(context)
                                           .scaffoldBackgroundColor,
@@ -87,19 +168,21 @@ class StudentScorePage extends GetView<StudentScoreController> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        controller.semesters[index].name,
+                                        'محصلة سنة',
                                         style:
                                             ProjectFonts.titleLarge().copyWith(
-                                          color:
-                                              isSelected ? Colors.white : null,
+                                          color: isHere.value
+                                              ? Colors.white
+                                              : null,
                                         ),
                                       ),
                                       Text(
                                         controller.schoolYear.name,
                                         style:
                                             ProjectFonts.titleLarge().copyWith(
-                                          color:
-                                              isSelected ? Colors.white : null,
+                                          color: isHere.value
+                                              ? Colors.white
+                                              : null,
                                         ),
                                       ),
                                     ],
@@ -109,8 +192,8 @@ class StudentScorePage extends GetView<StudentScoreController> {
                             ),
                           );
                         },
-                      );
-                    },
+                      ),
+                    ],
                   );
                 },
               ),
@@ -119,12 +202,42 @@ class StudentScorePage extends GetView<StudentScoreController> {
               flex: 14,
               child: Obx(
                 () {
-                  if (controller.isLoadingSemesters.value) {
+                  if (controller.isLoadingSemesters.value ||
+                      controller.isLoadingFinalScore.value) {
                     return const Center(
                       child: LoaderWidget(),
                     );
                   }
-                  if (controller.selectedIndex.value != -1) {
+                  if (controller.isOnFinalStudentScore.value &&
+                      controller.selectedIndex.value == -1) {
+                    return SizedBox.expand(
+                      child: Column(
+                        children: [
+                          ListView.builder(
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                decoration: BoxDecoration(color: Colors.amber),
+                                child: Row(
+                                  children: [
+                                    Text(controller.finalStudentScore
+                                        .totalStudentMarks[index].courseName),
+                                    Text(
+                                      controller.finalStudentScore
+                                          .totalStudentMarks[index].averageGrade
+                                          .toString(),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                  if (controller.selectedIndex.value != -1 &&
+                      !controller.isOnFinalStudentScore.value) {
                     return SizedBox.expand(
                       child: Container(
                         color: Theme.of(context).colorScheme.primary,
