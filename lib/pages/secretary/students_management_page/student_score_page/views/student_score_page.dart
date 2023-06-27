@@ -10,6 +10,7 @@ import 'package:kalam_noor/tools/ui_tools/ui_tools.dart';
 import '../../../../../tools/ui_tools/custom_appbar.dart';
 import '../controllers/student_score_controller.dart';
 import 'dart:math' as math;
+import 'package:percent_indicator/percent_indicator.dart';
 
 class StudentScorePage extends GetView<StudentScoreController> {
   const StudentScorePage({super.key});
@@ -210,31 +211,246 @@ class StudentScorePage extends GetView<StudentScoreController> {
                   }
                   if (controller.isOnFinalStudentScore.value &&
                       controller.selectedIndex.value == -1) {
-                    return SizedBox.expand(
-                      child: Column(
-                        children: [
-                          ListView.builder(
-                            itemCount: controller
-                                .finalStudentScore.totalStudentMarks.length,
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              return Container(
-                                decoration: BoxDecoration(color: Colors.amber),
-                                child: Row(
-                                  children: [
-                                    Text(controller.finalStudentScore
-                                        .totalStudentMarks[index].courseName),
-                                    Text(
-                                      controller.finalStudentScore
-                                          .totalStudentMarks[index].averageGrade
-                                          .toString(),
+                    if (!controller.schoolYear.isFinished) {
+                      return Container(
+                        color: Theme.of(context).colorScheme.primary,
+                        child: SizedBox.expand(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Spacer(),
+                              Container(
+                                height: 400.h,
+                                width: 700.w,
+                                decoration: BoxDecoration(
+                                  color:
+                                      Theme.of(context).scaffoldBackgroundColor,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      GlobalStyles.globalBorderRadius,
+                                    ),
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.2),
+                                      spreadRadius: 1,
+                                      blurRadius: 10,
+                                      offset: const Offset(0, 0),
                                     ),
                                   ],
                                 ),
-                              );
-                            },
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.warning_rounded,
+                                      size: 100.sp,
+                                    ),
+                                    AddVerticalSpacing(value: 20.h),
+                                    Text(
+                                      'السنة الدراسية لا تزال جارية الرجاء إنهاء السنة لاستعراض المحصلة النهائية',
+                                      style: ProjectFonts.headlineMedium()
+                                          .copyWith(color: Colors.black),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const Spacer(),
+                            ],
                           ),
-                        ],
+                        ),
+                      );
+                    }
+                    return SizedBox.expand(
+                      child: Container(
+                        color: Theme.of(context).colorScheme.primary,
+                        child: SizedBox.expand(
+                          child: Container(
+                            padding: EdgeInsets.all(20.h),
+                            margin: EdgeInsets.all(20.h),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).scaffoldBackgroundColor,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(
+                                  GlobalStyles.globalBorderRadius,
+                                ),
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                //grid of courses cards
+                                Expanded(
+                                  flex: 5,
+                                  child: GridView.builder(
+                                    gridDelegate:
+                                        SliverGridDelegateWithMaxCrossAxisExtent(
+                                            maxCrossAxisExtent: 350.w,
+                                            childAspectRatio: 3 / 2,
+                                            crossAxisSpacing: 20,
+                                            mainAxisSpacing: 20),
+                                    itemCount: controller.finalStudentScore
+                                        .totalStudentMarks.length,
+                                    shrinkWrap: true,
+                                    itemBuilder: (context, index) {
+                                      //course final mark card
+                                      return Stack(
+                                        alignment: Alignment.topCenter,
+                                        clipBehavior: Clip.none,
+                                        children: [
+                                          Container(
+                                            width: 330.w,
+                                            padding: EdgeInsets.all(10.w),
+                                            margin: EdgeInsets.only(top: 35.h),
+                                            decoration: BoxDecoration(
+                                              color: Colors.grey.shade300,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                GlobalStyles.globalBorderRadius,
+                                              ),
+                                            ),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "الدرجة المطلوبة للنجاح: ${controller.finalStudentScore.totalStudentMarks[index].requiredGradeToPass}",
+                                                  style: ProjectFonts
+                                                          .headlineSmall()
+                                                      .copyWith(
+                                                          fontSize: 16.sp),
+                                                ),
+                                                Text(
+                                                  "الدرجة المستحقة: ${controller.finalStudentScore.totalStudentMarks[index].averageGrade}",
+                                                  style: ProjectFonts
+                                                          .headlineSmall()
+                                                      .copyWith(
+                                                          fontSize: 16.sp),
+                                                ),
+                                              ],
+                                            ),
+                                          ), //course name
+                                          Positioned(
+                                            top: 5.h,
+                                            child: Container(
+                                              width: 150.w,
+                                              height: 50.h,
+                                              decoration: BoxDecoration(
+                                                color: Get.theme.colorScheme
+                                                    .background,
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                  GlobalStyles
+                                                      .globalBorderRadius,
+                                                ),
+                                              ),
+                                              child: Center(
+                                                child: Text(
+                                                  controller
+                                                      .finalStudentScore
+                                                      .totalStudentMarks[index]
+                                                      .courseName,
+                                                  style:
+                                                      ProjectFonts.titleSmall()
+                                                          .copyWith(
+                                                    color: Get.theme.colorScheme
+                                                        .primary,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          //percentage
+                                          Positioned(
+                                            top: 200.h,
+                                            left: 30.w,
+                                            child: CircularPercentIndicator(
+                                              animation: true,
+                                              radius: 30.r,
+                                              lineWidth: 5.0.w,
+                                              percent: controller
+                                                      .finalStudentScore
+                                                      .totalStudentMarks[index]
+                                                      .averageGrade /
+                                                  100,
+                                              center: Text(
+                                                "${controller.finalStudentScore.totalStudentMarks[index].averageGrade}%",
+                                                style:
+                                                    ProjectFonts.titleSmall(),
+                                              ),
+                                              progressColor:
+                                                  Get.theme.primaryColor,
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Row(
+                                    children: [
+                                      const Spacer(),
+                                      Container(
+                                        padding: EdgeInsets.all(20.w),
+                                        margin: EdgeInsets.all(10.w),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            GlobalStyles.globalBorderRadius,
+                                          ),
+                                          color: Colors.grey.shade300,
+                                        ),
+                                        child: CircularPercentIndicator(
+                                          animation: true,
+                                          radius: 85.r,
+                                          lineWidth: 15.w,
+                                          percent: controller.finalStudentScore
+                                                  .totalGrade /
+                                              1000,
+                                          center: Column(
+                                            children: [
+                                              const Spacer(),
+                                              Text(
+                                                controller.finalStudentScore
+                                                    .totalGrade
+                                                    .toString(),
+                                                style: ProjectFonts
+                                                    .headlineSmall(),
+                                              ),
+                                              Container(
+                                                height: 1.h,
+                                                color: Colors.grey,
+                                                margin: EdgeInsets.symmetric(
+                                                    vertical: 10.h,
+                                                    horizontal: 20.w),
+                                              ),
+                                              Text(
+                                                controller.finalStudentScore
+                                                        .didPassYear
+                                                    ? 'ناجح'
+                                                    : 'راسب',
+                                                style: ProjectFonts
+                                                    .headlineSmall(),
+                                              ),
+                                              const Spacer(),
+                                            ],
+                                          ),
+                                          progressColor: controller
+                                                  .finalStudentScore.didPassYear
+                                              ? Colors.green
+                                              : Get.theme.colorScheme.error,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
                     );
                   }

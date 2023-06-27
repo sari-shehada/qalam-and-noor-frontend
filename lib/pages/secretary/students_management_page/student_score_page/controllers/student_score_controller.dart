@@ -40,8 +40,12 @@ class StudentScoreController extends GetxController {
     await getSemesters();
     isLoadingSemesters.value = false;
     print("done");
-    await getFinalScore();
-    print("done2");
+    if (schoolYear.isFinished) {
+      await getFinalScore();
+      print("done2");
+    } else {
+      isLoadingFinalScore.value = false;
+    }
   }
 
   Future<StudentSemesterScore> getStudentScores(
