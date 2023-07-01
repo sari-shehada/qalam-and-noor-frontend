@@ -90,6 +90,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 40.w),
                             child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
                                   actionButton!.label,
@@ -100,7 +101,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                                 ),
                                 const Spacer(),
                                 FaIcon(
-                                  FontAwesomeIcons.plus,
+                                  (actionButton as CustomAppBarActionButton)
+                                          .icon ??
+                                      FontAwesomeIcons.plus,
                                   color: Colors.white,
                                   size: 28.sp,
                                 )
@@ -124,9 +127,11 @@ class CustomAppBarActionButton {
   final String label;
   final VoidCallback onTap;
   final Rx<CustomButtonStatus>? buttonStatus;
+  final IconData? icon;
   CustomAppBarActionButton({
     required this.label,
     required this.onTap,
     this.buttonStatus,
+    this.icon,
   });
 }
