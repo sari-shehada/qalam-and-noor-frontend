@@ -38,13 +38,10 @@ class WebApp extends StatelessWidget {
           theme: ProjectThemes.lightTheme,
           darkTheme: ProjectThemes.darkTheme,
           home: child,
+          defaultTransition: Transition.fadeIn,
           // initialRoute: '/',
         );
       },
     );
   }
 }
-
-//TODO:
-//5. Add Exams Management to Classes
-//8. Enable Search by name for employees in EmployeesManagementPage
