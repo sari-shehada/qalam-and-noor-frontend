@@ -17,6 +17,7 @@ class HintedTextField extends StatelessWidget {
     this.obscureText = false,
     this.suffixIcon,
     this.contentPadding,
+    this.borderRadius,
   });
 
   final String hintText;
@@ -29,6 +30,7 @@ class HintedTextField extends StatelessWidget {
   final bool obscureText;
   final Widget? suffixIcon;
   final EdgeInsetsGeometry? contentPadding;
+  final BorderRadius? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +54,11 @@ class HintedTextField extends StatelessWidget {
         isDense: true,
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent, width: 2.w),
-          borderRadius: BorderRadius.circular(14.r),
+          borderRadius: borderRadius ?? BorderRadius.circular(14.r),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(14.r),
+          borderRadius: borderRadius ?? BorderRadius.circular(14.r),
         ),
         suffixIcon: suffixIcon,
         filled: true,
