@@ -122,3 +122,19 @@ enum GeneralLoadingStatus {
   hasData,
   hasError,
 }
+
+enum ConversationTitle {
+  complaint,
+  thanking,
+  note,
+  inquiry,
+  criticism,
+}
+
+Map<ConversationTitle, String> conversationTitlesAsString = {
+  ConversationTitle.complaint: 'شكوى',
+  ConversationTitle.thanking: 'شكر',
+  ConversationTitle.note: 'ملاحظة',
+  ConversationTitle.inquiry: 'استفسار',
+  ConversationTitle.criticism: 'انتقاد',
+};
