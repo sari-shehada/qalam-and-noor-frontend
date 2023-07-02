@@ -20,7 +20,7 @@ class StudentScoreController extends GetxController {
 
   //Observables
   final RxBool isLoadingSemesters = true.obs;
-  final RxBool isLoadingGrades = true.obs;
+  final RxBool isLoadingGrades = false.obs;
   final RxBool isOnFinalStudentScore = false.obs;
   final RxBool isLoadingFinalScore = true.obs;
   final RxInt selectedIndex = (-1).obs;

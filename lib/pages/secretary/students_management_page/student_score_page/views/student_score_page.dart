@@ -262,6 +262,7 @@ class StudentScorePage extends GetView<StudentScoreController> {
                         ),
                       );
                     }
+
                     return SizedBox.expand(
                       child: Container(
                         color: Theme.of(context).colorScheme.primary,
@@ -454,8 +455,37 @@ class StudentScorePage extends GetView<StudentScoreController> {
                       ),
                     );
                   }
+                  if (controller.isLoadingGrades.value == true) {
+                    return SizedBox.expand(
+                      child: Container(
+                        color: Theme.of(context).colorScheme.primary,
+                        child: const Center(
+                          child: LoaderWidget(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+
                   if (controller.selectedIndex.value != -1 &&
                       !controller.isOnFinalStudentScore.value) {
+                    if (controller.currentSemesterStudentScore
+                        .studentSemesterGrades.isEmpty) {
+                      return SizedBox.expand(
+                        child: Container(
+                          color: Theme.of(context).colorScheme.primary,
+                          child: Center(
+                            child: Text(
+                              "الطالب لم يعطى أي درجة بعد",
+                              style: ProjectFonts.headlineMedium().copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }
                     return SizedBox.expand(
                       child: Container(
                         color: Theme.of(context).colorScheme.primary,
